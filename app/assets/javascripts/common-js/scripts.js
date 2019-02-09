@@ -191,4 +191,7 @@ $(document).on("turbolinks:load", function() {
     }
     return false;
   }
+  $(".singin_btn").on("click", function(e) {
+    $("form#new_user")[0].submit();
+  })
 });
