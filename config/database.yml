@@ -19,5 +19,5 @@ cucumber:
 #https://devcenter.heroku.com/articles/concurrency-and-database-connections#threaded-servers
 production:
     adapter: postgresql
-    url:  <%= ENV["DATABASE_URL"] %>
+    url:  <%= "#{Rails.application.class.parent.name.underscore}_development" %>
     pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
