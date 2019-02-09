@@ -52,3 +52,51 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :development, :test do
+  gem 'pry-byebug'
+end
+
+
+gem 'therubyracer', '~> 0.12.3', platforms: :ruby
+gem 'js-routes', '~> 1.3.3'
+
+# Color utilities needed for landing page
+gem 'color', '~> 1.8'
+
+gem 'uuidtools', '~> 2.1.5'
+gem 'transit-ruby', '~> 0.8.1'
+
+# Markdown parser
+gem 'redcarpet', '~> 3.4.0'
+
+gem 'intercom'
+
+gem 'twitter_cldr'
+gem 'memoist'
+gem 'biz'
+gem 'omniauth-google-oauth2'
+gem 'delayed_job', '~> 4.1.3'
+gem 'delayed_job_active_record', '~> 4.1.2'
+
+gem 'web_translate_it', '~> 2.4.1'
+gem 'rails-i18n'
+gem 'devise', '~> 4.3.0'
+gem 'devise-encryptable', '~> 0.2.0'
+gem "omniauth-facebook", '~> 4.0.0'
+
+# Dynamic form adds helpers that are needed, e.g. error_messages
+gem 'dynamic_form'
+gem "truncate_html"
+gem 'money-rails'
+gem 'pg'
+
+group :deployment do
+  gem "capistrano"
+  gem 'capistrano3-delayed-job', '~> 1.0'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-npm'
+end
