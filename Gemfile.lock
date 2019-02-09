@@ -334,7 +334,7 @@ DEPENDENCIES
   money-rails
   omniauth-facebook (~> 4.0.0)
   omniauth-google-oauth2
-  pg
+  pg (>= 0.18, < 2.0)
   pry-byebug
   puma (~> 3.7)
   rails (~> 5.1.1)
@@ -357,4 +357,4 @@ DEPENDENCIES
   web_translate_it (~> 2.4.1)
 
 BUNDLED WITH
-   1.16.6
+   2.0.1

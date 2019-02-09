@@ -104,12 +104,12 @@ b.max-bold{ font-weight: 700; }
 3. HEADER
 --------------------------------- */
 
-header{ position: relative; top: 0; left: 0; right: 0; text-align: center; z-index: 1000; background-image: url(../../images/bg-header.png);  height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; height: 50%;}
+header{ position: relative; top: 0; left: 0; right: 0; text-align: center; z-index: 1000; background-image: image_url('bg-header.png');  height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; height: 50%;}
 
 #header-top{
-	background: url(../../images/bg-top-menu.png) repeat-x left top;
-    padding: 10px 50px;
-	text-align: right;
+  background: image_url("bg-top-menu.png") repeat-x left top;
+  padding: 10px 50px;
+  text-align: right;
 }
 
 #header-top ul li{
@@ -132,7 +132,7 @@ header .main-menu{ float: right; padding-right:10px; }
 
 header ul.main-menu > li > a{ height: 100%; line-height: 40px; padding: 10px 0px; text-align:center; width:123px; }
 
-header ul.main-menu > li > a:hover{ background: url(../../images/hover.png) no-repeat left 10px; }
+header ul.main-menu > li > a:hover{ background: image_url('hover.png') no-repeat left 10px; }
 
 header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 20px; }
 
@@ -148,7 +148,7 @@ header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 
 header .main-menu li.drop-down{ position: relative; text-align: left; }
 
 header .main-menu li.drop-down > ul.drop-down-menu{ display: none; position: absolute; top: 50px; 
-	left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: url(../../images/bg-dropdownmenu.png) repeat;}
+	left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: image_url('bg-dropdownmenu.png') repeat;}
 
 header .main-menu li.drop-down > ul.drop-down-menu li{ display: block; border-top: 1px solid #333333; }
 
@@ -182,8 +182,8 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 .bg-img{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1; 
 	background-size: cover; }
 
-.bg-1{ background: url(../../images/bg1.png) no-repeat left top; padding:40px 50px 40px 50px; background-size: cover; }
-.bg-2{ background: url(../../images/bg2.png) no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-1{ background: image_url('bg1.png') no-repeat left top; padding:40px 50px 40px 50px; background-size: cover; }
+.bg-2{ background: image_url('bg2.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-2 p{
 	color:#fff;
@@ -203,7 +203,7 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 	padding:20px;
 }
 
-.bg-3{ background: url(../../images/bg3.png) no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-3{ background: image_url('bg3.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-3 h2{
 	padding:0 0 20px 0;
@@ -221,10 +221,10 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 	padding:0 0 20px 20px;
 	font-size:16px;
 	line-height:24px;
-	background: url(../../images/dot.png) no-repeat left 5px;
+	background: image_url('dot.png') no-repeat left 5px;
 }
 
-.bg-4{ background: url(../../images/bg4.png) no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-4{ background: image_url('bg4.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-4 p{
 	color:#fff;
@@ -237,19 +237,19 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
     text-align: center;
 }
 
-.bg-5{ background: url(../../images/bg5.png) no-repeat left top; padding:0; background-size: cover; }
+.bg-5{ background: image_url('bg5.png') no-repeat left top; padding:0; background-size: cover; }
 
 /* ---------------------------------
 4. Login Page 
 --------------------------------- */
-.bg-login{ background: url(../../images/bg-login.png) no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-login{ background: image_url('bg-login.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 	
 		.form_container {
 			margin-top: 100px;
 		}
 		.singin_btn {
 			width: 300px;
-			background: url(../../images/btn-signin.png) no-repeat left top;
+			background: image_url('btn-signin.png') no-repeat left top;
 			color: white !important;
 			text-indent:-9000px;
 		}
@@ -268,12 +268,12 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 		}
 		
 		.input_user{
-			background: url(../../images/bg-email.png) no-repeat left top;
+			background: image_url('bg-email.png') no-repeat left top;
 			width: 300px;
     		margin-bottom: 5px;
 		}
 		.input_pass{
-			background: url(../../images/bg-pass.png) no-repeat left top;
+			background: image_url('bg-pass.png') no-repeat left top;
 			width: 300px;
     		margin-bottom: 20px;
 		}
@@ -315,7 +315,7 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 footer{ position: relative; bottom: 0; left: 0; right: 0; overflow: hidden; z-index: 10000;
 	text-align: center; }
 .footer-top{
-	background: url(../../images/bg-footer-top.png) no-repeat left top; background-size: cover;
+	background: image_url('bg-footer-top.png') no-repeat left top; background-size: cover;
 	padding:40px;
 }
 
@@ -332,7 +332,7 @@ footer .footer-top ul li{
     margin-bottom: 10px;
 }
 .footer-btm{
-	background: url(../../images/bg-btm-footer.png) no-repeat left top; background-size: cover;
+	background: image_url('bg-btm-footer.png') no-repeat left top; background-size: cover;
 	padding:10px 0 10px 0;
 }
 

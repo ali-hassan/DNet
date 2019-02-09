@@ -12,6 +12,19 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree ./common-js
+//= require jquery.min
+//= require ./common-js/tether.min
+//= require ./common-js/bootstrap
+//= require ./revolution/js/jquery.themepunch.tools.min
+//= require ./revolution/js/jquery.themepunch.revolution.min
+//= require ./revolution/js/extensions/revolution.extension.actions.min
+//= require ./revolution/js/extensions/revolution.extension.carousel.min
+//= require ./revolution/js/extensions/revolution.extension.kenburn.min
+//= require ./revolution/js/extensions/revolution.extension.layeranimation.min
+//= require ./revolution/js/extensions/revolution.extension.migration.min
+//= require ./revolution/js/extensions/revolution.extension.navigation.min
+//= require ./revolution/js/extensions/revolution.extension.parallax.min
+//= require ./revolution/js/extensions/revolution.extension.slideanims.min
+//= require ./revolution/js/extensions/revolution.extension.video.min
 //= require cable
-//= require_tree .
+//= require ./common-js/scripts
