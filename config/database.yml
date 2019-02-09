@@ -9,6 +9,12 @@ development:
     database: <%= "#{Rails.application.class.parent.name.underscore}_development" %>
     username: postgres
     password: password
+
+staging:
+    <<: *default
+    database: <%= "#{Rails.application.class.parent.name.underscore}_development" %>
+    username: postgres
+    password: password
 test: &test
     <<: *default
     database: <%= "#{Rails.application.class.parent.name.underscore}_test" %>
