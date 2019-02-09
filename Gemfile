@@ -89,13 +89,11 @@ gem 'dynamic_form'
 gem "truncate_html"
 gem 'money-rails'
 
-group :deployment do
-  gem "capistrano"
-  gem 'capistrano3-delayed-job', '~> 1.0'
-  gem 'capistrano-ssh-doctor', '~> 1.0'
-  gem 'capistrano-rvm'
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
-  gem 'capistrano-npm'
-end
+gem "capistrano", '=3.11.0'
+gem 'capistrano3-delayed-job', '~> 1.0'
+gem 'capistrano-ssh-doctor', '~> 1.0'
+gem 'capistrano-rvm'
+gem 'capistrano-rails',   require: false
+gem 'capistrano-bundler', require: false
+gem 'capistrano-passenger'
+gem 'capistrano-npm'
