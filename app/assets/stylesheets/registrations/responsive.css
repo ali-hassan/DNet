@@ -1,0 +1,32 @@
+@media only screen and (max-width: 767px) {
+	.signup-page .signup-bottom .signup-row .signup-column{
+		float: none;
+		width: 100%;
+		margin: 0 0 20px;
+	}
+	.signup-page .signup-holder{
+		max-width: 400px;
+	}
+	.signup-page .top-block{
+		text-align: center;
+	}
+	.signup-page .logo{
+		margin-bottom: 50px;
+	}
+	.signup-page .top-block{
+		padding: 0 20px 30px;
+	}
+	.signup-page .signup-bottom .signup-row.add{
+		padding: 0;
+		margin: 0 0 20px;
+	}
+	.signup-page .signup-bottom .signup-row.add:before{
+		display: none;		
+	}
+
+}
+
+
+
+
+
