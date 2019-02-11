@@ -11,22 +11,6 @@
 
 ====================================================
 
-	TOC
-	
-	1. PRIMARY STYLES
-	2. COMMONS FOR PAGE DESIGN
-	3. HEADER
-	4. INTRO SECTION
-	5. PORFOLIO SECTION
-	6. ABOUT SECTION
-	7. EXPERIENCE SECTION
-	8. EDUCATION SECTION
-	9. COUNTER SECTION
-	10. FOOTER
-
-====================================================
-
-
 /* ---------------------------------
 1. PRIMARY STYLES
 --------------------------------- */
@@ -36,8 +20,7 @@ html{ font-size: 100%; height: 100%; overflow-x: hidden; margin: 0px;  padding: 
 
 body{ font-size: 15px; font-family: 'Poppins', serif; margin: 0; font-weight: 400;
 	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; word-wrap: break-word; 
-	line-height: 1; margin: 0 50px; padding: 0px 0 60px 0; height: 100vh; 
-	width: calc(100% - 100px); position: relative; z-index: 1; color: #fff; }
+	line-height: 1; z-index: 1; color: #fff; }
 
 h1, h2, h3, h4, h5, h6, p, a, ul, span, li, img, inpot, button{ margin: 0; padding: 0; }
 
@@ -104,12 +87,16 @@ b.max-bold{ font-weight: 700; }
 3. HEADER
 --------------------------------- */
 
-header{ position: relative; top: 0; left: 0; right: 0; text-align: center; z-index: 1000; background-image: image_url('bg-header.png');  height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; height: 50%;}
+header{ text-align: center;}
+
+#header{
+  background: image_url("bg-header.png") no-repeat right top #000;
+}
 
 #header-top{
-  background: image_url("bg-top-menu.png") repeat-x left top;
-  padding: 10px 50px;
-  text-align: right;
+	background: image_url("bg-top-menu.png") repeat-x left top;
+    padding: 5px 40px;
+	text-align: right;
 }
 
 #header-top ul li{
@@ -121,18 +108,26 @@ header{ position: relative; top: 0; left: 0; right: 0; text-align: center; z-ind
 	float: left;
 }
 
+#header-btm{
+	width:100%;
+	
+}
+
+#menu{
+	width: 100%;
+}
+
 header:after{ content:''; clear: both; }
 
-header .logo{ float: right; margin: 20px 100px 27px 0; }
+header .logo{ float: right; margin: 16px 94px 30px 0; }
 
 header .logo img{ width: auto; }
 
-
 header .main-menu{ float: right; padding-right:10px; }
 
-header ul.main-menu > li > a{ height: 100%; line-height: 40px; padding: 10px 0px; text-align:center; width:123px; }
+header ul.main-menu > li > a{ height: 100%; line-height: 20px; padding: 0px 18px; font-size:14px; color:#f5de69; text-align:center; }
 
-header ul.main-menu > li > a:hover{ background: image_url('hover.png') no-repeat left 10px; }
+header ul.main-menu > li > a:hover{ background: image_url("hover.png") no-repeat left top; }
 
 header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 20px; }
 
@@ -147,12 +142,12 @@ header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 
 
 header .main-menu li.drop-down{ position: relative; text-align: left; }
 
-header .main-menu li.drop-down > ul.drop-down-menu{ display: none; position: absolute; top: 50px; 
-	left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: image_url('bg-dropdownmenu.png') repeat;}
+header .main-menu li.drop-down > ul.drop-down-menu{ display: none; position: absolute; top: 20px; 
+	left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: image_url("bg-dropdownmenu.png") repeat; z-index:1500;}
 
 header .main-menu li.drop-down > ul.drop-down-menu li{ display: block; border-top: 1px solid #333333; }
 
-header .main-menu li.drop-down > ul.drop-down-menu li > a{ display: block; width:100%; color:#ba8a31; font-size:16px; padding: 17px 20px; }
+header .main-menu li.drop-down > ul.drop-down-menu li > a{ display: block; width:100%; color:#ba8a31; font-size:14px; padding: 5px 10px; }
 
 header .main-menu li.drop-down > ul.drop-down-menu li > a:hover{ background-color:#e8cc56; color:#000; }
 
@@ -172,6 +167,11 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 	100%{ opacity: 1; }
 }
 
+.padding-left-right{
+	padding-left: 15px; 
+	padding-right: 15px;
+}
+
 
 /* ---------------------------------
 4. SLIDER
@@ -182,8 +182,8 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 .bg-img{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1; 
 	background-size: cover; }
 
-.bg-1{ background: image_url('bg1.png') no-repeat left top; padding:40px 50px 40px 50px; background-size: cover; }
-.bg-2{ background: image_url('bg2.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-1{ background: image_url("bg1.png") no-repeat left top; padding:40px 50px 40px 50px; background-size: cover; }
+.bg-2{ background: image_url("bg2.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-2 p{
 	color:#fff;
@@ -203,7 +203,7 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 	padding:20px;
 }
 
-.bg-3{ background: image_url('bg3.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-3{ background: image_url("bg3.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-3 h2{
 	padding:0 0 20px 0;
@@ -221,10 +221,10 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 	padding:0 0 20px 20px;
 	font-size:16px;
 	line-height:24px;
-	background: image_url('dot.png') no-repeat left 5px;
+	background: image_url("dot.png") no-repeat left 5px;
 }
 
-.bg-4{ background: image_url('bg4.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-4{ background: image_url("bg4.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-4 p{
 	color:#fff;
@@ -237,19 +237,19 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
     text-align: center;
 }
 
-.bg-5{ background: image_url('bg5.png') no-repeat left top; padding:0; background-size: cover; }
+.bg-5{ background: image_url("bg5.png") no-repeat left top; padding:0; background-size: cover; }
 
 /* ---------------------------------
 4. Login Page 
 --------------------------------- */
-.bg-login{ background: image_url('bg-login.png') no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-login{ background: image_url("bg-login.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 	
 		.form_container {
 			margin-top: 100px;
 		}
 		.singin_btn {
 			width: 300px;
-			background: image_url('btn-signin.png') no-repeat left top;
+			background: image_url("btn-signin.png") no-repeat left top;
 			color: white !important;
 			text-indent:-9000px;
 		}
@@ -268,12 +268,12 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 		}
 		
 		.input_user{
-			background: image_url('bg-email.png') no-repeat left top;
+			background: image_url("bg-email.png") no-repeat left top;
 			width: 300px;
     		margin-bottom: 5px;
 		}
 		.input_pass{
-			background: image_url('bg-pass.png') no-repeat left top;
+			background: image_url("bg-pass.png") no-repeat left top;
 			width: 300px;
     		margin-bottom: 20px;
 		}
@@ -315,7 +315,7 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 footer{ position: relative; bottom: 0; left: 0; right: 0; overflow: hidden; z-index: 10000;
 	text-align: center; }
 .footer-top{
-	background: image_url('bg-footer-top.png') no-repeat left top; background-size: cover;
+	background: image_url("bg-footer-top.png") no-repeat left top; background-size: cover;
 	padding:40px;
 }
 
@@ -332,7 +332,7 @@ footer .footer-top ul li{
     margin-bottom: 10px;
 }
 .footer-btm{
-	background: image_url('bg-btm-footer.png') no-repeat left top; background-size: cover;
+	background: image_url("bg-btm-footer.png") no-repeat left top; background-size: cover;
 	padding:10px 0 10px 0;
 }
 
@@ -356,14 +356,6 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
   
   footer .social-icons > li > a:hover{ height: 40px; width:40px; line-height: 40px; color: #000; background-color:#fff; font-size: 25px; margin-right: 20px; border-radius: 25px;
   border: 1px solid #fff; }
-
-.container-fluid {
-    height: 100%;
-    display: table;
-    width: 100%;
-    padding-right: 0;
-    padding-left: 0;
-}
 
 .row-fluid {
     height: 100%;
@@ -392,3 +384,155 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
       height:200px!important;
     } 
   }
+  
+  /* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  //CSS
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  //CSS
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  //CSS
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+ #header {
+    	background: image_url("bg-header.png") no-repeat 100px top #000;
+	}
+  
+}
+
+@media (min-width: 481px) and (max-width: 575px) {
+  header .container{
+	  padding-left: 0px;
+      padding-right: 0px;
+  }
+  
+  .menu-nav-icon {
+    float: none !important;
+	line-height:30px;
+	margin:0px 130px 0 0;
+	}
+   
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  body {
+    	margin: 0;
+    	padding: 0px 0 !important;
+	}
+	
+	#header {
+    	background: image_url("bg-arrow.png") no-repeat 20px top #000;
+	}
+	
+	#header-top {
+		padding: 0px 0px;
+	}
+	
+  	header .logo {
+    	margin: 27px 40px 19px 0;
+	}
+ 
+  .menu-nav-icon {
+    	line-height: 29px;
+    	margin: 0px 0;
+	}
+  
+  header .main-menu {
+    top: 181px !important;
+    background: #fff;
+	z-index:200 !important;
+	}
+	
+	header .main-menu li:hover{ background-color:#e8cc56; color:#000 !important; background-image:none; }
+	
+	header .main-menu a:hover{ background-image:none !important; color:#000 !important; }
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+	body {
+		margin: 0;
+		padding: 0px 0 !important;
+	}
+	
+	
+  header .container{
+	  padding-left: 0px;
+      padding-right: 0px;
+  }
+  
+  #header-top {
+    padding: 5px 0px;
+ }
+  
+  header .logo {
+    margin: 40px 30px 10px 0;
+  }
+  
+  .logo{
+	  max-width: 235px;
+	}
+   
+  .menu-nav-icon {
+    float: right;
+	line-height:30px;
+	margin:0px 130px 0 0;
+	}
+	
+  #header {
+    	background: image_url("bg-arrow.png") no-repeat 10px top #000;
+  }
+  
+   header .main-menu {
+    top: 175px !important;
+    background: #fff;
+	z-index:200 !important;
+	}
+	
+	header .main-menu li:hover{ background-color:#e8cc56; color:#000 !important; background-image:none; }
+	
+	header .main-menu a:hover{ background-image:none !important; color:#000 !important; }
+  
+}
