@@ -94,9 +94,10 @@ header{ text-align: center;}
 }
 
 #header-top{
-	background: image_url("bg-top-menu.png") repeat-x left top;
-    padding: 5px 40px;
-	text-align: right;
+  background: image_url("bg-top-menu.png") repeat-x left top;
+  padding: 5px 40px;
+  text-align: right;
+  width: 100%;
 }
 
 #header-top ul li{
@@ -119,14 +120,12 @@ header{ text-align: center;}
 
 header:after{ content:''; clear: both; }
 
-header .logo{ float: right; margin: 16px 94px 30px 0; }
-
+header .logo{ float: right; margin: 16px 94px 56px 0; }
 header .logo img{ width: auto; }
 
 header .main-menu{ float: right; padding-right:10px; }
 
-header ul.main-menu > li > a{ height: 100%; line-height: 20px; padding: 0px 18px; font-size:14px; color:#f5de69; text-align:center; }
-
+header ul.main-menu > li > a{ height: 100%; line-height: 30px; padding: 0px 18px; font-size:20px; color:#f5de69; text-align:center; }
 header ul.main-menu > li > a:hover{ background: image_url("hover.png") no-repeat left top; }
 
 header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 20px; }
@@ -142,12 +141,12 @@ header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 
 
 header .main-menu li.drop-down{ position: relative; text-align: left; }
 
-header .main-menu li.drop-down > ul.drop-down-menu{ display: none; position: absolute; top: 20px; 
-	left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: image_url("bg-dropdownmenu.png") repeat; z-index:1500;}
+header .main-menu li.drop-down > ul.drop-down-menu{ display: none; position: absolute; top: 30px;
+  left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: image_url("bg-dropdownmenu.png") repeat; z-index:1500;}
 
 header .main-menu li.drop-down > ul.drop-down-menu li{ display: block; border-top: 1px solid #333333; }
 
-header .main-menu li.drop-down > ul.drop-down-menu li > a{ display: block; width:100%; color:#ba8a31; font-size:14px; padding: 5px 10px; }
+header .main-menu li.drop-down > ul.drop-down-menu li > a{ display: block; width:100%; color:#ba8a31; font-size:18px; padding: 8px 10px; }
 
 header .main-menu li.drop-down > ul.drop-down-menu li > a:hover{ background-color:#e8cc56; color:#000; }
 
@@ -194,34 +193,58 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 }
 
 .quotes{
-	background-color:#222222;
-	opacity:0.5;
-	width:80%;
-	color:#fff;
-	font-size:16px;
-	line-height:20px;
-	padding:20px;
+  width: 85%;
+  background-color: #222222;
+  padding: 10px;
+}
+.quotes p{
+  font-size: 21px;
+  color: #fff;
+  line-height: 28px;
+  width: 100%;
+  padding: 0px;
 }
 
-.bg-3{ background: image_url("bg3.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-3{
+  background-image: linear-gradient( to right, #000000 , #333333);
+  padding:40px 0px 40px 0px;
+}
+//.bg-3{ background: image_url("bg3.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-3 h2{
 	padding:0 0 20px 0;
 }
 
 .bg-3 p{
-	color:#fff;
-	width:90%;
-	font-size:16px;
-	padding:0 0 20px 0;
+  color:#fff;
+  width:90%;
+  font-size:21px;
+  padding:0 0 20px 0;
+}
+
+.trading p{
+  font-size:12px;
+  width:100%;
 }
 
 .bg-3 li{
-	width:80%;
-	padding:0 0 20px 20px;
-	font-size:16px;
-	line-height:24px;
-	background: image_url("dot.png") no-repeat left 5px;
+  padding:0 0 20px 20px;
+  font-size:18px;
+  line-height:24px;
+  background: url(../../images/dot.png) no-repeat left 5px;
+}
+
+.border-btm{
+  background: url(../../images/border-btm.png) no-repeat center bottom;
+  padding: 0px 0 30px 0;
+  margin-bottom: 50px;
+}
+
+.clients{
+  background: image_url("bg-clients.png") no-repeat center bottom;
+  background-size: cover;
+  padding: 20px 0 20px 0;
+  margin:20px 0 0 0;
 }
 
 .bg-4{ background: image_url("bg4.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
@@ -323,14 +346,36 @@ footer .logo{
 	padding-top:50px;
 }
 
-footer .footer-top ul li{
-	display: block;
-    width: 100%;
-    text-align: left;
-    font-weight: normal;
-    padding: 0 14px 0 0;
-    margin-bottom: 10px;
+footer .footer-top ul{
+  padding-left:30px;
 }
+
+footer .footer-top ul li{
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-weight: normal;
+  padding: 0 14px 0px 0;
+  margin-bottom: 5px;
+  font-size:15px;
+  line-height:24px;
+}
+
+footer .footer-top ul li.icon-globe a{
+  background: image_url("icon-globe.png") no-repeat left top;
+  padding: 0 0px 5px 25px;
+}
+
+footer .footer-top ul li.icon-mail a{
+  background: image_url("icon-mail.png") no-repeat left top;
+  padding: 0 0px 5px 25px;
+}
+
+footer .footer-top ul li.icon-address {
+  background: image_url("icon-pinpoint.png") no-repeat left top;
+  padding: 0 0px 5px 25px;
+}
+
 .footer-btm{
 	background: image_url("bg-btm-footer.png") no-repeat left top; background-size: cover;
 	padding:10px 0 10px 0;
