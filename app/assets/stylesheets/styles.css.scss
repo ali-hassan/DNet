@@ -32,7 +32,7 @@ p{ line-height: 1.6; font-size: 1.05em; font-weight: 400; padding:0 0 20px 0; co
 
 h1{ font-size: 4em; line-height: 1; padding:0 0 20px 0; text-align:center; }
 h2{ font-size: 2.2em; line-height: 1.1; padding:0 0 20px 0; }
-h3{ font-size: 1.8em; }
+h3{ font-size: 1.8em; color:#fff; }
 h4{ font-size: 1.3em; }
 h5{ font-size: 1em; }
 h6{ font-size: .9em; letter-spacing: 1px; }
@@ -90,16 +90,16 @@ b.max-bold{ font-weight: 700; }
 header{ text-align: center;}
 
 #header{
-  background: image_url("bg-header.png") no-repeat right top #000;
+	background: image_url("bg-header.png") no-repeat right top #000;
 }
-
+/*12-02 Start*/
 #header-top{
-  background: image_url("bg-top-menu.png") repeat-x left top;
-  padding: 5px 40px;
-  text-align: right;
-  width: 100%;
+	background: image_url("bg-top-menu.png") repeat-x left top;
+    padding: 5px 40px;
+	text-align: right;
+	width: 100%;
 }
-
+/*12-02 End*/
 #header-top ul li{
 	padding-right:5px;
 }
@@ -119,17 +119,18 @@ header{ text-align: center;}
 }
 
 header:after{ content:''; clear: both; }
+/*12-02 Start*/
 
-header .logo {
-  float: right;
-  margin: 36px 94px 36px 0;
-}
+header .logo{ float: right; margin: 36px 94px 36px 0; }
+
+/*12-02 End*/
 
 header .logo img{ width: auto; }
 
-header .main-menu{ float: right; padding-right:10px; }
-
+header .main-menu{ float: right; padding-right:10px; margin-bottom:0px; }
+/*12-02 Start*/
 header ul.main-menu > li > a{ height: 100%; line-height: 30px; padding: 0px 18px; font-size:20px; color:#f5de69; text-align:center; }
+/*12-02 End*/
 header ul.main-menu > li > a:hover{ background: image_url("hover.png") no-repeat left top; }
 
 header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 20px; }
@@ -144,9 +145,9 @@ header .right-area{ float: right; height: 100%; line-height: 60px; margin-left: 
 /* DROPDOWN MENU STYLING */
 
 header .main-menu li.drop-down{ position: relative; text-align: left; }
-
-header .main-menu li.drop-down > ul.drop-down-menu{ display: none; position: absolute; top: 30px;
-  left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: image_url("bg-dropdownmenu.png") repeat; z-index:1500;}
+/*12-02 Start*/
+header .main-menu li.drop-down > ul.drop-down-menu{ display: none; position: absolute; top: 30px; 
+	left: 0; min-width: 200px; box-shadow: 0px 3px 10px rgba(0,0,0,.3); background: image_url("bg-dropdownmenu.png") repeat; z-index:1500;}
 
 header .main-menu li.drop-down > ul.drop-down-menu li{ display: block; border-top: 1px solid #333333; }
 
@@ -185,7 +186,7 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 .bg-img{ position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1; 
 	background-size: cover; }
 
-.bg-1{ background: image_url("bg1.png") no-repeat left top; padding:40px 50px 40px 50px; background-size: cover; }
+.bg-1{ background: image_url("bg1.gif") no-repeat left top; padding:40px 50px 40px 50px; background-size: cover; }
 .bg-2{ background: image_url("bg2.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
 .bg-2 p{
@@ -195,62 +196,52 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 	line-height:35px;
 	padding:0 0 20px 0;
 }
-
+/*12-02 Start*/
 .quotes{
-  width: 85%;
-  background-color: #222222;
-  padding: 10px;
-}
-.quotes p {
-  font-size: 21px;
-  color: #fff;
-  line-height: 28px;
-  width: 100%;
-  padding: 0px;
-  text-align: justify;
+	width: 85%;
+    background-color: #222222;
+    padding: 10px;
 }
 
-.bg-3{
-  background-image: linear-gradient( to right, #000000 , #333333);
-  padding:40px 0px 40px 0px;
+.quotes p{
+	font-size: 21px;
+    color: #fff;
+    line-height: 28px;
+    width: 100%;
+    padding: 0px;
 }
-//.bg-3{ background: image_url("bg3.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
+.bg-3{ 
+	background-image: linear-gradient( to right, #000000 , #333333); 
+	padding:40px 0px 40px 0px; 
+}
+/*12-02 End*/
 .bg-3 h2{
 	padding:0 0 20px 0;
 }
-
+/*12-02 Start*/
 .bg-3 p{
-  color:#fff;
-  width:90%;
-  font-size:21px;
-  padding:0 0 20px 0;
+	color:#fff;
+	width:90%;
+	font-size:21px;
+	padding:0 0 20px 0;
 }
 
-
-.trading p {
-  font-size: 13px;
-  width: 100%;
+.trading p{
+	font-size:13px;
+	width:100%;
 }
+
 .bg-3 li{
-  padding:0 0 20px 20px;
-  font-size:18px;
-  line-height:24px;
-  background: image_url("dot.png") no-repeat left 5px;
+	padding: 0 0 20px 20px;
+    font-size: 18px;
+    line-height: 24px;
+    background: image_url("dot.png") no-repeat left 5px;
+    color: #fff;
+    text-align: justify;
 }
 
-.border-btm{
-  background: image_url("border-btm.png") no-repeat center bottom;
-  padding: 0px 0 30px 0;
-  margin-bottom: 50px;
-}
-
-.clients{
-  background: image_url("bg-clients.png") no-repeat center bottom;
-  background-size: cover;
-  padding: 20px 0 20px 0;
-  margin:20px 0 0 0;
-}
+/*12-02 End*/
 
 .bg-4{ background: image_url("bg4.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
 
@@ -261,11 +252,11 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 }
 
 .img-center{
-	display: inline-block;
+	display: inline-block !important;
     text-align: center;
 }
 
-.bg-5{ background: image_url("bg5.png") no-repeat left top; padding:0; background-size: cover; }
+.bg-5{ background: image_url("bg5.gif") no-repeat left top; padding:0; background-size: cover; }
 
 /* ---------------------------------
 4. Login Page 
@@ -334,6 +325,57 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 
 .visit-btn{ min-width: 150px!important; }
 
+/* ---------------------------------
+CSS ib 12-02
+--------------------------------- */
+
+.border-btm{
+	background: image_url("border-btm.png") no-repeat center bottom;
+	padding: 0px 0 30px 0;
+    margin-bottom: 50px;
+}
+
+.clients{
+	background: image_url("bg-clients.png") no-repeat center bottom;
+	background-size: cover;
+	padding: 20px 0 20px 0;
+	margin:20px 0 0 0;
+}
+
+.glyphicon-chevron-right{
+	background: image_url("arrow-right.png") no-repeat left top;
+	width:52px !important;
+	height:52px !important;
+	display:inline-block;
+}
+
+.glyphicon-chevron-right:before{
+		display:none;
+}
+
+.carousel-control.right {
+    background-image: none;
+}
+
+.glyphicon-chevron-left{
+	background: image_url("arrow-left.png") no-repeat left top;
+	width:52px !important;
+	height:52px !important;
+	display:inline-block;
+}
+
+.glyphicon-chevron-left:before{
+		display:none;
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+
+.bg-1 p{
+	text-align:justify;
+}
+
 
 
 /* ---------------------------------
@@ -342,9 +384,11 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 
 footer{ position: relative; bottom: 0; left: 0; right: 0; overflow: hidden; z-index: 10000;
 	text-align: center; }
+	
 .footer-top{
-	background: image_url("bg-footer-top.png") no-repeat left top; background-size: cover;
-	padding:40px;
+	background: image_url("bg-footer-top.png") no-repeat left top;
+	background-size: cover;
+	padding: 80px 0 80px 0;
 }
 
 footer .logo{
@@ -352,33 +396,33 @@ footer .logo{
 }
 
 footer .footer-top ul{
-  padding-left:30px;
+	padding-left:45px;
 }
 
 footer .footer-top ul li{
-  display: block;
-  width: 100%;
-  text-align: left;
-  font-weight: normal;
-  padding: 0 14px 0px 0;
-  margin-bottom: 5px;
-  font-size:15px;
-  line-height:24px;
+	display: block;
+    width: 100%;
+    text-align: left;
+    font-weight: normal;
+    padding: 0 14px 0px 0;
+    margin-bottom: 5px;
+	font-size:15px;
+	line-height:24px;
 }
 
 footer .footer-top ul li.icon-globe a{
-  background: image_url("icon-globe.png") no-repeat left top;
-  padding: 0 0px 5px 25px;
+	background: image_url("icon-globe.png") no-repeat left top;
+	padding: 0 0px 5px 25px;
 }
 
 footer .footer-top ul li.icon-mail a{
-  background: image_url("icon-mail.png") no-repeat left top;
-  padding: 0 0px 5px 25px;
+	background: image_url("icon-mail.png") no-repeat left top;
+	padding: 0 0px 5px 25px;
 }
 
 footer .footer-top ul li.icon-address {
-  background: image_url("icon-pinpoint.png") no-repeat left top;
-  padding: 0 0px 5px 25px;
+	background: image_url("icon-pinpoint.png") no-repeat left top;
+	padding: 0 0px 5px 25px;
 }
 
 .footer-btm{
@@ -468,6 +512,12 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
   
 }
 
+@media only screen and (max-width: 992px){
+	header ul.main-menu > li > a {
+    	padding: 0 10px !important;
+	}
+}
+
 /* 
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
@@ -476,7 +526,7 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   
  #header {
-    	background: image_url("bg-header.png") no-repeat 100px top #000;
+    	background: image_url("bg-header.png") no-repeat 0px top #000;
 	}
   
 }
@@ -516,7 +566,7 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
 	}
 	
   	header .logo {
-    	margin: 27px 40px 19px 0;
+    	margin: 23px 10px 23px 0;
 	}
  
   .menu-nav-icon {
@@ -586,3 +636,12 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
 	header .main-menu a:hover{ background-image:none !important; color:#000 !important; }
   
 }
+
+
+/*.carousel .item img{
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}*/
+
