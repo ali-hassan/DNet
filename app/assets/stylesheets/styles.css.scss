@@ -120,7 +120,11 @@ header{ text-align: center;}
 
 header:after{ content:''; clear: both; }
 
-header .logo{ float: right; margin: 16px 94px 56px 0; }
+header .logo {
+  float: right;
+  margin: 36px 94px 36px 0;
+}
+
 header .logo img{ width: auto; }
 
 header .main-menu{ float: right; padding-right:10px; }
@@ -197,12 +201,13 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
   background-color: #222222;
   padding: 10px;
 }
-.quotes p{
+.quotes p {
   font-size: 21px;
   color: #fff;
   line-height: 28px;
   width: 100%;
   padding: 0px;
+  text-align: justify;
 }
 
 .bg-3{
@@ -222,20 +227,20 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
   padding:0 0 20px 0;
 }
 
-.trading p{
-  font-size:12px;
-  width:100%;
-}
 
+.trading p {
+  font-size: 13px;
+  width: 100%;
+}
 .bg-3 li{
   padding:0 0 20px 20px;
   font-size:18px;
   line-height:24px;
-  background: url(../../images/dot.png) no-repeat left 5px;
+  background: image_url("dot.png") no-repeat left 5px;
 }
 
 .border-btm{
-  background: url(../../images/border-btm.png) no-repeat center bottom;
+  background: image_url("border-btm.png") no-repeat center bottom;
   padding: 0px 0 30px 0;
   margin-bottom: 50px;
 }
