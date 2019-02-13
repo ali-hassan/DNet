@@ -7,13 +7,13 @@ default: &default
 development:
     <<: *default
     database: <%= "#{Rails.application.class.parent.name.underscore}_development" %>
-    username: postgres
+    username: ali
     password: password
 
 staging:
     <<: *default
     database: <%= "#{Rails.application.class.parent.name.underscore}_development" %>
-    username: postgres
+    username: ali
     password: password
 test: &test
     <<: *default
