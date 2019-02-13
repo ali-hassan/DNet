@@ -1,0 +1,4 @@
+<%= form_for @my_network, url: my_networks_path, remote: true do |f| %>
+  <%= f.select :parent_position, [["Left", "left"], ["Right", "right"]] %>
+  <%= f.submit "Add" %>
+<% end %>

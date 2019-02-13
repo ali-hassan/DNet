@@ -28,3 +28,4 @@
 //= require ./revolution/js/extensions/revolution.extension.video.min
 //= require cable
 //= require ./common-js/scripts
+//= require_tree ./tree
