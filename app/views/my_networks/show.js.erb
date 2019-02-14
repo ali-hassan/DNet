@@ -1,0 +1,19 @@
+var parentId = <%= params[:id] %>;
+var $childrenContainer = $("#children_tree_"+parentId);
+var $parentContainer = $("#tree_user_"+parentId)
+if(!$childrenContainer.length) {
+  $parentContainer.append("<ul id='children_tree_"+parentId+"'></ul>");
+  $childrenContainer = $("#children_tree_"+parentId);
+}
+var html = "<li class='left-child' data-parent-id='<%= params[:id] %>' data-position='left'><a href='#' class='new-child-href'>Add Child</a></li>";
+html += "<li class='right-child' data-parent-id='<%= params[:id] %>' data-position='right'><a href='#' class='new-child-href'>Add Child</a></li>";
+$childrenContainer.html(html);
+<% @children.each do |child| %>
+  <% if child.parent_position == "left" %>
+    $childrenContainer.find(".left-child").replaceWith("<li id='<%= dom_id child, :tree %>'><a href='#'><%= child.name_or_id %></a></li>");
+  <% elsif child.parent_position == "right" %>
+    $childrenContainer.find(".right-child").replaceWith("<li id='<%= dom_id child, :tree %>'><a href='#'><%= child.name_or_id %></a></li>");
+  <% end %>
+  $.getScript("/my_networks/<%= child.id %>.js");
+<% end %>
+

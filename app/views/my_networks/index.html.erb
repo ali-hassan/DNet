@@ -1,4 +1,8 @@
-<canvas id="my_network_view">
-</canvas>
-<div id="new_my_network_form"></div>
-<%= link_to "Add new node", [:new, :my_network], remote: true %>
+
+<div class='tree'>
+  <ul>
+    <li id="<%= dom_id current_user, :tree %>" data-load-default-tree>
+      <a href="#"><%= current_user.full_name %></a>
+    </li>
+  </ul>
+</div>

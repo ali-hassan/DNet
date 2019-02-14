@@ -1,10 +1,11 @@
 class AddNewNetwork
   attr_accessor :current_user
   def initialize(current_user, attrs={})
-    self.current_user = current_user; attrs.each { |k, v| send("#{k}=", v) }
+    self.current_user = current_user
     self.parent_id, self.sponsor_id = current_user.id, generate_token
     # DUMMY EMAIL
     self.email = "#{self.sponsor_id}@dummy.com"
+    attrs.each { |k, v| send("#{k}=", v) }
   end
   def new_user
     @new_user ||= User.new

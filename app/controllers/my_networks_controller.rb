@@ -1,7 +1,11 @@
 class MyNetworksController < ApplicationController
   
+ skip_before_action :verify_authenticity_token
   def index
 
+  end
+  def show
+    @children = User.where(parent_id: params[:id])
   end
   def new
     @my_network = User.new
@@ -11,6 +15,6 @@ class MyNetworksController < ApplicationController
   end
   private
   def permitted_params
-    params.require(:user).permit(:parent_position)
+    params.require(:user).permit(:parent_position, :parent_id)
   end
 end
