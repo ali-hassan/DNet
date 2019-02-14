@@ -15,3 +15,4 @@
 //= require jquery.min
 //= require bootstrap.min
 //= require scripts
+//= require custom

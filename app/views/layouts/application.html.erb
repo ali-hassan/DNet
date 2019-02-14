@@ -35,30 +35,28 @@
               <li><a href="/">Home</a></li>
               <li class="drop-down"><a href="#">About Us</a>
                 <ul class="drop-down-menu drop-down-inner">
-                  <li><a href="#">Forex Home Trade</a></li>
-                  <li><a href="#">CEO</a></li>
-                  <li><a href="#">Our Vision</a></li>
-                  <li><a href="#">Why Us</a></li>
-                  <!--<li><a href="/terms">Terms & Conditions</a></li>-->
-                  <!--<li><a href="/faq">FAQ</a></li>-->
+                  <li><a href="/" id="forex">Forex Home Trade</a></li>
+                  <li><a href="/" id="ceo">CEO</a></li>
+                  <li><a href="/" id="vision">Our Vision</a></li>
+                  <li><a href="/" id="why_us">Why Us</a></li>
                 </ul>
               </li>
               <li><a href="#">Forex</a></li>
               <li class="drop-down"><a href="#">Income</a>
                 <ul class="drop-down-menu drop-down-inner">
-                  <li><a href="#">Plans</a></li>
+                  <li><a href="/" id="plans">Plans</a></li>
                   <li><a href="/affiliate_program">Affiliate Program</a></li>
                 </ul>
               </li>
               <li class="drop-down"><a href="#">Media</a>
                 <ul class="drop-down-menu drop-down-inner">
-                  <li><a href="#">Presentation</a></li>
-                  <li><a href="#">Brochure</a></li>
-                  <li><a href="#">Gallery</a></li>
-                  <li><a href="#">Videos</a></li>
+                  <li><%= link_to "Presentation", download_path, target: '_self' %></li>
+                  <li><a href="/" id="brochure">Brochure</a></li>
+                  <li><a href="/" id="gallery">Gallery</a></li>
+                  <li><a href="/" id="videos">Videos</a></li>
                 </ul>
               </li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#" id="contact">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -84,18 +82,18 @@
               <ul>
                 <li><a href="/terms">Terms &amp; Conditions</a></li>
                 <li><%= link_to "Presentation", download_path, target: '_self' %></li>
-                <li><a href="#">Packages</a></li>
+                <li><a href="/" id="packages">Packages</a></li>
                 <li><a href="/affiliate_program">Affiliate Program</a></li>
                 <li><a href="/faq">FAQ</a></li>
-                <li><a href="#">Videos</a></li>
+                <li><a href="/">Videos</a></li>
               </ul>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" id="contact_text">
               <h2><img src="<%= image_url "icon-contact.png" %>" class="img-responsive" /></h2>
               <ul>
-                <li class="icon-globe"><a href="#">www.forexhometrade.com</a></li>
-                <li class="icon-globe"><a href="#">www.office.forexhometrade.com</a></li>
-                <li class="icon-mail"><a href="#">support@forexhometrade.com</a></li>
+                <li class="icon-globe"><a href="/">www.forexhometrade.com</a></li>
+                <li class="icon-globe"><a href="/">www.office.forexhometrade.com</a></li>
+                <li class="icon-mail"><a href="/">support@forexhometrade.com</a></li>
                 <li class="icon-address"> 7, 2/F, SILVER FORTUNE PLAZA,<br> 1 WELLINGTON STREET,<br> CENTRAL, HONG KONG</li>
               </ul>
             </div>
@@ -113,6 +111,7 @@
       </div>
       </div>
   </footer>
+  <script src="assets/scripts.js"></script>
   </body>
 </html>
 
