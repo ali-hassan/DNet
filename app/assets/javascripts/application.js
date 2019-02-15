@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery.min
-//= require bootstrap.min
+//= require ./common-js/bootstrap
+//= require_tree ./tree
 //= require scripts
-//= require custom
+// = require ./custom
+//= require override
