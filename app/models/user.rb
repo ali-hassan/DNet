@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
   has_many :children, foreign_key: :parent_id, class_name: "User"
-  belongs_to :parent, class_name: "User"
+  belongs_to :parent, class_name: "User", optional: true
+  belongs_to :created_by, class_name: "User", optional: true
 
   def full_name
     [first_name, last_name].join(" ")

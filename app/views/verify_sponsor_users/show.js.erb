@@ -1,0 +1,8 @@
+var html = "";
+<% if @user.present? %>
+  html = "<label>Sponsor Name: <%= @user.created_by.try(:full_name) %> </label>";
+  html += "<input name='user[sponsor_id]' type='hidden' value='<%= params[:id] %>'>"
+<% else %>
+  html = "<label style='color: red;'>No sponsor found against this ID</label>"
+<% end %>
+$("#sponsor_info_card").html(html);

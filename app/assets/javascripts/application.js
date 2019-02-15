@@ -29,3 +29,4 @@
 //= require cable
 //= require ./common-js/scripts
 //= require_tree ./tree
+//= require ./custom
