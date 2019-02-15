@@ -12,12 +12,11 @@
  *= require_tree ./fonts
  *= require_tree .
  *= require_self
- *= require_tree ./revolution
  *= require bootstrap
  *= require ionicons
- *= require landing_page
  *= require responsive
  *= require styles
  *= require venobox
+ *= require landing_page
  *= require tree
  */

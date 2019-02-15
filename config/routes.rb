@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   resources :my_networks
   resources :verify_sponsor_users
   get '/affiliate_program' => 'affiliate_programs#index'
+  get '/terms' => 'terms#index'
+  get '/faq' => 'faq#index'
+  get '/download' => 'downloads#index', as: :download
   get '/' => 'landing_page#index', as: :home
 end
