@@ -40,6 +40,9 @@ h6{ font-size: .9em; letter-spacing: 1px; }
 a, button{ display: inline-block; text-decoration: none; color: inherit; line-height: 1; 
 	-webkit-transition: all .25s ease-in-out; transition: all .25s ease-in-out; }
 
+
+
+
 a:focus, a:active, a:hover,
 button:focus, button:active, button:hover,
 a b.light-color:hover{ text-decoration: none; color: #37D583; }
@@ -564,11 +567,17 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
 	#header-top {
 		padding: 0px 0px;
 	}
-	
-  	header .logo {
-    	margin: 23px 10px 23px 0;
-	}
- 
+
+  header .logo {
+    float: right;
+    margin: 31px 94px 31px 0;
+  }
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #fff !important;
+  }
   .menu-nav-icon {
     	line-height: 29px;
     	margin: 0px 0;
@@ -653,6 +662,11 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
   padding: 20px 0 20px 0;
 }
 
+.footer-top a {
+  color: #fff !important;
+  text-decoration: none;
+}
+
 .h1, .h2, .h3, h1, h2, h3 {
   color: #fff;
 }
@@ -680,5 +694,14 @@ footer .logo {
 @media only screen and (max-width: 767px){
   .menu-nav-icon {
     display: block !important;
+  }
+}
+@media only screen and (max-width: 767px){
+  .menu-nav-icon {
+    display: block !important;
+  }
+
+  .for-small-img{
+    height: 600px;
   }
 }
