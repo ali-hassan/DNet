@@ -5,8 +5,8 @@ if(!$childrenContainer.length) {
   $parentContainer.append("<ul id='children_tree_"+parentId+"'></ul>");
   $childrenContainer = $("#children_tree_"+parentId);
 }
-var html = "<li class='left-child' data-parent-id='<%= params[:id] %>' data-position='left'><a href='#' class='new-child-href'>Add Child</a></li>";
-html += "<li class='right-child' data-parent-id='<%= params[:id] %>' data-position='right'><a href='#' class='new-child-href'>Add Child</a></li>";
+var html = "<li class='left-child' data-parent-id='<%= params[:id] %>' data-position='left'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=left' data-remote='true' class='new-child-href'>Add Child</a></li>";
+html += "<li class='right-child' data-parent-id='<%= params[:id] %>' data-position='right'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=right' data-remote='true' class='new-child-href'>Add Child</a></li>";
 $childrenContainer.html(html);
 <% @children.each do |child| %>
   <% if child.parent_position == "left" %>

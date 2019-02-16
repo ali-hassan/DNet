@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :children, foreign_key: :parent_id, class_name: "User"
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
+  belongs_to :referred_by, class_name: "User", optional: true
 
   def full_name
     [first_name, last_name].join(" ")
@@ -23,5 +24,5 @@ class User < ApplicationRecord
   def adapter
     @adapter ||= CurrentUserAdapter.new(self)
   end
-  delegate :find_last_right_node, :find_last_left_node, to: :adapter
+  delegate :find_last_right_node, :find_last_left_node, :parent_lists, to: :adapter
 end

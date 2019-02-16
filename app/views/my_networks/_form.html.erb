@@ -1,4 +1,61 @@
-<%= form_for @my_network, url: my_networks_path, remote: true do |f| %>
-  <%= f.select :parent_position, [["Left", "left"], ["Right", "right"]] %>
-  <%= f.submit "Add" %>
-<% end %>
+<div class="modal" id="new_network_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_for @user, url: my_networks_path, remote: true, validate: false do |f| %>
+        <div class="modal-header">
+
+          <h3 class="modal-title">Sponsor: <%= @user.parent.full_name %> - <%= @user.sponsor_id %></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= f.hidden_field :parent_id %>
+          <%= f.hidden_field :parent_position %>
+          <div class="signup-bottom">
+            <div class="signup-holder">
+              <!-- Signup Row Start -->
+              <%= form_group_for f, :referred_by_id do %>
+                <%= f.select :referred_by_id, @user.parent_lists.map { |usr| [usr.full_name, usr.id] }.reverse, {}, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :first_name do %>
+                <%= f.text_field :first_name, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :last_name do %>
+                <%= f.text_field :last_name, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :email do %>
+                <%= f.email_field :email, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :contact_number do %>
+                <%= f.text_field :contact_number, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :password do %>
+                <%= f.password_field :password, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :password_confirmation do %>
+                <%= f.password_field :password_confirmation, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :document_number do %>
+                <%= f.text_field :document_number, class: "form-control" %>
+              <% end %>
+              <%= form_group_for f, :city do %>
+                <%= f.select :city, [["Lahore", "lhr"]], {}, class: "form-control" %>
+              <% end %>
+              <%= form_group_for f, :state do %>
+                <%= f.select :state, [["Sindh", "sindh"], ["Punjab", "punjab"]], {}, class: "form-control" %>
+              <% end %>
+              <%= form_group_for f, :country do %>
+                <%= f.select :country, [["Pakistan", "pk"]], {}, class: "form-control" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="modal_form_submit">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

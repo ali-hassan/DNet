@@ -1,3 +1,9 @@
-<% if @add_new_network.save %>
-    window.location.reload;
-<% end %>
+<% if @user.save %>
+  window.location = "/my_networks"
+<% else %>
+    $("#new_network_modal").remove();
+    $(".modal-backdrop.in").remove();
+    $("body").append("<%= j render "form" %>");
+    $("#new_network_modal").modal();
+
+ <% end %>

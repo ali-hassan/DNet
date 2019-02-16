@@ -17,4 +17,13 @@ class CurrentUserAdapter
       end
     end
   end
+  def parent_lists
+    fetch_parent_list(user, [])
+  end
+  def fetch_parent_list(usr, result=[])
+    (_=find_parent(usr)).present? && (result.push(_); fetch_parent_list(_, result)) || result
+  end
+  def find_parent(usr)
+    User.find_by id: usr.parent_id
+  end
 end

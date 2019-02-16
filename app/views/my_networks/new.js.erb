@@ -1,1 +1,5 @@
-$("#new_my_network_form").html("<%= j render "form" %>");
+$("#new_network_modal").remove()
+$(".modal-backdrop.in").remove();
+$("body").append("<%= j render "form" %>");
+$("#new_network_modal").modal();
+
