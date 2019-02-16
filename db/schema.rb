@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20190216122911) do
     t.boolean "is_admin", default: false
     t.integer "admin_balance_cents", default: 0, null: false
     t.string "admin_balance_currency", default: "USD", null: false
+    t.boolean "is_package_activated", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
