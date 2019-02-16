@@ -97,3 +97,4 @@ gem 'capistrano-rails',   require: false
 gem 'capistrano-bundler', require: false
 gem 'capistrano-passenger'
 gem 'capistrano-npm'
+gem 'client_side_validations'

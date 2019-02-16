@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
+  validates :first_name, :last_name, presence: true
   has_many :children, foreign_key: :parent_id, class_name: "User"
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
@@ -19,4 +20,8 @@ class User < ApplicationRecord
       break random_token unless self.class.exists?(sponsor_id: random_token)
     end
   end
+  def adapter
+    @adapter ||= CurrentUserAdapter.new(self)
+  end
+  delegate :find_last_right_node, :find_last_left_node, to: :adapter
 end
