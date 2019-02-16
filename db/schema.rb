@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190216100832) do
+ActiveRecord::Schema.define(version: 20190216114724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 20190216100832) do
     t.integer "created_by_id"
     t.boolean "is_dummy", default: false
     t.integer "referred_by_id"
+    t.integer "smart_wallet_balance_cents_cents", default: 0, null: false
+    t.string "smart_wallet_balance_cents_currency", default: "USD", null: false
+    t.integer "bonus_wallet_cents_cents", default: 0, null: false
+    t.string "bonus_wallet_cents_currency", default: "USD", null: false
+    t.boolean "is_admin", default: false
+    t.integer "admin_balance_cents_cents", default: 0, null: false
+    t.string "admin_balance_cents_currency", default: "USD", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

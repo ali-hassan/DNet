@@ -8,6 +8,9 @@ class User < ApplicationRecord
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
+  monetize :smart_wallet_balance_cents
+  monetize :bonus_wallet_cents
+  monetize :admin_balance_cents
 
   def full_name
     [first_name, last_name].join(" ")
