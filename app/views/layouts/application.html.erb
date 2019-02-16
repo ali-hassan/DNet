@@ -64,7 +64,7 @@
                   <li><a href="/" id="videos">Videos</a></li>
                 </ul>
               </li>
-              <li><a href="#" id="contact">Contact</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#contact-modal">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -119,6 +119,9 @@ z              </ul>
       </div>
       </div>
   </footer>
+  <%= render :layout => '/shared/modal', :locals => {:id => 'contact-modal'} do %>
+      <%=render  "/landing_page/contact_form.html.erb"%>
+  <% end %>
   <%=javascript_include_tag "scripts.js"%>
   </body>
 </html>

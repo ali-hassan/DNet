@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get '/faq' => 'faq#index'
   get '/download' => 'downloads#index', as: :download
   get '/' => 'landing_page#index', as: :home
+  post 'contact_us' => "landing_page#contact_us"
 end
