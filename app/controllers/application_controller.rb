@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
                                              :document_number, :first_name, :last_name])
   end
   def after_sign_in_path_for(resource)
-    if !resource.is_admin? && !resource.is_package_activated?
+    if resource.class.name != "AdminUser" && !resource.is_admin? && !resource.is_package_activated?
       buy_planes_path
     else
       request.env['omniauth.origin'] || stored_location_for(resource) || root_path
