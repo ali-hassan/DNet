@@ -7,6 +7,9 @@ class BinaryTreeView
 
 
 $(document).on "turbolinks:load", ->
+  $(document).on "click", ".later-payment-prompt", (eventObject) ->
+    eventObject.preventDefault()
+    alert("Coming soon")
   $(document).on "click", ".new-child-href", (eventObject) ->
     $parentLi = $(@).parent("li")
     parentId = $parentLi.data("parent-id")
