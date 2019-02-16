@@ -8,7 +8,7 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
-    column "Smart Wizzard Balance",  :smart_wallet_balance_cents_cents
+    column "Smart Wizard Balance",  :smart_wallet_balance
     actions
   end
 
@@ -22,7 +22,7 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :smart_wallet_balance_cents_cents, label: "Smart Wizzard Balance"
+      f.input :smart_wallet_balance, label: "Smart Wizard Balance"
     end
     f.actions
   end

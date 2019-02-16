@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 20190216122911) do
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "balance"
+    t.integer "balance_cents", default: 0, null: false
+    t.string "balance_currency", default: "USD", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -74,13 +75,13 @@ ActiveRecord::Schema.define(version: 20190216122911) do
     t.integer "created_by_id"
     t.boolean "is_dummy", default: false
     t.integer "referred_by_id"
-    t.integer "smart_wallet_balance_cents_cents", default: 0, null: false
-    t.string "smart_wallet_balance_cents_currency", default: "USD", null: false
-    t.integer "bonus_wallet_cents_cents", default: 0, null: false
-    t.string "bonus_wallet_cents_currency", default: "USD", null: false
+    t.integer "smart_wallet_balance_cents", default: 0, null: false
+    t.string "smart_wallet_balance_currency", default: "USD", null: false
+    t.integer "bonus_wallet_cents", default: 0, null: false
+    t.string "bonus_wallet_currency", default: "USD", null: false
     t.boolean "is_admin", default: false
-    t.integer "admin_balance_cents_cents", default: 0, null: false
-    t.string "admin_balance_cents_currency", default: "USD", null: false
+    t.integer "admin_balance_cents", default: 0, null: false
+    t.string "admin_balance_currency", default: "USD", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
