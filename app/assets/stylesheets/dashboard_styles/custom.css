@@ -890,5 +890,164 @@ a:hover{
 	line-height: 15px;
 }
 
-
+.dashboard-page .profile-header{
+	padding: 30px;
+}
+.dashboard-page .profile-header:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.dashboard-page .profile-header .profile-block{
+	float: left;
+}
+.dashboard-page .profile-header .profile-block .profile-block-image{
+	display: inline-block;
+	vertical-align: middle;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 1px solid #9f9898;
+	margin: 0 20px 0 0;
+}
+.dashboard-page .profile-header .profile-block .profile-block-image img{
+	display: block;
+	height: auto;
+	width: 100%;
+}
+.dashboard-page .profile-header .profile-content-block{
+	display: inline-block;
+	vertical-align: middle;
+}
+.dashboard-page .profile-header .profile-content-block h2{
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: bold;
+	margin: 0 0 5px;
+}
+.dashboard-page .profile-header .profile-content-block h3{
+	font-size: 18px;
+	line-height: 22px;
+	margin: 0;
+}
+.dashboard-page .profile-header .profile-listing{
+	float: right;
+	padding: 28px 50px 0
+}
+.dashboard-page .profile-header .profile-listing ul li{
+	float: left;
+	margin: 0 50px 0 0;
+}
+.dashboard-page .profile-header .profile-listing ul li:last-child{
+	margin: 0;
+}
+.dashboard-page .profile-header .profile-listing .image-holder{
+	display: inline-block;
+	vertical-align: middle;
+	width: 30px;
+	margin: 0 15px 0 0;
+}
+.dashboard-page .profile-header .profile-listing .image-holder.rank-image,
+.dashboard-page .profile-header .profile-listing .image-holder.referrals-image{
+	width: 20px;
+}
+.dashboard-page .profile-header .profile-listing .image-holder img{
+	display: block;
+	height: auto;
+	width: 100%;
+}
+.dashboard-page .profile-header .profile-listing .profile-listing-content{
+	display: inline-block;
+	vertical-align: middle;
+}
+.dashboard-page .profile-header .profile-listing .profile-listing-content h2{
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0;
+}
+.dashboard-page .profile-header .profile-listing .profile-listing-content h3{
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0;
+}
+.dashboard-page .upgrade-column input{
+	padding-right: 80px;
+}
+.dashboard-page .custom-dashboard-row .upgraded-text{
+	color: #08ce36;
+	position: absolute;
+	bottom: 13px;
+	right: 15px;
+}
+.dashboard-page .custom-dashboard-row.sepreter{
+	position: relative;
+    padding: 0 0 20px;
+    margin: 0 0 60px;
+}
+.dashboard-page .custom-dashboard-row.sepreter:before{
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+	right: 20px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.dashboard-page .packages-listing{
+	padding: 30px 0;
+}
+.dashboard-page .packages-listing .packages-listing-row{
+	text-align: center;
+	margin: 0 0 50px;
+}
+.dashboard-page .packages-listing .packages-listing-row:last-child{
+	margin: 0;
+}
+.dashboard-page .packages-listing .packages-listing-row:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.dashboard-page .packages-listing .packages-listing-row ul{
+	font-size: 0;
+}
+.dashboard-page .packages-listing .packages-listing-row ul li{
+	font-size: 12px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 20px;
+}
+.dashboard-page .packages-listing .packages-listing-row ul a,
+.dashboard-page .packages-listing .packages-listing-row ul button,
+.dashboard-page .packages-listing .packages-listing-row ul button:focus,
+.dashboard-page .packages-listing .packages-listing-row ul button:hover{
+	display: block;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+	cursor: pointer;
+	outline:0;
+}
+.dashboard-page .packages-listing .packages-listing-row ul a:hover .package-block img,
+.dashboard-page .packages-listing .packages-listing-row ul button:hover .package-block img{
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	transform: scale(1.05);
+}
+.dashboard-page .packages-listing .packages-listing-row .package-block{
+	max-width: 300px;
+}
+.dashboard-page .packages-listing .packages-listing-row .package-block img{
+	display: block;
+	height: auto;
+	width: 100%;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	transition: all 0.5s;
+}
 
