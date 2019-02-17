@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_params, if: :devise_controller?
+  before_action :check_subdomain
   protected
   def configure_permitted_params
     devise_parameter_sanitizer.permit(:sign_up,
@@ -12,6 +13,11 @@ class ApplicationController < ActionController::Base
       buy_planes_path
     else
       request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+    end
+  end
+  def check_subdomain
+    if request.subdomain == "office" && ["/", "/affiliate_program"].include?(request.path)
+      redirect_to request.url.sub("office.", "")
     end
   end
 
