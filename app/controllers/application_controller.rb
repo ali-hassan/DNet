@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
   end
   def check_subdomain
-    if request.subdomain == "office" && ["/", "/affiliate_program", "/download"].include?(request.path)
+    if request.subdomain == "office" && ["/", "/affiliate_program", "/download", "/faq", "/terms"].include?(request.path)
       redirect_to request.url.sub("office.", "")
     end
   end
