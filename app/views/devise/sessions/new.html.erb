@@ -18,6 +18,7 @@
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                     <h4>Login to your account</h4>
                     <h5>Enter Your credentials below</h5>
+                    <br>
                     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Your Email" %>
                     <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Enter Your Password", style: "margin: 10px 0px;" %>
                     <input type="checkbox" class="custom-control-input" id="customControlInline">
