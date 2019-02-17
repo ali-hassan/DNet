@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  # devise_for :users, skip: [:registrations], ActiveAdmin::Devise.config
+  # devise_for :users, ActiveAdmin::Devise.config
+  devise_for :users, skip: [:registrations]
 
   ActiveAdmin.routes(self)
-  devise_for :users, skip: [:registrations]
+  # devise_for :users, skip: [:registrations]
   as :user do
     get "/users/sign_up" => "registrations#new", constraints: { subdomain: 'office' }
     post 'users' => 'registrations#create', :as => 'user_registration', constraints: { subdomain: 'office' }
