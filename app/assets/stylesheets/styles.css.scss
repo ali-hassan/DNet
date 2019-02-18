@@ -267,14 +267,14 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 /* ---------------------------------
 4. Login Page 
 --------------------------------- */
-.bg-login{ background: image_url("bg-login.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; }
+.bg-login{ background: image_url("bg-login.png") no-repeat left top; padding:60px 50px 60px 50px; background-size: cover; height: 100% }
 	
 		.form_container {
 			margin-top: 100px;
 		}
 		.singin_btn {
 			width: 300px;
-			background: image_url("btn-signin.png") no-repeat left top;
+			background: image_url("btn-signin.png") no-repeat left top !important;
 			color: white !important;
 			text-indent:-9000px;
 		}
@@ -282,6 +282,14 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 			box-shadow: none !important;
 			outline: 0px !important;
 		}
+        .yellow_btn {
+          width: 300px;
+          background: linear-gradient(#b68310, yellow) !important;
+        }
+        .yellow_btn:focus {
+          box-shadow: none !important;
+          outline: 0px !important;
+        }
 		.login_container {
 			padding: 0 2rem;
 		}
@@ -701,5 +709,25 @@ footer .logo {
 
   .for-small-img{
     height: 600px !important;
+  }
+}
+.devise--passwords, .sessions {
+  height: 100%;
+  .container-fluid {
+    padding: 0px !important;
+    height: 100% !important;
+    #content {
+      height: 100% !important;
+      .custom-control-input {
+        float: left;
+      }
+      .custom-control-label {
+        float: left;
+        top: auto;
+        margin-top: 4px;
+        margin-bottom: 15px;
+      }
+    }
+
   }
 }
