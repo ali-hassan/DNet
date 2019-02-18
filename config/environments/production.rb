@@ -24,11 +24,11 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  # config.assets.compile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -64,10 +64,10 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
+  config.logger = Logger.new(STDOUT)
+
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-  config.assets.debug = true
-  config.assets.quiet = true
 
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
