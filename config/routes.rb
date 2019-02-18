@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   as :user do
     get "/users/sign_up" => "registrations#new", constraints: { subdomain: 'office' }
     get "/users/sign_in" => "sessions#new", as: :new_user_session, constraints: { subdomain: 'office' }
-    post "/users/sign_in" => "sessions#new", as: :user_session, constraints: { subdomain: 'office' }
+    post "/users/sign_in" => "sessions#create", as: :user_session, constraints: { subdomain: 'office' }
     post 'users' => 'registrations#create', :as => 'user_registration', constraints: { subdomain: 'office' }
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -4,7 +4,7 @@
       <%= form_for @user, url: my_networks_path, remote: true, validate: false do |f| %>
         <div class="modal-header">
 
-          <h3 class="modal-title">Sponsor: <%= @user.parent.full_name %> - <%= @user.sponsor_id %></h3>
+          <h3 class="modal-title">Sponsor: <%= @user.parent.full_name %> - <%= @user.username %></h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -26,6 +26,9 @@
               <% end %>
               <%= form_group_for f, :email do %>
                 <%= f.email_field :email, class: 'form-control' %>
+              <% end %>
+              <%= form_group_for f, :username do %>
+                <%= f.text_field :username, class: 'form-control' %>
               <% end %>
               <%= form_group_for f, :contact_number do %>
                 <%= f.text_field :contact_number, class: 'form-control' %>

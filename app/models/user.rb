@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :username, presence: true
+  validates :username, uniqueness: true
   has_many :children, foreign_key: :parent_id, class_name: "User"
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
@@ -28,6 +29,9 @@ class User < ApplicationRecord
   end
   def adapter
     @adapter ||= CurrentUserAdapter.new(self)
+  end
+  def self.admin_user
+    find_by is_admin: true
   end
   delegate :find_last_right_node, :find_last_left_node, :parent_lists, to: :adapter
 end

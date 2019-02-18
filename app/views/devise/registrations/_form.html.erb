@@ -3,7 +3,6 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
 
-      <%= devise_error_messages! %>
       <div class="signup-top">
         <div class="signup-holder">
           <div class="logo">
@@ -33,11 +32,15 @@
           <div class="signup-row add">
             <div class="signup-column">
               <label>Sponsor ID</label>
-              <input id="sponsor_id_txt" type="text">
+              <input id="sponsor_id_txt" type="text" value="<%= resource.referred_by.try(:username) %>" />
             </div>
           </div>
           <div class="signup-row add">
             <div id="sponsor_info_card" class="signup-column">
+              <% if resource.referred_by_id %>
+                <label>Sponsor Name: <%= resource.referred_by.try(:full_name) %></label>
+                <input type='hidden' name='user[referred_by_id]' value='<%= resource.referred_by_id %>' />
+              <% end %>
             </div>
           </div>
           <!-- Signup Row End -->
@@ -60,10 +63,11 @@
               <%= f.email_field :email %>
             </div>
             <div class="signup-column">
-              <%= f.label :contact_number %>
-              <%= f.text_field :contact_number %>
+              <%= f.label :username %>
+              <%= f.text_field :username %>
             </div>
           </div>
+
           <!-- Signup Row End -->
           <!-- Signup Row Start -->
           <div class="signup-row">
@@ -98,6 +102,12 @@
             <div class="signup-column">
               <%= f.label :country %>
               <%= f.select :country, [["Pakistan", "pk"]], {}, class: "custom-select" %>
+            </div>
+          </div>
+          <div class="signup-row">
+            <div class="signup-column">
+              <%= f.label :contact_number %>
+              <%= f.text_field :contact_number %>
             </div>
           </div>
           <!-- Signup Row End -->

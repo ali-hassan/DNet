@@ -21,6 +21,6 @@ class AddNewNetwork
     :contact_number, :contact_number=, :password_confirmation, :password_confirmation=,
     :errors, :city, :city=, :state, :state=, :document_number, :document_number=,
     :country, :country=, :created_by_id, :created_by_id=, :referred_by_id, :referred_by_id=,
-    :is_dummy, :password, :password=, :is_dummy=, :parent, :valid?,
+    :is_dummy, :password, :password=, :is_dummy=, :parent, :valid?, :username, :username=,
     :save, :parent_lists, to: :new_user
 end

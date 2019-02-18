@@ -2,13 +2,11 @@ class RegistrationsController < Devise::RegistrationsController
   after_action :update_node, only: [:create]
   private
   def update_node
-    if resource.persisted? && resource.sponsor_id
-      dummy_user.children.update(parent_id: resource.id)
-      resource.update(parent_id: dummy_user.parent_id, parent_position: dummy_user.parent_position, created_by_id: dummy_user.created_by_id)
-      dummy_user.destroy
+    if resource.persisted?
+      parent_user = resource.referred_by || User.admin_user
+      right_user_id = (parent_user.find_last_right_node || parent_user).try(:id)
+      resource.referred_by_id ||= User.admin_user.try(:id)
+      resource.update(parent_id: right_user_id, parent_position: "right")
     end
-  end
-  def dummy_user
-    @dummy_user ||= User.find_by sponsor_id: resource.sponsor_id, is_dummy: true
   end
 end

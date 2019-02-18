@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_params
     devise_parameter_sanitizer.permit(:sign_up,
-                                      keys: [:country, :city, :state, :contact_number, :sponsor_id,
-                                             :document_number, :first_name, :last_name])
+                                      keys: [:country, :city, :state, :contact_number, :sponsor_id, :referred_by_id,
+                                             :document_number, :first_name, :last_name, :username])
   end
   def after_sign_in_path_for(resource)
     if resource.class.name != "AdminUser" && !resource.is_admin? && !resource.is_package_activated?
-      buy_planes_path
+      buy_plans_path
     else
       request.env['omniauth.origin'] || stored_location_for(resource) || root_path
     end
