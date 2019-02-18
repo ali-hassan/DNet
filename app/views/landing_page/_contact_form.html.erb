@@ -18,10 +18,10 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col-6">
-                            <%= f.text_field :name, placeholder: "Name", class: "form-control" %>:
+                            <%= f.text_field :name, placeholder: "Name", class: "form-control", required: true %>:
                           </div>
                           <div class="col-6">
-                            <%= f.text_field :phone, placeholder: "Phone", class: "form-control" %>:
+                            <%= f.text_field :phone, placeholder: "Phone", class: "form-control", required: true %>:
                           </div>
                         </div>
                       </div>
@@ -37,13 +37,13 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col-12">
-                            <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>:
+                            <%= f.text_field :subject, placeholder: "Subject", class: "form-control", required: true %>:
                           </div>
                         </div>
                       </div>
 
                       <div class="form-group">
-                        <%= f.text_area :body,class:"form-control", size: "20x15", placeholder: "Message Body"%>
+                        <%= f.text_area :body,class:"form-control", size: "20x15", placeholder: "Message Body", required: true%>
                       </div>
 
                       <div class="justify-content-center mt-3 login_container">
