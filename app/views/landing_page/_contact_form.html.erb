@@ -1,20 +1,62 @@
-<div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">Write Your Message</h5>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true" class="float-right" style="margin-left: 225px;">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <%= form_for :contact, url:contact_us_path  do |f| %>
-      <div class="form-group">
-        <%= f.label :name %>:
-        <%= f.text_field :name,class:"form-control"%>
-      </div>
-      <div class="form-group">
-        <%= f.label :body %>:
-        <%= f.text_area :body,class:"form-control", size: "20x15"%>
-      </div>
+<div class="container-fluid">
+  <div id="content">
+    <div class="bg-login">
+      <div class="row">
+        <div class="col-lg-5 offset-lg-2">
+          <div class="d-flex justify-content-center h-100">
+            <div class="form_container">
+              <%= image_tag "logo-login.png", class: "img-responsive" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+              <div class="user_card">
+                <div class="d-flex justify-content-center form_container text-center">
+                  <%= form_for :contact, url:contact_us_path  do |f| %>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-6">
+                            <%= f.text_field :name, placeholder: "Name", class: "form-control" %>:
+                          </div>
+                          <div class="col-6">
+                            <%= f.text_field :phone, placeholder: "Phone", class: "form-control" %>:
+                          </div>
+                        </div>
+                      </div>
 
-      <%=f.submit "Send", class:"btn btn-primary"%>
-  <%end%>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-12">
+                            <%= f.text_field :email, placeholder: "Email", class: "form-control" %>:
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-12">
+                            <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>:
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.text_area :body,class:"form-control", size: "20x15", placeholder: "Message Body"%>
+                      </div>
+
+                      <div class="justify-content-center mt-3 login_container">
+                        <button type="submit" name="button" class="btn yellow_btn">Send</button>
+                      </div>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
