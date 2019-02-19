@@ -30,7 +30,7 @@ class FindPackages
         binary: 2400,
         category: "Advance"
       },
-    }
+    }.with_indifferent_access
   end
   def current_package
     packages[id]

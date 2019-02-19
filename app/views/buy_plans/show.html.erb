@@ -23,7 +23,9 @@
         <% end %>
       </div>
       <div class="col-sm-3 img-center">
-        <%= image_tag "client5" %>
+        <%= link_to buy_plans_path(plan_id: params[:id]), data: { method: :post } do %>
+          <%= image_tag "client5" %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     if resource.class.name != "AdminUser" && !resource.is_admin? && !resource.is_package_activated?
       buy_plans_path
     else
-      request.env['omniauth.origin'] || stored_location_for(resource) || "/"
+      request.env['omniauth.origin'] || stored_location_for(resource) || "/#{resource.class.name == "AdminUser" && "admin" || ''}"
     end
   end
   def check_subdomain

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :my_networks
   resources :verify_sponsor_users
-  resources :buy_plans, only: [:index, :show]
+  resources :buy_plans, only: [:index, :show, :create]
   get '/affiliate_program' => 'affiliate_programs#index'
   get '/terms' => 'terms#index'
   get '/faq' => 'faq#index'
