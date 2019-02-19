@@ -1,0 +1,197 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- Font -->
+  <script type="text/javascript">
+      var currentUserId = <%= raw current_user.try(:id) %>
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+  <%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+
+</head>
+<body>
+<div id="wrapper">
+  <div class="dashboard-page">
+    <aside id="dashboard-sidebar">
+      <!-- Sidebar Top Start -->
+      <div class="dashboard-logo">
+        <a href="#">
+          <%= image_tag "logo.png" %>
+        </a>
+
+      </div>
+      <!-- Sidebar Top End -->
+
+      <!-- Sidebar middle Start -->
+      <div class="dashboard-menu" id="accordion">
+        <div class="card">
+          <div class="custom-card-header" id="heading1">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+              <%= image_tag "ic_dashboard.png" %><span>Dashboard</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="custom-card-header" id="heading2">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+              <% image_tag "ic_profile.png" %><span>Profile</span>
+            </button>
+          </div>
+          <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+            <div class="card-body">
+              <ul>
+                <li><a href="#">Item1</a></li>
+                <li><a href="#">Item2</a></li>
+                <li><a href="#">Item3</a></li>
+                <li><a href="#">Item4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="custom-card-header" id="heading3">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+              <%= image_tag "ic_packages.png" %>
+              <span>Packages</span>
+            </button>
+          </div>
+          <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+            <div class="card-body">
+              <ul>
+                <li><a href="#">Item1</a></li>
+                <li><a href="#">Item2</a></li>
+                <li><a href="#">Item3</a></li>
+                <li><a href="#">Item4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="custom-card-header" id="heading4">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+              <%= image_tag "ic_mynetwork.png" %>
+              <span>My Network</span>
+            </button>
+          </div>
+          <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+            <div class="card-body">
+              <ul>
+                <li><a href="network-binary.html">Binary</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="custom-card-header" id="heading5">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+              <%= image_tag "Group 2.png" %><span>Wallets</span>
+            </button>
+          </div>
+          <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
+            <div class="card-body">
+              <ul>
+                <li><a href="widthdrawl-request.html">Withdrawal Request</a></li>
+                <li><a href="account-to-account.html">Account to Account</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="custom-card-header" id="heading6">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+              <%= image_tag "ic_history.png" %><span>History</span>
+            </button>
+          </div>
+          <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion">
+            <div class="card-body">
+              <ul>
+                <li><a href="history-widthdrawal.html">Widthdrawal</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="custom-card-header" id="heading7">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+              <%= image_tag "ic_media.png" %><span>Media</span>
+            </button>
+          </div>
+          <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion">
+            <div class="card-body">
+              <ul>
+                <li><a href="news.html">News</a></li>
+                <li><a href="training-materials">Training Material</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sidebar Middle End -->
+
+      <!-- Sidebar Bottom Start -->
+      <div class="dashboard-sidebar-bottom">
+        <ul>
+          <li>
+            <a href="#">
+              <%= image_tag "ic_support.png" %>Support
+            </a>
+          </li>
+          <li>
+            <%= link_to :delete_user_session do%>
+                <%= image_tag "ic_logout.png" %>Log Out
+            <%end%>
+          </li>
+        </ul>
+      </div>
+      <!-- Sidebar Bottom End -->
+    </aside>
+    <div class="contents">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <ul>
+            <li class="status verified">
+              <dl>
+                <dt>Account status: </dt>
+                <%- if current_user.package_id.present?%>
+                    <dd>Verified</dd>
+                <%else%>
+                    <dd>UnVerified</dd>
+                <%end%>
+              </dl>
+            </li>
+            <li class="status not-verified">
+              <dl>
+                <dt>Binary status: </dt>
+                <dd>Not Active</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="header-right">
+          <a href="#">
+            <div class="current-image-holder">
+              <%= image_tag "ic_user.png", alt: "Profile Image"%>
+            </div>
+            <span class="current-user-name">
+                  <%=current_user.full_name%>
+                </span>
+          </a>
+        </div>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+
+    </div>
+  </div>
+</div>
+
+</body>
