@@ -12,11 +12,11 @@ class ApplicationController < ActionController::Base
     if resource.class.name != "AdminUser" && !resource.is_admin? && !resource.is_package_activated?
       buy_plans_path
     else
-      request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+      request.env['omniauth.origin'] || stored_location_for(resource) || "/"
     end
   end
   def check_subdomain
-    if request.subdomain == "office" && ["/", "/affiliate_program", "/download", "/faq", "/terms"].include?(request.path)
+    if request.subdomain == "office" && (["/affiliate_program", "/download", "/faq", "/terms"].include?(request.path) || request.path == "/")
       redirect_to request.url.sub("office.", "")
     end
   end
