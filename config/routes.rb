@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     post 'users' => 'registrations#create', :as => 'user_registration', constraints: { subdomain: 'office' }
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :my_networks
+  resources :my_networks do
+    collection do
+      get :my_binary
+    end
+  end
   resources :verify_sponsor_users
   resources :buy_plans, only: [:index, :show, :create]
   resources :histories, only: [:index]

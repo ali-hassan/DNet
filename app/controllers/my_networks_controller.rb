@@ -12,6 +12,10 @@ class MyNetworksController < ApplicationController
   def create
     @user = AddNewNetwork.new(current_user, permitted_params)
   end
+
+  def my_binary
+
+  end
   private
   def permitted_params
     params.require(:my_network).permit!
