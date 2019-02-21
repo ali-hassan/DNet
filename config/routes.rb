@@ -18,15 +18,16 @@ Rails.application.routes.draw do
       get :my_binary
     end
   end
-  resources :verify_sponsor_users
-  resources :buy_plans, only: [:index, :show, :create]
-  resources :histories, only: [:index]
-  resources :news, only: [:index]
-  resources :trainings, only: [:index]
-  resources :withdrawl_requests, only: [:index]
-  resources :transactions, only: [:index]
-  resources :dashboard, only: [:index]
-
+  with_options constraints: { subdomain: 'office' } do |subdomain_constraint|
+    subdomain_constraint.resources :verify_sponsor_users
+    subdomain_constraint.resources :buy_plans, only: [:index, :show, :create]
+    subdomain_constraint.resources :histories, only: [:index]
+    subdomain_constraint.resources :news, only: [:index]
+    subdomain_constraint.resources :trainings, only: [:index]
+    subdomain_constraint.resources :withdrawl_requests, only: [:index]
+    subdomain_constraint.resources :transactions, only: [:index]
+    subdomain_constraint.resources :dashboard, only: [:index]
+  end
   get '/affiliate_program' => 'affiliate_programs#index'
   get '/terms' => 'terms#index'
   get '/faq' => 'faq#index'
@@ -34,4 +35,5 @@ Rails.application.routes.draw do
   get '/' => 'landing_page#index', as: :home
   get 'contact' => "landing_page#contact"
   post 'contact_us' => "landing_page#contact_us"
+  root to: "landing_page#index"
 end
