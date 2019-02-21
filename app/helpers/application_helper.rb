@@ -13,4 +13,7 @@ module ApplicationHelper
       #concat errors_for(form, field)
     end
   end
+  def build_refer_link(position)
+    users_sign_up_url(refered_name: current_user.username, position: position)
+  end
 end

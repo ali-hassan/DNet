@@ -26,4 +26,24 @@ class CurrentUserAdapter
   def find_parent(usr)
     User.find_by id: usr.parent_id
   end
+  def children_list
+    fetch_children_list(user, [])
+  end
+  def fetch_children_list(usr, result=[])
+    (ch = usr.children).present? && ch.each { |u| result.push(u); fetch_children_list(u, result) } || result
+  end
+  def direct_bonus_users_count
+    created_users.where(is_package_activated:  true).map { |usr| usr.package_price * 0.06 }.sum
+  end
+  def indirect_bonus_users_count
+    children_list.map { |usr| usr.is_package_activated ? usr.package_price * 0.03 : 0.00  }.sum
+  end
+  def find_packages
+    @current_package ||= FindPackages.new(package_id)
+  end
+  def package_price
+    current_package ? current_package[:price] : 0.00
+  end
+  delegate :current_package, to: :find_packages, allow_nil: true
+  delegate :package_id, :created_users, to: :user, allow_nil: true
 end
