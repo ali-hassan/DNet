@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :trainings, only: [:index]
   resources :withdrawl_requests, only: [:index]
   resources :transactions, only: [:index]
+  resources :dashboard, only: [:index]
 
   get '/affiliate_program' => 'affiliate_programs#index'
   get '/terms' => 'terms#index'

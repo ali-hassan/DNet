@@ -18,7 +18,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
         <aside id="dashboard-sidebar">
           <!-- Sidebar Top Start -->
           <div class="dashboard-logo">
-            <a href="#">
+            <a href="<%=dashboard_index_path%>">
               <%= image_tag "logo.png" %>
             </a>
             
@@ -29,9 +29,11 @@ var currentUserId = <%= raw current_user.try(:id) %>
           <div class="dashboard-menu" id="accordion">
             <div class="card">
               <div class="custom-card-header" id="heading1">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                  <%= image_tag "ic_dashboard.png" %><span>Dashboard</span>
-                </button>
+                <a href="<%=dashboard_index_path%>">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                    <%= image_tag "ic_dashboard.png" %><span>Dashboard</span>
+                  </button>
+                </a>
               </div>
             </div>
 
