@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
       parent_user = resource.referred_by || User.admin_user
       right_user_id = (parent_user.try(:find_last_right_node) || parent_user).try(:id)
       resource.referred_by_id ||= User.admin_user.try(:id)
-      resource.update(parent_id: right_user_id, parent_position: Setting.find_value('tree_node'))
+      resource.update(parent_id: right_user_id, parent_position: params[:position] || Setting.find_value('tree_node'))
     end
   end
 end
