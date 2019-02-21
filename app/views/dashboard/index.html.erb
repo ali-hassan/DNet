@@ -13,19 +13,19 @@
     <!-- Sidebar Block 2 Start -->
     <div class="sidebar-block">
       <div class="heading">
-        <h2>Ihsan Ilyas</h2>
-        <a href="#">ihsanilyas@gmail.com</a>
+        <h2><%= current_user.full_name %></h2>
+        <a href="javascript:;"><%= current_user.email %></a>
       </div>
       <div class="sidebar-content-body">
         <ul>
           <li class="rank-up">
             <span class="title">Current Rank</span>
-            <h3>32</h3>
+            <h3><%= current_user.id %></h3>
           </li>
           <li>
             <span class="title">Purchased Package</span>
             <h3>ABCD</h3>
-            <span>Jan. 10. 2018</span>
+            <span><%= Date.today.strftime("%b. %e %Y") %></span>
           </li>
         </ul>
       </div>
@@ -37,26 +37,32 @@
       <div class="heading">
         <h2>Sponsor Information</h2>
       </div>
-      <div class="sidebar-content-body">
-        <ul>
-          <li>
-            <span class="title">Sponsor Name</span>
-            <h4>Furqan Ahmad</h4>
-          </li>
-          <li>
-            <span class="title">Sponsor Username</span>
-            <h4>FurqanA124</h4>
-          </li>
-          <li>
-            <span class="title">Sponsor Country</span>
-            <h4>Pakistan</h4>
-          </li>
-          <li>
-            <span class="title">Date Joined</span>
-            <h4>Dec. 12, 2017</h4>
-          </li>
-        </ul>
-      </div>
+      <% if current_user.sponsor_id.nil? %>
+        <% @sponser = User.last %>
+    <% else %>
+      <% @sponser = User.find(current_user.sponsor_id) %>
+        <div class="sidebar-content-body">
+          <ul>
+            <li>
+              <span class="title">Sponsor Name</span>
+              <h4><%=@sponser.full_name%></h4>
+            </li>
+            <li>
+              <span class="title">Sponsor Username</span>
+              <h4><%= @sponsor.username %></h4>
+            </li>
+            <li>
+              <span class="title">Sponsor Country</span>
+              <h4><%= @sponsor.country %></h4>
+            </li>
+            <li>
+              <span class="title">Date Joined</span>
+              <h4><%= @sponsor.created_at.strftime("%b. %e %Y") %></h4>
+            </li>
+          </ul>
+        </div>
+
+    <% end %>
     </div>
     <!-- Sidebar Block 3 End -->
   </aside>
