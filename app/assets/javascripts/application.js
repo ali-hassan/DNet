@@ -17,5 +17,6 @@
 //= require rails.validations
 //= require_tree ./tree
 //= require scripts
-// = require ./custom
+//= require ./custom
+//= require canvasjs
 //= require override
