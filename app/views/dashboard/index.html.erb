@@ -38,7 +38,7 @@
         <h2>Sponsor Information</h2>
       </div>
       <% if current_user.sponsor_id.nil? %>
-        <% @sponser = AdminUser.first %>
+        <% @sponser = User.last %>
     <% else %>
       <% @sponser = User.find(current_user.sponsor_id) %>
         <div class="sidebar-content-body">
