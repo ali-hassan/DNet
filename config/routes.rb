@@ -27,6 +27,11 @@ Rails.application.routes.draw do
     subdomain_constraint.resources :withdrawl_requests, only: [:index]
     subdomain_constraint.resources :transactions, only: [:index]
     subdomain_constraint.resources :dashboard, only: [:index]
+    subdomain_constraint.resources :users do
+      collection do
+        get :me
+      end
+    end
   end
   get '/affiliate_program' => 'affiliate_programs#index'
   get '/terms' => 'terms#index'
