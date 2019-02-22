@@ -16,6 +16,7 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
 
+    <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
   </head>
 
   <body class="<%= controller.controller_path.gsub("/", "--") %>">
