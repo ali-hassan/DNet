@@ -9,9 +9,11 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   has_many :children, foreign_key: :parent_id, class_name: "User"
   has_many :created_users, foreign_key: :created_by_id, class_name: "User"
+  has_many :user_transactions, dependent: :destroy
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
+  accepts_nested_attributes_for :user_transactions, reject_if: :all_blank, allow_destroy: true
   monetize :smart_wallet_balance_cents
   monetize :bonus_wallet_cents
   monetize :admin_balance_cents
