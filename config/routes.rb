@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     subdomain_constraint.resources :users do
       collection do
         get :me
+        get :system_password
       end
     end
   end
