@@ -36,5 +36,6 @@ class User < ApplicationRecord
   def self.admin_user
     find_by is_admin: true
   end
-  delegate :find_last_right_node, :find_last_left_node, :parent_lists, :package_price, :direct_bonus_users_count, :indirect_bonus_users_count, to: :adapter
+  delegate :find_last_right_node, :find_last_left_node, :parent_lists, :package_price, :direct_bonus_users_count,
+   :direct_bonus_users_count_left, :direct_bonus_users_count_right, :indirect_bonus_users_count, to: :adapter
 end
