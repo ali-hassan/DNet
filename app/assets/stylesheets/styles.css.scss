@@ -403,6 +403,7 @@ footer{ position: relative; bottom: 0; left: 0; right: 0; overflow: hidden; z-in
 	background: image_url("bg-footer-top.png") no-repeat left top;
 	background-size: cover;
 	padding: 80px 0 80px 0;
+	opacity: 0.96
 }
 
 footer .logo{
@@ -410,7 +411,7 @@ footer .logo{
 }
 
 footer .footer-top ul{
-	padding-left:45px;
+	padding-left:0px;
 }
 
 footer .footer-top ul li{
@@ -457,7 +458,11 @@ footer .show-thumb-btn:hover:after{ background: #333;
 	-webkit-transform: scaleY(1); transform: scaleY(1); }
 
 
-footer .social-icons{ }
+footer .social-icons{
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+}
 
 footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; color: #000; font-size: 25px; margin-right: 20px; border-radius: 25px;
   border: 1px solid #000; }
@@ -665,7 +670,7 @@ footer .social-icons > li > a{ height: 40px; width:40px; line-height: 40px; colo
 }
 
 .footer-top {
-  padding: 20px 0 20px 0;
+  padding: 0px 0 0px 0;
 }
 
 .footer-top a {
@@ -688,7 +693,7 @@ footer .logo {
 }
 
 .footer-btm {
-  padding: 10px 0 0px 0 !important;
+  padding: 0px 0 0px 0 !important;
 }
 
 @media (max-width: 767px) and (min-width: 481px){
