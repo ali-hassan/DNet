@@ -27,6 +27,16 @@
           <%= image_tag "client5" %>
         <% end %>
       </div>
+      <div class="col-sm-3 img-center">
+        <% if Rails.application.secrets.bitpay_button_strings %>
+          <form action="<%= Rails.application.secrets.bitpay_button_strings[:form_url] %>" method="post" >
+            <input type="hidden" name="action" value="checkout" />
+            <input type="hidden" name="posData" value="" />
+            <input type="hidden" name="data" value="<%= @package.current_payment_string %>" />
+            <input type="image" src="<%= Rails.application.secrets.bitpay_button_strings[:button_string]  %>" name="submit" style="width:210px;" alt="BitPay, the easy way to pay with bitcoins." >
+          </form>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
