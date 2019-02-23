@@ -51,16 +51,16 @@
     <div class="main-content-block">
       <div class="main-content-body">
         <div class="acount-holder">
-          <form action="#">
+          <%= form_for current_user do |f| %>
             <!-- Signup Row Start -->
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column">
-                <label>First Name</label>
-                <input type="text">
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name %>
               </div>
               <div class="custom-dashboard-column">
-                <label>Last Name</label>
-                <input type="text">
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name %>
               </div>
             </div>
             <!-- Signup Row End -->
@@ -68,12 +68,12 @@
             <!-- Signup Row Start -->
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column">
-                <label>Username</label>
-                <input type="text">
+                <%= f.label :username %>
+                <%= f.text_field :username, readonly: true %>
               </div>
               <div class="custom-dashboard-column">
-                <label>Email</label>
-                <input type="email">
+                <%= f.label :email %>
+                <%= f.text_field :email, readonly: true %>
               </div>
             </div>
             <!-- Signup Row End -->
@@ -81,8 +81,8 @@
             <!-- Signup Row Start -->
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column">
-                <label>Phone</label>
-                <input type="text">
+                <%= f.label :contact_number %>
+                <%= f.text_field :contact_number %>
               </div>
               <div class="custom-dashboard-column">
                 <label>Gender</label>
@@ -101,9 +101,11 @@
                 <input type="text" disabled="">
               </div>
               <div class="custom-dashboard-column upgrade-column">
-                <label>Package</label>
-                <input type="text">
-                <span class="upgraded-text">Upgrade</span>
+                <%= f.label :package_id %>
+                <%= f.text_field :package_id, readonly: true %>
+                <span class="upgraded-text">
+                  <%= link_to "Upgrade", buy_plans_path %>
+                </span>
               </div>
             </div>
             <!-- Signup Row End -->
@@ -146,7 +148,7 @@
             <div class="button-holder">
               <input class="custom-btn" type="submit" value="Save">
             </div>
-          </form>
+          <% end %>
         </div>
 
       </div>

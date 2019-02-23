@@ -33,7 +33,10 @@
           <div class="signup-row add">
             <div class="signup-column">
               <label>Sponsor ID</label>
-              <input id="sponsor_id_txt" class="<%= 'trigger-refer-search' if params[:refered_name] %>" type="text" value="<%= params[:refered_name] || resource.referred_by.try(:username) %>" />
+              <input id="sponsor_id_txt"
+                     class="<%= 'trigger-refer-search' if params[:refered_name] %>"
+                     type="text"
+                     value="<%= params[:refered_name] || resource.referred_by.try(:username) %>" />
             </div>
           </div>
           <div class="signup-row add">

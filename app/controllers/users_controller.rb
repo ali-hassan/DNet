@@ -12,20 +12,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if user.valid_password?(params[:user][:current_password])
-      current_user.update(whitelist_user_params)
-    end
+    current_user.update(whitelist_user_params) && redirect_to(me_users_url(subdomain: 'office')) || render(:me)
   end
 
   def show
   end
 
   private
-    def whitelist_user_params
-      params.require(:user).permit(:password,
-                                   :password_confirmation,
-                                   :current_password, :first_name, :last_name, :username,
-                                   :email, :phone, :gender, :package_id, :address, :country,
-                                   :state, :zipcode)
-    end
+  def whitelist_user_params
+    params.require(:user).permit!
+  end
 end

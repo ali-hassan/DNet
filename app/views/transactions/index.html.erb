@@ -1,0 +1,59 @@
+<main class="main">
+<div class="main-content">
+  <!-- Content Block 1 Start -->
+  <div class="main-content-block">
+    <div class="heading">
+      <h2>Make a Transfer</h2>
+    </div>
+    <div class="main-content-body">
+      <div class="acount-holder">
+        <%= form_for @transaction, url: transactions_url(subdomain: "office") do |f| %>
+          <!-- Signup Row Start -->
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <label>Username</label>
+              <input type="text" id="sponsor_id_txt" value="<%= @transaction.receiver_full_name %>">
+              <%= errors_for f, :receiver %>
+            </div>
+            <div id="sponsor_info_card" class="custom-dashboard-column" data-field-name="user_transaction[receiver_id]">
+              <% if @transaction.receiver_id %>
+                <label> Sponsor Name: <%= @transaction.receiver_full_name %></label>
+                <input type='hidden' name="user_transaction[receiver_id]" value="<%= @transaction.receiver_id %>" />
+              <% end %>
+            </div>
+          </div>
+          <!-- Signup Row End -->
+
+          <!-- Signup Row Start -->
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <%= f.label :wallet_type, "Choose Wallet" %>
+              <%= f.select :wallet_type, [["Smart Wallet", "smart_wallet"]], { include_blank: false } %>
+            </div>
+            <div class="custom-dashboard-column">
+              <label>Balance in (in your wallet)</label>
+              <input type="text" value="<%= number_to_currency @transaction.smart_wallet_balance.to_f %>" readonly>
+            </div>
+          </div>
+          <!-- Signup Row End -->
+
+          <!-- Signup Row Start -->
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <%= f.label :amount, "Amount (To transfer)" %>
+              <%= f.text_field :amount %>
+            </div>
+          </div>
+          <!-- Signup Row End -->
+
+          <div class="button-holder">
+            <input class="custom-btn" type="submit" value="Register">
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+  <!-- Content Block 1 End -->
+</div>
+</main>
