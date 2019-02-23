@@ -19,4 +19,5 @@
 //= require scripts
 //= require ./custom
 //= require canvasjs
+//= require countries
 //= require override
