@@ -125,18 +125,11 @@
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column">
                 <label>Country</label>
-                <select class="selectpicker">
-                  <option value="wallet1" selected>Pakistan</option>
-                  <option value="wallet2">India</option>
-                  <option value="wallet3">Nepal</option>
-                </select>
+                <select id="country" name="country"></select>
               </div>
               <div class="custom-dashboard-column">
                 <label>State</label>
-                <select class="selectpicker">
-                  <option value="wallet1" selected>Punjab</option>
-                  <option value="wallet2">Sindh</option>
-                </select>
+                <select name="state" id="state"></select>
               </div>
             </div>
             <!-- Signup Row End -->
@@ -161,3 +154,10 @@
     <!-- Content Block 2 End -->
   </div>
 </main>
+<script>
+  $(function () {
+    populateCountries("country", "state", "city"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+//    populateCountries("country2");
+//    populateCountries("country2");
+  });
+</script>
