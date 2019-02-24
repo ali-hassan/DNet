@@ -47,7 +47,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
                 <div class="card-body">
                   <ul>
                     <li><a href="<%=me_users_url(subdomain: 'office')%>">My Profile</a></li>
-                    <li><a href="/">KYC</a></li>
+                    <li><a href="<%=kyc_users_url(subdomain: 'office')%>">KYC</a></li>
                     <li><a href="<%= system_credentials_url(subdomain: 'office')%>">System Password</a></li>
                     <li><a href="/">Financial Pin</a></li>
                   </ul>
