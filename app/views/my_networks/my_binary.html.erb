@@ -12,19 +12,19 @@
             <div class="columns-top">
               <dl>
                 <dt>Left Points</dt>
-                <dd>1200</dd>
+                <dd>0</dd>
               </dl>
               <dl>
                 <dt>Left Team</dt>
-                <dd>12 Members</dd>
+                <dd>0 Members</dd>
               </dl>
             </div>
             <div class="columns-bottom">
               <h4>Left Referrel Link</h4>
               <div class="link-block">
-                <a href="http://www.google.com">http://www.google.com</a>
+                <%= link_to build_refer_link(:left), build_refer_link(:left) %>
                 <label for="copy-link-1" class="copy-link-label">
-                  <input id="copy-link-1" readonly type="text" value="http://www.google.com" class="copy-link">
+                  <input id="copy-link-1" readonly type="text" value="<%= build_refer_link(:left) %>" class="copy-link">
                   Copy
                 </label>
               </div>
@@ -37,19 +37,19 @@
             <div class="columns-top">
               <dl>
                 <dt>Right Points</dt>
-                <dd>1200</dd>
+                <dd>0</dd>
               </dl>
               <dl>
                 <dt>Right Team</dt>
-                <dd>12 Members</dd>
+                <dd>0 Members</dd>
               </dl>
             </div>
             <div class="columns-bottom">
               <h4>Right Referrel Link</h4>
               <div class="link-block">
-                <a href="http://www.yahoo.com">http://www.yahoo.com</a>
+                <%= link_to build_refer_link(:right), build_refer_link(:right) %>
                 <label for="copy-link-2" class="copy-link-label">
-                  <input id="copy-link-2" readonly type="text" value="http://www.yahoo.com" class="copy-link">
+                  <input id="copy-link-2" readonly type="text" value="<%= build_refer_link(:right) %>" class="copy-link">
                   Copy
                 </label>
               </div>

@@ -8,8 +8,8 @@
             <%=image_tag "ic_user.png", alt: "image descriptions"%>
           </div>
           <div class="profile-content-block">
-            <h2 class="current-user-name">Ihsan Ilyas</h2>
-            <h3>ihsanilyas123</h3>
+            <h2 class="current-user-name"><%= current_user.username%></h2>
+            <h3><%= current_user.full_name%></h3>
           </div>
         </div>
         <div class="profile-listing">
@@ -20,7 +20,7 @@
               </div>
               <div class="profile-listing-content">
                 <h2>Rank</h2>
-                <h3>20</h3>
+                <h3>0</h3>
               </div>
             </li>
             <li>
@@ -29,7 +29,7 @@
               </div>
               <div class="profile-listing-content">
                 <h2>Referrals</h2>
-                <h3>8</h3>
+                <h3>0</h3>
               </div>
             </li>
             <li>
@@ -38,7 +38,7 @@
               </div>
               <div class="profile-listing-content">
                 <h2>Current Plan</h2>
-                <h3>FHT1A</h3>
+                <h3><%=current_user.package_id%></h3>
               </div>
             </li>
           </ul>
@@ -86,10 +86,7 @@
               </div>
               <div class="custom-dashboard-column">
                 <label>Gender</label>
-                <select class="selectpicker">
-                  <option value="wallet1" selected>Male</option>
-                  <option value="wallet2">Female</option>
-                </select>
+                <%= f.select :gender, ["Male", "Female"],prompt: "Select Gender", class: "selectpicker"%>
               </div>
             </div>
             <!-- Signup Row End -->
@@ -98,7 +95,7 @@
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column">
                 <label>Sponsor</label>
-                <input type="text" disabled="">
+                <input type="text" value="<%=current_user.referred_by.try(:full_name)%>" disabled="">
               </div>
               <div class="custom-dashboard-column upgrade-column">
                 <%= f.label :package_id %>
@@ -118,7 +115,7 @@
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column full-column">
                 <label>Address</label>
-                <textarea></textarea>
+                <%= f.text_field :address%>
               </div>
             </div>
             <!-- Signup Row End -->
@@ -127,11 +124,11 @@
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column">
                 <label>Country</label>
-                <select id="country" name="country"></select>
+                <%= f.select :country, [], {}, {id: "country", name: "user[country]", data: {country: current_user.country}} %>
               </div>
               <div class="custom-dashboard-column">
                 <label>State</label>
-                <select name="state" id="state"></select>
+                <%= f.select :state, [], {}, { id: "state", name: "user[state]", data: {state: current_user.state} } %>
               </div>
             </div>
             <!-- Signup Row End -->
@@ -140,7 +137,7 @@
             <div class="custom-dashboard-row">
               <div class="custom-dashboard-column">
                 <label>Zip Code</label>
-                <input type="text">
+                <%= f.text_field :zipcode%>
               </div>
             </div>
             <!-- Signup Row End -->

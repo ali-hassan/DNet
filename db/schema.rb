@@ -115,6 +115,11 @@ ActiveRecord::Schema.define(version: 20190224102446) do
     t.string "package_id"
     t.boolean "is_pin", default: false
     t.string "dob"
+    t.string "father_name"
+    t.string "document"
+    t.string "address"
+    t.string "gender"
+    t.string "zipcode"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

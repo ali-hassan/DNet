@@ -1,0 +1,52 @@
+<main class="main">
+  <div class="main-content">
+    <!-- Content Block 1 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2>Make a Transfer</h2>
+      </div>
+      <div class="main-content-body">
+        <div class="acount-holder">
+          <%= form_for @transaction, url: transactions_url(subdomain: "office", cash_wallet: true) do |f| %>
+
+              <div class="custom-dashboard-row">
+                <div class="custom-dashboard-column">
+                  <label>Username</label>
+                  <input type="text" value="<%= current_user.full_name %>" disabled="true">
+                </div>
+              </div>
+
+              <!-- Signup Row Start -->
+              <div class="custom-dashboard-row">
+                <div class="custom-dashboard-column">
+                  <%= f.label :wallet_type, "Choose Wallet" %>
+                  <%= f.select :wallet_type, [["Cash Wallet", "cash_wallet"]], { include_blank: false } %>
+                </div>
+                <div class="custom-dashboard-column">
+                  <label>Balance in (in your wallet)</label>
+                  <input type="text" value="<%= number_to_currency @transaction.bonus_wallet.to_f %>" readonly>
+                </div>
+              </div>
+              <!-- Signup Row End -->
+
+              <!-- Signup Row Start -->
+              <div class="custom-dashboard-row">
+                <div class="custom-dashboard-column">
+                  <%= f.label :amount, "Amount (To transfer)" %>
+                  <%= f.text_field :amount %>
+                  <%= errors_for f, :bonus_wallet%>
+                </div>
+              </div>
+              <!-- Signup Row End -->
+
+              <div class="button-holder">
+                <input class="custom-btn" type="submit" value="Transfer">
+              </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <!-- Content Block 1 End -->
+  </div>
+</main>

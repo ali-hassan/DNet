@@ -18,6 +18,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def kyc
+
+  end
+
   private
   def whitelist_user_params
     params.require(:user).permit!
