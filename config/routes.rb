@@ -27,7 +27,11 @@ Rails.application.routes.draw do
     subdomain_constraint.resources :withdrawl_requests, only: [:index]
     subdomain_constraint.resources :dashboard, only: [:index]
     subdomain_constraint.resources :system_credentials, only: [:index, :create]
-    subdomain_constraint.resources :transactions, only: [:index, :create]
+    subdomain_constraint.resources :transactions, only: [:index, :create] do
+      collection do
+        get :cash_to_smart
+      end
+    end
     subdomain_constraint.resources :users do
       collection do
         get :me

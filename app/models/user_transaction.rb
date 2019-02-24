@@ -5,5 +5,10 @@ class UserTransaction < ApplicationRecord
   validates :amount, numericality: { greater_than: 50 }
   validates :user, presence: true
   delegate :smart_wallet_balance, to: :user, allow_nil: true
+  delegate :bonus_wallet, to: :user, allow_nil: true
   delegate :full_name, allow_nil: true, to: :receiver, prefix: true
+
+  validate do |user|
+    user.errors.add(:base, "Your Balance isn't sufficent") if user.bonus_wallet.to_f < 60.0
+  end
 end
