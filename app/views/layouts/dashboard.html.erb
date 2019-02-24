@@ -66,7 +66,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
                 <div class="card-body">
                   <ul>
                     <% FindPackages.new("package-01").packages.each do |id, params| %>
-                      <li><%= link_to id, buy_plan_url(id, subdomain: 'office') %></li>
+                      <li><%= link_to "#{id} - #{number_to_currency(params["price"])}", buy_plan_url(id, subdomain: 'office') %></li>
                     <% end %>
                   </ul>
                 </div>
