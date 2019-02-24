@@ -71,4 +71,4 @@ test-results.xml
 .vimrc
 client/.vimrc
 
-pem/
+pem/*
