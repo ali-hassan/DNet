@@ -65,10 +65,9 @@ var currentUserId = <%= raw current_user.try(:id) %>
               <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
                 <div class="card-body">
                   <ul>
-                    <li><a href="#">Item1</a></li>
-                    <li><a href="#">Item2</a></li>
-                    <li><a href="#">Item3</a></li>
-                    <li><a href="#">Item4</a></li>
+                    <% FindPackages.new("package-01").packages.each do |id, params| %>
+                      <li><%= link_to id, buy_plan_url(id, subdomain: 'office') %></li>
+                    <% end %>
                   </ul>
                 </div>
               </div>
