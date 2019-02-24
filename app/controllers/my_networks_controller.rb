@@ -16,6 +16,11 @@ class MyNetworksController < ApplicationController
   def my_binary
 
   end
+
+  def direct_referrals
+
+  end
+
   private
   def permitted_params
     params.require(:my_network).permit!

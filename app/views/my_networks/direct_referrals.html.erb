@@ -1,0 +1,39 @@
+<main class="main">
+  <div class="main-content">
+    <!-- Content Block 1 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2>Widthdrawal History</h2>
+      </div>
+      <div class="main-content-body">
+        <div class="history-widthdrawal-holder">
+          <table>
+            <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Date</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Current Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%- current_user.adapter.direct_users.each do |user|%>
+                <tr>
+                  <td><%=user.id%></td>
+                  <td><%=user.try(:created_at).strftime("%b. %e %Y")%></td>
+                  <td><%=user.try(:email)%></td>
+                  <td><%=user.full_name%></td>
+                  <td><%=user.parent_position%></td>
+                  <td><%=user.is_package_activated%></td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Content Block 1 End -->
+  </div>
+</main>

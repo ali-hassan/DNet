@@ -85,6 +85,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
                 <div class="card-body">
                   <ul>
                     <li><a href="<%=my_binary_my_networks_path%>">Binary</a></li>
+                    <li><a href="<%=direct_referrals_my_networks_url(subdomain: "office")%>">Direct Referrals</a></li>
                   </ul>
                 </div>
               </div>
