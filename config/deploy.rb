@@ -10,7 +10,7 @@ set :rvm_ruby_version, '2.4.2'
 
 set :linked_files, %w{config/database.yml config/newrelic.yml config/application.yml}
 
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :linked_dirs, %w{pem bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 # puma configuration
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
