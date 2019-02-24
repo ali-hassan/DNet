@@ -102,3 +102,4 @@ gem 'activeadmin', '=1.4.3'
 # ActiveAdmin-Select2: Drop down menus
 gem 'activeadmin-select2'#, '0.1.8'
 gem "blockchain"
+gem 'bitpay-sdk', require: 'bitpay_sdk', github: 'bitpay/ruby-client'
