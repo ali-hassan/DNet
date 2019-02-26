@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190224132304) do
+ActiveRecord::Schema.define(version: 20190226141816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,17 @@ ActiveRecord::Schema.define(version: 20190224132304) do
     t.index ["user_id"], name: "index_user_transactions_on_user_id"
   end
 
+  create_table "user_weekly_bonus_cycles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "current_cycle"
+    t.string "plan_id"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_weekly_bonus_cycles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -130,6 +141,13 @@ ActiveRecord::Schema.define(version: 20190224132304) do
     t.string "address"
     t.string "gender"
     t.string "zipcode"
+    t.string "bonus_cycle"
+    t.integer "current_package_iteration", default: 0
+    t.integer "current_week_roi_amount_cents", default: 0, null: false
+    t.string "current_week_roi_amount_currency", default: "USD", null: false
+    t.float "current_weekly_percentage"
+    t.integer "total_weekly_percentage_amount_cents", default: 0, null: false
+    t.string "total_weekly_percentage_amount_currency", default: "USD", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -137,4 +155,5 @@ ActiveRecord::Schema.define(version: 20190224132304) do
   add_foreign_key "bit_pay_transactions", "users"
   add_foreign_key "user_pair_keys", "users"
   add_foreign_key "user_transactions", "users"
+  add_foreign_key "user_weekly_bonus_cycles", "users"
 end

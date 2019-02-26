@@ -18,5 +18,6 @@ module ForexHomeTrade
     config.after_initialize do
       Devise::RegistrationsController.send :layout, "registration"
     end
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :user_transactions, dependent: :destroy
   has_many :user_pair_keys, dependent: :destroy
   has_many :bit_pay_transactions, dependent: :destroy
+  has_many :user_weekly_bonus_cycles, dependent: :destroy
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
@@ -21,6 +22,8 @@ class User < ApplicationRecord
   monetize :smart_wallet_balance_cents
   monetize :bonus_wallet_cents
   monetize :admin_balance_cents
+  monetize :total_weekly_percentage_amount_cents
+  monetize :current_week_roi_amount_cents
 
   def full_name
     [first_name, last_name].join(" ")
@@ -41,5 +44,6 @@ class User < ApplicationRecord
     find_by is_admin: true
   end
   delegate :find_last_right_node, :find_last_left_node, :parent_lists, :package_price, :direct_bonus_users_count,
-   :direct_bonus_users_count_left, :direct_bonus_users_count_right, :indirect_bonus_users_count, to: :adapter
+   :direct_bonus_users_count_left, :direct_bonus_users_count_right, :indirect_bonus_users_count, :earn_weekly_point,
+   :current_package, to: :adapter
 end

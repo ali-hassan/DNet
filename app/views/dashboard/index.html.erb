@@ -76,7 +76,7 @@
           <!-- Columns Start -->
           <div class="columns">
             <div class="columns-top weekly-roi">
-              <h3>$0</h3>
+              <h3><%= number_to_currency current_user.current_week_roi_amount.try(:to_f) %></h3>
               <span>Weekly ROI</span>
               <span class="currency-symbol">$</span>
             </div>
@@ -96,7 +96,7 @@
           <!-- Columns Start -->
           <div class="columns">
             <div class="columns-top total-roi">
-              <h3>$0</h3>
+              <h3><%= number_to_currency current_user.total_weekly_percentage_amount.try(:to_f) %></h3>
               <span>Total ROI</span>
               <span class="currency-symbol">$</span>
             </div>

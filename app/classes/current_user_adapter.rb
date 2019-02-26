@@ -48,10 +48,18 @@ class CurrentUserAdapter
     children_list.map { |usr| usr.is_package_activated ? usr.package_price * 0.03 : 0.00  }.sum
   end
   def find_packages
-    @current_package ||= FindPackages.new(package_id)
+    @find_package ||= FindPackages.new(package_id)
   end
   def package_price
     current_package ? current_package[:price] : 0.00
+  end
+
+  def earn_weekly_point
+    perform_weekly_count.perform
+  end
+
+  def perform_weekly_count
+    @perform_weekly_count ||= PerformWeeklyUser.new(user)
   end
   delegate :current_package, to: :find_packages, allow_nil: true
   delegate :package_id, :created_users, to: :user, allow_nil: true

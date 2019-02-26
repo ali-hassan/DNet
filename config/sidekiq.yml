@@ -1,0 +1,7 @@
+:verbos: true
+:queues:
+  - default
+  - low_priority
+  - queue:mailers
+  - queue
+  - mailers

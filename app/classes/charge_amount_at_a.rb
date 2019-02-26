@@ -7,8 +7,17 @@ class ChargeAmountAtA
     @package ||= FindPackages.new(package_id).current_package
   end
   def charge!
-    update(smart_wallet_balance: smart_wallet_balance.try(:to_f) - package[:price], package_id: package_id)
+    update(smart_wallet_balance: smart_wallet_balance.try(:to_f) - package[:price],
+           package_id: package_id)
+    update(current_weekly_percentage: weekly_percentage)
     AdminUser.add_amount(package[:price])
+    calculate_weekly_bonus_cycle!
   end
-  delegate :update, :smart_wallet_balance, to: :user, allow_nil: true
+  def weekly_percentage
+    Setting.find_value("default_weekly_#{user.reload.current_package["category"].try(:downcase)}_%").try(:value)
+  end
+  def calculate_weekly_bonus_cycle!
+    user.earn_weekly_point
+  end
+  delegate :update, :smart_wallet_balance, :weekly_bonus_cycles, :current_package, to: :user, allow_nil: true
 end
