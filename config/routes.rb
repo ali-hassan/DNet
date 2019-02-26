@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         get :me
         get :kyc
         get :system_password
+        get :financial_pin
       end
     end
     subdomain_constraint.resources :my_networks do

@@ -48,8 +48,8 @@ var currentUserId = <%= raw current_user.try(:id) %>
                   <ul>
                     <li><a href="<%=me_users_url(subdomain: 'office')%>">My Profile</a></li>
                     <li><a href="<%=kyc_users_url(subdomain: 'office')%>">KYC</a></li>
-                    <li><a href="<%= system_credentials_url(subdomain: 'office')%>">System Password</a></li>
-                    <!--<li><a href="/">Financial Pin</a></li>-->
+                    <li><a href="<%=system_credentials_url(subdomain: 'office')%>">System Password</a></li>
+                    <li><a href="<%=financial_pin_users_url(subdomain: 'office')%>">Financial Pin</a></li>
                   </ul>
                 </div>
               </div>
