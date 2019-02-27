@@ -1,18 +1,69 @@
 <main class="main">
-<div class="main-content">
-<div class="container" id="why_forex_text">
-    <div class="row clients" style="margin-left: -15px; margin-right: -15px;">
-      <div class="col-sm-3 img-center">
-        <%= link_to buy_plans_path(plan_id: params[:id]), data: { method: :post } do %>
-          <%= image_tag "client5" %>
-        <% end %>
-      </div>
-      <div class="col-sm-3 img-center">
-        <%= link_to pay_with_bitcoin_url(params[:id], subdomain: 'office') do %>
-          <%= image_tag Rails.application.secrets.bitpay_button_strings[:button_string] %>
-        <% end %>
+  <div class="main-content">
+    <div class="payment-option-listing">
+      <h2>Choose Payment Option</h2>
+      <div class="payment-option-holder">
+        <form action="#">
+          <ul>
+            <li>
+              <div class="image-holder">
+                <%= link_to pay_with_bitcoin_url(params[:id], subdomain: 'office') do %>
+                  <%= image_tag Rails.application.secrets.bitpay_button_strings[:button_string] %>
+                <% end %>
+                <%#=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
+              </div>
+              <h3>Bitcoin</h3>
+            </li>
+            <li>
+              <div class="image-holder">
+                <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
+              </div>
+              <h3>Skrill</h3>
+            </li>
+            <li>
+              <div class="image-holder">
+                <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
+              </div>
+              <h3>Perfect Money</h3>
+            </li>
+            <li>
+              <div class="image-holder">
+                <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
+              </div>
+              <h3>Payoneer</h3>
+            </li>
+            <li>
+              <div class="image-holder">
+                <%= link_to buy_plans_path(plan_id: params[:id]), data: { method: :post } do %>
+                  <%=image_tag "ic_accountoaccount.png", alt: "image descriptions"%>
+                <% end %>
+              </div>
+              <h3>Account to Account</h3>
+            </li>
+          </ul>
+        </form>
       </div>
     </div>
   </div>
-</div>
 </main>
+
+
+
+<!--<main class="main">-->
+<!--<div class="main-content">-->
+<!--<div class="container" id="why_forex_text">-->
+    <!--<div class="row clients" style="margin-left: -15px; margin-right: -15px;">-->
+      <!--<div class="col-sm-3 img-center">-->
+        <!--<%#= link_to buy_plans_path(plan_id: params[:id]), data: { method: :post } do %>-->
+          <!--<%#= image_tag "client5" %>-->
+        <!--<%# end %>-->
+      <!--</div>-->
+      <!--<div class="col-sm-3 img-center">-->
+        <!--<%#= link_to pay_with_bitcoin_url(params[:id], subdomain: 'office') do %>-->
+          <!--<%#= image_tag Rails.application.secrets.bitpay_button_strings[:button_string] %>-->
+        <!--<%# end %>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--</main>-->
