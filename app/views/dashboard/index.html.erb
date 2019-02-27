@@ -204,7 +204,10 @@
         <h2>X-Factor</h2>
       </div>
       <div class="main-content-body">
-        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        <div id="chartContainer" 
+             data-weekly-total="<%= current_user.total_weekly_percentage_amount.try(:to_f) %>"
+             data-weekly-current="<%= current_user.current_total_weekly_roi_amount.try(:to_f) %>"
+          style="height: 300px; width: 100%;"></div>
       </div>
     </div>
     <!-- Content Block 3 End -->
@@ -233,6 +236,8 @@
 
 
   window.onload = function() {
+      var weeklyTotal = parseFloat($("#chartContainer").data("weekly-total")),
+        weeklyCurrent = parseFloat($("#chartContainer").data("weekly-current"));
       var options = {
           exportEnabled: true,
           animationEnabled: true,
@@ -248,8 +253,8 @@
               legendText: "{name} (#percent%)",
               indexLabelPlacement: "inside",
               dataPoints: [
-                  { y: 1, name: "Earnings" },
-                  { y: 99, name: "Remainings" }
+                  { y: weeklyTotal, name: "Earnings" },
+                  { y: weeklyCurrent, name: "Remainings" }
               ]
           }]
       };
