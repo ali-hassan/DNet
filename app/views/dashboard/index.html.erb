@@ -20,7 +20,7 @@
         <ul>
           <li class="rank-up">
             <span class="title">Current Rank</span>
-            <h3><%= current_user.id %></h3>
+            <h3><%= current_user.adapter.cupda_current_rank.try(:name) %></h3>
           </li>
           <li>
             <span class="title">Purchased Package</span>
