@@ -12,6 +12,6 @@ Setting.find_or_create_by key: "default_weekly_cycle", value: 6
 Setting.find_or_create_by key: "default_weekly_starter_%", value: 4
 Setting.find_or_create_by key: "default_weekly_basic_%", value: 5
 Setting.find_or_create_by key: "default_weekly_advance_%", value: 6
-
+Setting.find_or_create_by key: "default_direct_bonus_%", value: 8
 AdminUser.create!(email: 'admin@forexhometrade.com', password: 'Password123', password_confirmation: 'Password123') #if Rails.env.development?
 User.create(email: "admin1@forexhometrade.com", password: "Password123", password_confirmation: 'Password123', username: "admin", is_admin: true, first_name: "forex", last_name: "admin",smart_wallet_balance: "300000")

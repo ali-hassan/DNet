@@ -116,7 +116,7 @@
           <!-- Columns Start -->
           <div class="columns">
             <div class="columns-top current-roi">
-              <h3>$0</h3>
+              <h3><%= number_to_currency current_user.current_total_weekly_roi_amount.try(:to_f) %></h3>
               <span>Current ROI Balance</span>
               <span class="currency-symbol">$</span>
             </div>

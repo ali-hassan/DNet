@@ -61,6 +61,10 @@ class CurrentUserAdapter
   def perform_weekly_count
     @perform_weekly_count ||= PerformWeeklyUser.new(user)
   end
+  def cupda
+    @cupda ||= CalculateUserParentDirectBonus.new(user)
+  end
+  delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
   delegate :package_id, :created_users, to: :user, allow_nil: true
 end

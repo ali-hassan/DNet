@@ -24,6 +24,7 @@ class User < ApplicationRecord
   monetize :admin_balance_cents
   monetize :total_weekly_percentage_amount_cents
   monetize :current_week_roi_amount_cents
+  monetize :current_total_weekly_roi_amount_cents
 
   def full_name
     [first_name, last_name].join(" ")

@@ -12,6 +12,7 @@ class ChargeAmountAtA
     update(current_weekly_percentage: weekly_percentage)
     AdminUser.add_amount(package[:price])
     calculate_weekly_bonus_cycle!
+    user.adapter.cupda_calculate
   end
   def weekly_percentage
     Setting.find_value("default_weekly_#{user.reload.current_package["category"].try(:downcase)}_%").try(:value)
