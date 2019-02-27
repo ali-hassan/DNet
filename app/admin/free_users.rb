@@ -1,6 +1,6 @@
 ActiveAdmin.register User, as: 'FreeUser' do
   permit_params :first_name, :last_name, :email, :password, :password_confirmation, :is_pin,
-    :username, :smart_wallet_balance
+    :username, :smart_wallet_balance, :parent_id
   form do |f|
     f.inputs do
       f.hidden_field :is_pin, value: true
@@ -11,6 +11,7 @@ ActiveAdmin.register User, as: 'FreeUser' do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :parent_id, :label => 'Sponsor', :as => :select, :collection => User.where(is_pin: false).map{|u| [u.full_name, u.id]}, :prompt => "Select Sponsor"
     end
 
     f.actions
