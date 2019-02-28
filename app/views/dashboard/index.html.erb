@@ -198,19 +198,21 @@
     </div>
     <!-- Content Block 2 End -->
 
-    <!-- Content Block 3 Start -->
-    <div class="main-content-block">
-      <div class="heading">
-        <h2>X-Factor</h2>
+    <% if current_user.total_weekly_percentage_amount.try(:to_f) != 0 && current_user.current_total_weekly_roi_amount.try(:to_f) != 0 %>
+      <!-- Content Block 3 Start -->
+      <div class="main-content-block">
+        <div class="heading">
+          <h2>X-Factor</h2>
+        </div>
+        <div class="main-content-body">
+            <div id="chartContainer"
+                 data-weekly-total="<%= current_user.total_weekly_percentage_amount.try(:to_f) %>"
+                 data-weekly-current="<%= current_user.current_total_weekly_roi_amount.try(:to_f) %>"
+              style="height: 300px; width: 100%;"></div>
+        </div>
       </div>
-      <div class="main-content-body">
-        <div id="chartContainer" 
-             data-weekly-total="<%= current_user.total_weekly_percentage_amount.try(:to_f) %>"
-             data-weekly-current="<%= current_user.current_total_weekly_roi_amount.try(:to_f) %>"
-          style="height: 300px; width: 100%;"></div>
-      </div>
-    </div>
-    <!-- Content Block 3 End -->
+      <!-- Content Block 3 End -->
+    <% end %>
   </div>
 </main>
 
@@ -237,7 +239,9 @@
 
   window.onload = function() {
       var weeklyTotal = parseFloat($("#chartContainer").data("weekly-total")),
-        weeklyCurrent = parseFloat($("#chartContainer").data("weekly-current"));
+      weeklyCurrent = parseFloat($("#chartContainer").data("weekly-current")),
+      $chartContainer = $("#chartContainer");
+
       var options = {
           exportEnabled: true,
           animationEnabled: true,
@@ -258,6 +262,8 @@
               ]
           }]
       };
-      $("#chartContainer").CanvasJSChart(options);
+      if($chartContainer.length) {
+        $("#chartContainer").CanvasJSChart(options);
+      }
   }
 </script>
