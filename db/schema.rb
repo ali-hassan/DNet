@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190227112603) do
+ActiveRecord::Schema.define(version: 20190228125233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,10 @@ ActiveRecord::Schema.define(version: 20190227112603) do
     t.string "current_total_weekly_roi_amount_currency", default: "USD", null: false
     t.string "current_bonus_points", default: "0"
     t.string "total_bonus_points", default: "0"
+    t.integer "indirect_bonus_amount_cents", default: 0, null: false
+    t.string "indirect_bonus_amount_currency", default: "USD", null: false
+    t.integer "indirect_total_bonus_amount_cents", default: 0, null: false
+    t.string "indirect_total_bonus_amount_currency", default: "USD", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

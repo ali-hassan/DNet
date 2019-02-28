@@ -4,13 +4,20 @@ class CalculateUserParentDirectBonus
 
   extend Forwardable
   def_delegators :@user, :total_bonus_points, :current_bonus_points, :package_price,
-    :created_by
+    :created_by, :adapter
 
   def initialize(user)
     @user = user
   end
   def calculate
     created_by.try(:update, params)
+    apply_parents_bonus
+  end
+  def apply_parents_bonus
+    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price) }
+  end
+  def alpl(&block)
+    adapter.linked_parent_list.values_at(1, 2, 3, 4, 5, 6).each.with_index(&block)
   end
   def params
     {

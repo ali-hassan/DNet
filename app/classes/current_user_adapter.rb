@@ -23,8 +23,14 @@ class CurrentUserAdapter
   def fetch_parent_list(usr, result=[])
     (_=find_parent(usr)).present? && (result.push(_); fetch_parent_list(_, result)) || result
   end
-  def find_parent(usr)
-    User.find_by id: usr.parent_id
+  def find_parent(usr, method=:parent_id)
+    User.find_by id: usr.send(method)
+  end
+  def fetch_linked_parent_list(usr, result=[])
+    (_=find_parent(usr, :created_by_id)).present? && (result.push(_); fetch_linked_parent_list(_, result)) || result
+  end
+  def linked_parent_list
+    fetch_linked_parent_list(user)
   end
   def children_list
     fetch_children_list(user, [])
@@ -45,7 +51,7 @@ class CurrentUserAdapter
     created_users.where(is_package_activated:  true, parent_position: "right").map { |usr| usr.package_price * 0.06 }
   end
   def indirect_bonus_users_count
-    children_list.map { |usr| usr.is_package_activated ? usr.package_price * 0.03 : 0.00  }.sum
+    indirect_total_bonus_amount.try(:to_f)
   end
   def find_packages
     @find_package ||= FindPackages.new(package_id)
@@ -64,7 +70,11 @@ class CurrentUserAdapter
   def cupda
     @cupda ||= CalculateUserParentDirectBonus.new(user)
   end
+  def apply_indirect_bonus_at(index, package_price)
+    pp = package_price / (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index}").value.try(:to_f) * 100)
+    user.update(indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp, indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp)
+  end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
-  delegate :package_id, :created_users, to: :user, allow_nil: true
+  delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, to: :user, allow_nil: true
 end

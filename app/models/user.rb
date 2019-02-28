@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :user_pair_keys, dependent: :destroy
   has_many :bit_pay_transactions, dependent: :destroy
   has_many :user_weekly_bonus_cycles, dependent: :destroy
+  has_many :indirect_referred_users, -> { where("users.referred_by_id <> users.created_by_id") }, class_name: "User", foreign_key: :referred_by_id
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
@@ -25,6 +26,8 @@ class User < ApplicationRecord
   monetize :total_weekly_percentage_amount_cents
   monetize :current_week_roi_amount_cents
   monetize :current_total_weekly_roi_amount_cents
+  monetize :indirect_bonus_amount_cents
+  monetize :indirect_total_bonus_amount_cents
 
   def full_name
     [first_name, last_name].join(" ")
