@@ -188,4 +188,7 @@ label{
     color: #fff;
     margin: 0;
 }
+#dashboard-sidebar .dashboard-menu .card-body ul ul{
+    padding: 0 0 0 20px;
+}
 
