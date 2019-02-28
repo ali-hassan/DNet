@@ -8,7 +8,8 @@
             <li>
               <div class="image-holder">
                 <%= link_to pay_with_bitcoin_url(params[:id], subdomain: 'office') do %>
-                  <%= image_tag Rails.application.secrets.bitpay_button_strings[:button_string] %>
+                  <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
+                  <%#= image_tag Rails.application.secrets.bitpay_button_strings[:button_string] %>
                 <% end %>
                 <%#=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
               </div>
