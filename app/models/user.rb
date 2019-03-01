@@ -9,6 +9,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   validates :first_name, :last_name, :username, presence: true
   validates :username, uniqueness: true
+  validates :pin, presence: true, if: :pin?
   has_many :children, foreign_key: :parent_id, class_name: "User"
   has_many :created_users, foreign_key: :created_by_id, class_name: "User"
   has_many :user_transactions, dependent: :destroy
@@ -20,6 +21,8 @@ class User < ApplicationRecord
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
   accepts_nested_attributes_for :user_transactions, reject_if: :all_blank, allow_destroy: true
+  attr_accessor :current_pin
+  validate :current_pin_verify, if: :current_pin?
   monetize :smart_wallet_balance_cents
   monetize :bonus_wallet_cents
   monetize :admin_balance_cents
@@ -28,7 +31,14 @@ class User < ApplicationRecord
   monetize :current_total_weekly_roi_amount_cents
   monetize :indirect_bonus_amount_cents
   monetize :indirect_total_bonus_amount_cents
-
+  attr_encrypted :pin, key: Rails.application.secrets.secret_key,
+    allow_empty_value: true, salt: Rails.application.secrets.secret_salt
+  def current_pin_verify
+    (current_pin.to_s != pin_was.to_s) && errors.add(:current_pin, "invalid pin") || true
+  end
+  def current_pin?
+    !current_pin.nil?
+  end
   def full_name
     [first_name, last_name].join(" ")
   end

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_params
     devise_parameter_sanitizer.permit(:sign_up,
                                       keys: [:country, :city, :state, :contact_number, :sponsor_id, :referred_by_id,
-                                             :document_number, :first_name, :last_name, :username, :dob])
+                                             :pin, :document_number, :first_name, :last_name, :username, :dob])
   end
   def after_sign_in_path_for(resource)
     if resource.class.name != "AdminUser" && !resource.is_admin? && !resource.is_package_activated? && !resource.is_pin
