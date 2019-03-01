@@ -260,7 +260,7 @@ s_a[251]="Central|Copperbelt|Eastern|Luapula|Lusaka|North-Western|Northern|South
 s_a[252]="Bulawayo|Harare|ManicalandMashonaland Central|Mashonaland East|Mashonaland West|Masvingo|Matabeleland North|Matabeleland South|Midlands";
 
 
-function populateStates( countryElementId, stateElementId ){
+window.populateStates = function( countryElementId, stateElementId ){
 	
 	var selectedCountryIndex = document.getElementById( countryElementId ).selectedIndex;
 
@@ -280,7 +280,7 @@ function populateStates( countryElementId, stateElementId ){
     }
 }
 
-function populateCountries(countryElementId, stateElementId){
+window.populateCountries = function(countryElementId, stateElementId){
 	// given the id of the <select> tag as function argument, it inserts <option> tags
 	var countryElement = document.getElementById(countryElementId);
 
