@@ -84,7 +84,16 @@
               <%= f.password_field :password_confirmation %>
             </div>
           </div>
-          <!-- Signup Row End -->
+          <div class="signup-row">
+            <div class="signup-column">
+              <%= f.label :country %>
+              <%= f.select :state, [], {}, { id: "state", name: "user[state]", data: {state: current_user.state} } %>
+            </div>
+            <div class="signup-column">
+              <%= f.label :state %>
+              <%= f.select :state, [["Sindh", "sindh"], ["Punjab", "punjab"]], {}, class: "custom-select" %>
+            </div>
+          </div>
           <!-- Signup Row Start -->
           <div class="signup-row">
             <div class="signup-column">
@@ -93,19 +102,7 @@
             </div>
             <div class="signup-column">
               <%= f.label :city %>
-              <%= f.select :city, [["Lahore", "lhr"]], {}, class: "custom-select" %>
-            </div>
-          </div>
-          <!-- Signup Row End -->
-          <!-- Signup Row Start -->
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :state %>
-              <%= f.select :state, [["Sindh", "sindh"], ["Punjab", "punjab"]], {}, class: "custom-select" %>
-            </div>
-            <div class="signup-column">
-              <%= f.label :country %>
-              <%= f.select :country, [["Pakistan", "pk"]], {}, class: "custom-select" %>
+              <%= f.text_field :city, class: "custom-select" %>
             </div>
           </div>
           <div class="signup-row">
