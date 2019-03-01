@@ -143,4 +143,52 @@ label{
 }
 
 
+.payment-option-listing{
+    background-color: #fff;
+}
+.payment-option-listing h2{
+    font-size: 18px;
+    line-height: 22px;
+    padding: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    border-bottom: 1px solid #dfdfdf;
+}
+.payment-option-listing .payment-option-holder{
+    padding: 30px;
+}
+.payment-option-listing .payment-option-holder ul:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.payment-option-listing .payment-option-holder ul li{
+    float: left;
+    border-radius: 15px;
+    background-color: #282828;
+    padding: 30px;
+    text-align: center;
+    width: 30%;
+    margin: 0 3% 3% 0;
+}
+.payment-option-listing .payment-option-holder ul li .image-holder{
+    width: 100px;
+    margin: 0 auto 15px;
+}
+.payment-option-listing .payment-option-holder ul li .image-holder img{
+    display: block;
+    height: auto;
+    width: 100%;
+}
+.payment-option-listing .payment-option-holder ul li h3{
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+#dashboard-sidebar .dashboard-menu .card-body ul ul{
+    padding: 0 0 0 20px;
+}
 
