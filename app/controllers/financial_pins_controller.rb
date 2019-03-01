@@ -4,7 +4,7 @@ class FinancialPinsController < ApplicationController
     @user = current_user
   end
   def create
-    (@user = current_user).update(permitted_params) && redirect_to(financial_pins_url(subdomain: 'office')) || render(:new)
+    (@user = current_user).update(permitted_params) && redirect_to(new_financial_pin_url(subdomain: 'office')) || render(:new)
   end
   private
   def permitted_params
