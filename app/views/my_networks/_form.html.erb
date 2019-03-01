@@ -42,14 +42,14 @@
               <%= form_group_for f, :document_number do %>
                 <%= f.text_field :document_number, class: "form-control" %>
               <% end %>
-              <%= form_group_for f, :city do %>
-                <%= f.select :city, [["Lahore", "lhr"]], {}, class: "form-control" %>
+              <%= form_group_for f, :country do %>
+                <%= f.select :state, [], {}, { id: "state", name: "user[state]", data: {state: current_user.state} } %>
               <% end %>
               <%= form_group_for f, :state do %>
-                <%= f.select :state, [["Sindh", "sindh"], ["Punjab", "punjab"]], {}, class: "form-control" %>
+                <%= f.select :state, [["Sindh", "sindh"], ["Punjab", "punjab"]], {}, class: "custom-select" %>
               <% end %>
-              <%= form_group_for f, :country do %>
-                <%= f.select :country, [["Pakistan", "pk"]], {}, class: "form-control" %>
+              <%= form_group_for f, :city do %>
+                <%= f.text_field :city, class: "form-control" %>
               <% end %>
             </div>
           </div>
