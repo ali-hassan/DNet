@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to dashboard_index_url(subdomain: 'office')
   end
 
   def kyc

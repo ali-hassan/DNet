@@ -43,10 +43,10 @@
                 <%= f.text_field :document_number, class: "form-control" %>
               <% end %>
               <%= form_group_for f, :country do %>
-                <%= f.select :state, [], {}, { id: "state", name: "user[state]", data: {state: current_user.state} } %>
+                <%= f.select :country, [], {}, { id: "country" , class: "form-control", name: "my_network[country]", data: {country: current_user.country}} %>
               <% end %>
               <%= form_group_for f, :state do %>
-                <%= f.select :state, [["Sindh", "sindh"], ["Punjab", "punjab"]], {}, class: "custom-select" %>
+                <%= f.select :state, [], {}, { id: "state", class: "form-control", name: "my_network[state]", data: {state: current_user.state} } %>
               <% end %>
               <%= form_group_for f, :city do %>
                 <%= f.text_field :city, class: "form-control" %>

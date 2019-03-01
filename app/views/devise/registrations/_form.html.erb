@@ -84,27 +84,33 @@
               <%= f.password_field :password_confirmation %>
             </div>
           </div>
+          <!-- Signup Row End -->
+          <!-- Signup Row End -->
+          <!-- Signup Row Start -->
+          <!-- Signup Row Start -->
+
           <div class="signup-row">
             <div class="signup-column">
               <%= f.label :country %>
-              <%= f.select :state, [], {}, { id: "state", name: "user[state]", data: {state: current_user.state} } %>
+              <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.country}} %>
             </div>
             <div class="signup-column">
               <%= f.label :state %>
-              <%= f.select :state, [["Sindh", "sindh"], ["Punjab", "punjab"]], {}, class: "custom-select" %>
+              <%= f.select :state, [], {}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.state} } %>
             </div>
           </div>
           <!-- Signup Row Start -->
           <div class="signup-row">
             <div class="signup-column">
-              <%= f.label :document_number, "Document ID Number" %>
-              <%= f.text_field :document_number %>
-            </div>
-            <div class="signup-column">
               <%= f.label :city %>
               <%= f.text_field :city, class: "custom-select" %>
             </div>
+            <div class="signup-column">
+              <%= f.label :document_number, "Document ID Number" %>
+              <%= f.text_field :document_number %>
+            </div>
           </div>
+
           <div class="signup-row">
             <div class="signup-column">
               <%= f.label :contact_number %>
