@@ -48,6 +48,9 @@
               <%= form_group_for f, :state do %>
                 <%= f.select :state, [], {}, { id: "state", class: "form-control", name: "my_network[state]", data: {state: @user.state} } %>
               <% end %>
+              <%= form_group_for f, :state do %>
+                <%= f.select :state, [], {}, { id: "state", class: "form-control", name: "my_network[state]", data: {state: current_user.try(:state)} } %>
+              <% end %>
               <%= form_group_for f, :city do %>
                 <%= f.text_field :city, class: "form-control" %>
               <% end %>

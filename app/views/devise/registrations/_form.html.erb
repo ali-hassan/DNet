@@ -92,11 +92,11 @@
           <div class="signup-row">
             <div class="signup-column">
               <%= f.label :country %>
-              <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.country}} %>
+              <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
             </div>
             <div class="signup-column">
               <%= f.label :state %>
-              <%= f.select :state, [], {}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.state} } %>
+              <%= f.select :state, [], {}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
             </div>
           </div>
           <!-- Signup Row Start -->
@@ -138,3 +138,6 @@
     <% end %>
   </div>
 </div>
+<script>
+    populateCountries("country", "state", "city")
+</script>
