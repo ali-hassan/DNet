@@ -7,11 +7,11 @@ ActiveAdmin.register User, as: 'FreeUser' do
       f.input :first_name
       f.input :last_name
       f.input :username
-      f.input :pin_capacity, label: "Pin Balance"
+      f.input :pin_capacity, label: "Pin Capacity", as: :select, collection: ["100$", "200$", "300$", "500$", "1000$", "2000$", "5000$", "10000$"]
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :parent_id, :label => 'Sponsor', :as => :select, :collection => User.where(is_pin: true).map{|u| [u.full_name, u.id]}, :prompt => "Select Sponsor"
+      f.input :parent_id, :label => 'Sponsor', :as => :select, :collection => User.all.map{|u| [u.full_name, u.id]}, :prompt => "Select Sponsor"
     end
 
     f.actions
