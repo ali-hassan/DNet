@@ -57,6 +57,9 @@ class User < ApplicationRecord
   def self.admin_user
     find_by is_admin: true
   end
+  def self.add_amount(amount)
+    admin_user.update(smart_wallent_balance: admin_user.smart_balance_wallet.to_f + amount.try(:to_f))
+  end
   delegate :find_last_right_node, :find_last_left_node, :parent_lists, :package_price, :direct_bonus_users_count,
    :direct_bonus_users_count_left, :direct_bonus_users_count_right, :indirect_bonus_users_count, :earn_weekly_point,
    :current_package, to: :adapter
