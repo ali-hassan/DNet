@@ -41,32 +41,31 @@
 
     <!-- Sidebar Block 3 Start -->
     <div class="sidebar-block">
-      <div class="heading">
-        <h2>Sponsor Information</h2>
-      </div>
       <% unless current_user.sponsor_id.nil? %>
+        <div class="heading">
+          <h2>Sponsor Information</h2>
+        </div>
         <% @sponser = (current_user.created_by || current_user.parent) %>
-          <div class="sidebar-content-body">
-            <ul>
-              <li>
-                <span class="title">Sponsor Name</span>
-                <h4><%=@sponser.full_name%></h4>
-              </li>
-              <li>
-                <span class="title">Sponsor Username</span>
-                <h4><%= @sponser.username %></h4>
-              </li>
-              <li>
-                <span class="title">Sponsor Country</span>
-                <h4><%= @sponser.country %></h4>
-              </li>
-              <li>
-                <span class="title">Date Joined</span>
-                <h4><%= @sponser.created_at.strftime("%b. %e %Y") %></h4>
-              </li>
-            </ul>
-          </div>
-
+        <div class="sidebar-content-body">
+          <ul>
+            <li>
+              <span class="title">Sponsor Name</span>
+              <h4><%=@sponser.full_name%></h4>
+            </li>
+            <li>
+              <span class="title">Sponsor Username</span>
+              <h4><%= @sponser.username %></h4>
+            </li>
+            <li>
+              <span class="title">Sponsor Country</span>
+              <h4><%= @sponser.country %></h4>
+            </li>
+            <li>
+              <span class="title">Date Joined</span>
+              <h4><%= @sponser.created_at.strftime("%b. %e %Y") %></h4>
+            </li>
+          </ul>
+        </div>
       <% end %>
     </div>
     <!-- Sidebar Block 3 End -->

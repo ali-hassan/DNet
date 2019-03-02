@@ -1,6 +1,6 @@
 ActiveAdmin.register User, as: 'FreeUser' do
   permit_params :first_name, :last_name, :email, :password, :password_confirmation, :is_pin,
-    :username, :smart_wallet_balance, :parent_id, :pin_capacity
+    :username, :smart_wallet_balance, :parent_id, :pin_capacity, :parent_position, :fit_user
   form do |f|
     f.inputs do
       f.hidden_field :is_pin, value: true
@@ -11,7 +11,8 @@ ActiveAdmin.register User, as: 'FreeUser' do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :parent_id, :label => 'Sponsor', :as => :select, :collection => User.all.map{|u| [u.full_name, u.id]}, :prompt => "Select Sponsor"
+      f.input :fit_user, :label => 'Sponsor', :as => :select, :collection => User.all.map{|u| [u.full_name, u.id]}, :prompt => "Select Sponsor"
+      f.input :parent_position, :label => 'Position', :as => :select, :collection => [["Right", "right"], ["Left", "left"]], :prompt => "Select position"
     end
 
     f.actions

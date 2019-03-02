@@ -62,6 +62,14 @@ class User < ApplicationRecord
   def self.add_amount(amount)
     admin_user.update(smart_wallent_balance: admin_user.smart_balance_wallet.to_f + amount.try(:to_f))
   end
+  def fit_user
+    @fit_user ||= self.created_by
+  end
+  def fit_user=(usr_id)
+    self.created_by_id = @fit_user = usr_id
+    self.parent_position ||= Setting.find_value("tree_node").try(:value)
+    self.parent = created_by.send("find_last_#{parent_position}_node") || self.created_by
+  end
   delegate :find_last_right_node, :find_last_left_node, :parent_lists, :package_price, :direct_bonus_users_count,
    :direct_bonus_users_count_left, :direct_bonus_users_count_right, :indirect_bonus_users_count, :earn_weekly_point,
    :current_package, to: :adapter
