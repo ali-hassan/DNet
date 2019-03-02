@@ -39,7 +39,7 @@ class CurrentUserAdapter
     (ch = usr.children).present? && ch.each { |u| result.push(u); fetch_children_list(u, result) } || result
   end
   def direct_bonus_users_count
-    created_users.where(is_package_activated:  true).map { |usr| usr.package_price * 0.06 }.sum
+    user.current_bonus_points.try(:to_f)
   end
   def direct_users
     created_users.where(is_package_activated:  true)
@@ -71,7 +71,7 @@ class CurrentUserAdapter
     @cupda ||= CalculateUserParentDirectBonus.new(user)
   end
   def apply_indirect_bonus_at(index, package_price)
-    pp = package_price / (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index}").value.try(:to_f) * 100)
+    pp = package_price / (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f) * 100)
     user.update(indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp, indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp)
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true

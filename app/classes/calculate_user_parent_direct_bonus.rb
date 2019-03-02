@@ -23,16 +23,20 @@ class CalculateUserParentDirectBonus
       current_bonus_points: current_bonus_points_sum,
       total_bonus_points: total_bonus_points_sum,
       smart_wallet_balance: smart_wallet_balance_sum,
+      binary_bonus: bonus_wallet_sum,
     }
   end
   def current_bonus_val
-    (package_price / (Setting.find_value("default_direct_bonus_%").value.try(:to_f) * 100))
+    (package_price / 100 * 8.0)
+  end
+  def bonus_wallet_sum
+    created_by.binary_bonus.try(:to_f) + adapter.find_packages.current_package[:binary]
   end
   def current_bonus_points_sum
-    current_bonus_points.try(:to_f) + current_bonus_val
+    created_by.current_bonus_points.try(:to_f) + current_bonus_val
   end
   def total_bonus_points_sum
-    total_bonus_points.try(:to_f) + current_bonus_points.try(:to_f)
+    created_by.total_bonus_points.try(:to_f) + current_bonus_val.try(:to_f)
   end
   def rank_list
     {

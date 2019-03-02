@@ -33,6 +33,7 @@ class User < ApplicationRecord
   monetize :indirect_total_bonus_amount_cents
   monetize :pin_capacity_cents
   monetize :current_x_factor_income_cents
+  monetize :binary_bonus_cents
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   def current_pin_verify
@@ -60,7 +61,7 @@ class User < ApplicationRecord
     find_by is_admin: true
   end
   def self.add_amount(amount)
-    admin_user.update(smart_wallent_balance: admin_user.smart_balance_wallet.to_f + amount.try(:to_f))
+    admin_user.update(smart_wallet_balance: admin_user.smart_wallet_balance.to_f + amount.try(:to_f))
   end
   def fit_user
     @fit_user ||= self.created_by

@@ -17,7 +17,7 @@ class ChargeAmountAtA
     {
       smart_wallet_balance: smart_wallet_balance.try(:to_f) - deducation_amount,
       package_id: package_id,
-      current_x_factor: 0,
+      current_x_factor_income: 0,
       current_package_iteration: 50,
     }
   end

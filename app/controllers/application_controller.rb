@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
       request.env['omniauth.origin'] || stored_location_for(resource) || resource.class.name == "AdminUser" && "/admin" || dashboard_index_url(subdomain: 'office')
     end
   end
+  def after_sign_out_path_for(resource)
+    new_user_session_url(subdomain: "office")
+  end
   def check_subdomain
     if request.subdomain == "office" && (["/affiliate_program", "/download", "/faq", "/terms"].include?(request.path) || request.path == "/")
       redirect_to request.url.sub("office.", "")
