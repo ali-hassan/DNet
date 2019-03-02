@@ -45,7 +45,7 @@
         <h2>Sponsor Information</h2>
       </div>
       <% unless current_user.sponsor_id.nil? %>
-        <% @sponser = User.find(current_user.sponsor_id) %>
+        <% @sponser = (current_user.created_by || current_user.parent) %>
           <div class="sidebar-content-body">
             <ul>
               <li>
@@ -54,15 +54,15 @@
               </li>
               <li>
                 <span class="title">Sponsor Username</span>
-                <h4><%= @sponsor.username %></h4>
+                <h4><%= @sponser.username %></h4>
               </li>
               <li>
                 <span class="title">Sponsor Country</span>
-                <h4><%= @sponsor.country %></h4>
+                <h4><%= @sponser.country %></h4>
               </li>
               <li>
                 <span class="title">Date Joined</span>
-                <h4><%= @sponsor.created_at.strftime("%b. %e %Y") %></h4>
+                <h4><%= @sponser.created_at.strftime("%b. %e %Y") %></h4>
               </li>
             </ul>
           </div>

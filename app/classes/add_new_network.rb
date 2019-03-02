@@ -16,7 +16,7 @@ class AddNewNetwork
     ActiveModel::Name.new(self, nil, "MyNetwork")
   end
   delegate :generate_token, :parent_id, :parent_id=, :parent_position,
-    :first_name, :first_name=, :last_name, :last_name=,
+    :first_name, :first_name=, :pin, :pin=, :last_name, :last_name=,
     :parent_position=, :sponsor_id, :sponsor_id=, :email, :email=,
     :contact_number, :contact_number=, :password_confirmation, :password_confirmation=,
     :errors, :city, :city=, :state, :state=, :document_number, :document_number=,
