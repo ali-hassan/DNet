@@ -35,7 +35,7 @@
             </li>
             <li>
               <div class="image-holder">
-                <%= link_to buy_plans_path(plan_id: params[:id]), data: { method: :post } do %>
+                <%= link_to edit_buy_plan_url(params[:id], subdomain: "office"), remote: true do %>
                   <%=image_tag "ic_accountoaccount.png", alt: "image descriptions"%>
                 <% end %>
               </div>
@@ -47,24 +47,3 @@
     </div>
   </div>
 </main>
-
-
-
-<!--<main class="main">-->
-<!--<div class="main-content">-->
-<!--<div class="container" id="why_forex_text">-->
-    <!--<div class="row clients" style="margin-left: -15px; margin-right: -15px;">-->
-      <!--<div class="col-sm-3 img-center">-->
-        <!--<%#= link_to buy_plans_path(plan_id: params[:id]), data: { method: :post } do %>-->
-          <!--<%#= image_tag "client5" %>-->
-        <!--<%# end %>-->
-      <!--</div>-->
-      <!--<div class="col-sm-3 img-center">-->
-        <!--<%#= link_to pay_with_bitcoin_url(params[:id], subdomain: 'office') do %>-->
-          <!--<%#= image_tag Rails.application.secrets.bitpay_button_strings[:button_string] %>-->
-        <!--<%# end %>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-<!--</main>-->

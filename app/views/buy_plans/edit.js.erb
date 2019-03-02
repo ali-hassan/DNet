@@ -1,0 +1,5 @@
+$("#ata_prompt_modal").remove();
+$(".modal-backdrop.in").remove();
+$("body").append("<%= j render "modal" %>");
+$("#ata_prompt_modal").modal();
+

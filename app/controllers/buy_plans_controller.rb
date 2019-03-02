@@ -8,6 +8,9 @@ class BuyPlansController < ApplicationController
     ChargeAmountAtA.new(current_user, params[:plan_id]).charge!
     redirect_to :my_networks, notice: 'Successfully scribed'
   end
+  def edit
+    @package = FindPackages.new(params[:id])
+  end
   private
   def find_package
     @package = FindPackages.new(params[:id])

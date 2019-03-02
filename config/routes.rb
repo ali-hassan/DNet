@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   with_options constraints: { subdomain: 'office' } do |subdomain_constraint|
     subdomain_constraint.resources :verify_sponsor_users
-    subdomain_constraint.resources :buy_plans, only: [:index, :show, :create]
+    subdomain_constraint.resources :buy_plans, only: [:index, :show, :create, :edit]
     subdomain_constraint.resources :histories, only: [:index]
     subdomain_constraint.resources :news, only: [:index]
     subdomain_constraint.resources :trainings, only: [:index]
