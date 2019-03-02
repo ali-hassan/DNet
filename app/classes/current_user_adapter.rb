@@ -59,7 +59,9 @@ class CurrentUserAdapter
   def package_price
     current_package ? current_package[:price] : 0.00
   end
-
+  def cash_wallet_total
+    direct_bonus_users_count + indirect_bonus_users_count + user.current_total_weekly_roi_amount.try(:to_f)
+  end
   def earn_weekly_point
     perform_weekly_count.perform
   end
@@ -72,7 +74,11 @@ class CurrentUserAdapter
   end
   def apply_indirect_bonus_at(index, package_price)
     pp = package_price / (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f) * 100)
-    user.update(indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp, indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp)
+    user.update(
+        total_income: user.total_income.try(:to_f) + pp,
+        indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,
+        indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp
+    )
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true

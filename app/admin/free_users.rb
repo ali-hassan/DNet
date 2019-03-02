@@ -11,7 +11,7 @@ ActiveAdmin.register User, as: 'FreeUser' do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :fit_user, :label => 'Sponsor', :as => :select, :collection => User.all.map{|u| [u.full_name, u.id]}, :prompt => "Select Sponsor"
+      f.input :fit_user, :label => 'Sponsor', :as => :select, :collection => User.all.map{|u| [u.username, u.id]}, :prompt => "Select Sponsor"
       f.input :parent_position, :label => 'Position', :as => :select, :collection => [["Right", "right"], ["Left", "left"]], :prompt => "Select position"
     end
 

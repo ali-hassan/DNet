@@ -14,7 +14,7 @@ Setting.find_or_create_by key: "default_weekly_basic_%", value: 5
 Setting.find_or_create_by key: "default_weekly_advance_%", value: 6
 Setting.find_or_create_by key: "default_direct_bonus_%", value: 8
 Setting.find_or_create_by key: "default_indirect_bonus_%_at_lvl_1", value: 2
-Setting.find_or_create_by key: "default_indirect_bonus_%_at_lvl_2", value: 2
+Setting.find_or_create_by key: "default_indirect_bonus_%_at_lvl_2", value: 1
 Setting.find_or_create_by key: "default_indirect_bonus_%_at_lvl_3", value: 1
 Setting.find_or_create_by key: "default_indirect_bonus_%_at_lvl_4", value: 1
 Setting.find_or_create_by key: "default_indirect_bonus_%_at_lvl_5", value: 0.5

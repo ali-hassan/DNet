@@ -30,7 +30,11 @@ class PerformWeeklyUser
       total_weekly_percentage_amount: total_weekly_percentage_amount_sum,
       current_total_weekly_roi_amount: current_weekly_roi_amount_sum,
       current_x_factor_income: calculate_x_factor_sum,
+      total_income: total_income_sum,
     }
+  end
+  def total_income_sum
+    @user.total_income.try(:to_f) + current_week_roi_amount_sum
   end
   def calculate_x_factor_sum
     current_x_factor_income.try(:to_f) + current_week_roi_amount_sum
