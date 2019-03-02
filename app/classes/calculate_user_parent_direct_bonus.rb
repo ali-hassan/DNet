@@ -10,8 +10,7 @@ class CalculateUserParentDirectBonus
     @user = user
   end
   def calculate
-    created_by.try(:update, params)
-    apply_parents_bonus
+    (_ = created_by).present? && (_.update(params); apply_parents_bonus) || false
   end
   def apply_parents_bonus
     alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price) }
@@ -33,7 +32,7 @@ class CalculateUserParentDirectBonus
     current_bonus_points.try(:to_f) + current_bonus_val
   end
   def total_bonus_points_sum
-    total_bonus_points.try(:to_f) + current_bonus_points
+    total_bonus_points.try(:to_f) + current_bonus_points.try(:to_f)
   end
   def rank_list
     {
@@ -58,6 +57,6 @@ class CalculateUserParentDirectBonus
     !["", "pin"].include?(_=current_rank.try(:reward)) && ca(_) || 0
   end
   def ca(amount)
-    created_by.smart_wallet_balance.to_f + amount.to_f
+    created_by.present? && (created_by.smart_wallet_balance.to_f + amount.to_f) || 0
   end
 end

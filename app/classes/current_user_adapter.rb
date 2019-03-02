@@ -23,8 +23,8 @@ class CurrentUserAdapter
   def fetch_parent_list(usr, result=[])
     (_=find_parent(usr)).present? && (result.push(_); fetch_parent_list(_, result)) || result
   end
-  def find_parent(usr, method=:parent_id)
-    User.find_by id: usr.send(method)
+  def find_parent(usr, mthd=:parent_id)
+    User.find_by id: usr.send(mthd)
   end
   def fetch_linked_parent_list(usr, result=[])
     (_=find_parent(usr, :created_by_id)).present? && (result.push(_); fetch_linked_parent_list(_, result)) || result

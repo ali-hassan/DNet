@@ -34,6 +34,6 @@ class PerformWeeklyUser
     current_week_roi_amount_sum + total_weekly_percentage_amount.to_f
   end
   def current_weekly_roi_amount_sum
-    current_week_roi_amount_sum + current_total_weekly_roi_amount.to_f
+    current_week_roi_amount_sum + current_week_roi_amount.to_f
   end
 end
