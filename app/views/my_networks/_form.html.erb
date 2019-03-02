@@ -43,13 +43,16 @@
                 <%= f.text_field :document_number, class: "form-control" %>
               <% end %>
               <%= form_group_for f, :country do %>
-                <%= f.select :country, [], {}, { id: "country" , class: "form-control", name: "my_network[country]", data: {country: current_user.country}} %>
+                <%= f.select :country, [], {}, { id: "country" , class: "form-control", name: "my_network[country]", data: {country: @user.country}} %>
               <% end %>
               <%= form_group_for f, :state do %>
-                <%= f.select :state, [], {}, { id: "state", class: "form-control", name: "my_network[state]", data: {state: current_user.state} } %>
+                <%= f.select :state, [], {}, { id: "state", class: "form-control", name: "my_network[state]", data: {state: @user.state} } %>
               <% end %>
               <%= form_group_for f, :city do %>
                 <%= f.text_field :city, class: "form-control" %>
+              <% end %>
+              <%= form_group_for f, :pin do %>
+                <%= f.password_field :pin, class: 'form-control', maxlength: 4 %>
               <% end %>
             </div>
           </div>
