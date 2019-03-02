@@ -204,7 +204,7 @@
     </div>
     <!-- Content Block 2 End -->
 
-    <% if current_user.total_weekly_percentage_amount.try(:to_f) != 0 && current_user.current_total_weekly_roi_amount.try(:to_f) != 0 %>
+    <% if current_user.adapter.find_packages.try(:current_package).present? %>
       <!-- Content Block 3 Start -->
       <div class="main-content-block">
         <div class="heading">
@@ -212,8 +212,8 @@
         </div>
         <div class="main-content-body">
             <div id="chartContainer"
-                 data-weekly-total="<%= current_user.total_weekly_percentage_amount.try(:to_f) %>"
-                 data-weekly-current="<%= current_user.current_total_weekly_roi_amount.try(:to_f) %>"
+                 data-weekly-total="<%= current_user.adapter.find_packages.try(:xfactor_amount).try(:to_f) %>"
+                 data-weekly-current="<%= current_user.current_xfactor_income.try(:to_f) %>"
               style="height: 300px; width: 100%;"></div>
         </div>
       </div>
