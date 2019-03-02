@@ -22,11 +22,18 @@
             <span class="title">Current Rank</span>
             <h3><%= current_user.adapter.cupda_current_rank.try(:name) %></h3>
           </li>
-          <li>
-            <span class="title">Purchased Package</span>
-            <h3><%= current_user.package_id%></h3>
-            <span><%= Date.today.strftime("%b. %e %Y") %></span>
-          </li>
+          <%- if current_user.is_pin%>
+            <li>
+              <span class="title">Pin Capacity</span>
+              <h3><%= current_user.pin_capacity%></h3>
+            </li>
+          <%else%>
+            <li>
+              <span class="title">Purchased Package</span>
+              <h3><%= current_user.package_id%></h3>
+              <span><%= Date.today.strftime("%b. %e %Y") %></span>
+            </li>
+          <%end%>
         </ul>
       </div>
     </div>

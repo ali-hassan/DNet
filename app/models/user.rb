@@ -31,6 +31,7 @@ class User < ApplicationRecord
   monetize :current_total_weekly_roi_amount_cents
   monetize :indirect_bonus_amount_cents
   monetize :indirect_total_bonus_amount_cents
+  monetize :pin_capacity_cents
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   def current_pin_verify
