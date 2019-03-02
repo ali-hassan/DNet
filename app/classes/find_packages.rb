@@ -51,6 +51,9 @@ class FindPackages
     packages[id]
   end
 
+  def xfactor_amount
+    current_package[:price] * Setting.find_value("default_#{current_package[:category].try(:downcase)}_package_xfactor").try(:value).try(:to_f)
+  end
   def current_payment_string
     Rails.application.secrets.bitpay_button_strings[id.gsub("-", "_").to_sym]
   end

@@ -59,7 +59,7 @@ class CurrentUserAdapter
   def package_price
     current_package ? current_package[:price] : 0.00
   end
-
+  
   def earn_weekly_point
     perform_weekly_count.perform
   end
