@@ -13,6 +13,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
 
   </head>
   <body>
+    <%= render "flashmessages" %>
     <div id="wrapper">
       <div class="dashboard-page">
         <aside id="dashboard-sidebar">

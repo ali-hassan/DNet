@@ -20,7 +20,7 @@
   </head>
 
   <body class="<%= controller.controller_path.gsub("/", "--") %>">
-
+  <%= render "flashmessages" %>
   <%- unless ["devise/passwords", "sessions"].include?(params[:controller]) or params[:action] == "contact"%>
     <header>
     <div class="container-fluid" style="margin-left:15px; margin-right:15px; background-color:#000;">
