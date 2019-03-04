@@ -35,8 +35,14 @@ class CurrentUserAdapter
   def children_list
     fetch_children_list(user, [])
   end
-  def fetch_children_list(usr, result=[])
-    (ch = usr.children).present? && ch.each { |u| result.push(u); fetch_children_list(u, result) } || result
+  def fetch_children_list(usr, result=[], max_lvl=0, current_lvl=0)
+    children_condition?(ch=usr.children, max_lvl, current_lvl) && ch.each { |u| result.push(u); fetch_children_list(u, result, max_lvl, current_lvl+1) } || result
+  end
+  def children_condition?(children, max_lvl, current_lvl)
+    children.present? && (max_lvl != 0 || max_lvl >= current_lvl) || false
+  end
+  def children_list_lvl_3
+    fetch_children_list(user, [], 6)
   end
   def direct_bonus_users_count
     user.current_bonus_points.try(:to_f)
