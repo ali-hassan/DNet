@@ -57,10 +57,10 @@ class CurrentUserAdapter
     created_users.where(is_package_activated:  true, parent_position: "right").map { |usr| usr.package_price * 0.06 }
   end
   def left_team_members_count
-    created_users.where(is_package_activated:  true, parent_position: "left").count
+    created_users.where(is_pin: false, parent_position: "left").count
   end
   def right_team_members_count
-    created_users.where(is_package_activated:  true, parent_position: "right").count
+    created_users.where(is_pin: false, parent_position: "right").count
   end
   def indirect_bonus_users_count
     indirect_total_bonus_amount.try(:to_f)
@@ -85,7 +85,7 @@ class CurrentUserAdapter
     @cupda ||= CalculateUserParentDirectBonus.new(user)
   end
   def apply_indirect_bonus_at(index, package_price)
-    pp = package_price / (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f) * 100)
+    pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
     user.update(
         total_income: user.total_income.try(:to_f) + pp,
         indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,
