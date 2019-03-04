@@ -65,9 +65,10 @@
       <div class="heading">
         <h2>Binary Genealogy</h2>
       </div>
+      <div id="back_genealogy_btn"></div>
       <div class="main-content-body tree">
         <ul>
-          <li id="<%= dom_id current_user, :tree %>" data-load-default-tree>
+          <li id="<%= dom_id current_user, :tree %>" data-node-name="<%= current_user.full_name %>" data-node-id="<%= current_user.id %>"  data-load-default-tree>
             <a href="#"><%= current_user.full_name %></a>
           </li>
       </div>

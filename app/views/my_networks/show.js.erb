@@ -12,9 +12,9 @@ $childrenContainer.html(html);
 
 <% @children.each do |child| %>
   <% if child.parent_position == "left" %>
-    $childrenContainer.find(".left-child").replaceWith("<li id='<%= dom_id child, :tree %>'><a href='#' class='node-focus-href' data-child-id='<%= child.id %>' data-child-name='<%= child.name_or_id %>'><%= child.name_or_id %></a></li>");
+    $childrenContainer.find(".left-child").replaceWith("<li id='<%= dom_id child, :tree %>' data-node-name='<%= child.name_or_id %>' data-node-id='<%= child.id %>'><a href='#' class='node-focus-href' data-child-id='<%= child.id %>' data-child-name='<%= child.name_or_id %>'><%= child.name_or_id %></a></li>");
   <% elsif child.parent_position == "right" %>
-    $childrenContainer.find(".right-child").replaceWith("<li id='<%= dom_id child, :tree %>'><a href='#' class='node-focus-href' data-child-id='<%= child.id %>' data-child-name='<%= child.name_or_id %>'><%= child.name_or_id %></a></li>");
+    $childrenContainer.find(".right-child").replaceWith("<li id='<%= dom_id child, :tree %>' data-node-name='<%= child.name_or_id %>' data-node-id='<%= child.id %>'><a href='#' class='node-focus-href' data-child-id='<%= child.id %>' data-child-name='<%= child.name_or_id %>'><%= child.name_or_id %></a></li>");
   <% end %>
   if (treeNodeCount < 2) {
     $.getScript("/my_networks/<%= child.id %>.js");
