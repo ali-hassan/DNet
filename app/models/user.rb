@@ -74,5 +74,5 @@ class User < ApplicationRecord
   end
   delegate :find_last_right_node, :find_last_left_node, :parent_lists, :package_price, :direct_bonus_users_count,
    :direct_bonus_users_count_left, :direct_bonus_users_count_right, :indirect_bonus_users_count, :earn_weekly_point,
-   :current_package, to: :adapter
+   :left_team_members_count, :right_team_members_count, :current_package, to: :adapter
 end

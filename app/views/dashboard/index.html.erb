@@ -159,7 +159,7 @@
               </dl>
               <dl>
                 <dt>Left Team</dt>
-                <dd><%= current_user.direct_bonus_users_count_left.try(:count) %> Members</dd>
+                <dd><%= current_user.left_team_members_count %> Members</dd>
               </dl>
             </div>
             <div class="columns-bottom">
@@ -184,7 +184,7 @@
               </dl>
               <dl>
                 <dt>Right Team</dt>
-                <dd><%= current_user.direct_bonus_users_count_right.try(:count) %> Members</dd>
+                <dd><%= current_user.right_team_members_count %> Members</dd>
               </dl>
             </div>
             <div class="columns-bottom">

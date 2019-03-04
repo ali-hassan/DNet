@@ -56,6 +56,12 @@ class CurrentUserAdapter
   def direct_bonus_users_count_right
     created_users.where(is_package_activated:  true, parent_position: "right").map { |usr| usr.package_price * 0.06 }
   end
+  def left_team_members_count
+    created_users.where(is_package_activated:  true, parent_position: "left").count
+  end
+  def right_team_members_count
+    created_users.where(is_package_activated:  true, parent_position: "right").count
+  end
   def indirect_bonus_users_count
     indirect_total_bonus_amount.try(:to_f)
   end
