@@ -57,10 +57,10 @@ class CurrentUserAdapter
     created_users.where(is_package_activated:  true, parent_position: "right").map { |usr| usr.package_price * 0.06 }
   end
   def left_team_members_count
-    created_users.where(is_pin: false, parent_position: "left").count
+    children_list.reject { |child| child.parent_position != "left" }.count
   end
   def right_team_members_count
-    created_users.where(is_pin: false, parent_position: "right").count
+    children_list.reject { |child| child.parent_position != "right" }.count
   end
   def indirect_bonus_users_count
     indirect_total_bonus_amount.try(:to_f)
