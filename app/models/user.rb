@@ -35,6 +35,8 @@ class User < ApplicationRecord
   monetize :current_x_factor_income_cents
   monetize :binary_bonus_cents
   monetize :total_income_cents
+  monetize :left_bonus_cents
+  monetize :right_bonus_cents
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   def current_pin_verify

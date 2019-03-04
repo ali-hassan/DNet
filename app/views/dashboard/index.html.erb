@@ -155,7 +155,7 @@
             <div class="columns-top">
               <dl>
                 <dt>Left Points</dt>
-                <dd><%= current_user.direct_bonus_users_count_left.try(:sum) %></dd>
+                <dd><%= current_user.left_bonus.to_f %></dd>
               </dl>
               <dl>
                 <dt>Left Team</dt>
@@ -180,7 +180,7 @@
             <div class="columns-top">
               <dl>
                 <dt>Right Points</dt>
-                <dd><%= current_user.direct_bonus_users_count_right.try(:sum) %></dd>
+                <dd><%= current_user.right_bonus.to_f %></dd>
               </dl>
               <dl>
                 <dt>Right Team</dt>

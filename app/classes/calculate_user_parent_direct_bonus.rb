@@ -4,7 +4,7 @@ class CalculateUserParentDirectBonus
 
   extend Forwardable
   def_delegators :@user, :total_bonus_points, :current_bonus_points, :package_price,
-    :created_by, :adapter
+    :created_by, :adapter, :parent_position
 
   def initialize(user)
     @user = user
@@ -25,9 +25,12 @@ class CalculateUserParentDirectBonus
       smart_wallet_balance: smart_wallet_balance_sum,
       binary_bonus: bonus_wallet_sum,
       total_income: total_income_sum,
-    }
+    }.merge(calculate_leg_bonus)
   end
 
+  def calculate_leg_bonus
+    { (_ = "#{parent_position}_bonus") => created_by.send(_).try(:to_f) + adapter.current_package[:binary] }
+  end
   def current_bonus_val
     (package_price / 100 * 8.0)
   end
