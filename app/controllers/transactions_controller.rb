@@ -8,8 +8,8 @@ class TransactionsController < ApplicationController
 
   end
   def create
-    if params[:cash_wallet] == "true"
-      @transaction = current_user.user_transactions.create(permitted_params.merge(user_id: current_user.id, receiver_id: current_user.id)) && redirect_to(cash_to_smart_transactions_url(subdomain: 'office')) || render(:cash_to_smart)
+    if params[:cash_wallet]
+      !(@transaction = current_user.user_transactions.create(permitted_params.merge(receiver_id: current_user.id))).errors.any? && redirect_to(cash_to_smart_transactions_url(subdomain: 'office'), notice: "Successfully transfered") || render(:cash_to_smart)
     else
       (@transaction = current_user.user_transactions.build(permitted_params)).save && redirect_to(transactions_url(subdomain: 'office')) || render(:index)
     end

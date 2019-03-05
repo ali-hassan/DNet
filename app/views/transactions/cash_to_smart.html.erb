@@ -8,11 +8,11 @@
       <div class="main-content-body">
         <div class="acount-holder">
           <%= form_for @transaction, url: transactions_url(subdomain: "office", cash_wallet: true) do |f| %>
-
+              <input type='hidden' name='cash_wallet' value='true' />
               <div class="custom-dashboard-row">
                 <div class="custom-dashboard-column">
                   <label>Username</label>
-                  <input type="text" value="<%= current_user.full_name %>" disabled="true">
+                  <input type="text" value="<%= current_user.full_name %>" readonly="true">
                 </div>
               </div>
 
@@ -24,7 +24,7 @@
                 </div>
                 <div class="custom-dashboard-column">
                   <label>Balance in (in your wallet)</label>
-                  <input type="text" value="<%= number_to_currency @transaction.bonus_wallet.to_f %>" readonly>
+                  <input type="text" value="<%= number_to_currency current_user.adapter.cash_wallet_total %>" readonly>
                 </div>
               </div>
               <!-- Signup Row End -->
@@ -34,7 +34,6 @@
                 <div class="custom-dashboard-column">
                   <%= f.label :amount, "Amount (To transfer)" %>
                   <%= f.text_field :amount %>
-                  <%= errors_for f, :bonus_wallet%>
                 </div>
               </div>
               <!-- Signup Row End -->
