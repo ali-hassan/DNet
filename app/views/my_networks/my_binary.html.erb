@@ -62,7 +62,7 @@
     <!-- Content Block 1 End -->
     <!-- Content Block 2 Start -->
     <div class="main-content-block">
-      <%-if current_user.package_id.present? %>
+      <%-if current_user.package_id.present? || current_user.is_pin %>
         <div class="heading">
           <h2>Binary Genealogy</h2>
         </div>
