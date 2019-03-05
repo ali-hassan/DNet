@@ -92,6 +92,9 @@ class CurrentUserAdapter
         indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp
     )
   end
+  def binary_bonus
+    (user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)
+  end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
   delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, to: :user, allow_nil: true
