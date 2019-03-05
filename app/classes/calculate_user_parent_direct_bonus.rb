@@ -13,7 +13,18 @@ class CalculateUserParentDirectBonus
     (_ = created_by).present? && (_.update(params); apply_parents_bonus) || false
   end
   def apply_parents_bonus
-    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price) }
+    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price) }; calculate_binary_bonus
+  end
+  def calculate_binary_bonus
+    cal_bb(adapter.parent_lists, parent_position, adapter.current_package[:binary])
+  end
+  def cal_bb(pl, position, binary, index=0)
+    (usr=pl[index]).present? && (calcu_ulb(usr, position, binary); cal_bb(pl, usr.parent_position, binary, index+1)) || true
+  end
+  def calcu_ulb(usr,position, binary)
+    usr.attributes = calculate_leg_bonus(usr, position, binary)
+    usr.binary_bonus = usr.adapter.calculate_binary_bonus
+    usr.save(validate: false)
   end
   def alpl(&block)
     adapter.linked_parent_list.values_at(1, 2, 3, 4, 5, 6).each.with_index(&block)
@@ -25,11 +36,11 @@ class CalculateUserParentDirectBonus
       smart_wallet_balance: smart_wallet_balance_sum,
       binary_bonus: bonus_wallet_sum,
       total_income: total_income_sum,
-    }.merge(calculate_leg_bonus)
+    }
   end
 
-  def calculate_leg_bonus
-    { (_ = "#{parent_position}_bonus") => created_by.send(_).try(:to_f) + adapter.current_package[:binary] }
+  def calculate_leg_bonus(usr, position, binary)
+    { (_ = "#{position}_bonus") => usr.send(_).try(:to_f) + binary }
   end
   def current_bonus_val
     (package_price / 100 * 8.0)

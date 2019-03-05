@@ -17,11 +17,14 @@ class CurrentUserAdapter
       end
     end
   end
+  def calculate_binary_bonus
+    ((left_bonus.to_f > right_bonus.to_f) && right_bonus || left_bonus).try(:to_f) * 0.50
+  end
   def parent_lists
     fetch_parent_list(user, [])
   end
   def fetch_parent_list(usr, result=[])
-    (_=find_parent(usr)).present? && (result.push(_); fetch_parent_list(_, result)) || result
+    (_=find_parent(usr)).present? && (result.push(_); fetch_parent_list(_, result); result) || result
   end
   def find_parent(usr, mthd=:parent_id)
     User.find_by id: usr.send(mthd)
@@ -103,5 +106,5 @@ class CurrentUserAdapter
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
-  delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, to: :user, allow_nil: true
+  delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, to: :user, allow_nil: true
 end
