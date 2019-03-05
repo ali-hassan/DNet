@@ -11,7 +11,8 @@ class TransactionsController < ApplicationController
     if params[:cash_wallet]
       !(@transaction = current_user.user_transactions.create(permitted_params.merge(receiver_id: current_user.id))).errors.any? && redirect_to(cash_to_smart_transactions_url(subdomain: 'office'), notice: "Successfully transfered") || render(:cash_to_smart)
     else
-      (@transaction = current_user.user_transactions.build(permitted_params)).save && redirect_to(transactions_url(subdomain: 'office')) || render(:index)
+      permitted_params[:amount].present? && update_transactions
+      (@transaction = current_user.user_transactions.build(permitted_params)).save && redirect_to(transactions_url(subdomain: 'office'), notice: "Successfully transfered") || render(:index, notice: "Successfully transfered")
     end
   end
 
@@ -26,5 +27,12 @@ class TransactionsController < ApplicationController
 
   def build_transaction
     @transaction = current_user.user_transactions.build
+  end
+
+  def update_transactions
+    current_user.update smart_wallet_balance: (current_user.smart_wallet_balance.to_f - permitted_params[:amount].to_f)
+    receiver = User.find_by(id: permitted_params[:receiver_id])
+    new_balance = receiver.smart_wallet_balance.to_f +  permitted_params[:amount].to_f
+    receiver.update smart_wallet_balance: new_balance
   end
 end
