@@ -81,7 +81,7 @@ class CurrentUserAdapter
     current_package ? current_package[:price] : 0.00
   end
   def cash_wallet_total
-    (direct_bonus_users_count + indirect_bonus_users_count + user.current_total_weekly_roi_amount.try(:to_f)) - user.cash_wallet_minus.to_f
+    (direct_bonus_users_count + indirect_bonus_users_count + user.current_total_weekly_roi_amount.try(:to_f) + user.binary_bonus.try(:to_f)) - user.cash_wallet_minus.to_f
   end
   def earn_weekly_point
     perform_weekly_count.perform
@@ -103,6 +103,9 @@ class CurrentUserAdapter
   end
   def binary_bonus
     (user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)
+  end
+  def total_income
+    user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
