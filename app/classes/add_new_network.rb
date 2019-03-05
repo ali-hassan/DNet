@@ -5,7 +5,7 @@ class AddNewNetwork
     self.current_user = current_user
     self.parent_id, self.sponsor_id = current_user.id, generate_token
     self.created_by_id = current_user.id
-    self.referred_by_id = self.parent_id
+    self.referred_by_id = self.created_by_id
     attrs.each { |k, v| send("#{k}=", v) }
   end
   def new_user

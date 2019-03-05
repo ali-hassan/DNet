@@ -16,7 +16,7 @@
             <div class="signup-holder">
               <!-- Signup Row Start -->
               <%= form_group_for f, :referred_by_id do %>
-                <%= f.select :referred_by_id, @user.parent_lists.map { |usr| [usr.username, usr.id] }.reverse, {}, class: 'form-control' %>
+                <%= f.text_field :referred_by_id, value: current_user.try(:full_name), disabled: true, class: 'form-control' %>
               <% end %>
               <%= form_group_for f, :first_name do %>
                 <%= f.text_field :first_name, class: 'form-control' %>
