@@ -6,7 +6,7 @@ class BuyPlansController < ApplicationController
 
   def create
     ChargeAmountAtA.new(current_user, params[:plan_id]).charge!
-    redirect_to :my_networks, notice: 'Successfully scribed'
+    redirect_to(dashboard_index_url(subdomain: 'office'), notice: 'Successfully scribed')
   end
   def edit
     @package = FindPackages.new(params[:id])
