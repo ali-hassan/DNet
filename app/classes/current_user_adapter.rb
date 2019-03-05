@@ -57,10 +57,16 @@ class CurrentUserAdapter
     created_users.where(is_package_activated:  true, parent_position: "right").map { |usr| usr.package_price * 0.06 }
   end
   def left_team_members_count
-    children_list.reject { |child| child.parent_position != "left" }.count
+    (ch = user.children.where(parent_position: "left").first) && (ch.adapter.find_child_list_by_parent_id.count + 1) || 0
   end
   def right_team_members_count
-    children_list.reject { |child| child.parent_position != "right" }.count
+    (ch = user.children.where(parent_position: "right").first) && (ch.adapter.find_child_list_by_parent_id.count + 1) || 0
+  end
+  def find_child_list_by_parent_id
+    child_list_by_parent_id(user, [])
+  end
+  def child_list_by_parent_id(usr, result=[])
+    (chld = User.where(parent_id: usr.id)).present? && (chld.each { |u| result.push(u); child_list_by_parent_id(u, result) }; result) || result
   end
   def indirect_bonus_users_count
     indirect_total_bonus_amount.try(:to_f)
@@ -87,9 +93,9 @@ class CurrentUserAdapter
   def apply_indirect_bonus_at(index, package_price)
     pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
     user.update(
-        total_income: user.total_income.try(:to_f) + pp,
-        indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,
-        indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp
+      total_income: user.total_income.try(:to_f) + pp,
+      indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,
+      indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp
     )
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
