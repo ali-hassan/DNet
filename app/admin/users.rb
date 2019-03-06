@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :smart_wallet_balance
+  permit_params :email, :password, :password_confirmation, :smart_wallet_balance, :total_bonus_points, :indirect_bonus_amount,
+                :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :cash_wallet_total
 
   index do
     selectable_column
@@ -20,6 +21,16 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :smart_wallet_balance, label: "Smart Wizard Balance"
+      f.input :smart_wallet_balance
+      f.input :total_bonus_points
+      f.input :indirect_bonus_amount
+      f.input :indirect_total_bonus_amount
+      f.input :binary_bonus
+      f.input :total_income
+      f.input :left_bonus
+      f.input :right_bonus
+      f.input :cash_wallet_total
+
     end
     f.actions
   end
