@@ -41,7 +41,7 @@
 
     <!-- Sidebar Block 3 Start -->
     <div class="sidebar-block">
-      <% unless current_user.sponsor_id.nil? %>
+      <% if current_user.sponsor_id.present? || current_user.is_pin %>
         <div class="heading">
           <h2>Sponsor Information</h2>
         </div>
@@ -92,7 +92,7 @@
               <%=image_tag "ic_bonus.png", class:"currency-symbol-img", alt: "Symbol"%>
             </div>
             <div class="columns-bottom">
-              <h3><%= number_to_currency current_user.total_income.try(:to_f) %></h3>
+              <h3><%= number_to_currency current_user.total_income.try(:to_f) + current_user.binary_bonus.try(:to_f) %></h3>
               <span>Total Income</span>
               <%=image_tag "dollar-symbol.png", class: "currency-symbol-img dollar-symbol", alt: "Symbol"%>
             </div>
@@ -112,7 +112,7 @@
               <%=image_tag "ic_indirectincome.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
             <div class="columns-bottom">
-              <h3>$<%= current_user.adapter.cash_wallet_total %></h3>
+              <h3>$<%= current_user.adapter.cash_wallet_total + current_user.binary_bonus.try(:to_f) %></h3>
               <span>Cash Wallet</span>
               <%=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>

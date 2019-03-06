@@ -62,16 +62,18 @@
     <!-- Content Block 1 End -->
     <!-- Content Block 2 Start -->
     <div class="main-content-block">
-      <div class="heading">
-        <h2>Binary Genealogy</h2>
-      </div>
-      <div id="back_genealogy_btn"></div>
-      <div class="main-content-body tree">
-        <ul>
-          <li id="<%= dom_id current_user, :tree %>" data-node-name="<%= current_user.full_name %>" data-node-id="<%= current_user.id %>"  data-load-default-tree>
-            <a href="#"><%= current_user.full_name %></a>
-          </li>
-      </div>
+      <%-if current_user.package_id.present? || current_user.is_pin %>
+        <div class="heading">
+          <h2>Binary Genealogy</h2>
+        </div>
+        <div id="back_genealogy_btn"></div>
+        <div class="main-content-body tree">
+          <ul>
+            <li id="<%= dom_id current_user, :tree %>" data-node-name="<%= current_user.username %>" data-node-id="<%= current_user.id %>"  data-load-default-tree>
+              <a href="#"><%= current_user.username %></a>
+            </li>
+        </div>
+      <%end%>
     </div>
     <!-- Content Block 2 End -->
   </div>

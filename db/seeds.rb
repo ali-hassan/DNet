@@ -22,6 +22,7 @@ Setting.find_or_create_by key: "default_indirect_bonus_%_at_lvl_6", value: 0.5
 Setting.find_or_create_by key: "default_starter_package_xfactor", value: 4
 Setting.find_or_create_by key: "default_basic_package_xfactor", value: 5
 Setting.find_or_create_by key: "default_advance_package_xfactor", value: 6
+Setting.find_or_create_by key: "register_button_link", value: "https://google.com"
 begin
   AdminUser.create!(email: 'admin@forexhometrade.com', password: 'Password123', password_confirmation: 'Password123') if Rails.env.development?
   User.create(email: "admin1@forexhometrade.com", password: "Password123", password_confirmation: 'Password123', username: "admin", is_admin: true, first_name: "forex", last_name: "admin",smart_wallet_balance: "300000")

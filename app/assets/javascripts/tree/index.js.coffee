@@ -20,7 +20,7 @@ $(document).on "turbolinks:load", ->
     binaryTree = new BinaryTreeView(childId)
     binaryTree.render()
     if treeBackState.length
-      $("#back_genealogy_btn").html("<a href='#' class='back-btn-tree'>Back</a>")
+      $("#back_genealogy_btn").html("<a href='#' class='back-btn-tree' style='margin-left: 20px; background-color: black; font-size: 25px;'>Back</a>")
 
   $(document).on "click", ".back-btn-tree", (eventObject) ->
     eventObject.preventDefault()

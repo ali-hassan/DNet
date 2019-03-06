@@ -31,11 +31,11 @@
               <%= link_to new_user_session_url(subdomain: 'office') do %>
                   <%= image_tag "btn-login.png" %>
               <% end %>
-              <!--<li>-->
-                <!--<%#= link_to users_sign_up_url(subdomain: 'office') do %>-->
-                  <!--<%#= image_tag "btn-register.png", alt: "login" %>-->
-                <!--<%# end %>-->
-              <!--</li>-->
+              <li>
+                <%#= link_to Setting.find_by_key("register_button_link") || users_sign_up_url(subdomain: 'office') do %>
+                  <%#= image_tag "btn-register.png", alt: "login" %>
+                <%# end %>
+              </li>
             </ul>
           </div>
         </div>

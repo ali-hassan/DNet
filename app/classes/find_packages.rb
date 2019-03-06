@@ -5,42 +5,42 @@ class FindPackages
   end
   def packages
     {
-      "package-01": {
+      "100": {
         price: 100,
         binary: 24,
         category: "starter",
       },
-      "package-02": {
+      "200": {
         price: 200,
         binary: 48,
         category: "starter"
       },
-      "package-03": {
+      "300": {
         price: 300,
         binary: 72,
         category: "starter",
       },
-      "package-04": {
+      "500": {
         price: 500,
         binary: 120,
         category: "Basic",
       },
-      "package-05": {
+      "1000": {
         price: 1000,
         binary: 240,
         category: "Basic"
       },
-      "package-06": {
+      "2000": {
         price: 2000,
         binary: 480,
         category: 'Advance'
       },
-      "package-07": {
+      "5000": {
         price: 5000,
         binary: 1200,
         category: 'Advance'
       },
-      "package-08": {
+      "10000": {
         price: 10000,
         binary: 2400,
         category: 'Advance',
