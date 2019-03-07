@@ -8,6 +8,7 @@ class CalculateUserParentDirectBonus
 
   def initialize(user)
     @user = user
+    user.is_pin? && ignore_list.push(user.parent_id)
   end
   def calculate
     (_ = created_by).present? && (_.update(params); apply_parents_bonus) || false
@@ -31,7 +32,6 @@ class CalculateUserParentDirectBonus
     @ignore_list ||= Array.new
   end
   def calcu_ulb(usr,position, binary)
-    usr.is_pin? && ignore_list.push(usr.parent_id)
     if ignore_list.include?(usr.id)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
