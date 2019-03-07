@@ -32,7 +32,7 @@ class CalculateUserParentDirectBonus
     @ignore_list ||= Array.new
   end
   def calcu_ulb(usr,position, binary)
-    if ignore_list.include?(usr.id)
+    if !ignore_list.include?(usr.id)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
       usr.save(validate: false)
