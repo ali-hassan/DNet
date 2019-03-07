@@ -19,17 +19,17 @@ class CalculateUserParentDirectBonus
     cal_bb(adapter.parent_lists, parent_position, adapter.current_package[:binary])
   end
   def cal_bb(pl, position, binary, index=0)
-    cal_bb_condition?(usr=pl[index]) && (calcu_ulb(usr, position, binary); cal_bb(pl, usr.parent_position, binary, index+1)) || true
+    (usr=pl[index]).present? && ((!usr.is_pin? && calcu_ulb(usr, position, binary)); cal_bb(pl, usr.parent_position, binary, index+1)) || true
   end
   def cal_bb_condition?(usr)
-    usr.present? && !usr.is_pin? && child_condition?(usr, "left") && child_condition?(usr, "right")
+    child_condition?(usr, "left") && child_condition?(usr, "right")
   end
   def child_condition?(usr, position)
     ((ch = usr.children.where(parent_position: position).first) && (ch.adapter.find_child_list_by_parent_id.map(&:created_by_id).include?(usr.id)))
   end
   def calcu_ulb(usr,position, binary)
     usr.attributes = calculate_leg_bonus(usr, position, binary)
-    usr.binary_bonus = usr.adapter.calculate_binary_bonus
+    usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
     usr.save(validate: false)
   end
   def alpl(&block)

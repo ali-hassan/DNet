@@ -102,7 +102,7 @@ class CurrentUserAdapter
     )
   end
   def binary_bonus
-    (user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)
+    user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end
   def total_income
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
