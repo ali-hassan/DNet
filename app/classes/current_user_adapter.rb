@@ -101,6 +101,15 @@ class CurrentUserAdapter
       indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp
     )
   end
+  def max_package_total_earning
+    selected_earning_method
+  end
+  def selected_earning_method
+    {
+      pin: user.pin_capacity.try(:to_f) * 4,
+      package: find_packages.try(:xfactor_amount).try(:to_f)
+    }[ user.is_pin? && :pin || :package ]
+  end
   def binary_bonus
     user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end

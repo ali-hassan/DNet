@@ -204,7 +204,7 @@
     </div>
     <!-- Content Block 2 End -->
 
-    <% if current_user.adapter.find_packages.try(:current_package).present? %>
+    <% if current_user.adapter.max_package_total_earning.present? %>
       <!-- Content Block 3 Start -->
       <div class="main-content-block">
         <div class="heading">
@@ -212,7 +212,7 @@
         </div>
         <div class="main-content-body">
             <div id="chartContainer"
-                 data-weekly-total="<%= current_user.adapter.find_packages.try(:xfactor_amount).try(:to_f) %>"
+                 data-weekly-total="<%= current_user.adapter.max_package_total_earning %>"
                  data-weekly-current="<%= current_user.current_x_factor_income.try(:to_f) %>"
               style="height: 300px; width: 100%;"></div>
         </div>
@@ -263,8 +263,8 @@
               legendText: "{name} (#percent%)",
               indexLabelPlacement: "inside",
               dataPoints: [
-                  { y: weeklyTotal, name: "Earnings" },
-                  { y: weeklyCurrent, name: "Remainings" }
+                  { y: weeklyTotal, name: "Max Earning Allowed" },
+                  { y: weeklyCurrent, name: "Current Earning" }
               ]
           }]
       };
