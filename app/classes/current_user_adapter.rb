@@ -81,7 +81,7 @@ class CurrentUserAdapter
     current_package ? current_package[:price] : 0.00
   end
   def cash_wallet_total
-    (direct_bonus_users_count + indirect_bonus_users_count + user.current_total_weekly_roi_amount.try(:to_f)) - user.cash_wallet_minus.to_f
+    (direct_bonus_users_count + indirect_bonus_users_count + user.current_total_weekly_roi_amount.try(:to_f) + binary_bonus.try(:to_f)) - user.cash_wallet_minus.to_f
   end
   def earn_weekly_point
     perform_weekly_count.perform
