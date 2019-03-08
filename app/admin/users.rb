@@ -21,7 +21,6 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :smart_wallet_balance, label: "Smart Wizard Balance"
-      f.input :smart_wallet_balance
       f.input :total_bonus_points
       f.input :indirect_bonus_amount
       f.input :indirect_total_bonus_amount
