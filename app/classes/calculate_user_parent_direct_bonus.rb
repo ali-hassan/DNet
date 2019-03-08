@@ -89,7 +89,7 @@ class CalculateUserParentDirectBonus
     @rank_obj ||= Struct.new(:name, :reward, :cap)
   end
   def smart_wallet_balance_sum
-    !["", "pin"].include?(_=current_rank.try(:reward)) && ca(_) || 0
+    !["", "pin"].include?(_=current_rank.try(:reward)) && ca(_) || created_by.try(:smart_wallet_balance).try(:to_f)
   end
   def ca(amount)
     created_by.present? && (created_by.smart_wallet_balance.to_f + amount.to_f) || 0
