@@ -1,0 +1,39 @@
+<main class="main">
+  <div class="main-content">
+    <!-- Content Block 1 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2><%= @transactions.load_condition[1] %></h2>
+      </div>
+      <div class="main-content-body">
+        <div class="history-widthdrawal-holder">
+          <table>
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Transaction Type</th>
+              <th>Transaction Amount</th>
+              <th>Transaction Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%- @transactions.all.each do |transaction|%>
+              <tr>
+                <td><%=transaction.logable.created_at.strftime("%b. %e %Y")%></td>
+                <td><%=transaction.logable.user.try(:username)%></td>
+                <td><%=transaction.logable.receiver.try(:username)%></td>
+                <td><%=transaction.logable.try(:wallet_type).gsub("_", " ").capitalize%></td>
+                <td><%=transaction.logable.try(:amount).to_f%></td>
+                <td><%=transaction.logable.try(:status).nil? ? "Approved" : "Declined"%></td>
+              </tr>
+            <%end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Content Block 1 End -->
+  </div>
+</main>

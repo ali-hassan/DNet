@@ -20,6 +20,7 @@ class User < ApplicationRecord
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
+  has_many :log_histories, dependent: :destroy
   accepts_nested_attributes_for :user_transactions, reject_if: :all_blank, allow_destroy: true
   attr_accessor :current_pin
   validate :current_pin_verify, if: :current_pin?

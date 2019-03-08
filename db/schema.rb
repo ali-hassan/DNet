@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190307060307) do
+ActiveRecord::Schema.define(version: 20190308140606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20190307060307) do
     t.datetime "updated_at", null: false
     t.string "bitpay_url"
     t.index ["user_id"], name: "index_bit_pay_transactions_on_user_id"
+  end
+
+  create_table "log_histories", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "message"
+    t.string "logable_type"
+    t.bigint "logable_id"
+    t.string "log_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["logable_type", "logable_id"], name: "index_log_histories_on_logable_type_and_logable_id"
+    t.index ["user_id"], name: "index_log_histories_on_user_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -180,6 +192,7 @@ ActiveRecord::Schema.define(version: 20190307060307) do
   end
 
   add_foreign_key "bit_pay_transactions", "users"
+  add_foreign_key "log_histories", "users"
   add_foreign_key "user_pair_keys", "users"
   add_foreign_key "user_transactions", "users"
   add_foreign_key "user_weekly_bonus_cycles", "users"
