@@ -122,10 +122,10 @@ var currentUserId = <%= raw current_user.try(:id) %>
                     <li><a href="<%= history_url('sw', subdomain: 'office') %>">Fund Transfer</a></li>
                     <li><a data-toggle="collapse" href="#custom-parent">Bonus</a>
                       <ul id="custom-parent" class="collapse">
-                        <li><a href="<%=histories_path%>">Weekly ROI</a></li>
-                        <li><a href="<%=histories_path%>">Direct</a></li>
-                        <li><a href="<%=histories_path%>">Indirect</a></li>
-                        <li><a href="<%=histories_path%>">Binary</a></li>
+                        <li><a href="<%= history_url('wr', subdomain: 'office') %>">Weekly ROI</a></li>
+                        <li><a href="<%= history_url('db', subdomain: 'office') %>">Direct</a></li>
+                        <li><a href="<%= history_url('ib', subdomain: 'office') %>">Indirect</a></li>
+                        <li><a href="<%= history_url('bb', subdomain: 'office') %>">Binary</a></li>
                         <li><a href="<%=histories_path%>">Rewards</a></li>
                       </ul>
                     </li>

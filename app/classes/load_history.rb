@@ -8,8 +8,12 @@ class LoadHistory
   end
   def load_condition
     {
-      cw: [["cash_wallet"], "WITHDRAWAL HISTORY"],
-      sw: [['smart_wallet'], 'ACCOUNT TO ACCOUNT'],
+      cw: [["cash_wallet"], "WITHDRAWAL HISTORY", "csw_table"],
+      sw: [['smart_wallet'], 'ACCOUNT TO ACCOUNT', "csw_table"],
+      db: [['direct_bonus'], 'Direct Bonus', 'db_table'],
+      ib: [['indirect_bonus'], 'Indirect Bonus', 'db_table'],
+      bb: [['binary_bonus'], 'Binary Bonus', 'db_table'],
+      wr: [['weekly_roi'], 'Weekly ROI', 'db_table'],
     }.with_indifferent_access[log_id]
   end
 end

@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :bit_pay_transactions, dependent: :destroy
   has_many :user_weekly_bonus_cycles, dependent: :destroy
   has_many :indirect_referred_users, -> { where("users.referred_by_id <> users.created_by_id") }, class_name: "User", foreign_key: :referred_by_id
+  has_many :user_log_histories, class_name: 'LogHistory', as: :logable
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
