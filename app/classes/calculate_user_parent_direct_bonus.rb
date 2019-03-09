@@ -71,15 +71,15 @@ class CalculateUserParentDirectBonus
   end
   def rank_list
     {
-      0..2499 => rank_obj.new("", "", 2500),
-      2500..6999 => rank_obj.new("bronze", "pin", 7000),
-      7000..13999 => rank_obj.new("silver", "500", 14000),
-      14000..69999 => rank_obj.new("gold", "1000", 70000),
-      70000..139999 => rank_obj.new("ruby", "5000", 140000),
-      140000..299999 => rank_obj.new("emerald", "10000", 300000),
-      300000..699999 => rank_obj.new("diamond", "20000", 700000),
-      700000..1399999 => rank_obj.new("director", "50000", 1400000),
-      1400000..9999999 => rank_obj.new("ambassador", "10000", 99999),
+      0..2499 => rank_obj.new("Not Assigned", "", 2500),
+      2500..6999 => rank_obj.new("Bronze", "pin", 7000),
+      7000..13999 => rank_obj.new("Silver", "500", 14000),
+      14000..69999 => rank_obj.new("Gold", "1000", 70000),
+      70000..139999 => rank_obj.new("Ruby", "5000", 140000),
+      140000..299999 => rank_obj.new("Emerald", "10000", 300000),
+      300000..699999 => rank_obj.new("Diamond", "20000", 700000),
+      700000..1399999 => rank_obj.new("Director", "50000", 1400000),
+      1400000..9999999 => rank_obj.new("Ambassador", "10000", 99999),
     }
   end
   def current_rank
