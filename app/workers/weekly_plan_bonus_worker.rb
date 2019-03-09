@@ -2,6 +2,6 @@ class WeeklyPlanBonusWorker
   include Sidekiq::Worker
 
   def perform(args)
-    User.find(args[:user_id]).adapter.earn_weekly_point
+    User.find_by(id: args["user_id"]).try(:adapter).try(:earn_weekly_point)
   end
 end

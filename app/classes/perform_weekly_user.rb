@@ -22,7 +22,7 @@ class PerformWeeklyUser
     update(params); decrement!(:current_package_iteration); check_for_next_week
   end
   def check_for_next_week
-    (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(1.minute.from_now,{ "user_id" => @user.id })
+    (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(2.week.from_now,{ user_id: @user.id })
   end
   def params
     {
@@ -40,7 +40,7 @@ class PerformWeeklyUser
     current_x_factor_income.try(:to_f) + current_week_roi_amount_sum
   end
   def current_week_roi_amount_sum
-    package_price / (current_weekly_percentage * 100)
+    package_price / 100 * current_weekly_percentage
   end
   def total_weekly_percentage_amount_sum
     current_week_roi_amount_sum + total_weekly_percentage_amount.to_f
