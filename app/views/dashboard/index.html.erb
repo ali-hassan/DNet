@@ -127,7 +127,7 @@
               <span class="currency-symbol">$</span>
             </div>
             <div class="columns-middle">
-              <h3><%= current_user.binary_bonus %></h3>
+              <h3><%= number_to_currency current_user.binary_bonus %></h3>
               <span>Binary Bonus</span>
               <%=image_tag "ic_binarybonus.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
