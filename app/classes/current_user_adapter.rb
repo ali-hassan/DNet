@@ -99,8 +99,9 @@ class CurrentUserAdapter
   def cupda
     @cupda ||= CalculateUserParentDirectBonus.new(user)
   end
-  def apply_indirect_bonus_at(index, package_price)
+  def apply_indirect_bonus_at(index, package_price, usr)
     pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
+    user.log_histories.create(logable: usr, message: "Indirect bonus #{pp} on #{usr.username} for package #{package_price.to_f}", log_type: 'indirect_bonus')
     user.update(
       total_income: user.total_income.try(:to_f) + pp,
       indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,

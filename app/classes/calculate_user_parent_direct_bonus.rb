@@ -11,10 +11,13 @@ class CalculateUserParentDirectBonus
     user.is_pin? && ignore_list.push(user.parent_id)
   end
   def calculate
-    (_ = created_by).present? && (_.update(params); apply_parents_bonus) || false
+    (_ = created_by).present? && (calculate_direct_bonus(_); apply_parents_bonus) || false
+  end
+  def calculate_direct_bonus(usr)
+    usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
   end
   def apply_parents_bonus
-    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price) }; calculate_binary_bonus
+    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
   end
   def calculate_binary_bonus
     cal_bb(adapter.parent_lists, parent_position, adapter.current_package[:binary])
@@ -35,6 +38,7 @@ class CalculateUserParentDirectBonus
     if !ignore_list.include?(usr.id)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
+      usr.log_histories.create(logable: @user, message: "Binary Bonus #{binary} for user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
       usr.save(validate: false)
     end
   end
