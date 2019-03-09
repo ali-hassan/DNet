@@ -127,7 +127,7 @@
               <span class="currency-symbol">$</span>
             </div>
             <div class="columns-middle">
-              <h3><%= current_user.binary_bonus %></h3>
+              <h3><%= number_to_currency current_user.binary_bonus %></h3>
               <span>Binary Bonus</span>
               <%=image_tag "ic_binarybonus.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
@@ -213,7 +213,7 @@
         <div class="main-content-body">
             <div id="chartContainer"
                  data-weekly-total="<%= current_user.adapter.max_package_total_earning %>"
-                 data-weekly-current="<%= current_user.current_x_factor_income.try(:to_f) %>"
+                 data-weekly-current="<%= current_user.total_income.try(:to_f) + current_user.binary_bonus.try(:to_f) %>"
               style="height: 300px; width: 100%;"></div>
         </div>
       </div>
