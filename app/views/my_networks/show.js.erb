@@ -24,10 +24,8 @@ var hasChild = new Array();
     hasChild.push(true);
   <% end %>
 <% end %>
-console.log("<%= params[:id] %>");
-console.log("<%= current_user.adapter.last_node_parent_id.inspect %>");
 <% unless current_user.adapter.last_node_parent_id.include?(params[:id].to_i) %>
-    if (!hasChild.length) {
-      $(".add-new-li-show").parent("ul").remove();
-    }
+//    if (!hasChild.length) {
+//      $(".add-new-li-show").parent("ul").remove();
+//    }
 <% end %>
