@@ -26,7 +26,7 @@ class CalculateUserParentDirectBonus
     child_condition?(usr, "left") && child_condition?(usr, "right")
   end
   def child_condition?(usr, position)
-    ((ch = usr.children.where(parent_position: position).first) && (ch.adapter.find_child_list_by_parent_id.map(&:created_by_id).include?(usr.id)))
+    ((ch = usr.children.where(parent_position: position).first) && (ch.adapter.find_child_list_by_parent_id.map { |umt| umt.package_id.present? && umt.created_by_id == usr.id }).include?(true))
   end
   def ignore_list
     @ignore_list ||= Array.new

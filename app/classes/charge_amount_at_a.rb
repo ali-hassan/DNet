@@ -28,7 +28,7 @@ class ChargeAmountAtA
     Setting.find_value("default_weekly_#{user.reload.current_package["category"].try(:downcase)}_%").try(:value)
   end
   def calculate_weekly_bonus_cycle!
-    WeeklyPlanBonusWorker.perform_at(1.week.from_now, user)
+    WeeklyPlanBonusWorker.perform_at(1.week.from_now, {user_id: user.id})
   end
   def package_activation_fees
     25
