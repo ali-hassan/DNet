@@ -17,6 +17,12 @@ class CurrentUserAdapter
       end
     end
   end
+  def last_node_parent_list
+    [find_last_left_node, find_last_right_node].map { |fln| fln.parent.children }.flatten
+  end
+  def last_node_parent_id
+    last_node_parent_list.map(&:id)
+  end
   def calculate_binary_bonus
     ((left_bonus.to_f > right_bonus.to_f) && right_bonus || left_bonus).try(:to_f) * 0.50
   end
