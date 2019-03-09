@@ -22,7 +22,7 @@ class PerformWeeklyUser
     update(params); decrement!(:current_package_iteration); check_for_next_week
   end
   def check_for_next_week
-    (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(2.week.from_now,{ user_id: @user.id })
+    (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(1.minute.from_now,{ user_id: @user.id })
   end
   def params
     {
