@@ -29,18 +29,17 @@ class CalculateUserParentDirectBonus
     child_condition?(usr, "left") && child_condition?(usr, "right")
   end
   def child_condition?(usr, position)
-    ((ch = usr.children.where(parent_position: position).first) && (ch.adapter.find_child_list_by_parent_id.map { |umt| umt.package_id.present? && umt.created_by_id == usr.id }).include?(true))
+    (ch = usr.children.where(parent_position: position).first) && (ch.adapter.find_child_list_by_parent_id.map { |umt| umt.package_id.present? && umt.created_by_id == usr.id }.include?(true) || (ch.package_id.present? && ch.created_by_id == usr.id))
   end
   def ignore_list
     @ignore_list ||= Array.new
   end
   def calcu_ulb(usr,position, binary)
-    if !ignore_list.include?(usr.id)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
+      ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.log_histories.create(logable: @user, message: "Binary Bonus #{binary} for user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
       usr.save(validate: false)
-    end
   end
   def alpl(&block)
     adapter.linked_parent_list.values_at(1, 2, 3, 4, 5, 6).each.with_index(&block)
