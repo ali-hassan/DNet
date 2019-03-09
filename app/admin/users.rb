@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :smart_wallet_balance, :total_bonus_points, :indirect_bonus_amount,
-                :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus
+                :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :is_binary_bonus_active
 
   index do
     selectable_column
@@ -10,6 +10,7 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :created_at
     column "Smart Wizard Balance",  :smart_wallet_balance
+    column :is_binary_bonus_active
     actions
   end
 
@@ -28,7 +29,7 @@ ActiveAdmin.register User do
       f.input :total_income
       f.input :left_bonus
       f.input :right_bonus
-      # f.input :cash_wallet_total
+      f.input :is_binary_bonus_active
 
     end
     f.actions
