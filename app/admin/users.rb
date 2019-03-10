@@ -1,6 +1,9 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :smart_wallet_balance, :total_bonus_points, :indirect_bonus_amount,
-                :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :is_binary_bonus_active, :cash_wallet_amount
+                :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :is_binary_bonus_active, :cash_wallet_amount,
+                :current_week_roi_amount, :direct_bonus_users_count,
+                :total_weekly_percentage_amount,
+                :indirect_bonus_amount
 
   index do
     selectable_column
@@ -12,6 +15,10 @@ ActiveAdmin.register User do
     column "Smart Wizard Balance",  :smart_wallet_balance
     column :is_binary_bonus_active
     column :cash_wallet_amount
+    column :current_week_roi_amount
+    column :total_weekly_percentage_amount
+    column :indirect_bonus_amount
+    column :direct_bonus_users_count
     actions
   end
 
@@ -22,6 +29,7 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs do
+      f.input :is_binary_bonus_active, label: "Binary Check"
       f.input :smart_wallet_balance, label: "Smart Wizard Balance"
       f.input :total_bonus_points
       f.input :indirect_bonus_amount
@@ -31,8 +39,10 @@ ActiveAdmin.register User do
       f.input :left_bonus
       f.input :right_bonus
       f.input :cash_wallet_amount
-      f.input :is_binary_bonus_active
-
+      f.input :current_week_roi_amount
+      f.input :total_weekly_percentage_amount
+      f.input :indirect_bonus_amount
+      f.input :direct_bonus_users_count
     end
     f.actions
   end
