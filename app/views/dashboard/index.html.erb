@@ -22,6 +22,10 @@
             <span class="title">Current Rank</span>
             <h3><%= current_user.adapter.cupda_current_rank.try(:name) %></h3>
           </li>
+          <li class="rank-up">
+            <span class="title">User Name</span>
+            <h3><%= current_user.try(:username) %></h3>
+          </li>
           <%- if current_user.is_pin%>
             <li>
               <span class="title">Pin Capacity</span>
