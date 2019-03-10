@@ -51,6 +51,7 @@ class CalculateUserParentDirectBonus
       smart_wallet_balance: smart_wallet_balance_sum,
       binary_bonus: bonus_wallet_sum,
       total_income: total_income_sum,
+      cash_wallet_amount: total_cash_wallet_amount,
     }
   end
 
@@ -62,6 +63,9 @@ class CalculateUserParentDirectBonus
   end
   def total_income_sum
     created_by.total_income.try(:to_f) + current_bonus_val
+  end
+  def total_cash_wallet_amount
+    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val + adapter.find_packages.current_package[:binary]
   end
   def bonus_wallet_sum
     created_by.binary_bonus.try(:to_f) + adapter.find_packages.current_package[:binary]

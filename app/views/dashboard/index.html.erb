@@ -112,7 +112,7 @@
               <%=image_tag "ic_indirectincome.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
             <div class="columns-bottom">
-              <h3><%= number_to_currency current_user.adapter.cash_wallet_total %></h3>
+              <h3><%= number_to_currency current_user.cash_wallet_amount %></h3>
               <span>Cash Wallet</span>
               <%=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>

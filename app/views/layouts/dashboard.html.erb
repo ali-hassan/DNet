@@ -101,9 +101,10 @@ var currentUserId = <%= raw current_user.try(:id) %>
               <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
                 <div class="card-body">
                   <ul>
-                    <li><a href="<%=withdrawl_requests_path%>">Withdrawal Request</a></li>
-                    <li><a href="<%=transactions_path%>">Account to Account</a></li>
-                    <li><a href="<%=cash_to_smart_transactions_path%>">Cash Wallet to Smart Wallet</a></li>
+                    <li><a href="<%=withdrawl_requests_url(subdomain: "office")%>">Withdrawal Request</a></li>
+                    <li><a href="<%=transactions_url(subdomain: "office")%>">Account to Account</a></li>
+                    <li><a href="<%=cash_to_smart_transactions_url(subdomain: "office")%>">Cash Wallet to Smart Wallet</a></li>
+                    <li><a href="<%=new_current_weekly_roi_to_cash_transfer_url(subdomain: "office")%>">ROI Wallet to Cash Wallet</a></li>
                   </ul>
                 </div>
               </div>
@@ -186,7 +187,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
                 <li class="status not-verified">
                   <dl>
                     <dt>Binary status: </dt>
-                    <dd>Not Active</dd>
+                    <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
                   </dl>
                 </li>
               </ul>

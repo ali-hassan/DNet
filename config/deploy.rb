@@ -15,11 +15,5 @@ set :linked_dirs, %w{pem bin log tmp/pids tmp/cache tmp/sockets vendor/bundle pu
 # puma configuration
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 
-set :pty, true
+set :pty, false
 
-task :add_default_hooks do
-  after 'deploy:starting', 'sidekiq:quiet'
-  after 'deploy:updated', 'sidekiq:stop'
-  after 'deploy:reverted', 'sidekiq:stop'
-  after 'deploy:published', 'sidekiq:start'
-end

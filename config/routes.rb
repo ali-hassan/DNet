@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     subdomain_constraint.resources :system_credentials, only: [:index, :create]
     subdomain_constraint.resources :pay_with_bitcoins, only: [:show]
     subdomain_constraint.resources :financial_pins, only: [:new, :create]
+    subdomain_constraint.resources :current_weekly_roi_to_cash_transfers, only: [:new, :create]
     subdomain_constraint.resources :transactions, only: [:index, :create] do
       collection do
         get :cash_to_smart
