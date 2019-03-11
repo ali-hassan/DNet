@@ -1054,6 +1054,7 @@ a:hover{
   padding: 0 0 0 20px;
 }
 .flash-message{
+  z-index: 9999;
   position: fixed;
   top: 5px;
   display: inline-block;

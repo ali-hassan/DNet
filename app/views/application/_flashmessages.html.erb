@@ -1,5 +1,8 @@
 <% flash.each do |key, value| %>
-  <div class="<%= flash_class(key) %>">
-    <%= value %>
+  <div class="flash-message">
+    <p>
+      <%= value %>
+    </p>
+		<a class="close-btn" href="javascript:;"></a>
   </div>
 <% end %>

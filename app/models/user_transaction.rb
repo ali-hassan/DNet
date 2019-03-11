@@ -4,6 +4,7 @@ class UserTransaction < ApplicationRecord
   belongs_to :receiver, class_name: "User"
   monetize :amount_cents
   validates :user, presence: true
+  validates :receiver, presence: true
   delegate :smart_wallet_balance, to: :user, allow_nil: true
   delegate :bonus_wallet, to: :user, allow_nil: true
   delegate :full_name, allow_nil: true, to: :receiver, prefix: true
@@ -14,11 +15,17 @@ class UserTransaction < ApplicationRecord
   after_create do |ut|
     (ut.wallet_type == "cash_wallet") && ut.log_and_pay
     (ut.wallet_type == 'weekly_roi') && ut.log_and_pay_to_weekly_roi
+    (ut.wallet_type == 'smart_wallet') && ut.log_and_pay_smart_wallet
+  end
+  def log_and_pay_smart_wallet
+    user.update(smart_wallet_balance: user.smart_wallet_balance.to_f - amount.try(:to_f))
+    receiver.update(smart_wallet_balance: receiver.smart_wallet_balance.to_f + amount.try(:to_f))
   end
   def log_and_pay_to_weekly_roi
+    user.log_histories.create(logable: self, log_type: wallet_type)
     receiver.update(
-        cash_wallet_amount: receiver.cash_wallet_amount.try(:to_f) + amount.try(:to_f),
-                current_total_weekly_roi_amount: receiver.current_total_weekly_roi_amount.try(:to_f) - amount.try(:to_f)
+      cash_wallet_amount: receiver.cash_wallet_amount.try(:to_f) + amount.try(:to_f),
+      current_total_weekly_roi_amount: receiver.current_total_weekly_roi_amount.try(:to_f) - amount.try(:to_f)
     )
   end
   def log_and_pay
