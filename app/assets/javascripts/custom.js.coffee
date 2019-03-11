@@ -1,4 +1,9 @@
 $(document).on "turbolinks:load", ->
+  $flashMessage = $('.flash-message')
+  if $flashMessage.length
+    setTimeout ( ->
+      $('.flash-message').remove()
+    ), 6000
   $(document).on 'click', '.flash-message .close-btn', (eventObject) ->
     $(this).parents('.flash-message').remove()
   $(document).on "click", ".copy-link-label", (eventObject) ->

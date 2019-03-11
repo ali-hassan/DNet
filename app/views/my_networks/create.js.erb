@@ -1,5 +1,5 @@
 <% if @user.save %>
-  window.location = "/my_networks"
+    window.location = "<%= my_binary_my_networks_url(subdomain: 'office') %>"
 <% else %>
     $("#new_network_modal").remove();
     $(".modal-backdrop.in").remove();

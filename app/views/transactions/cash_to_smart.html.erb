@@ -24,7 +24,7 @@
                 </div>
                 <div class="custom-dashboard-column">
                   <label>Balance in (in your wallet)</label>
-                  <input type="text" value="<%= number_to_currency current_user.cash_wallet_amount %>" readonly>
+                  <input type="text" value="<%= number_to_currency current_user.adapter.cash_wallet_total %>" readonly>
                 </div>
               </div>
               <!-- Signup Row End -->

@@ -37,6 +37,7 @@ class CalculateUserParentDirectBonus
   def calcu_ulb(usr,position, binary)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
+      usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.log_histories.create(logable: @user, message: "Binary Bonus #{binary} for user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
       usr.save(validate: false)
@@ -65,7 +66,7 @@ class CalculateUserParentDirectBonus
     created_by.total_income.try(:to_f) + current_bonus_val
   end
   def total_cash_wallet_amount
-    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val + adapter.calculate_binary_bonus
+    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val # + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
     created_by.binary_bonus.try(:to_f) + adapter.find_packages.current_package[:binary]

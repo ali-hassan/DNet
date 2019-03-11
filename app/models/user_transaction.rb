@@ -24,15 +24,15 @@ class UserTransaction < ApplicationRecord
   def log_and_pay_to_weekly_roi
     user.log_histories.create(logable: self, log_type: wallet_type)
     receiver.update(
-      cash_wallet_amount: receiver.cash_wallet_amount.try(:to_f) + amount.try(:to_f),
+      smart_wallet_balance: receiver.smart_wallet_balance.try(:to_f) + amount.try(:to_f),
       current_total_weekly_roi_amount: receiver.current_total_weekly_roi_amount.try(:to_f) - amount.try(:to_f)
     )
   end
   def log_and_pay
     user.log_histories.create(logable: self, log_type: wallet_type)
-    receiver.update(cash_wallet_amount: receiver.cash_wallet_amount.try(:to_f) - amount.try(:to_f), smart_wallet_balance: receiver.smart_wallet_balance.try(:to_f) + amount.try(:to_f))
+    receiver.update(cash_wallet_minus: receiver.cash_wallet_minus.try(:to_f) + amount.try(:to_f), smart_wallet_balance: receiver.smart_wallet_balance.try(:to_f) + amount.try(:to_f))
   end
   def user_wallet_transafer
-    { cash_wallet: :cash_wallet_amount, smart_wallet: :smart_wallet_balance, weekly_roi: :current_total_weekly_roi_amount }[wallet_type.try(:to_sym)]
+    { cash_wallet: :cash_wallet_total, smart_wallet: :smart_wallet_balance, weekly_roi: :current_total_weekly_roi_amount }[wallet_type.try(:to_sym)]
   end
 end
