@@ -11,7 +11,7 @@ class ChargeAmountAtA
     update(current_weekly_percentage: weekly_percentage)
     User.add_amount(deducation_amount)
     calculate_weekly_bonus_cycle!
-    user.reload.adapter.cupda_calculate
+    User.find(user.id).adapter.cupda_calculate
   end
   def params
     {
