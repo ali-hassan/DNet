@@ -1056,7 +1056,8 @@ a:hover{
 .flash-message{
   z-index: 9999;
   position: fixed;
-  top: 5px;
+  top: 30px;
+  right: 30px;
   display: inline-block;
   background-color: #fff;
   box-shadow: 0 1px 5px rgba(0,0,0,0.3);
