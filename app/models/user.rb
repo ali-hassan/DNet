@@ -53,7 +53,7 @@ class User < ApplicationRecord
     [first_name, last_name].join(" ")
   end
   def name_or_id
-    full_name.present? && full_name || sponsor_id
+    username
   end
   def generate_token
     token = loop do
