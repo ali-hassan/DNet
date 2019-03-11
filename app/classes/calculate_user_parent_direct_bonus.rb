@@ -65,7 +65,7 @@ class CalculateUserParentDirectBonus
     created_by.total_income.try(:to_f) + current_bonus_val
   end
   def total_cash_wallet_amount
-    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val + adapter.find_packages.current_package[:binary]
+    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
     created_by.binary_bonus.try(:to_f) + adapter.find_packages.current_package[:binary]
