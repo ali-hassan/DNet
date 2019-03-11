@@ -19,7 +19,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <% if current_user.smart_wallet_balance.try(:to_f) > @package.deducation_amount %>
+        <% if current_user.smart_wallet_balance.try(:to_f) >= @package.deducation_amount %>
           <form action="<%= send("#{controller.controller_name}_url", {plan_id: params[:id], subdomain: 'office'}) %>" style="display: inline-block;" method="post">
             <button type="submit" class="btn btn-primary">Activate</button>
           </form>
