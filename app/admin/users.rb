@@ -1,7 +1,7 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :smart_wallet_balance, :total_bonus_points, :indirect_bonus_amount,
                 :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :is_binary_bonus_active, :cash_wallet_amount,
-                :current_week_roi_amount, :direct_bonus_users_count,
+                :current_week_roi_amount,
                 :total_weekly_percentage_amount,
                 :indirect_bonus_amount
 
@@ -18,7 +18,6 @@ ActiveAdmin.register User do
     column :current_week_roi_amount
     column :total_weekly_percentage_amount
     column :indirect_bonus_amount
-    column :direct_bonus_users_count
     actions
   end
 
@@ -42,7 +41,6 @@ ActiveAdmin.register User do
       f.input :current_week_roi_amount
       f.input :total_weekly_percentage_amount
       f.input :indirect_bonus_amount
-      f.input :direct_bonus_users_count
     end
     f.actions
   end

@@ -1,7 +1,7 @@
 ActiveAdmin.register User, as: 'FreeUser' do
   permit_params :first_name, :last_name, :email, :password, :password_confirmation, :is_pin,
     :username, :smart_wallet_balance, :parent_id, :pin_capacity, :parent_position, :fit_user, :total_bonus_points, :indirect_bonus_amount,
-                :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :cash_wallet_amount, :direct_bonus_users_count
+                :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :cash_wallet_amount
   form do |f|
     f.inputs do
       f.hidden_field :is_pin, value: true
@@ -23,7 +23,6 @@ ActiveAdmin.register User, as: 'FreeUser' do
       f.input :cash_wallet_amount
       f.input :fit_user, :label => 'Sponsor', :as => :select, :collection => User.all.map{|u| [u.username, u.id]}, :prompt => "Select Sponsor"
       f.input :parent_position, :label => 'Position', :as => :select, :collection => [["Right", "right"], ["Left", "left"]], :prompt => "Select position"
-      f.input :direct_bonus_users_count
     end
 
     f.actions
