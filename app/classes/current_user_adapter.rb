@@ -124,6 +124,9 @@ class CurrentUserAdapter
   def total_income
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
   end
+  def can_upgrade_url?(id)
+    (_=current_package[:price]) && _ < FindPackages.new(id).current_package[:price] || false
+  end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
   delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, to: :user, allow_nil: true

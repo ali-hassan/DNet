@@ -35,7 +35,7 @@
             </li>
             <li>
               <div class="image-holder">
-                <%= link_to edit_buy_plan_url(params[:id], subdomain: "office"), remote: true do %>
+                <%= link_to send("edit_#{controller.controller_name.singularize}_url", params[:id], subdomain: "office"), remote: true do %>
                   <%=image_tag "ic_accountoaccount.png", alt: "image descriptions"%>
                 <% end %>
               </div>
