@@ -7,7 +7,7 @@
     </div>
     <div class="main-content-body">
       <div class="acount-holder">
-        <%= form_for @transaction, url: transactions_url(subdomain: "office") do |f| %>
+        <%= form_for @transaction, url: transactions_url(subdomain: "office"), html: { data: {pin_verify: pin_verify_url(subdomain: 'office', format: :js)}  } do |f| %>
           <!-- Signup Row Start -->
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">

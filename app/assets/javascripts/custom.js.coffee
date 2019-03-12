@@ -1,4 +1,8 @@
 $(document).on "turbolinks:load", ->
+  $(document).on "submit", "[data-pin-verify]", (eventObject) ->
+    eventObject.preventDefault()
+    $.getScript($(@).data('pin-verify'))
+    window.$FormToSubmit= $(eventObject.currentTarget)
   $flashMessage = $('.flash-message')
   if $flashMessage.length
     setTimeout ( ->
