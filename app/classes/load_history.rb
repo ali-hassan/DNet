@@ -13,7 +13,7 @@ class LoadHistory
       db: [['direct_bonus'], 'Direct Bonus', 'db_table'],
       ib: [['indirect_bonus'], 'Indirect Bonus', 'db_table'],
       bb: [['binary_bonus'], 'Binary Bonus', 'db_table'],
-      wr: [['weekly_roi'], 'Weekly ROI', 'db_table'],
+      wr: [['weekly_roi'], 'Weekly ROI', 'wr_table'],
     }.with_indifferent_access[log_id]
   end
 end
