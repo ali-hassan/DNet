@@ -177,7 +177,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
                 <li class="status verified">
                   <dl>
                     <dt>Account status: </dt>
-                    <%- if current_user.package_id.present?%>
+                    <%- if current_user.package_id.present? || current_user.is_pin%>
                       <dd>Verified</dd>
                     <%else%>
                       <dd>UnVerified</dd>
