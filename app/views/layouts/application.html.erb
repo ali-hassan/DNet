@@ -32,9 +32,9 @@
                   <%= image_tag "btn-login.png" %>
               <% end %>
               <li>
-                <%#= link_to Setting.find_by_key("register_button_link") || users_sign_up_url(subdomain: 'office') do %>
-                  <%#= image_tag "btn-register.png", alt: "login" %>
-                <%# end %>
+                <%= link_to Setting.find_by_key("register_button_link") || users_sign_up_url(subdomain: 'office') do %>
+                  <%= image_tag "btn-register.png", alt: "register" %>
+                <% end %>
               </li>
             </ul>
           </div>
