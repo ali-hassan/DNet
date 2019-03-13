@@ -18,8 +18,12 @@ $(document).on "turbolinks:load", ->
     alert("link coppied")
 
   $(document).on "keyup", "#sponsor_id_txt", (eventObject) ->
+    userName = currentUserName
     if @value.length > 1
-      $.getScript("/verify_sponsor_users/#{ @value }.js")
+      if currentUserName == @value
+        alert("You can not perform this action")
+      else
+        $.getScript("/verify_sponsor_users/#{ @value }.js")
 
 
   $referTriggerSearch  = $(".trigger-refer-search")
