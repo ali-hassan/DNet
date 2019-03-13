@@ -84,7 +84,7 @@ class CurrentUserAdapter
     @find_package ||= FindPackages.new(package_id)
   end
   def package_price
-    current_package ? current_package[:price] : 0.00
+    user.charge_package_price.try(:to_f)
   end
   def cash_wallet_total
     (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f)) - user.cash_wallet_minus.to_f
