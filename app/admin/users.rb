@@ -14,7 +14,6 @@ ActiveAdmin.register User do
     column :created_at
     column "Smart Wizard Balance",  :smart_wallet_balance
     column :is_binary_bonus_active
-    column :cash_wallet_amount
     column :current_week_roi_amount
     column :total_weekly_percentage_amount
     column :indirect_bonus_amount
@@ -37,7 +36,6 @@ ActiveAdmin.register User do
       f.input :total_income
       f.input :left_bonus
       f.input :right_bonus
-      f.input :cash_wallet_amount
       f.input :current_week_roi_amount
       f.input :total_weekly_percentage_amount
       f.input :indirect_bonus_amount
