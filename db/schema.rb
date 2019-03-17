@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190310093647) do
+ActiveRecord::Schema.define(version: 20190317115923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -189,8 +189,22 @@ ActiveRecord::Schema.define(version: 20190310093647) do
     t.boolean "is_binary_bonus_active", default: false
     t.integer "cash_wallet_amount_cents", default: 0, null: false
     t.string "cash_wallet_amount_currency", default: "USD", null: false
+    t.integer "charge_package_price_cents", default: 0, null: false
+    t.string "charge_package_price_currency", default: "USD", null: false
+    t.string "charge_package_binary"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "withdrawl_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "pts_cents", default: 0, null: false
+    t.string "pts_currency", default: "USD", null: false
+    t.string "bitcoin_url"
+    t.boolean "is_clear"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_withdrawl_requests_on_user_id"
   end
 
   add_foreign_key "bit_pay_transactions", "users"
@@ -198,4 +212,5 @@ ActiveRecord::Schema.define(version: 20190310093647) do
   add_foreign_key "user_pair_keys", "users"
   add_foreign_key "user_transactions", "users"
   add_foreign_key "user_weekly_bonus_cycles", "users"
+  add_foreign_key "withdrawl_requests", "users"
 end

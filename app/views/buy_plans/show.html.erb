@@ -41,6 +41,13 @@
               </div>
               <h3>Account to Account</h3>
             </li>
+            <li>
+              <div class="image-holder">
+                <%= link_to pay_with_coin_payment_url(params[:id], subdomain: 'office') do %>
+                  <%= image_tag 'ic_bitcoin.png' %>
+                <% end %>
+              </div>
+              <h3>Coinpayment</h3>
           </ul>
         </form>
       </div>
