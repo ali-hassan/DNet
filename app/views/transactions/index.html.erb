@@ -12,7 +12,7 @@
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
               <label>Username</label>
-              <input type="text" id="sponsor_id_txt" value="<%= @transaction.receiver_full_name %>">
+              <input type="text" id="sponsor_id_txt" required="required" value="<%= @transaction.receiver_full_name %>">
               <%= errors_for f, :receiver %>
             </div>
             <div id="sponsor_info_card" class="custom-dashboard-column" data-field-name="user_transaction[receiver_id]">
@@ -41,7 +41,7 @@
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
               <%= f.label :amount, "Amount (To transfer)" %>
-              <%= f.text_field :amount %>
+              <%= f.text_field :amount, required: true %>
             </div>
           </div>
           <!-- Signup Row End -->
