@@ -1,0 +1,42 @@
+<div id="wrapper">
+  <div class="submit-ticket">
+    <div class="submit-ticket-holder">
+      <h2 class="text-center">Submit a Ticket</h2>
+      <br>
+      <br>
+      <%= form_for @support do |f| %>
+        <div class="submit-ticket-row">
+          <%= f.label :requester %>
+          <%= f.text_field :requester, value: current_user.full_name %>
+        </div>
+        <div class="submit-ticket-row">
+          <%= f.label :username %>
+          <%= f.text_field :username, value: current_user.username %>
+        </div>
+        <div class="submit-ticket-row">
+          <%= f.label :subject %>
+          <%= f.text_field :subject %>
+        </div>
+        <div class="submit-ticket-row">
+          <%= f.label :type %>
+          <%= f.select :type, [["Deposits", "Deposits"], ["Withdrawls", "Withdrawls"], ["Incorrect Email - Change Email", "Incorrect Email - Change Email"],
+                               ["Ranking", "Ranking"], ["Commission", "Commission"], ["Other", "Other"]] %>
+        </div>
+        <div class="submit-ticket-row">
+          <%= f.label :description %>
+          <div class="ws-editor-holder">
+            <div id="txtEditor">
+              <%= f.text_area :description %>
+            </div>
+          </div>
+        </div>
+        <div class="submit-ticket-row seprator">
+          <div class="buttons-holder">
+            <button type="submit">Submit</button>
+            <button type="button">Cancel</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

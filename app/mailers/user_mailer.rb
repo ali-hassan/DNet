@@ -9,4 +9,8 @@ class UserMailer < ApplicationMailer
     @email    = params[:email]
     mail(to: @sender, subject: "Contact us email | #{@subject} | #{@name}")
   end
+  def support(spprt)
+    @spprt = spprt
+    mail(to: @sender, subject: "Support | #{@spprt.user.email} | #{@spprt.username} | #{@spprt.subject}")
+  end
 end

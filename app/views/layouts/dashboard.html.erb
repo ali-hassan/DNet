@@ -157,7 +157,7 @@ var currentUserId = <%= raw current_user.try(:id) %>
           <div class="dashboard-sidebar-bottom">
             <ul>
               <li>
-                <a href="<%=support_users_path%>">
+                <a href="<%= supports_url(subdomain: 'office') %>">
                   <%= image_tag "ic_support.png" %>Support
                 </a>
               </li>
