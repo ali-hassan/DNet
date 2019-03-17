@@ -180,3 +180,33 @@
 	
 	
 }
+@media only screen and (max-width: 767px) {
+    .submit-ticket-holder .submit-ticket-row input,
+    .submit-ticket-holder .submit-ticket-row select,
+    .submit-ticket-holder .submit-ticket-row .ws-editor-holder,
+    .submit-ticket-holder .attached-file,
+    .submit-ticket-holder .buttons-holder{
+        float: none;
+        display: block;
+        width: 100%;
+    }
+    .submit-ticket-holder .attached-file input{
+        display: none;
+    }
+    .submit-ticket-holder .submit-ticket-row label{
+        float: none;
+        min-width: 100%;
+    }
+    .submit-ticket-holder .ws-editor-holder .Editor-container .Editor-editor{
+        height: 100%;
+        min-height: 150px;
+    }
+
+
+
+}
+
+
+@media only screen and (max-width: 480px) {
+}
+
