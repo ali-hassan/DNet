@@ -108,3 +108,4 @@ gem 'sidekiq'
 gem "attr_encrypted", "~> 3.1.0"
 gem 'capistrano-sidekiq' , group: :development
 gem 'coinpayments'
+gem 'ckeditor', github: 'galetahub/ckeditor'

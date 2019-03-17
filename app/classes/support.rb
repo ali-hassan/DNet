@@ -1,6 +1,6 @@
 class Support
   include ActiveModel::Model
-  attr_accessor :requester, :username, :subject, :type, :description, :user
+  attr_accessor :requester, :username, :subject, :type, :description, :user, :email
   validates :requester, :username, :subject, :type, :description, presence: true
 
   def initialize(user, params={})

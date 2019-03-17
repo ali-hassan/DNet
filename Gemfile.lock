@@ -5,6 +5,14 @@ GIT
     bitpay-sdk (2.4.4)
       bitpay-key-utils (~> 2.0.0)
 
+GIT
+  remote: https://github.com/galetahub/ckeditor.git
+  revision: 61e56ceafa1cc2d975d25e2b7eef1cb5e40caabc
+  specs:
+    ckeditor (4.3.0)
+      orm_adapter (~> 0.5.0)
+      terrapin
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,6 +134,7 @@ GEM
       jquery-rails (~> 4.3)
       js_regex (~> 3.1)
       rails (>= 5.0.0.1, <= 6.0.0.beta1)
+    climate_control (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -365,6 +374,8 @@ GEM
     sshkit (1.18.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -427,6 +438,7 @@ DEPENDENCIES
   capistrano3-delayed-job (~> 1.0)
   capybara (~> 2.13)
   carrierwave (~> 1.0)
+  ckeditor!
   client_side_validations
   coffee-rails (~> 4.2)
   coinpayments
