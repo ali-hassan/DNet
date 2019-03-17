@@ -6,7 +6,7 @@ class PerformWeeklyUser
   def_delegators :@user, :current_package_iteration, :current_week_roi_amount,
     :current_week_iteration, :total_week_roi_amount, :update, :current_weekly_percentage,
     :total_weekly_percentage_amount, :decrement!, :package_price, :current_x_factor_income,
-    :adapter
+    :adapter, :current_total_weekly_roi_amount
 
   def initialize(user)
     @user = user
@@ -22,7 +22,7 @@ class PerformWeeklyUser
     update(params); log_weekly_roi; decrement!(:current_package_iteration); check_for_next_week
   end
   def check_for_next_week
-    (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(2.minutes.from_now,{ user_id: @user.id })
+      (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(2.minutes.from_now,{ user_id: @user.id })
   end
   def log_weekly_roi
     @user.log_histories.create(message: "Weekly ROI $#{current_week_roi_amount_sum} Current X factor income #{current_x_factor_income}", log_type: "weekly_roi")
@@ -49,6 +49,6 @@ class PerformWeeklyUser
     current_week_roi_amount_sum + total_weekly_percentage_amount.to_f
   end
   def current_weekly_roi_amount_sum
-    current_week_roi_amount_sum + current_week_roi_amount.to_f
+    current_week_roi_amount_sum + current_total_weekly_roi_amount.to_f
   end
 end

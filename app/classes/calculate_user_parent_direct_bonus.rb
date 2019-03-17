@@ -11,7 +11,7 @@ class CalculateUserParentDirectBonus
     user.is_pin? && ignore_list.push(user.parent_id)
   end
   def package_price
-    @usr.charge_package_price.try(:to_f)
+    @user.charge_package_price.try(:to_f)
   end
   def calculate
     (_ = created_by).present? && (calculate_direct_bonus(_); apply_parents_bonus) || false
