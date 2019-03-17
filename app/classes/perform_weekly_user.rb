@@ -16,7 +16,7 @@ class PerformWeeklyUser
     calculate_condition && calculate || true
   end
   def calculate_condition
-    (current_package_iteration > 0) && (adapter.max_package_total_earning > current_x_factor_income.try(:to_f))
+    (current_package_iteration > 0) && (adapter.max_package_total_earning >= current_x_factor_income.try(:to_f))
   end
   def calculate
     update(params); log_weekly_roi; decrement!(:current_package_iteration); check_for_next_week
