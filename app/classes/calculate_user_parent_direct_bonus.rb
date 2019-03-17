@@ -3,12 +3,15 @@ require 'forwardable'
 class CalculateUserParentDirectBonus
 
   extend Forwardable
-  def_delegators :@user, :total_bonus_points, :current_bonus_points, :package_price,
+  def_delegators :@user, :total_bonus_points, :current_bonus_points,
     :created_by, :adapter, :parent_position
 
   def initialize(user)
     @user = user
     user.is_pin? && ignore_list.push(user.parent_id)
+  end
+  def package_price
+    @usr.charge_package_price.try(:to_f)
   end
   def calculate
     (_ = created_by).present? && (calculate_direct_bonus(_); apply_parents_bonus) || false
@@ -20,7 +23,10 @@ class CalculateUserParentDirectBonus
     alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
   end
   def calculate_binary_bonus
-    cal_bb(adapter.parent_lists, parent_position, adapter.current_package[:binary])
+    cal_bb(adapter.parent_lists, parent_position, current_binary)
+  end
+  def current_binary
+    @user.charge_package_binary.try(:to_f)
   end
   def cal_bb(pl, position, binary, index=0)
     (usr=pl[index]).present? && (calcu_ulb(usr, position, binary); cal_bb(pl, usr.parent_position, binary, index+1)) || true
@@ -69,7 +75,7 @@ class CalculateUserParentDirectBonus
     created_by.cash_wallet_amount.try(:to_f) + current_bonus_val # + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
-    created_by.binary_bonus.try(:to_f) + adapter.find_packages.current_package[:binary]
+    created_by.binary_bonus.try(:to_f) + current_binary 
   end
   def current_bonus_points_sum
     created_by.current_bonus_points.try(:to_f) + current_bonus_val

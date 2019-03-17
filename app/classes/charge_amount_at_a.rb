@@ -19,6 +19,8 @@ class ChargeAmountAtA
       package_id: package_id,
       current_x_factor_income: current_x_factor_income_count,
       current_package_iteration: 50,
+      charge_package_price: package_price,
+      charge_package_binary: current_binary,
     }
   end
   def current_x_factor_income_count
@@ -26,6 +28,9 @@ class ChargeAmountAtA
   end
   def deducation_amount
     package_price + package_activation_fees
+  end
+  def current_binary
+    package[:binary] - (upgrade && user.current_package[:binary] || 0)
   end
   def package_price
     package[:price] - (upgrade && user.current_package[:price] || 0)
