@@ -6,11 +6,16 @@
         <h2>Income</h2>
       </div>
       <div class="main-content-body">
-        <h3>0 Pts</h3>
-        <span>Total Balance</span>
-        <div class="button-holder" disabled="true">
-          <a class="custom-btn" href="#">Request Widthdrawl</a>
-        </div>
+        <%= form_for @withdrawl_request do |f| %>
+          <h3><%= f.text_field :pts %> Pts</h3>
+          <span>Total Balance</span>
+          <br />
+          <span><%= f.label :bitcoin_url %></span>
+          <span><%= f.text_field :bitcoin_url %></span><br />
+          <div class="button-holder" disabled="true">
+            <button class="custom-btn" type="submit">Request Withdrawl</button>
+          </div>
+        <% end %>
       </div>
     </div>
     <!-- Content Block 1 End -->
