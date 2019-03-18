@@ -1,5 +1,5 @@
 Coinpayments.configure do |config|
-  config.merchant_id     = '2ea3ea97e8f17cd610e5af7108e10ecc'
-  config.public_api_key  = '664743f25ff756497c18082cb6181f84c073d88f0f4be71ec6d544912dfa0d22'
-  config.private_api_key = 'c62f8690f51670901007ae76E4D1698F410F12a9d1e7f19D3D8637C304b265D5'
+  config.merchant_id     = 'd6846971f3ab6f6b40fbb20e8ed54b4f'
+  config.public_api_key  = 'df9bf9a879dd64043cbd2c2c66f84256f71b53b4dbe72970f8e72e1f5f0e8ab1'
+  config.private_api_key = '37A4e456941c811CC0508BF4b87d3E1F5Ec369176a95F3584E3922166a89b008'
 end
