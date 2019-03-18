@@ -31,7 +31,7 @@ class PerformWeeklyUser
     {
       current_week_roi_amount: current_week_roi_amount_sum,
       total_weekly_percentage_amount: total_weekly_percentage_amount_sum,
-      current_total_weekly_roi_amount: current_weekly_roi_amount_sum,
+      current_total_weekly_roi_amount: cwras,
       current_x_factor_income: calculate_x_factor_sum,
       total_income: total_income_sum,
     }
@@ -48,7 +48,7 @@ class PerformWeeklyUser
   def total_weekly_percentage_amount_sum
     current_week_roi_amount_sum + total_weekly_percentage_amount.to_f
   end
-  def current_weekly_roi_amount_sum
+  def cwras
     current_week_roi_amount_sum + current_total_weekly_roi_amount.to_f
   end
 end
