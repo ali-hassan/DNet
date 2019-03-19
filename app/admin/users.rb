@@ -3,7 +3,9 @@ ActiveAdmin.register User do
                 :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :is_binary_bonus_active, :cash_wallet_amount,
                 :current_week_roi_amount,
                 :total_weekly_percentage_amount,
-                :indirect_bonus_amount
+                :indirect_bonus_amount,
+                :current_total_weekly_roi_amount,
+                :current_week_roi_amount
 
   index do
     selectable_column
@@ -17,6 +19,8 @@ ActiveAdmin.register User do
     column :current_week_roi_amount
     column :total_weekly_percentage_amount
     column :indirect_bonus_amount
+    column :current_week_roi_amount
+    column :current_total_weekly_roi_amount
     actions
   end
 
@@ -39,6 +43,8 @@ ActiveAdmin.register User do
       f.input :current_week_roi_amount
       f.input :total_weekly_percentage_amount
       f.input :indirect_bonus_amount
+      f.input :current_week_roi_amount
+      f.input :current_total_weekly_roi_amount
     end
     f.actions
   end

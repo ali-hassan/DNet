@@ -19,6 +19,15 @@
     <div id="wrapper">
       <div class="dashboard-page">
         <aside id="dashboard-sidebar">
+
+          <!-- Sidebar Menu Button Start -->
+          <a class="sidebar-menu-btn" href="javascript:;" title="Menu">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+          </a>
+          <!-- Sidebar Menu Button End -->
+
           <!-- Sidebar Top Start -->
           <div class="dashboard-logo">
             <a href="<%=dashboard_index_path%>">
@@ -204,6 +213,13 @@
                 </span>
               </a>
             </div>
+            <!-- Mobile Menu Button Start -->
+            <a class="mobile-menu-btn" href="javascript:;" title="Menu">
+              <span class="line line-1"></span>
+              <span class="line line-2"></span>
+              <span class="line line-3"></span>
+            </a>
+            <!-- Mobile Menu Button End -->
           </header>
           <main>
             <%= yield %>
@@ -215,3 +231,36 @@
 
   </body>
 </html>
+<script>
+    var status=1;
+    jQuery('.sidebar-menu-btn').click(function(){
+        if(status){
+            jQuery(this).addClass("active");
+            jQuery("#dashboard-sidebar").addClass("open-sidebar");
+            jQuery("body").addClass("screen-change");
+            status=0;
+        }
+        else{
+            jQuery(this).removeClass("active");
+            jQuery("#dashboard-sidebar").removeClass("open-sidebar");
+            jQuery("body").removeClass("screen-change");
+            status=1;
+        }
+    });
+
+
+
+    var status2=1;
+    jQuery('.mobile-menu-btn').click(function(){
+        if(status2){
+            jQuery(this).addClass("active");
+            jQuery(".dashboard-header-holder").addClass("open-menu");
+            status2=0;
+        }
+        else{
+            jQuery(this).removeClass("active");
+            jQuery(".dashboard-header-holder").removeClass("open-menu");
+            status2=1;
+        }
+    });
+</script>
