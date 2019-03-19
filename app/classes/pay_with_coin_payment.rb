@@ -3,6 +3,7 @@ class PayWithCoinPayment
   def initialize(user, package_id)
     self.user, self.package = user, FindPackages.new(package_id).current_package
     self.user.package_id = package_id
+    user.update charge_package_price: package_id.to_f
   end
 
   def gen_url
