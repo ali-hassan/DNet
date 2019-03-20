@@ -49,5 +49,8 @@ ActiveAdmin.register User do
         format.html { AdminUser.deduct_amount(resource.smart_wallet_balance); redirect_to([:admin, :users]) } if resource.valid?
       end
     end
+    def scoped_collection
+      User.where(is_pin: false)
+    end
   end
 end
