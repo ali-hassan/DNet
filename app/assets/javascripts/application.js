@@ -21,3 +21,5 @@
 //= require canvasjs
 //= require countries
 //= require override
+//= require ckeditor/init
+//= require ckeditor/config

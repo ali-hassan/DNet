@@ -7,12 +7,12 @@
     </div>
     <div class="main-content-body">
       <div class="acount-holder">
-        <%= form_for @transaction, url: transactions_url(subdomain: "office") do |f| %>
+        <%= form_for @transaction, url: transactions_url(subdomain: "office"), html: { data: {pin_verify: pin_verify_url(subdomain: 'office', format: :js)}  } do |f| %>
           <!-- Signup Row Start -->
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
               <label>Username</label>
-              <input type="text" id="sponsor_id_txt" value="<%= @transaction.receiver_full_name %>">
+              <input type="text" id="sponsor_id_txt" required="required" value="<%= @transaction.receiver_full_name %>">
               <%= errors_for f, :receiver %>
             </div>
             <div id="sponsor_info_card" class="custom-dashboard-column" data-field-name="user_transaction[receiver_id]">

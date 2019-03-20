@@ -9,4 +9,9 @@ class UserMailer < ApplicationMailer
     @email    = params[:email]
     mail(to: @sender, subject: "Contact us email | #{@subject} | #{@name}")
   end
+  def support(spprt)
+    @sender = 'support@forexhometrade.com'
+    @spprt = spprt
+    mail(to: @sender, subject: "Support | #{@spprt.user.email} | #{@spprt.username} | #{@spprt.subject} | #{@spprt.type}")
+  end
 end

@@ -17,9 +17,12 @@ class User < ApplicationRecord
   has_many :bit_pay_transactions, dependent: :destroy
   has_many :user_weekly_bonus_cycles, dependent: :destroy
   has_many :indirect_referred_users, -> { where("users.referred_by_id <> users.created_by_id") }, class_name: "User", foreign_key: :referred_by_id
+  has_many :user_log_histories, class_name: 'LogHistory', as: :logable
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :created_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
+  has_many :log_histories, dependent: :destroy
+  has_many :withdrawl_requests, dependent: :destroy
   accepts_nested_attributes_for :user_transactions, reject_if: :all_blank, allow_destroy: true
   attr_accessor :current_pin
   validate :current_pin_verify, if: :current_pin?
@@ -38,6 +41,8 @@ class User < ApplicationRecord
   monetize :left_bonus_cents
   monetize :right_bonus_cents
   monetize :cash_wallet_minus_cents
+  monetize :cash_wallet_amount_cents
+  monetize :charge_package_price_cents
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   def current_pin_verify
@@ -50,7 +55,7 @@ class User < ApplicationRecord
     [first_name, last_name].join(" ")
   end
   def name_or_id
-    full_name.present? && full_name || sponsor_id
+    username
   end
   def generate_token
     token = loop do

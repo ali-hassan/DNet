@@ -29,6 +29,10 @@ class UsersController < ApplicationController
   def financial_pin
   end
 
+  def support
+
+  end
+
   private
   def whitelist_user_params
     params.require(:user).permit!

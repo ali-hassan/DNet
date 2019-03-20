@@ -12,7 +12,7 @@
             <div class="columns-top">
               <dl>
                 <dt>Left Points</dt>
-                <dd><%= current_user.left_bonus.to_f %></dd>
+                <dd><%= current_user.is_binary_bonus_active? && current_user.left_bonus.to_f || 0 %></dd>
               </dl>
               <dl>
                 <dt>Left Team</dt>
@@ -37,7 +37,7 @@
             <div class="columns-top">
               <dl>
                 <dt>Right Points</dt>
-                <dd><%= current_user.right_bonus.to_f %></dd>
+                <dd><%= current_user.is_binary_bonus_active? && current_user.right_bonus.to_f || 0 %></dd>
               </dl>
               <dl>
                 <dt>Right Team</dt>

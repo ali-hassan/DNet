@@ -1,0 +1,4 @@
+$('#pin_verification_modal').remove();
+$('.modal-backdrop.in').remove();
+$('body').append('<%= j render 'form' %>');
+$('#pin_verification_modal').modal();

@@ -106,3 +106,6 @@ gem 'bitpay-sdk', require: 'bitpay_sdk', github: 'bitpay/ruby-client'
 gem 'carrierwave', '~> 1.0'
 gem 'sidekiq'
 gem "attr_encrypted", "~> 3.1.0"
+gem 'capistrano-sidekiq' , group: :development
+gem 'coinpayments'
+gem 'ckeditor', github: 'galetahub/ckeditor'

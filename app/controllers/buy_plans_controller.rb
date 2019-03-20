@@ -5,14 +5,17 @@ class BuyPlansController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    ChargeAmountAtA.new(current_user, params[:plan_id]).charge!
+    ChargeAmountAtA.new(current_user, params[:plan_id], upgrade_plan).charge!
     redirect_to(dashboard_index_url(subdomain: 'office'), notice: 'Successfully scribed')
   end
   def edit
-    @package = FindPackages.new(params[:id])
+    @package = ChargeAmountAtA.new(current_user, params[:id], upgrade_plan)
   end
   private
   def find_package
     @package = FindPackages.new(params[:id])
+  end
+  def upgrade_plan
+    false
   end
 end

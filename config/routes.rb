@@ -1,4 +1,6 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
   devise_for :admin_users, ActiveAdmin::Devise.config
   # devise_for :users, ActiveAdmin::Devise.config
 
@@ -16,14 +18,19 @@ Rails.application.routes.draw do
   with_options constraints: { subdomain: 'office' } do |subdomain_constraint|
     subdomain_constraint.resources :verify_sponsor_users
     subdomain_constraint.resources :buy_plans, only: [:index, :show, :create, :edit]
-    subdomain_constraint.resources :histories, only: [:index]
+    subdomain_constraint.resources :upgrade_plans, only: [:index, :show, :create, :edit]
+    subdomain_constraint.resources :histories, only: [:index, :show]
     subdomain_constraint.resources :news, only: [:index]
     subdomain_constraint.resources :trainings, only: [:index]
-    subdomain_constraint.resources :withdrawl_requests, only: [:index]
+    subdomain_constraint.resources :withdrawl_requests, only: [:index, :create]
     subdomain_constraint.resources :dashboard, only: [:index]
     subdomain_constraint.resources :system_credentials, only: [:index, :create]
     subdomain_constraint.resources :pay_with_bitcoins, only: [:show]
+    subdomain_constraint.resources :pay_with_coin_payments, only: [:show, :create]
     subdomain_constraint.resources :financial_pins, only: [:new, :create]
+    subdomain_constraint.resources :current_weekly_roi_to_cash_transfers, only: [:new, :create]
+    subdomain_constraint.resource :pin_verify, only: [:show, :create]
+    subdomain_constraint.resources :supports, only: [:index, :create]
     subdomain_constraint.resources :transactions, only: [:index, :create] do
       collection do
         get :cash_to_smart
@@ -34,6 +41,7 @@ Rails.application.routes.draw do
         get :me
         get :kyc
         get :system_password
+        get :support
       end
     end
     subdomain_constraint.resources :my_networks do

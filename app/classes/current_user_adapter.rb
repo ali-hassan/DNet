@@ -17,6 +17,12 @@ class CurrentUserAdapter
       end
     end
   end
+  def last_node_parent_list
+    [find_last_left_node, find_last_right_node].map { |fln| fln.parent.children }.flatten
+  end
+  def last_node_parent_id
+    last_node_parent_list.map(&:id)
+  end
   def calculate_binary_bonus
     ((left_bonus.to_f > right_bonus.to_f) && right_bonus || left_bonus).try(:to_f) * 0.50
   end
@@ -78,10 +84,10 @@ class CurrentUserAdapter
     @find_package ||= FindPackages.new(package_id)
   end
   def package_price
-    current_package ? current_package[:price] : 0.00
+    user.charge_package_price.try(:to_f)
   end
   def cash_wallet_total
-    (direct_bonus_users_count + indirect_bonus_users_count + user.current_total_weekly_roi_amount.try(:to_f)) - user.cash_wallet_minus.to_f
+    (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f)) - user.cash_wallet_minus.to_f
   end
   def earn_weekly_point
     perform_weekly_count.perform
@@ -93,19 +99,33 @@ class CurrentUserAdapter
   def cupda
     @cupda ||= CalculateUserParentDirectBonus.new(user)
   end
-  def apply_indirect_bonus_at(index, package_price)
+  def apply_indirect_bonus_at(index, package_price, usr)
     pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
+    user.log_histories.create(logable: usr, message: "Indirect bonus #{pp} on #{usr.username} for package #{package_price.to_f}", log_type: 'indirect_bonus')
     user.update(
       total_income: user.total_income.try(:to_f) + pp,
       indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,
-      indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp
+      indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp,
+      cash_wallet_amount: user.cash_wallet_amount.try(:to_f) + pp,
     )
   end
+  def max_package_total_earning
+    selected_earning_method
+  end
+  def selected_earning_method
+    {
+      pin: user.pin_capacity.try(:to_f) * 4,
+      package: find_packages.try(:xfactor_amount).try(:to_f)
+    }[ user.is_pin? && :pin || :package ]
+  end
   def binary_bonus
-    (user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)
+    user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end
   def total_income
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
+  end
+  def can_upgrade_url?(id)
+    (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true

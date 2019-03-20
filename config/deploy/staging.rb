@@ -1,6 +1,6 @@
-server 'ubuntu@forexhometrade.com', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
+server 'ubuntu@54.70.32.59', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
-server 'forexhometrade.com',
+server '54.70.32.59',
        user: 'ubuntu',
        roles: %w{web app db},
        ssh_options: {
@@ -20,5 +20,5 @@ namespace :paths do
   end
 end
 
-ask :branch, 'development'
+ask :branch, 'sidekiq'
 # set :npm_flags, '--staging' # default

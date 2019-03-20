@@ -6,4 +6,7 @@ class HistoriesController < ApplicationController
   def index
   end
 
+  def show
+    @transactions = LoadHistory.new(current_user, params[:id])
+  end
 end

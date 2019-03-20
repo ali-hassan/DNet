@@ -25,4 +25,7 @@ module ApplicationHelper
   def build_refer_link(position)
     users_sign_up_url(refered_name: current_user.username, position: position)
   end
+  def plan_polymorphic_path(id)
+    (controller.controller_name == "buy_plans" || current_user.adapter.can_upgrade_url?(id.to_s)) && send("#{controller.controller_name.singularize}_url", id, subdomain: 'office') || "#"
+  end
 end

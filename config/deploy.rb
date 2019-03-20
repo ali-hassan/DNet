@@ -15,4 +15,5 @@ set :linked_dirs, %w{pem bin log tmp/pids tmp/cache tmp/sockets vendor/bundle pu
 # puma configuration
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 
-set :pty, true
+set :pty, false
+
