@@ -33,7 +33,7 @@
               <div class="custom-dashboard-row">
                 <div class="custom-dashboard-column">
                   <%= f.label :amount, "Amount (To transfer)" %>
-                  <%= f.text_field :amount %>
+                  <%= f.number_field :amount, min: 20 %>
                 </div>
               </div>
               <!-- Signup Row End -->

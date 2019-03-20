@@ -16,8 +16,8 @@ ActiveAdmin.register User do
     column :created_at
     column "Smart Wizard Balance",  :smart_wallet_balance
     column :is_binary_bonus_active
-    column :current_week_roi_amount
-    column :total_weekly_percentage_amount
+    # column :current_week_roi_amount
+    # column :total_weekly_percentage_amount
     column :indirect_bonus_amount
     column :current_week_roi_amount
     column :current_total_weekly_roi_amount
@@ -40,8 +40,8 @@ ActiveAdmin.register User do
       f.input :total_income
       f.input :left_bonus
       f.input :right_bonus
-      f.input :current_week_roi_amount
-      f.input :total_weekly_percentage_amount
+      # f.input :current_week_roi_amount
+      # f.input :total_weekly_percentage_amount
       f.input :indirect_bonus_amount
       f.input :current_week_roi_amount
       f.input :current_total_weekly_roi_amount
@@ -54,6 +54,9 @@ ActiveAdmin.register User do
       update! do |format|
         format.html { AdminUser.deduct_amount(resource.smart_wallet_balance); redirect_to([:admin, :users]) } if resource.valid?
       end
+    end
+    def scoped_collection
+      User.where(is_pin: false)
     end
   end
 end
