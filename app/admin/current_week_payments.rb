@@ -3,6 +3,8 @@ ActiveAdmin.register User, as: "CurrentWeekPayment" do
   permit_params :current_total_weekly_roi_amount, :total_weekly_percentage_amount, :current_week_roi_amount
   index do
     column :username
+    column "Email", :email
+    column "Package", :package_id
     column "Current ROI Balance", :current_total_weekly_roi_amount
     column "Total ROI", :total_weekly_percentage_amount
     column "Weekly ROI", :current_week_roi_amount
