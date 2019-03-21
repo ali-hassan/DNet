@@ -35,7 +35,7 @@
             <li>
               <span class="title">Purchased Package</span>
               <h3><%= current_user.package_id%></h3>
-              <span><%= Date.today.strftime("%b. %e %Y") %></span>
+              <span><%= current_user.created_at.strftime("%b. %e %Y") %></span>
             </li>
           <%end%>
         </ul>
@@ -63,10 +63,6 @@
             <li>
               <span class="title">Sponsor Country</span>
               <h4><%= @sponser.country %></h4>
-            </li>
-            <li>
-              <span class="title">Date Joined</span>
-              <h4><%= @sponser.created_at.strftime("%b. %e %Y") %></h4>
             </li>
           </ul>
         </div>
