@@ -195,7 +195,7 @@
                     <%end%>
                   </dl>
                 </li>
-                <li class="status not-verified">
+                <li class="status <%= current_user.is_binary_bonus_active && "verified" || "not-verified" %>">
                   <dl>
                     <dt>Binary status: </dt>
                     <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
