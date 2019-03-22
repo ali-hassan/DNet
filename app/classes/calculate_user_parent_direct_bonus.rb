@@ -112,12 +112,12 @@ class CalculateUserParentDirectBonus
     created_by.try(:smart_wallet_balance).try(:to_f)
   end
   def check_for_rank_upgrade
-    (@user.current_rank != current_rank.reward) && log_reward_history(current_rank.reward)
+    (@user.current_reward != current_rank.reward) && log_reward_history(current_rank.reward)
   end
   def log_reward_history(reward)
     @user.current_reward = reward
     @user.log_histories.build(logable: @user, message: "You earn #{reward} ", log_type: 'user_reward')
-    !["", "pin"].include?(reward) && @user.update(smart_wallet_balance: smart_wallet_balance.to_f + reward.to_f) || 0
+    !["", "pin"].include?(reward) && @user.update(smart_wallet_balance: @user.smart_wallet_balance.to_f + reward.to_f) || 0
   end
   def ca(reward)
     log_reward_history(reward)
