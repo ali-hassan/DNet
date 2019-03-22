@@ -46,6 +46,7 @@ class CalculateUserParentDirectBonus
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
+      usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
       usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
       usr.save(validate: false)
     end
@@ -99,19 +100,24 @@ class CalculateUserParentDirectBonus
     }
   end
   def current_rank
-    rank_list.select { |rnk| rnk === total_bonus_points.to_i }.values.first
+    rank_list.select { |rnk| rnk === calculate_rank.to_i }.values.first
+  end
+  def calculate_rank
+    (@user.right_bonus.to_f > @user.left_bonus.to_f) && @user.right_bonus || @user.left_bonus
   end
   def rank_obj
     @rank_obj ||= Struct.new(:name, :reward, :cap)
   end
   def smart_wallet_balance_sum
-    (_=current_rank.try(:reward)) != created_by.current_reward && ca(_) || created_by.try(:smart_wallet_balance).try(:to_f)
+    created_by.try(:smart_wallet_balance).try(:to_f)
   end
-
+  def check_for_rank_upgrade
+    (@user.current_rank != current_rank.reward) && log_reward_history(current_rank.reward)
+  end
   def log_reward_history(reward)
-    created_by.current_reward = reward
-    created_by.log_histories.build(logable: @user, message: "You earn #{reward} from #{@user.username}", log_type: 'user_reward')
-    !["", "pin"].include?(reward) && created_by.smart_wallet_balance.to_f + reward.to_f || 0
+    @user.current_reward = reward
+    @user.log_histories.build(logable: @user, message: "You earn #{reward} ", log_type: 'user_reward')
+    !["", "pin"].include?(reward) && @user.update(smart_wallet_balance: smart_wallet_balance.to_f + reward.to_f) || 0
   end
   def ca(reward)
     log_reward_history(reward)
