@@ -7,6 +7,6 @@ class PayWithCoinPayment
   end
 
   def gen_url
-    @gen_url ||= Coinpayments.create_transaction(user.adapter.package_price, "USD", "BTC", { buyer_email: user.email })
+    @gen_url ||= Coinpayments.create_transaction(user.adapter.package_price + 25, "USD", "BTC", { buyer_email: user.email })
   end
 end
