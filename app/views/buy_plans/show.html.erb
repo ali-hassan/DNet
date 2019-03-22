@@ -7,29 +7,33 @@
           <ul>
             <li>
               <div class="image-holder">
-                <%= link_to pay_with_bitcoin_url(params[:id], subdomain: 'office') do %>
+                <%= link_to pay_with_coin_payment_url(params[:id], subdomain: 'office') do %>
                   <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
-                  <%#= image_tag Rails.application.secrets.bitpay_button_strings[:button_string] %>
                 <% end %>
-                <%#=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
               </div>
               <h3>Bitcoin</h3>
             </li>
             <li>
               <div class="image-holder">
-                <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
+                <%= link_to "#", class: "coming-soon-payment-prompt" do %>
+                  <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
+                <% end %>
               </div>
               <h3>Skrill</h3>
             </li>
             <li>
               <div class="image-holder">
-                <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
+                <%= link_to "#", class: "coming-soon-payment-prompt" do %>
+                  <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
+                <% end %>
               </div>
               <h3>Perfect Money</h3>
             </li>
             <li>
               <div class="image-holder">
-                <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
+                <%= link_to "#", class: "coming-soon-payment-prompt" do %>
+                  <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
+                <% end %>
               </div>
               <h3>Payoneer</h3>
             </li>
@@ -41,13 +45,6 @@
               </div>
               <h3>Account to Account</h3>
             </li>
-            <li>
-              <div class="image-holder">
-                <%= link_to pay_with_coin_payment_url(params[:id], subdomain: 'office') do %>
-                  <%= image_tag 'ic_bitcoin.png' %>
-                <% end %>
-              </div>
-              <h3>Coinpayment</h3>
           </ul>
         </form>
       </div>
