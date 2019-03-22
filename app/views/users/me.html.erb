@@ -5,7 +5,7 @@
       <div class="profile-header">
         <div class="profile-block">
           <div class="profile-block-image">
-            <%=image_tag "ic_user.png", alt: "image descriptions"%>
+            <%=image_tag current_user.avatar.url || "ic_user.png", alt: "image descriptions"%>
           </div>
           <div class="profile-content-block">
             <h2 class="current-user-name"><%= current_user.username%></h2>
@@ -107,6 +107,7 @@
             <!-- Signup Row End -->
             <div class="custom-dashboard-row">
                 <div class="custom-dashboard-column document-upload">
+                  <label>Add your profile image</label>
                   <%= f.label :avatar do %>
                     <%= image_tag "ic_upload.png" %>
                   <% end %>
