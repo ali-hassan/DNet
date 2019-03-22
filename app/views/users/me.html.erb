@@ -101,7 +101,19 @@
                 <%= f.select :state, [], {}, { id: "state", name: "user[state]", data: {state: current_user.state} } %>
               </div>
             </div>
+
+            <div id="uploaded_document" style="max-width: 300px;max-height: 300px;">
+            </div>
             <!-- Signup Row End -->
+            <div class="custom-dashboard-row">
+                <div class="custom-dashboard-column document-upload">
+                  <%= f.label :avatar do %>
+                    <%= image_tag "ic_upload.png" %>
+                  <% end %>
+                  <%= f.file_field :avatar, class: 'document-upload document-upload-field hide' %>
+                </div>
+              </div>
+
 
             <!-- Signup Row Start -->
             <div class="custom-dashboard-row">
