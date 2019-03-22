@@ -12,37 +12,7 @@
             <h3><%=current_user.username%></h3>
           </div>
         </div>
-        <div class="profile-listing">
-          <ul>
-            <li>
-              <div class="image-holder rank-image">
-                <%=image_tag "ic_rank.png", alt: "image descriptions"%>
-              </div>
-              <div class="profile-listing-content">
-                <h2>Rank</h2>
-                <h3>0</h3>
-              </div>
-            </li>
-            <li>
-              <div class="image-holder referrals-image">
-                <%=image_tag "ic_referral.png", alt: "image descriptions"%>
-              </div>
-              <div class="profile-listing-content">
-                <h2>Referrals</h2>
-                <h3><%=current_user.direct_bonus_users_count%></h3>
-              </div>
-            </li>
-            <li>
-              <div class="image-holder">
-                <%=image_tag "ic_plan.png", alt: "image descriptions"%>
-              </div>
-              <div class="profile-listing-content">
-                <h2>Current Plan</h2>
-                <h3><%= current_user.package_id%></h3>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <%= render "profile_view_card" %>
       </div>
     </div>
     <!-- Content Block 1 End -->
