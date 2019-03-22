@@ -20,5 +20,5 @@ namespace :paths do
   end
 end
 
-ask :branch, 'sidekiq'
+ask :branch, 'staging'
 # set :npm_flags, '--staging' # default
