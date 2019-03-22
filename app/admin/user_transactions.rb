@@ -1,5 +1,5 @@
 ActiveAdmin.register UserTransaction, as: "Withdrawal List" do
-
+  actions :index
   index do
     column :username
     column "Sender ID", :user_id
