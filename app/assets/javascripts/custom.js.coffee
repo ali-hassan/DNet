@@ -1,4 +1,7 @@
 $(document).on "turbolinks:load", ->
+  $(document).on "click", ".coming-soon-payment-prompt", (eventObject) ->
+    eventObject.preventDefault()
+    alert("Coming Soon")
   $(document).on "submit", "[data-pin-verify]", (eventObject) ->
     eventObject.preventDefault()
     $.getScript($(@).data('pin-verify'))
