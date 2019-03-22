@@ -105,9 +105,15 @@ class CalculateUserParentDirectBonus
     @rank_obj ||= Struct.new(:name, :reward, :cap)
   end
   def smart_wallet_balance_sum
-    !["", "pin"].include?(_=current_rank.try(:reward)) && ca(_) || created_by.try(:smart_wallet_balance).try(:to_f)
+    (_=current_rank.try(:reward)) != created_by.current_reward && ca(_) || created_by.try(:smart_wallet_balance).try(:to_f)
   end
-  def ca(amount)
-    created_by.present? && (created_by.smart_wallet_balance.to_f + amount.to_f) || 0
+
+  def log_reward_history(reward)
+    created_by.current_reward = reward
+    created_by.log_histories.build(logable: @user, message: "You earn #{reward} from #{@user.username}", log_type: 'user_reward')
+    !["", "pin"].include?(reward) && created_by.smart_wallet_balance.to_f + reward.to_f || 0
+  end
+  def ca(reward)
+    log_reward_history(reward)
   end
 end
