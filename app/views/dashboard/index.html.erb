@@ -29,12 +29,12 @@
           <%- if current_user.is_pin%>
             <li>
               <span class="title">Pin Capacity</span>
-              <h3><%= current_user.pin_capacity%></h3>
+              <h3>$<%= current_user.pin_capacity%></h3>
             </li>
           <%else%>
             <li>
               <span class="title">Purchased Package</span>
-              <h3><%= current_user.package_id%></h3>
+              <h3><%= current_user.package_id ? "$#{current_user.package_id}" : ""%></h3>
               <span><%= current_user.created_at.strftime("%b. %e %Y") %></span>
             </li>
           <%end%>
