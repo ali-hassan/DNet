@@ -10,7 +10,7 @@
       </div>
       <div class="main-content-body">
         <div class="acount-holder">
-          <%= form_for current_user do |f| %>
+          <%= form_for current_user, url: kyc_url(subdomain: 'office') do |f| %>
 
               <div class="custom-dashboard-row">
                 <div class="custom-dashboard-column">

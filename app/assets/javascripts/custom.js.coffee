@@ -1,4 +1,12 @@
 $(document).on "turbolinks:load", ->
+  readFileURL = (input) ->
+    if input.files && input.files[0]
+      reader = new FileReader()
+      reader.onload = (e) ->
+        $("#uploaded_document").html("<img src='#{e.target.result}' width='200' height='200' />")
+      reader.readAsDataURL(input.files[0])
+  $('.document-upload-field').on 'change', (eventObject) ->
+    readFileURL(this)
   $(document).on "click", ".coming-soon-payment-prompt", (eventObject) ->
     eventObject.preventDefault()
     alert("Coming Soon")
