@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     subdomain_constraint.resource :pin_verify, only: [:show, :create]
     subdomain_constraint.resource :kyc, only: [:edit, :update]
     subdomain_constraint.resources :supports, only: [:index, :create]
+    subdomain_constraint.resources :gateways, only: [:show]
     subdomain_constraint.resources :transactions, only: [:index, :create] do
       collection do
         get :cash_to_smart
