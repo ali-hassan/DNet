@@ -31,6 +31,7 @@ class UserTransaction < ApplicationRecord
   end
   def log_and_pay
     user.log_histories.create(logable: self, log_type: wallet_type)
+    user.update(withdrawl_date: Time.current.in_time_zone('Hong Kong'))
     receiver.update(cash_wallet_minus: receiver.cash_wallet_minus.try(:to_f) + amount.try(:to_f), smart_wallet_balance: receiver.smart_wallet_balance.try(:to_f) + amount.try(:to_f))
   end
   def user_wallet_transafer
