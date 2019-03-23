@@ -3,7 +3,17 @@
     <!-- Content Block 1 Start -->
     <div class="main-content-block">
       <div class="heading">
-        <h1>KYC</h1>
+        <%- if current_user.is_valid_kyc%>
+          <h1>
+            <span>KYC</span>
+            <span style="color: green;"> (Verified)</span>
+          </h1>
+        <%else%>
+          <h1>
+            <span>KYC</span>
+            <span style="color: red;"> (Not Verified)</span>
+          </h1>
+        <%end%>
       </div>
       <div class="heading">
         <h4>Proof of your identity</h4>

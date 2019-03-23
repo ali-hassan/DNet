@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20190323101339) do
+=======
+ActiveRecord::Schema.define(version: 20190323094113) do
+>>>>>>> 33379483539e2177ce6b158bb20df4b5dbe4636a
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -195,6 +199,7 @@ ActiveRecord::Schema.define(version: 20190323101339) do
     t.string "current_reward"
     t.string "avatar"
     t.datetime "withdrawl_date"
+    t.boolean "is_valid_kyc", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
