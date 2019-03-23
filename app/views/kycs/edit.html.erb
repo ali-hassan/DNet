@@ -46,7 +46,9 @@
 
               <div id="uploaded_document" style="max-width: 300px;max-height: 300px;">
               </div>
-
+              <%- if current_user.is_valid_kyc%>
+                  <%= image_tag(current_user.document.url, width: "200px")%>
+              <%end%>
               <div class="heading">
                 <h4>Proof of your address</h4>
               </div>

@@ -5,3 +5,4 @@
   - queue:mailers
   - queue
   - mailers
+  - max_retries: 1
