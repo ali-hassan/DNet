@@ -5,7 +5,14 @@
       <div class="heading">
         <h2>News</h2>
       </div>
-      <h4 class="alert alert-danger">There isn't any news yet</h4>
+      <% if @news.blank? %>
+        <h4 class="alert alert-danger">There isn't any news yet</h4>
+      <% else %>
+        <% @news.each do |ns| %>
+            <h4><%= ns.title %></h4>
+            <%= raw ns.body %>
+        <% end %>
+      <% end %>
       <!--<div class="main-content-body">-->
         <!--<div class="media-holder">-->
           <!--<ul>-->
