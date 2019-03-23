@@ -110,3 +110,4 @@ gem 'capistrano-sidekiq' , group: :development
 gem 'coinpayments'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'whenever', require: false
+gem 'rails_autolink'
