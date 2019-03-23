@@ -7,8 +7,8 @@
           <ul>
             <li>
               <div class="image-holder">
-                <%= link_to pay_with_coin_payment_url(params[:id], subdomain: 'office') do %>
-                  <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
+                <%= link_to withdrawl_requests_url(subdomain: "office") do %>
+                    <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
                 <% end %>
               </div>
               <h3>Bitcoin</h3>
@@ -16,7 +16,7 @@
             <li>
               <div class="image-holder">
                 <%= link_to "#", class: "coming-soon-payment-prompt" do %>
-                  <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
+                    <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
                 <% end %>
               </div>
               <h3>Skrill</h3>
@@ -24,7 +24,7 @@
             <li>
               <div class="image-holder">
                 <%= link_to "#", class: "coming-soon-payment-prompt" do %>
-                  <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
+                    <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
                 <% end %>
               </div>
               <h3>Perfect Money</h3>
@@ -32,18 +32,10 @@
             <li>
               <div class="image-holder">
                 <%= link_to "#", class: "coming-soon-payment-prompt" do %>
-                  <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
+                    <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
                 <% end %>
               </div>
               <h3>Payoneer</h3>
-            </li>
-            <li>
-              <div class="image-holder">
-                <%= link_to send("edit_#{controller.controller_name.singularize}_url", params[:id], subdomain: "office"), remote: true do %>
-                  <%=image_tag "ic_accountoaccount.png", alt: "image descriptions"%>
-                <% end %>
-              </div>
-              <h3>Smart Wallet</h3>
             </li>
           </ul>
         </form>

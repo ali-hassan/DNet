@@ -112,7 +112,7 @@
               <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
                 <div class="card-body">
                   <ul>
-                    <li><a href="<%=withdrawl_requests_url(subdomain: "office")%>">Withdrawal Request</a></li>
+                    <li><a href="<%=gateway_url(subdomain: "office", id: current_user.id)%>">Withdrawal Request</a></li>
                     <li><a href="<%=transactions_url(subdomain: "office")%>">Fund Transfer</a></li>
                     <li><a href="<%=cash_to_smart_transactions_url(subdomain: "office")%>">Cash Wallet to Smart Wallet</a></li>
                     <li><a href="<%=new_current_weekly_roi_to_cash_transfer_url(subdomain: "office")%>">ROI Wallet to Smart Wallet</a></li>
