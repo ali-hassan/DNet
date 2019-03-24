@@ -1,5 +1,5 @@
 <main class="main">
-  <div class="main-content">
+  <div class="main-content" style="background-color: #fff;">
     <!-- Content Block 1 Start -->
     <div class="main-content-block">
       <% if @news.blank? %>
@@ -10,7 +10,7 @@
             <div class="heading">
               <h1><%= ns.title %></h1>
             </div>
-            <div><%= raw ns.body %></div>
+            <div style="color: black; text-align: justify; float: left; padding-left: 12px"><%= raw ns.body %></div>
           </div>
         <% end %>
       <% end %>

@@ -4,6 +4,6 @@ class NewsController < ApplicationController
   layout "dashboard"
 
   def index
-    @news = News.where(is_active: true).order(created_at: :desc)
+    @news = News.where(is_active: true).paginate(page: params[:page], per_page: 5).order(created_at: :desc)
   end
 end

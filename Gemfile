@@ -111,3 +111,4 @@ gem 'coinpayments'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'whenever', require: false
 gem 'rails_autolink'
+gem 'will_paginate', '~> 3.1.0'
