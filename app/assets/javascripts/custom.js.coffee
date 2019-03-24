@@ -21,6 +21,7 @@ $(document).on "turbolinks:load", ->
     ), 6000
   $(document).on 'click', '.flash-message .close-btn', (eventObject) ->
     $(this).parents('.flash-message').remove()
+  $(".copy-link-label").off("click")
   $(document).on "click", ".copy-link-label", (eventObject) ->
     eventObject.preventDefault()
     val = $(this).find('input')[0]
