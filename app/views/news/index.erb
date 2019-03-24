@@ -14,7 +14,9 @@
             <div style="float: right; padding-right: 12px;"><%=ns.created_at.strftime("%b. %e %Y")%></div>
           </div>
         <% end %>
-      <% end %>
+          <%= will_paginate @news %>
+
+    <% end %>
     </div>
     <!-- Content Block 1 End -->
   </div>
