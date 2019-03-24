@@ -33,6 +33,14 @@
 
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
+              <label>Service Fee </label>
+                <%#= f.number_field :amount, min: 60, id: "amount" %>
+                <input type="number" name="withdrawl_request[service]" min="60" id="service" />
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
               <label>Total withdrawl amount</label>
               <%= f.number_field :pts, min: 60, id: "pts", readonly: true %>
             </div>
@@ -49,7 +57,9 @@
 <script>
   $("#amount").on("change", function (event) {
      var amount = parseFloat(this.value);
-     var caluclated_amount = amount + (amount / 100 * 10)
+     var service = amount / 100 * 10;
+     var caluclated_amount = amount + service;
+     document.getElementById("service").value = service;
      document.getElementById("pts").value = caluclated_amount;
   });
 </script>
