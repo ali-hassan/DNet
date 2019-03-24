@@ -1,23 +1,32 @@
-var parentId = <%= params[:id] %>;
-var $childrenContainer = $("#children_tree_"+parentId);
-var $parentContainer = $("#tree_user_"+parentId)
-if(!$childrenContainer.length) {
-  $parentContainer.append("<ul id='children_tree_"+parentId+"'></ul>");
-  $childrenContainer = $("#children_tree_"+parentId);
-}
-var html = new Array();
-treeNodeCount += 1
-$childrenContainer.html(html);
-var hasChild = new Array();
-<% @children.sort_by { |chld| (chld.parent_position == "left") && 1 || 2  }.each do |child| %>
-  html.push("<li id='<%= dom_id child, :tree %>' data-parent-position='<%= child.parent_position %>' data-node-name='<%= child.name_or_id %>' data-node-id='<%= child.id %>'><a href='#' class='node-focus-href' data-child-id='<%= child.id %>' data-child-name='<%= child.name_or_id %>'><%= child.name_or_id %></a></li>");
-  $childrenContainer.html(html.join(""))
-  if (treeNodeCount < 2) {
-    $.getScript("/my_networks/<%= child.id %>.js");
+function initNode() {
+  var parentId = <%= params[:id] %>;
+  var $childrenContainer = $("#children_tree_"+parentId);
+  var $parentContainer = $("#tree_user_"+parentId)
+  if(!$childrenContainer.length) {
+    $parentContainer.append("<ul id='children_tree_"+parentId+"'></ul>");
+    $childrenContainer = $("#children_tree_"+parentId);
   }
-<% end %>
-<% if current_user.adapter.last_node_parent_id.include?(params[:id].to_i) %>
-  var newHTML = "<li class='left-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='left'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=left' data-remote='true' class='new-child-href'>Add Child</a></li>";
-  newHTML += "<li class='right-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='right'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=right' data-remote='true' class='new-child-href'>Add Child</a></li>";
-  $childrenContainer.html(newHTML);
-<% end %>
+  var html = new Array();
+  treeNodeCount += 1
+  $childrenContainer.html(html);
+  var hasChild = new Array();
+  <% @children.sort_by { |chld| (chld.parent_position == "left") && 1 || 2  }.each do |child| %>
+    html.push("<li id='<%= dom_id child, :tree %>' data-parent-position='<%= child.parent_position %>' data-node-name='<%= child.name_or_id %>' data-node-id='<%= child.id %>'><a href='#' class='node-focus-href' data-child-id='<%= child.id %>' data-child-name='<%= child.name_or_id %>'><%= child.name_or_id %></a></li>");
+    $childrenContainer.html(html.join(""))
+    if (treeNodeCount < 2) {
+      $.getScript("/my_networks/<%= child.id %>.js");
+    }
+  <% end %>
+  <% if current_user.adapter.last_node_parent_id.include?(params[:id].to_i) %>
+      debugger
+    var newHTML = new Array();
+    if (!$("[data-parent-position='left']").length) {
+      $childrenContainer.prepend("<li class='left-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='left'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=left' data-remote='true' class='new-child-href'>Add Child</a></li>");
+    }
+    if (!$("[data-parent-position='right']").length) {
+      $childrenContainer.append("<li class='right-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='right'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=right' data-remote='true' class='new-child-href'>Add Child</a></li>");
+    }
+
+  <% end %>
+}
+initNode()
