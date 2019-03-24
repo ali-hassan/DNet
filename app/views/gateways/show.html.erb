@@ -5,38 +5,46 @@
       <div class="payment-option-holder">
         <form action="#">
           <ul>
-            <li>
-              <div class="image-holder">
-                <%= link_to withdrawl_requests_url(subdomain: "office") do %>
-                    <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
-                <% end %>
-              </div>
-              <h3>Bitcoin</h3>
-            </li>
-            <li>
-              <div class="image-holder">
-                <%= link_to "#", class: "coming-soon-payment-prompt" do %>
-                    <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
-                <% end %>
-              </div>
-              <h3>Skrill</h3>
-            </li>
-            <li>
-              <div class="image-holder">
-                <%= link_to "#", class: "coming-soon-payment-prompt" do %>
-                    <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
-                <% end %>
-              </div>
-              <h3>Perfect Money</h3>
-            </li>
-            <li>
-              <div class="image-holder">
-                <%= link_to "#", class: "coming-soon-payment-prompt" do %>
-                    <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
-                <% end %>
-              </div>
-              <h3>Payoneer</h3>
-            </li>
+            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "btc"%>
+              <li>
+                <div class="image-holder">
+                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "btc") do %>
+                      <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Bitcoin</h3>
+              </li>
+            <%end%>
+            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "skrill"%>
+              <li>
+                <div class="image-holder">
+                  <%= link_to "#", class: "coming-soon-payment-prompt" do %>
+                      <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Skrill</h3>
+              </li>
+            <%end%>
+            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "perfect_money"%>
+              <li>
+                <div class="image-holder">
+                  <%= link_to "#", class: "coming-soon-payment-prompt" do %>
+                      <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Perfect Money</h3>
+              </li>
+            <%end%>
+            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "payoneer"%>
+              <li>
+                <div class="image-holder">
+                  <%= link_to "#", class: "coming-soon-payment-prompt" do %>
+                      <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Payoneer</h3>
+              </li>
+            <%end%>
           </ul>
         </form>
       </div>
