@@ -6,4 +6,6 @@ class GatewaysController < ApplicationController
   def show
 
   end
+
+  private
 end
