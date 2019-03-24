@@ -18,7 +18,7 @@ class CurrentUserAdapter
     end
   end
   def last_node_parent_list
-    [find_last_left_node, find_last_right_node].map { |fln| fln.parent.try(:children) }.flatten.compact!
+    [find_last_left_node, find_last_right_node].map { |fln| fln.parent.try(:children) }.flatten.compact
   end
   def last_node_parent_id
     last_node_parent_list.map(&:id) rescue []
