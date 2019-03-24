@@ -5,93 +5,28 @@
       <div class="heading">
         <h2>Training Materials</h2>
       </div>
-      <h4 class="alert alert-info">Trainings will be provided soon</h4>
-      <!--<div class="main-content-body">-->
-        <!--<div class="media-holder">-->
-          <!--<ul>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-          <!--</ul>-->
-        <!--</div>-->
-      <!--</div>-->
+      <%- if @trainings.empty?%>
+        <h4 class="alert alert-info">Trainings will be provided soon</h4>
+      <%end%>
+      <div class="main-content-body">
+        <div class="media-holder">
+          <ul>
+            <%- @trainings.each do |training|%>
+              <li>
+                <a href="javascript:;">
+                  <div class="image-holder">
+                    <iframe src="https://www.youtube.com/embed/<%= training.video_url.scan(/v\=.*/).first.split("&").first.gsub("v=", "") %>" class="listing-description-youtube-iframe">
+                      </iframe>
+                  </div>
+                  <div class="media-content">
+                    <h4><%= training.heading%></h4>
+                  </div>
+                </a>
+              </li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
     </div>
     <!-- Content Block 1 End -->
   </div>

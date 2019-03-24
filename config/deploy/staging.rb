@@ -1,6 +1,6 @@
-server 'ubuntu@54.70.32.59', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
+server 'ubuntu@fhbizforall.site', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
-server '54.70.32.59',
+server 'fhbizforall.site',
        user: 'ubuntu',
        roles: %w{web app db},
        ssh_options: {
