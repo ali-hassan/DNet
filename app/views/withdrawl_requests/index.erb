@@ -4,20 +4,36 @@
     <div class="main-content-block">
       <div class="heading">
         <h2>Income</h2>
+        <h4 class="alert alert-danger">Note: 10% transaction fee will be applied.</h4>
       </div>
       <div class="main-content-body">
         <%= form_for @withdrawl_request do |f| %>
 
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
+              <label>Cash Wallet </label>
+              <%= f.number_field :cash_wallet, value: current_user.adapter.cash_wallet_total, readonly: true, min: "60" %>
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
               <label>Withdraw Amount </label>
-              <%= f.number_field :pts, min: 60 %>
+                <%#= f.number_field :amount, min: 60, id: "amount" %>
+                <input type="number" name="withdrawl_request[amount]" min="60" id="amount" />
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <label>Amount with service charges</label>
+              <%= f.number_field :pts, min: 60, id: "pts", readonly: true %>
             </div>
           </div>
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
               <label>Add your wallet URL </label>
-              <%= f.text_field :bitcoin_url %>
+              <%= f.text_field :bitcoin_url, value: current_user.bitcoin_url %>
             </div>
           </div>
           <div class="button-holder" disabled="true">
@@ -29,3 +45,10 @@
     <!-- Content Block 1 End -->
   </div>
 </main>
+<script>
+  $("#amount").on("change", function (event) {
+     var amount = parseFloat(this.value);
+     var caluclated_amount = amount + (amount / 100 * 10)
+     document.getElementById("pts").value = caluclated_amount;
+  });
+</script>
