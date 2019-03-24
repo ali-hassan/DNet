@@ -17,6 +17,7 @@ ActiveAdmin.register User do
     # column :current_week_roi_amount
     # column :total_weekly_percentage_amount
     column :indirect_bonus_amount
+    column "Pacakage Amount", :package_id
     column "Activation Date", :created_at
     actions
   end
