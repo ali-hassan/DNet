@@ -2,105 +2,18 @@
   <div class="main-content">
     <!-- Content Block 1 Start -->
     <div class="main-content-block">
-      <div class="heading">
-        <h2>News</h2>
-      </div>
       <% if @news.blank? %>
         <h4 class="alert alert-danger">There isn't any news yet</h4>
       <% else %>
         <% @news.each do |ns| %>
           <div class='news-list-view' style="text-align: center;">
-            <h4><%= ns.title %></h4>
-            <%= raw ns.body %>
+            <div class="heading">
+              <h1><%= ns.title %></h1>
+            </div>
+            <div><%= raw ns.body %></div>
           </div>
         <% end %>
       <% end %>
-      <!--<div class="main-content-body">-->
-        <!--<div class="media-holder">-->
-          <!--<ul>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="javascript:;">-->
-                <!--<div class="image-holder">-->
-                  <!--<img src="<%#= image_url 'forex-image.jpg'%>">-->
-                <!--</div>-->
-                <!--<div class="media-content">-->
-                  <!--<h4>Lorem ipsum dolor sit amet</h4>-->
-                <!--</div>-->
-              <!--</a>-->
-            <!--</li>-->
-          <!--</ul>-->
-        <!--</div>-->
-      <!--</div>-->
     </div>
     <!-- Content Block 1 End -->
   </div>
