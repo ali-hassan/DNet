@@ -11,6 +11,13 @@
 
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
+              <label>Add your wallet information </label>
+              <%= f.text_field :bitcoin_url, value: current_user.bitcoin_url %>
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
               <label>Cash Wallet </label>
               <%= f.number_field :cash_wallet, value: current_user.adapter.cash_wallet_total, readonly: true, min: "60" %>
             </div>
@@ -26,14 +33,8 @@
 
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
-              <label>Amount with service charges</label>
+              <label>Total withdrawl amount</label>
               <%= f.number_field :pts, min: 60, id: "pts", readonly: true %>
-            </div>
-          </div>
-          <div class="custom-dashboard-row">
-            <div class="custom-dashboard-column">
-              <label>Add your wallet URL </label>
-              <%= f.text_field :bitcoin_url, value: current_user.bitcoin_url %>
             </div>
           </div>
           <div class="button-holder" disabled="true">
