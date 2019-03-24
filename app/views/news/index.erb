@@ -2,6 +2,7 @@
   <div class="main-content" style="background-color: #fff;">
     <!-- Content Block 1 Start -->
     <div class="main-content-block">
+      <h1 class="alert-info" style="text-align: center"> Forex Home Trade News</h1>
       <% if @news.blank? %>
         <h4 class="alert alert-danger">There isn't any news yet</h4>
       <% else %>
@@ -9,9 +10,9 @@
           <div class='news-list-view' style="text-align: center;">
             <div class="heading">
               <h1><%= ns.title %></h1>
+              <div style="color: black; text-align: justify; float: left; padding-left: 12px"><%= raw ns.body %></div>
+              <div style="float: right; padding-right: 12px;"><%=ns.created_at.strftime("%b. %e %Y")%></div>
             </div>
-            <div style="color: black; text-align: justify; float: left; padding-left: 12px"><%= raw ns.body %></div>
-            <div style="float: right; padding-right: 12px;"><%=ns.created_at.strftime("%b. %e %Y")%></div>
           </div>
         <% end %>
           <%= will_paginate @news %>
