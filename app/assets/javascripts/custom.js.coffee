@@ -7,9 +7,11 @@ $(document).on "turbolinks:load", ->
       reader.readAsDataURL(input.files[0])
   $('.document-upload-field').on 'change', (eventObject) ->
     readFileURL(this)
+  $(".coming-soon-payment-prompt").off("click")
   $(document).on "click", ".coming-soon-payment-prompt", (eventObject) ->
     eventObject.preventDefault()
     alert("Coming Soon")
+    $(".coming-soon-payment-prompt").off("click")
   $(document).on "submit", "[data-pin-verify]", (eventObject) ->
     eventObject.preventDefault()
     $.getScript($(@).data('pin-verify'))
