@@ -18,7 +18,6 @@ function initNode() {
     }
   <% end %>
   <% if current_user.adapter.last_node_parent_id.include?(params[:id].to_i) %>
-      debugger
     var newHTML = new Array();
     if (!$("[data-parent-position='left']").length) {
       $childrenContainer.prepend("<li class='left-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='left'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=left' data-remote='true' class='new-child-href'>Add Child</a></li>");
