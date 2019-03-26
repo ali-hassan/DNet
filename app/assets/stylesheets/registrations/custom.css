@@ -168,6 +168,7 @@ a:hover{
 #dashboard-sidebar .dashboard-menu .card{
     background-color: transparent;
     text-align: left;
+    margin-bottom: 0;
 }
 #dashboard-sidebar .dashboard-menu .card-body{
     margin: 0 0 20px;
