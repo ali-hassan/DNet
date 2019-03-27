@@ -32,7 +32,7 @@ class CalculateUserParentDirectBonus
     (usr=pl[index]).present? && (calcu_ulb(usr, position, binary); cal_bb(pl, usr.parent_position, binary, index+1)) || true
   end
   def cal_bb_condition?(usr)
-    child_condition?(usr, "left") && child_condition?(usr, "right")
+    [child_condition?(usr, "left"), child_condition?(usr, "right")].select { |cond| cond }.to_a.count == 2
   end
   def child_condition?(usr, position)
     (ch = usr.children.where(parent_position: position).first) && (ch.adapter.find_child_list_by_parent_id.map { |umt| umt.package_id.present? && umt.created_by_id == usr.id }.include?(true) || (ch.package_id.present? && ch.created_by_id == usr.id))
