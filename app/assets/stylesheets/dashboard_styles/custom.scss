@@ -1,115 +1,4 @@
-body{
-  font-size: 14px;
-  line-height: 17px;
-  font-family: 'Lato', sans-serif;
-  min-width: 320px;
-  margin: 0;
-}
-ul{
-  list-style: none;
-  margin: 0;
-  padding: 0;	
-}
-a,
-a:hover{
-  text-decoration: none;
-}
-#wrapper{
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
-  background-color: #f6f6f6;
-}
-.dashboard-page{
-  background-color: #f6f6f6;
-  max-width: 1400px;
-  margin: 0 auto; 
-}
-.dashboard-page .contents{
-  overflow: hidden;
-}
 
-/* Header Start */
-.dashboard-header{
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  padding: 20px;
-  margin: 0 0 20px;
-}
-.dashboard-header:after{
-  content: '';
-  display: block;
-  clear: both;
-}
-.dashboard-header .header-left{
-  float: left;
-}
-.dashboard-header .header-left ul:after{
-  content: '';
-  display: block;
-  clear: both;
-}
-.dashboard-header .header-left ul li{
-  float: left;
-  margin: 0 50px 0 0;
-}
-.dashboard-header .header-left ul li:last-child{
-  margin: 0;
-}
-.dashboard-header .header-left dt{
-  float: left;
-  font-weight: normal;
-  color: #505050;
-  margin: 0 10px 0 0;
-}
-.dashboard-header .header-left dd{
-  float: left;
-}
-.dashboard-header .header-left .status.verified dd{
-  color: #08ce36;
-}
-.dashboard-header .header-left .status.not-verified dd{
-  color: #ff1616;
-}
-.dashboard-header .header-right{
-  float: right;
-}
-.dashboard-header .header-right .current-image-holder{
-  display: inline-block;
-  vertical-align: middle;
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-}
-.dashboard-header .header-right .current-image-holder img{
-  display: block;
-  height: auto;
-  width: 100%;
-}
-.dashboard-header .header-right .current-user-name{
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  font-size: 12px;
-  line-height: 12px;
-  color: #505050;
-  padding: 0 20px 0 15px;
-}
-.dashboard-header .header-right .current-user-name:before{
-  content: '\2039';
-  display: block;
-  font-size: 24px;
-  line-height: 24px;
-  color: #505050;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  position: absolute;
-  top: -6px;
-  right: 2px;
-}
-/* Header End */
 
 /* Sidebar Start */
 #dashboard-sidebar{
@@ -1053,6 +942,13 @@ a:hover{
 #dashboard-sidebar .dashboard-menu .card-body ul ul{
   padding: 0 0 0 20px;
 }
+
+
+
+
+
+
+
 .flash-message{
   z-index: 9999;
   position: fixed;
@@ -1114,28 +1010,6 @@ a:hover{
   left: 4px;
 }
 
-body{
-  font-size: 14px;
-  line-height: 17px;
-  font-family: 'Lato', sans-serif;
-  min-width: 320px;
-  margin: 0;
-}
-ul{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-a,
-a:hover{
-  text-decoration: none;
-}
-#wrapper{
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
-  background-color: #f6f6f6;
-}
 .submit-ticket{
   padding: 20px;
 }

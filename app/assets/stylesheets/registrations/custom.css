@@ -1248,18 +1248,40 @@ a:hover{
     -webkit-transform: translateY(-7px) translateX(0) rotate(-45deg);
     -moz-transform: translateY(-7px) translateX(0) rotate(-45deg);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive Start */
+
+
 /* Mobile Menu Button End */
 @media only screen and (min-width: 1024px){
     .sidebar-menu-btn{
         display: none;
     }
 }
+
 @media only screen and (min-width: 767px){
     .mobile-menu-btn{
         display: none;
     }
 }
-
 
 @media only screen and (max-width: 1400px) {
     #dashboard-sidebar{
@@ -1269,7 +1291,6 @@ a:hover{
         padding: 0 20px;
     }
 }
-
 
 @media only screen and (max-width: 1240px) {
     #dashboard-sidebar {
@@ -1342,10 +1363,7 @@ a:hover{
         font-size: 16px;
         line-height: 20px;
     }
-
 }
-
-
 
 @media only screen and (max-width: 1023px) {
     body.screen-change{
@@ -1449,12 +1467,6 @@ a:hover{
 
 }
 
-
-
-
-
-
-
 @media only screen and (max-width: 767px) {
     .dashboard-page #right-sidebar .sidebar-content-body li{
         float: none;
@@ -1547,10 +1559,6 @@ a:hover{
 
 }
 
-
-
-
-
 @media only screen and (max-width: 480px) {
     .dashboard-page .main-content-body .two-columns .columns-bottom h4{
         font-size: 16px;
@@ -1605,7 +1613,7 @@ a:hover{
         padding: 30px 0;
     }
 
-
-
 }
 
+
+/* Responsive End */
