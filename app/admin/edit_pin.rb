@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ActiveAdmin.register User, as: "EditPin" do
   permit_params :email, :password, :password_confirmation, :smart_wallet_balance, :total_bonus_points, :indirect_bonus_amount,
                 :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :is_binary_bonus_active, :cash_wallet_amount,
                 :current_week_roi_amount,
@@ -23,6 +23,7 @@ ActiveAdmin.register User do
   end
 
   filter :email
+  filter :username
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
@@ -52,7 +53,7 @@ ActiveAdmin.register User do
       end
     end
     def scoped_collection
-      User.where(is_pin: false)
+      User.where(is_pin: true)
     end
   end
 end
