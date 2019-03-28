@@ -17,10 +17,10 @@ class CalculateUserParentDirectBonus
     (_ = created_by).present? && (calculate_direct_bonus(_); apply_parents_bonus) || false
   end
   def calculate_direct_bonus(usr)
-    usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
+    !usr.is_pin? && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
   end
   def apply_parents_bonus
-    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
+    alpl { |usr, index| usr && !usr.is_pin? && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
   end
   def calculate_binary_bonus
     cal_bb(adapter.parent_lists, parent_position, current_binary)
@@ -41,12 +41,14 @@ class CalculateUserParentDirectBonus
     @ignore_list ||= Array.new
   end
   def calcu_ulb(usr,position, binary)
+    if !usr.is_pin?
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
       usr.save(validate: false)
+    end
   end
   def alpl(&block)
     adapter.linked_parent_list.values_at(1, 2, 3, 4, 5, 6).each.with_index(&block)
