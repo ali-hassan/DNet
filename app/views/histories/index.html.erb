@@ -7,7 +7,7 @@
       </div>
       <div class="main-content-body">
         <div class="history-widthdrawal-holder">
-          <%= render @transaction.try(:load_condition[2]) %>
+          <%= render @transaction.load_condition[2] if @transaction.present? %>
         </div>
       </div>
     </div>
