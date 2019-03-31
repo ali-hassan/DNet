@@ -17,7 +17,8 @@ class CalculateUserParentDirectBonus
     (_ = created_by).present? && (calculate_direct_bonus(_); apply_parents_bonus) || false
   end
   def calculate_direct_bonus(usr)
-    usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
+    # usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
+    usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
   end
   def apply_parents_bonus
     alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
