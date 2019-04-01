@@ -10,6 +10,7 @@ ActiveAdmin.register User, as: 'FreeUser' do
       f.input :username
       f.input :pin_capacity, label: "Pin Capacity", as: :select, collection: ["100$", "200$", "300$", "500$", "1000$", "2000$", "5000$", "10000$"], :prompt => "Select Pin Capacity"
       f.input :email
+      f.input :pin, as: :password
       f.input :password
       f.input :password_confirmation
       f.input :smart_wallet_balance
