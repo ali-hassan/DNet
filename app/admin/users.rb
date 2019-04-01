@@ -35,15 +35,15 @@ ActiveAdmin.register User do
       f.input :is_binary_bonus_active, label: "Binary Check"
       f.input :smart_wallet_balance, label: "Smart Wizard Balance"
       f.input :total_bonus_points
-      f.input :indirect_bonus_amount
-      f.input :indirect_total_bonus_amount
+      # f.input :indirect_bonus_amount
+      # f.input :indirect_total_bonus_amount
       f.input :binary_bonus
       f.input :total_income
       f.input :left_bonus
       f.input :right_bonus
       # f.input :current_week_roi_amount
       # f.input :total_weekly_percentage_amount
-      f.input :indirect_bonus_amount
+      # f.input :indirect_bonus_amount
       f.input :current_week_roi_amount
       f.input :current_total_weekly_roi_amount
     end
