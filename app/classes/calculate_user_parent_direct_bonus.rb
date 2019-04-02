@@ -104,7 +104,7 @@ class CalculateUserParentDirectBonus
     rank_list.select { |rnk| rnk === calculate_rank.to_i }.values.first
   end
   def calculate_rank
-    (@user.right_bonus.to_f > @user.left_bonus.to_f) && @user.right_bonus || @user.left_bonus
+    (@user.right_bonus.to_f < @user.left_bonus.to_f) && @user.right_bonus || @user.left_bonus
   end
   def rank_obj
     @rank_obj ||= Struct.new(:name, :reward, :cap)
