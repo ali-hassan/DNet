@@ -87,7 +87,7 @@ class CurrentUserAdapter
     user.charge_package_price.try(:to_f)
   end
   def cash_wallet_total
-    (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f)) - user.cash_wallet_minus.to_f
+    (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f) + weekly_roi_to_cash_amount.try(:to_f)) - user.cash_wallet_minus.to_f
   end
   def earn_weekly_point
     perform_weekly_count.perform
@@ -131,5 +131,5 @@ class CurrentUserAdapter
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
-  delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, to: :user, allow_nil: true
+  delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, :weekly_roi_to_cash_amount, to: :user, allow_nil: true
 end
