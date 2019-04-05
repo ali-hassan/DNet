@@ -44,6 +44,7 @@ class User < ApplicationRecord
   monetize :cash_wallet_minus_cents
   monetize :cash_wallet_amount_cents
   monetize :charge_package_price_cents
+  monetize :weekly_roi_to_cash_amount_cents
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   def current_pin_verify
