@@ -21,13 +21,14 @@
                     <h4>Login to your account</h4>
                     <h5>Enter Your credentials below</h5>
                     <br>
-                    <%= recaptcha_tags %>
-                    <br>
                     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Your Email" %>
-                    <div id="email-invalid-message"></div>
                     <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Enter Your Password", style: "margin: 10px 0px;" %>
                     <input type="checkbox" class="custom-control-input" id="customControlInline">
                     <label class="custom-control-label" for="customControlInline">Remember me</label>
+                    <br>
+                    <%= recaptcha_tags %>
+                    <br>
+                    <div id="email-invalid-message"></div>
                     <div class="justify-content-center mt-3 login_container">
                       <button type="submit" name="button" class="btn singin_btn">Sign In</button>
                     </div>
@@ -46,3 +47,24 @@
     </div>
   </div>
 </div>
+<script>
+    function checkRecaptcha() {
+        res = $('#g-recaptcha-response').val();
+
+        if (res == "" || res == undefined || res.length == 0)
+            return false;
+        else
+            return true;
+    }
+
+    //...
+
+    $('#new_user').submit(function(e) {
+
+        if(!checkRecaptcha()) {
+            $("#email-invalid-message" ).text("Please validate your reCAPTCHA.");
+            return false;
+        }
+        //...
+    });
+</script>
