@@ -21,6 +21,8 @@
                     <h4>Login to your account</h4>
                     <h5>Enter Your credentials below</h5>
                     <br>
+                    <%= recaptcha_tags %>
+                    <br>
                     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Your Email" %>
                     <div id="email-invalid-message"></div>
                     <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Enter Your Password", style: "margin: 10px 0px;" %>
