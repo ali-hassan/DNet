@@ -23,13 +23,13 @@
                     <br>
                     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Your Email" %>
                     <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Enter Your Password", style: "margin: 10px 0px;" %>
+                    <div id="email-invalid-message"></div>
                     <input type="checkbox" class="custom-control-input" id="customControlInline">
                     <label class="custom-control-label" for="customControlInline">Remember me</label>
                     <br>
-                    <%= recaptcha_tags %>
-                    <br>
-                    <div id="email-invalid-message"></div>
                     <div class="justify-content-center mt-3 login_container">
+                      <%= recaptcha_tags %>
+                      <br>
                       <button type="submit" name="button" class="btn singin_btn">Sign In</button>
                     </div>
                   <% end %>
