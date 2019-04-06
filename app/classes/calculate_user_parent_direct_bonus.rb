@@ -18,10 +18,10 @@ class CalculateUserParentDirectBonus
   end
   def calculate_direct_bonus(usr)
     # usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
-    usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
+    usr.adapter.perform_weekly_count && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
   end
   def apply_parents_bonus
-    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
+    alpl { |usr, index| usr && usr.adapter.perform_weekly_count && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
   end
   def calculate_binary_bonus
     cal_bb(adapter.parent_lists, parent_position, current_binary)
@@ -73,8 +73,9 @@ class CalculateUserParentDirectBonus
     (package_price / 100 * 8.0)
   end
   def total_income_sum
-    created_by.total_income.try(:to_f) + current_bonus_val
+     created_by.adapter.perform_weekly_count ? (created_by.total_income.try(:to_f) + current_bonus_val) : created_by.total_income.try(:to_f)
   end
+
   def total_cash_wallet_amount
     created_by.cash_wallet_amount.try(:to_f) + current_bonus_val # + adapter.calculate_binary_bonus
   end
