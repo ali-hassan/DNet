@@ -26,7 +26,13 @@
                   <td><%=user.try(:email)%></td>
                   <td><%=user.full_name%></td>
                   <td><%=user.parent_position%></td>
-                  <td><%=user.is_package_activated%></td>
+                  <td>
+                    <%- if current_user.package_id.present? || current_user.is_pin %>
+                      Verified
+                    <% else %>
+                      UnVerified
+                    <% end %>
+                  </td>
                 </tr>
             <%end%>
             </tbody>
