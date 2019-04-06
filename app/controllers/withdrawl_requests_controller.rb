@@ -22,7 +22,7 @@ class WithdrawlRequestsController < ApplicationController
   end
   private
   def permitted_params
-    params.require(:withdrawl_request).permit(:pts, :bitcoin_url)
+    params.require(:withdrawl_request).permit(:pts, :bitcoin_url, :cash_wallet, :amount, :service)
   end
   def update_gateway
     current_user.update(withdraw_gateway: params[:withdraw_gateway])
