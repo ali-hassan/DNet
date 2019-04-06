@@ -16,6 +16,7 @@ class PerformWeeklyUser
     calculate_condition && calculate || true
   end
   def calculate_condition
+    debugger
     ((current_package_iteration > 0) || @user.is_pin?) && (adapter.max_package_total_earning >= total_income.try(:to_f))
   end
   def calculate
