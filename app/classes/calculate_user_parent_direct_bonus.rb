@@ -73,7 +73,7 @@ class CalculateUserParentDirectBonus
     (package_price / 100 * 8.0)
   end
   def total_income_sum
-    created_by.adapter.perform_weekly_count.calculate_condition ? (created_by.total_income.try(:to_f) + current_bonus_val) : created_by.total_income.try(:to_f)
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.total_income.try(:to_f) + current_bonus_val) : created_by.total_income.try(:to_f)
   end
 
   def total_cash_wallet_amount
