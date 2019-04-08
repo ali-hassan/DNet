@@ -1,7 +1,7 @@
 class ChargeAmountAtA
-  attr_accessor :user, :package_id, :upgrade
-  def initialize(user, package_id, upgrade)
-    self.user, self.package_id, self.upgrade = user, package_id, upgrade
+  attr_accessor :user, :package_id, :upgrade, :allow_deducation
+  def initialize(user, package_id, upgrade, allow_deducation=true)
+    self.user, self.package_id, self.upgrade, self.allow_deducation = user, package_id, upgrade, allow_deducation
   end
   def package
     @package ||= FindPackages.new(package_id).current_package
@@ -15,13 +15,12 @@ class ChargeAmountAtA
   end
   def params
     {
-      smart_wallet_balance: smart_wallet_balance.try(:to_f) - deducation_amount,
       package_id: package_id,
       current_x_factor_income: current_x_factor_income_count,
       current_package_iteration: 50,
       charge_package_price: package_price,
       charge_package_binary: current_binary,
-    }
+    }.merge(self.allow_deducation ? {smart_wallet_balance: smart_wallet_balance.try(:to_f) - deducation_amount} : {})
   end
   def current_x_factor_income_count
     upgrade && user.current_x_factor_income.to_f || 0

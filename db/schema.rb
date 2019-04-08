@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190405145728) do
+ActiveRecord::Schema.define(version: 20190408113935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activate_user_packages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "package_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activate_user_packages_on_user_id"
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -230,6 +238,7 @@ ActiveRecord::Schema.define(version: 20190405145728) do
     t.index ["user_id"], name: "index_withdrawl_requests_on_user_id"
   end
 
+  add_foreign_key "activate_user_packages", "users"
   add_foreign_key "bit_pay_transactions", "users"
   add_foreign_key "log_histories", "users"
   add_foreign_key "user_pair_keys", "users"
