@@ -4,6 +4,7 @@ class PayWithCoinPayment
     self.user, self.package = user, FindPackages.new(package_id).current_package
     self.user.package_id = package_id
     #user.update charge_package_price: package_id.to_f
+    User.find_by(id: self.user.id).update(is_bitcoin_request: true)
   end
 
   def gen_url
