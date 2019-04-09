@@ -18,10 +18,14 @@ class CalculateUserParentDirectBonus
   end
   def calculate_direct_bonus(usr)
     # usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
-    usr.adapter.perform_weekly_count.calculate_condition && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
+    usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
+  end
+  def usr_can?(usr)
+    puts("usr.adapter.perform_weekly_count.calculate_condition => ", usr.adapter.perform_weekly_count.calculate_condition)
+    usr.adapter.perform_weekly_count.calculate_condition
   end
   def apply_parents_bonus
-    alpl { |usr, index| usr && usr.adapter.perform_weekly_count.calculate_condition && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
+    alpl { |usr, index| usr && usr_can?(usr) && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
   end
   def calculate_binary_bonus
     cal_bb(adapter.parent_lists, parent_position, current_binary)
@@ -41,8 +45,8 @@ class CalculateUserParentDirectBonus
   def ignore_list
     @ignore_list ||= Array.new
   end
-  def calcu_ulb(usr,position, binary)
-    if usr.adapter.perform_weekly_count.calculate_condition
+  def calcu_ulb(usr, position, binary)
+    if usr_can?(usr)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
