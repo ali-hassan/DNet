@@ -23,13 +23,13 @@ $(document).on "turbolinks:load", ->
     ), 6000
   $(document).on 'click', '.flash-message .close-btn', (eventObject) ->
     $(this).parents('.flash-message').remove()
-  $(".copy-link-label").off("click")
   $(document).on "click", ".copy-link-label", (eventObject) ->
     eventObject.preventDefault()
     val = $(this).find('input')[0]
     val.select()
     document.execCommand('copy')
     alert("link coppied")
+    $(".copy-link-label").off("click")
 
   $(document).on "keyup", "#sponsor_id_txt", (eventObject) ->
     userName = currentUserName
