@@ -45,7 +45,7 @@
 
     <!-- Sidebar Block 3 Start -->
     <div class="sidebar-block">
-      <% if current_user.sponsor_id.present? || current_user.is_pin %>
+      <% if current_user.sponsor_id.present? || current_user.is_pin || current_user.parent_id.present? %>
         <div class="heading">
           <h2>Sponsor Information</h2>
         </div>
