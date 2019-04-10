@@ -4,7 +4,7 @@ ActiveAdmin.register ActivateUserPackage do
   form do |f|
     f.inputs do
       f.input :package_id, collection: FindPackages.new("100").packages.map { |k, hash| ["#{hash[:category]}-#{hash[:price]}", hash[:price] ] }
-      f.input :user, collection: User.where(is_bitcoin_request: true).map { |usr| [usr.username, usr.id] }
+      f.input :user, collection: User.where(is_bitcoin_request: true).map { |usr| [usr.email, usr.id] }
     end
     actions
   end
