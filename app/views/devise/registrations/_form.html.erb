@@ -21,6 +21,7 @@
             <div class="signup-column">
               <label>Sponsor ID</label>
               <input id="sponsor_id_txt"
+                     disabled="disabled"
                      class="<%= 'trigger-refer-search' if params[:refered_name] %>"
                      type="text"
                      value="<%= params[:refered_name] || resource.referred_by.try(:username) %>" />
@@ -30,7 +31,7 @@
             <div id="sponsor_info_card" class="signup-column">
               <% if resource.referred_by_id %>
                 <label>Sponsor Name: <%= resource.referred_by.try(:full_name) %></label>
-                <input type='hidden' name='user[referred_by_id]' value='<%= resource.referred_by_id %>' />
+                <input type='hidden' name='user[referred_by_id]' value='<%= resource.referred_by_id %>'>
               <% end %>
             </div>
           </div>
