@@ -208,7 +208,7 @@
         </div>
         <div class="main-content-body">
             <div id="chartContainer"
-                 data-weekly-total="<%= 100  #current_user.adapter.max_package_total_earning %>"
+                 data-weekly-total="100"
                  data-weekly-current="<%= (current_user.total_income.try(:to_f) + current_user.binary_bonus.try(:to_f)) / current_user.adapter.max_package_total_earning * 100 %>"
               style="height: 300px; width: 100%;"></div>
         </div>
