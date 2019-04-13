@@ -57,7 +57,7 @@ class CurrentUserAdapter
     user.current_bonus_points.try(:to_f)
   end
   def direct_users
-    created_users.where(is_package_activated:  true)
+    created_users.where("package_id IS NOT NULL")
   end
   def direct_bonus_users_count_left
     created_users.where(is_package_activated:  true, parent_position: "left").map { |usr| usr.package_price * 0.06 }
@@ -87,12 +87,11 @@ class CurrentUserAdapter
     user.charge_package_price.try(:to_f)
   end
   def cash_wallet_total
-    (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f)) - user.cash_wallet_minus.to_f
+    (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f) + weekly_roi_to_cash_amount.try(:to_f)) - user.cash_wallet_minus.to_f
   end
   def earn_weekly_point
     perform_weekly_count.perform
   end
-
   def perform_weekly_count
     @perform_weekly_count ||= PerformWeeklyUser.new(user)
   end
@@ -101,7 +100,7 @@ class CurrentUserAdapter
   end
   def apply_indirect_bonus_at(index, package_price, usr)
     pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
-    if perform_weekly_count.calculate_condition
+    if perform_weekly_count.calculate_condition(pp)
       user.log_histories.create(logable: usr, message: "Indirect bonus #{pp} on #{usr.username} for package #{package_price.to_f}", log_type: 'indirect_bonus')
       user.update(
         total_income: user.total_income.try(:to_f) + pp,
@@ -131,5 +130,5 @@ class CurrentUserAdapter
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
-  delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, to: :user, allow_nil: true
+  delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, :weekly_roi_to_cash_amount, to: :user, allow_nil: true
 end

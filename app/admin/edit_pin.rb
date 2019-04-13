@@ -1,11 +1,9 @@
-ActiveAdmin.register User do
+ActiveAdmin.register User, as: "EditPin" do
   permit_params :email, :password, :password_confirmation, :smart_wallet_balance, :total_bonus_points, :indirect_bonus_amount,
                 :indirect_total_bonus_amount, :binary_bonus, :total_income, :left_bonus, :right_bonus, :is_binary_bonus_active, :cash_wallet_amount,
                 :current_week_roi_amount,
                 :total_weekly_percentage_amount,
-                :indirect_bonus_amount,
-                :current_total_weekly_roi_amount,
-                :current_week_roi_amount
+                :indirect_bonus_amount, :indirect_bonus_users_count, :direct_bonus_users_count
 
   index do
     selectable_column
@@ -34,18 +32,12 @@ ActiveAdmin.register User do
     f.inputs do
       f.input :is_binary_bonus_active, label: "Binary Check"
       f.input :smart_wallet_balance, label: "Smart Wizard Balance"
-      f.input :total_bonus_points
-      # f.input :indirect_bonus_amount
-      # f.input :indirect_total_bonus_amount
-      f.input :binary_bonus
+      # f.input :direct_bonus_users_count, label: "Direct Bonus"
+      # f.input :indirect_bonus_users_count, label: "InDirect Bonus"
+      f.input :binary_bonus, label: "Binary Bonus"
       f.input :total_income
       f.input :left_bonus
       f.input :right_bonus
-      # f.input :current_week_roi_amount
-      # f.input :total_weekly_percentage_amount
-      # f.input :indirect_bonus_amount
-      f.input :current_week_roi_amount
-      f.input :current_total_weekly_roi_amount
     end
     f.actions
   end
@@ -57,7 +49,7 @@ ActiveAdmin.register User do
       end
     end
     def scoped_collection
-      User.where(is_pin: false)
+      User.where(is_pin: true)
     end
   end
 end
