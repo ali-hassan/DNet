@@ -25,7 +25,7 @@ class CalculateUserParentDirectBonus
     usr.adapter.perform_weekly_count.calculate_condition
   end
   def apply_parents_bonus
-    alpl { |usr, index| usr && usr_can?(usr) && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
+    alpl { |usr, index| usr && usr_can?(usr) && usr.reload.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
   end
   def calculate_binary_bonus
     cal_bb(adapter.parent_lists, parent_position, current_binary)
