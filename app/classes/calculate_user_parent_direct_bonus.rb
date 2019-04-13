@@ -46,12 +46,12 @@ class CalculateUserParentDirectBonus
     @ignore_list ||= Array.new
   end
   def calcu_ulb(usr, position, binary)
-    if usr_can?(usr)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
+    if usr_can?(usr)
       usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
       usr.save(validate: false)
     end
@@ -81,13 +81,13 @@ class CalculateUserParentDirectBonus
   end
 
   def total_cash_wallet_amount
-    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val # + adapter.calculate_binary_bonus
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.cash_wallet_amount.try(:to_f) + current_bonus_val) : created_by.cash_wallet_amount.try(:to_f) # + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
     created_by.binary_bonus.try(:to_f) + current_binary
   end
   def current_bonus_points_sum
-    created_by.current_bonus_points.try(:to_f) + current_bonus_val
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.current_bonus_points.try(:to_f) + current_bonus_val) : created_by.current_bonus_points.try(:to_f)
   end
   def total_bonus_points_sum
     created_by.total_bonus_points.try(:to_f) + current_bonus_val.try(:to_f)
