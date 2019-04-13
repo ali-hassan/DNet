@@ -81,13 +81,13 @@ class CalculateUserParentDirectBonus
   end
 
   def total_cash_wallet_amount
-    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val # + adapter.calculate_binary_bonus
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.cash_wallet_amount.try(:to_f) + current_bonus_val) : created_by.cash_wallet_amount.try(:to_f) # + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
     created_by.binary_bonus.try(:to_f) + current_binary
   end
   def current_bonus_points_sum
-    created_by.current_bonus_points.try(:to_f) + current_bonus_val
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.current_bonus_points.try(:to_f) + current_bonus_val) : created_by.current_bonus_points.try(:to_f)
   end
   def total_bonus_points_sum
     created_by.total_bonus_points.try(:to_f) + current_bonus_val.try(:to_f)
