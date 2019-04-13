@@ -104,7 +104,16 @@
 
             <div id="uploaded_document" style="max-width: 300px;max-height: 300px;">
             </div>
-            <!-- Signup Row End -->
+
+            <!-- Signup Row Start -->
+            <div class="custom-dashboard-row">
+              <div class="custom-dashboard-column">
+                <label>Zip Code</label>
+                <%= f.text_field :zipcode%>
+              </div>
+            </div>
+
+              <!-- Signup Row End -->
             <div class="custom-dashboard-row">
                 <div class="custom-dashboard-column document-upload">
                   <label>Add your profile image</label>
@@ -115,15 +124,7 @@
                 </div>
               </div>
 
-
-            <!-- Signup Row Start -->
-            <div class="custom-dashboard-row">
-              <div class="custom-dashboard-column">
-                <label>Zip Code</label>
-                <%= f.text_field :zipcode%>
-              </div>
-            </div>
-            <!-- Signup Row End -->
+           <!-- Signup Row End -->
 
             <div class="button-holder">
               <input class="custom-btn" type="submit" value="Save">
