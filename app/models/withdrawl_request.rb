@@ -1,5 +1,6 @@
 class WithdrawlRequest < ApplicationRecord
   belongs_to :user
+  attr_accessor :amount
   monetize :pts_cents
   after_create do |wc|
     wc.user.update(withdrawl_date: Time.current.in_time_zone('Hong Kong'))

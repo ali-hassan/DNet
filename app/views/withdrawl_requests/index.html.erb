@@ -19,7 +19,7 @@
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
               <label>Cash Wallet </label>
-              <%= f.number_field :cash_wallet, value: current_user.adapter.cash_wallet_total, readonly: true, min: "60" %>
+              <%= f.number_field :cash_wallet, value: current_user.adapter.cash_wallet_total, readonly: true, disabled: true, min: "60" %>
             </div>
           </div>
 
@@ -35,7 +35,7 @@
             <div class="custom-dashboard-column">
               <label>Service Fee </label>
                 <%#= f.number_field :amount, min: 60, id: "amount" %>
-                <input type="number" name="withdrawl_request[service]" min="6" id="service" />
+                <input type="number" name="withdrawl_request[service]" min="6" id="service" disabled='disabled' />
             </div>
           </div>
 
