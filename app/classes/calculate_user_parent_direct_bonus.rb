@@ -20,9 +20,9 @@ class CalculateUserParentDirectBonus
     # usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
     usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
   end
-  def usr_can?(usr)
-    puts("usr.adapter.perform_weekly_count.calculate_condition => ", usr.adapter.perform_weekly_count.calculate_condition)
-    usr.adapter.perform_weekly_count.calculate_condition
+  def usr_can?(usr, amount=0)
+    puts("usr.adapter.perform_weekly_count.calculate_condition => ", usr.adapter.perform_weekly_count.calculate_condition(amount))
+    usr.adapter.perform_weekly_count.calculate_condition(amount)
   end
   def apply_parents_bonus
     alpl { |usr, index| usr && usr_can?(usr) && usr.reload.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
@@ -46,9 +46,9 @@ class CalculateUserParentDirectBonus
     @ignore_list ||= Array.new
   end
   def calcu_ulb(usr, position, binary)
-    if usr_can?(usr)
+    if usr_can?(usr, bonus_amount=usr.adapter.calculate_binary_bonus)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
-      usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
+      usr.binary_bonus, usr.is_binary_bonus_active = bonus_amount, cal_bb_condition?(usr)
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
@@ -81,13 +81,13 @@ class CalculateUserParentDirectBonus
   end
 
   def total_cash_wallet_amount
-    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val # + adapter.calculate_binary_bonus
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.cash_wallet_amount.try(:to_f) + current_bonus_val) : created_by.cash_wallet_amount.try(:to_f) # + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
     created_by.binary_bonus.try(:to_f) + current_binary
   end
   def current_bonus_points_sum
-    created_by.current_bonus_points.try(:to_f) + current_bonus_val
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.current_bonus_points.try(:to_f) + current_bonus_val) : created_by.current_bonus_points.try(:to_f)
   end
   def total_bonus_points_sum
     created_by.total_bonus_points.try(:to_f) + current_bonus_val.try(:to_f)
