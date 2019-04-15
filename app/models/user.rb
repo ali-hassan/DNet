@@ -46,6 +46,7 @@ class User < ApplicationRecord
   monetize :cash_wallet_amount_cents
   monetize :charge_package_price_cents
   monetize :weekly_roi_to_cash_amount_cents
+  after_create { |usr| UserMailer.welcome(usr).deliver_now }
   after_create do |usr|
     usr.created_by.present? && usr.created_by.log_histories.create(logable: self, log_type: :direct_refarral, message: "Direct Referral username #{ usr.username } at position #{ usr.parent_position }")
   end
