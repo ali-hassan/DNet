@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190415134003) do
+ActiveRecord::Schema.define(version: 20190416154634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -237,6 +237,7 @@ ActiveRecord::Schema.define(version: 20190415134003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "pending"
+    t.string "service"
     t.index ["user_id"], name: "index_withdrawl_requests_on_user_id"
   end
 
