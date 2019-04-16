@@ -11,4 +11,7 @@ class WithdrawlRequest < ApplicationRecord
       message: "Withdrawl pts #{wc.pts.to_f}"
     )
   end
+  def amount_before_tax
+    pts.try(:to_f) - (service.try(:to_f) || 0)
+  end
 end
