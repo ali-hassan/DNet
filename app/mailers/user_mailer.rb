@@ -14,4 +14,8 @@ class UserMailer < ApplicationMailer
     @spprt = spprt
     mail(to: @sender, subject: "Support | #{@spprt.user.email} | #{@spprt.username} | #{@spprt.subject} | #{@spprt.type}")
   end
+  def welcome(user)
+    @user = user
+    mail(to: user.email, subject: "Welcome to LALAL Land")
+  end
 end

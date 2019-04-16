@@ -19,9 +19,9 @@
             </tr>
             </thead>
             <tbody>
-            <%- current_user.adapter.direct_users.each do |user|%>
+            <%- current_user.adapter.direct_users.each.with_index do |user, index| %>
                 <tr>
-                  <td><%=user.id%></td>
+                  <td><%= index + 1 %></td>
                   <td><%=user.try(:created_at).strftime("%b. %e %Y")%></td>
                   <td><%=user.try(:email)%></td>
                   <td><%=user.full_name%></td>
