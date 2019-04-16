@@ -16,6 +16,6 @@ class UserMailer < ApplicationMailer
   end
   def welcome(user)
     @user = user
-    mail(to: user.email, subject: "Welcome to LALAL Land")
+    mail(to: user.email, subject: "Welcome to ForexHomeTrade")
   end
 end
