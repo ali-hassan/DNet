@@ -8,7 +8,7 @@ class WithdrawlRequestsController < ApplicationController
       redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You don't have enough money to make this request.")
     else
       current_hongkong_time = Time.current.in_time_zone('Hong Kong')
-      (current_hongkong_time.between?(Time.parse("10:00am"), Time.parse("7:00pm")) && current_hongkong_time.saturday? && (current_user.withdrawl_date.blank? || current_user.withdrawl_date.in_time_zone('Hong Kong').to_date.to_s(:db) != current_hongkong_time.to_date.to_s(:db))) || redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Withdrawl only allowed from saturday 10 am to 7 pm Hongkong time')
+      (current_hongkong_time.between?(Time.parse("10:00am"), Time.parse("7:00pm")) && current_hongkong_time.saturday? && (current_user.withdrawl_date.blank? || current_user.withdrawl_date.in_time_zone('Hong Kong').to_date.to_s(:db) != current_hongkong_time.to_date.to_s(:db))) || redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Withdrawl is only allowed on Sunday from 9:00 AM to 6:00 PM time (GMT+8)')
     end
   end
   after_action only: [:create] do
