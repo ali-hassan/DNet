@@ -17,7 +17,8 @@ $(document).on "turbolinks:load", ->
     $.getScript($(@).data('pin-verify'))
     window.$FormToSubmit= $(eventObject.currentTarget)
   $flashMessage = $('.flash-message')
-  if $flashMessage.length
+  #if $flashMessage.length
+  if false
     setTimeout ( ->
       $('.flash-message').remove()
     ), 6000
