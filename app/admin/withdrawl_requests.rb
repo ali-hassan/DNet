@@ -13,6 +13,10 @@ ActiveAdmin.register WithdrawlRequest do
     end
     column "URL", :bitcoin_url
     column :status
+    column :service
+    column :amount_before_tax
+    column "Tax", :service
+
     column 'Date', :created_at
     actions
   end
@@ -29,6 +33,9 @@ ActiveAdmin.register WithdrawlRequest do
     end
     column :bitcoin_url
     column :status
+    column :service
+    column :amount_before_tax
+    column "Tax", :service
     column :created_at
   end
 

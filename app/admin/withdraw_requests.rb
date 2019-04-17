@@ -7,8 +7,6 @@ ActiveAdmin.register User, as: "UserWithdrawGateway" do
     column "Email", :email
     column "Package", :package_id
     column "Withdraw Gateway", :withdraw_gateway
-    column "Tax", :service
-    column :amount_before_tax
     actions
   end
 
