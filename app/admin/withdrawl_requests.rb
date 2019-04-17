@@ -11,6 +11,11 @@ ActiveAdmin.register WithdrawlRequest do
     column "Total Chargeable Amount", :pts do |withdrawl_request|
       withdrawl_request.pts.to_f
     end
+
+    column "Gateway" do |withdrawl_request|
+      withdrawl_request.user.withdraw_gateway
+    end
+
     column "URL", :bitcoin_url
     column "Transferable Amount", :amount_before_tax
     column "Tax", :service
@@ -40,9 +45,7 @@ ActiveAdmin.register WithdrawlRequest do
 
   form do |f|
     f.inputs do
-      f.input :user
       f.input :pts, label: 'Amount'
-      f.input :bitcoin_url, label: "URL"
       f.input :status, collection: ["pending", "approved", "rejected"]
     end
     actions
