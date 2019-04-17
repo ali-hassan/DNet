@@ -30,6 +30,7 @@
             <li>
               <span class="title">Pin Capacity</span>
               <h3>$<%= current_user.pin_capacity%></h3>
+              <span><%= current_user.created_at.strftime("%b. %e %Y") %></span>
             </li>
           <%else%>
             <li>
