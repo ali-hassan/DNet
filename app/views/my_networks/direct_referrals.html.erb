@@ -12,7 +12,7 @@
             <tr>
               <th>Sr. No.</th>
               <th>Date</th>
-              <th>Email</th>
+              <th>Username</th>
               <th>Name</th>
               <th>Position</th>
               <th>Current Status</th>
@@ -23,7 +23,7 @@
                 <tr>
                   <td><%= index + 1 %></td>
                   <td><%=user.try(:created_at).strftime("%b. %e %Y")%></td>
-                  <td><%=user.try(:email)%></td>
+                  <td><%=user.try(:username)%></td>
                   <td><%=user.full_name%></td>
                   <td><%=user.parent_position%></td>
                   <td>
