@@ -24,6 +24,7 @@ ActiveAdmin.register WithdrawlRequest do
     column 'Date', :created_at
     actions
   end
+
   csv do
     column :id
     column :username do |withdrawl_request|
@@ -32,15 +33,28 @@ ActiveAdmin.register WithdrawlRequest do
     column :email do |withdrawl_request|
       withdrawl_request.user.try(:email)
     end
-    column :pts do |withdrawl_request|
+    column "Total Chargeable Amount" do |withdrawl_request|
       withdrawl_request.pts.to_f
     end
-    column :bitcoin_url
+
+    column "Gateway" do |withdrawl_request|
+      withdrawl_request.user.withdraw_gateway
+    end
+
+    column "URL" do |withdrawl_request|
+      withdrawl_request.bitcoin_url
+    end
+    column "Transferable Amount" do |withdrawl_request|
+      withdrawl_request.amount_before_tax
+    end
+    column "Tax" do |withdrawl_request|
+      withdrawl_request.service
+    end
     column :status
-    column :service
-    column :amount_before_tax
-    column "Tax", :service
-    column :created_at
+
+    column 'Date' do |withdrawl_request|
+      withdrawl_request.created_at
+    end
   end
 
   form do |f|

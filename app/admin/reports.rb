@@ -5,6 +5,7 @@ ActiveAdmin.register User, as: 'Report' do
     column :full_name
     column :email
     column :is_pin
+    column :pin_capacity
     column :package_id
     column "Total Income" do |usr|
       usr.adapter.total_income

@@ -15,7 +15,7 @@
               <th>Username</th>
               <th>Name</th>
               <th>Position</th>
-              <th>Current Status</th>
+              <th>Package Status</th>
             </tr>
             </thead>
             <tbody>
@@ -28,9 +28,9 @@
                   <td><%=user.parent_position%></td>
                   <td>
                     <%- if current_user.package_id.present? || current_user.is_pin %>
-                      Verified
+                        $<%= current_user.package_id || current_user.pin_capacity%>
                     <% else %>
-                      UnVerified
+                      Not Active
                     <% end %>
                   </td>
                 </tr>
