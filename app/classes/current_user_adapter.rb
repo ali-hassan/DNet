@@ -59,6 +59,9 @@ class CurrentUserAdapter
   def direct_users
     created_users.where("package_id IS NOT NULL")
   end
+  def all_users
+    created_users
+  end
   def direct_bonus_users_count_left
     created_users.where(is_package_activated:  true, parent_position: "left").map { |usr| usr.package_price * 0.06 }
   end

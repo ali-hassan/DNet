@@ -19,7 +19,7 @@
             </tr>
             </thead>
             <tbody>
-            <%- current_user.adapter.direct_users.each.with_index do |user, index| %>
+            <%- current_user.adapter.all_users.each.with_index do |user, index| %>
                 <tr>
                   <td><%= index + 1 %></td>
                   <td><%=user.try(:created_at).strftime("%b. %e %Y")%></td>
