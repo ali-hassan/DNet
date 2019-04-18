@@ -27,8 +27,8 @@
                   <td><%=user.full_name%></td>
                   <td><%=user.parent_position%></td>
                   <td>
-                    <%- if current_user.package_id.present? || current_user.is_pin %>
-                        $<%= current_user.package_id || current_user.pin_capacity%>
+                    <%- if user.package_id.present? || user.is_pin %>
+                        $<%= user.package_id || user.pin_capacity%>
                     <% else %>
                       Not Active
                     <% end %>
