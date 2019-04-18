@@ -60,7 +60,7 @@ class CurrentUserAdapter
     created_users.where("package_id IS NOT NULL")
   end
   def all_users
-    created_users.where("is_pin IS TRUE OR package_id IS NOT NULL")
+    created_users
   end
   def direct_bonus_users_count_left
     created_users.where(is_package_activated:  true, parent_position: "left").map { |usr| usr.package_price * 0.06 }
