@@ -6,7 +6,7 @@ class BuyPlansController < ApplicationController
 
   def create
     ChargeAmountAtA.new(current_user, params[:plan_id], upgrade_plan).charge!
-    redirect_to(dashboard_index_url(subdomain: 'office'), notice: 'Successfully scribed')
+    redirect_to(dashboard_index_url(subdomain: 'office'), notice: 'Package Successfully Activated')
   end
   def edit
     @package = ChargeAmountAtA.new(current_user, params[:id], upgrade_plan)
