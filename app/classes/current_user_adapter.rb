@@ -122,6 +122,12 @@ class CurrentUserAdapter
       package: find_packages.try(:xfactor_amount).try(:to_f)
     }[ user.is_pin? && :pin || :package ]
   end
+  def pin_or_package_amount
+    {
+      pin: user.pin_capacity.try(:to_f),
+      package:  current_package[:price],
+    }[ user.is_pin? && :pin || :package ]
+  end
   def binary_bonus
     user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end

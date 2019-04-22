@@ -15,6 +15,8 @@ class ChargeAmountAtA
   end
   def params
     {
+      package_activation_date: DateTime.now,
+      next_package_maintance_date: DateTime.now + 1.month,
       package_id: package_id,
       current_x_factor_income: current_x_factor_income_count,
       current_package_iteration: 50,

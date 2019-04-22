@@ -22,3 +22,7 @@
 every 1.month do
   rake "forex_home_trade:monthly_fees_scheduler"
 end
+
+every 1.month do
+  rake "forex_home_trade:monthly_maintance_fees_scheduler"
+end

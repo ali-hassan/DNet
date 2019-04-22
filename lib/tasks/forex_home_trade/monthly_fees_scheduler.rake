@@ -11,4 +11,14 @@ namespace :forex_home_trade do
       end
     end
   end
+  desc 'Monthly maintance charges'
+  task monthly_maintance_fees_scheduler: :environment do
+    User.where('(package_id is not null) or is_pin = ?', true).each do |user|
+      puts("Charging maintance fees for user id #{user.id} and username #{user.username}")
+      maintance_fees = user.adapter.pin_or_package_amount / 2 * 100
+      User.add_amount(maintance_fees)
+      user.log_histories.build(log_type: 'cash_wallet', message: "Charged maintance fees $#{maintance_fees}")
+      user.update(cash_wallet_minus: user.cash_wallet_minus.to_f + maintance_fees)
+    end
+  end
 end
