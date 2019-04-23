@@ -19,10 +19,11 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.month do
-  rake "forex_home_trade:monthly_fees_scheduler"
-end
+# every 1.month do
+#   rake "forex_home_trade:monthly_fees_scheduler"
+# end
 
-every 1.month do
+every 1.day do
+  ## On Every Mnonth
   rake "forex_home_trade:monthly_maintance_fees_scheduler"
 end
