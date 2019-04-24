@@ -28,6 +28,7 @@ class UserTransaction < ApplicationRecord
   end
   def log_and_pay_smart_wallet
     user.log_histories.create(logable: self, log_type: wallet_type)
+    receiver.log_histories.create(logable: self, log_type: wallet_type)
     user.update(smart_wallet_balance: user.smart_wallet_balance.to_f - amount.try(:to_f))
     receiver.update(smart_wallet_balance: receiver.smart_wallet_balance.to_f + amount.try(:to_f))
   end
