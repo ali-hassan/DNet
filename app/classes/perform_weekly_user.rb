@@ -25,7 +25,7 @@ class PerformWeeklyUser
       (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(1.week.from_now,{ user_id: @user.id })
   end
   def log_weekly_roi
-    @user.log_histories.create(message: "Weekly ROI $#{current_week_roi_amount_sum} Current X factor income #{current_x_factor_income}", log_type: "weekly_roi")
+    @user.log_histories.create(message: "Weekly ROI $#{current_week_roi_amount_sum} Current X factor income #{current_x_factor_income} Total Income #{ total_income_sum } ", log_type: "weekly_roi")
   end
   def params
     {
