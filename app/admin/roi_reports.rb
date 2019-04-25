@@ -2,25 +2,32 @@ ActiveAdmin.register LogHistory, as: "RoiReport" do
   actions :index
   index do
     id_column
-    column :user
-    column :message
+    column :full_name do |user_log|
+      user_log.user.full_name
+    end
+    column :email do |user_log|
+      user_log.user.email
+    end
+    column :username do |user_log|
+      user_log.user.username
+    end
+    column :package_id do |user_log|
+      user_log.user.package_id
+    end
+    column :active_date do |user_log|
+      user_log.user.created_at.to_date
+    end
+    column :weekly_roi do |user_log|
+      user_log.weekly_roi || user_log.message.split(" ")[2]
+    end
+    column :total_roi
+    column :roi_balance
+    column :total_income
     column :created_at
-    column :user_dashboard_smart_wallet_balance do |user_log|
-      user_log.user.smart_wallet_balance.try(:to_f)
-    end
-    column :user_dashboard_binary_bonus do |user_log|
-      user_log.user.binary_bonus
-    end
-    column :user_dashboard_current_roi_balance do |user_log|
-      user_log.user.current_total_weekly_roi_amount.try(:to_f)
-    end
-    column :user_dashboard_total_income do |user_log|
-      user_log.user.total_income.try(:to_f)
-    end
   end
   controller do
     def scoped_collection
-      UserLog.where(log_type: "weekly_roi")
+      LogHistory.where(log_type: "weekly_roi")
     end
   end
 end
