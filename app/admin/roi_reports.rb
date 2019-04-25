@@ -18,7 +18,7 @@ ActiveAdmin.register LogHistory, as: "RoiReport" do
       user_log.user.created_at.to_date
     end
     column :weekly_roi do |user_log|
-      user_log.weekly_roi || user_log.message.split(" ")[2]
+      user_log.weekly_roi || user_log.message.try(:split, " "),try(:[], 2)
     end
     column :total_roi
     column :roi_balance
