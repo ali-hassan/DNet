@@ -12,7 +12,7 @@
   <tbody>
     <% @transactions.all.each do |transaction|%>
       <tr>
-        <td><%=transaction.logable.created_at.strftime("%b. %e %Y")%></td>
+        <td><%=transaction.logable.created_at.strftime("%b. %e %Y") if transaction.logable.present?%></td>
         <td><%=transaction.logable.user.try(:username)%></td>
         <td><%=transaction.logable.receiver.try(:username)%></td>
         <td><%=transaction.logable.try(:wallet_type).gsub("_", " ").capitalize%></td>
