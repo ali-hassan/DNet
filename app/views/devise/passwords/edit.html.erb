@@ -18,11 +18,13 @@
                 <div class="d-flex justify-content-center form_container text-center">
 
                   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                      <%= f.hidden_field :reset_password_token %>
                       <h4>Enter New Password</h4>
                       <br>
                       <% if @minimum_password_length %>
                           <em>(<%= @minimum_password_length %> characters minimum)</em><br />
                       <% end %>
+                      <%= devise_error_messages! %>
                       <%= f.password_field :password, autofocus: true, class: "form-control", placeholder: "Enter Password" %>
                       <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Re-Enter Password", style: "margin: 10px 0px;" %>
                       <!--<input type="checkbox" class="custom-control-input" id="customControlInline">-->

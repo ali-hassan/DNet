@@ -15,6 +15,8 @@ class ChargeAmountAtA
   end
   def params
     {
+      package_activation_date: DateTime.now,
+      next_package_maintance_date: DateTime.now + 1.month,
       package_id: package_id,
       current_x_factor_income: current_x_factor_income_count,
       current_package_iteration: 50,
@@ -38,7 +40,8 @@ class ChargeAmountAtA
     Setting.find_value("default_weekly_#{package["category"].try(:downcase)}_%").try(:value)
   end
   def calculate_weekly_bonus_cycle!
-    WeeklyPlanBonusWorker.perform_in(2.weeks.from_now, {user_id: @user.id})
+    # After 2 weeks it will be started ROI - first phase
+    !upgrade && WeeklyPlanBonusWorker.perform_in(20.minutes.from_now, {user_id: @user.id})
   end
   def package_activation_fees
     upgrade && 0 || 25

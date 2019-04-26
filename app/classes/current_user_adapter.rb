@@ -59,6 +59,9 @@ class CurrentUserAdapter
   def direct_users
     created_users.where("package_id IS NOT NULL")
   end
+  def all_users
+    created_users
+  end
   def direct_bonus_users_count_left
     created_users.where(is_package_activated:  true, parent_position: "left").map { |usr| usr.package_price * 0.06 }
   end
@@ -119,6 +122,12 @@ class CurrentUserAdapter
       package: find_packages.try(:xfactor_amount).try(:to_f)
     }[ user.is_pin? && :pin || :package ]
   end
+  def pin_or_package_amount
+    {
+      pin: user.pin_capacity.try(:to_f),
+      package:  current_package[:price],
+    }[ user.is_pin? && :pin || :package ]
+  end
   def binary_bonus
     user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end
@@ -127,6 +136,9 @@ class CurrentUserAdapter
   end
   def can_upgrade_url?(id)
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
+  end
+  def graph_total_percent
+    (user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)) / max_package_total_earning * 100
   end
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
