@@ -41,7 +41,7 @@ class ChargeAmountAtA
   end
   def calculate_weekly_bonus_cycle!
     # After 2 weeks it will be started ROI - first phase
-    !upgrade && user.adapter.scheduler_doj_update || WeeklyPlanBonusWorker.perform_in(20.minutes.from_now, {user_id: @user.id})
+    !upgrade && user.adapter.scheduler_doj_update || WeeklyPlanBonusWorker.perform_in(5.minutes.from_now, {user_id: @user.id})
   end
   def package_activation_fees
     upgrade && 0 || 25
