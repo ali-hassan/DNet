@@ -59,6 +59,9 @@ class CurrentUserAdapter
   def direct_users
     created_users.where("package_id IS NOT NULL")
   end
+  def all_users
+    created_users
+  end
   def direct_bonus_users_count_left
     created_users.where(is_package_activated:  true, parent_position: "left").map { |usr| usr.package_price * 0.06 }
   end
@@ -98,6 +101,9 @@ class CurrentUserAdapter
   def cupda
     @cupda ||= CalculateUserParentDirectBonus.new(user)
   end
+  def scheduler_update
+    @scheduler_update ||= SchedulerUpdate.new(user)
+  end
   def apply_indirect_bonus_at(index, package_price, usr)
     pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
     if perform_weekly_count.calculate_condition(pp)
@@ -119,6 +125,12 @@ class CurrentUserAdapter
       package: find_packages.try(:xfactor_amount).try(:to_f)
     }[ user.is_pin? && :pin || :package ]
   end
+  def pin_or_package_amount
+    {
+      pin: user.pin_capacity.try(:to_f),
+      package:  current_package[:price],
+    }[ user.is_pin? && :pin || :package ]
+  end
   def binary_bonus
     user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end
@@ -128,6 +140,10 @@ class CurrentUserAdapter
   def can_upgrade_url?(id)
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
   end
+  def graph_total_percent
+    (user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)) / max_package_total_earning * 100
+  end
+  delegate :active_job, :active_job?, :doj_update, to: :scheduler_update, prefix: :scheduler, allow_nil: true
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
   delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, :weekly_roi_to_cash_amount, to: :user, allow_nil: true

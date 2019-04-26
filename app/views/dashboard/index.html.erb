@@ -30,6 +30,7 @@
             <li>
               <span class="title">Pin Capacity</span>
               <h3>$<%= current_user.pin_capacity%></h3>
+              <span><%= current_user.created_at.strftime("%b. %e %Y") %></span>
             </li>
           <%else%>
             <li>
@@ -128,7 +129,7 @@
               <%=image_tag "ic_binarybonus.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
             <div class="columns-bottom">
-              <h3>$<%= current_user.smart_wallet_balance.to_f%></h3>
+              <h3>$<%= current_user.smart_wallet_balance.to_f %></h3>
               <span>Smart Wallet</span>
               <%=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
@@ -208,8 +209,8 @@
         </div>
         <div class="main-content-body">
             <div id="chartContainer"
-                 data-weekly-total="<%= current_user.adapter.max_package_total_earning %>"
-                 data-weekly-current="<%= current_user.total_income.try(:to_f) + current_user.binary_bonus.try(:to_f) %>"
+                 data-weekly-total="<%= 100 - current_user.adapter.graph_total_percent %>"
+                 data-weekly-current="<%= current_user.adapter.graph_total_percent %>"
               style="height: 300px; width: 100%;"></div>
         </div>
       </div>
@@ -259,8 +260,8 @@
               legendText: "{name} (#percent%)",
               indexLabelPlacement: "inside",
               dataPoints: [
-                  { y: weeklyTotal, name: "Max Earning Allowed" },
-                  { y: weeklyCurrent, name: "Current Earning" }
+                { y: weeklyTotal, name: "Max Earning Allowed <%= number_to_currency current_user.adapter.max_package_total_earning %>" },
+                { y: weeklyCurrent, name: "Current Earning <%= number_to_currency current_user.adapter.total_income %>" }
               ]
           }]
       };

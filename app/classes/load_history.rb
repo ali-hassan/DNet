@@ -8,7 +8,7 @@ class LoadHistory
   end
   def load_condition
     {
-      cw: [["withdrawl_request"], "WITHDRAWAL HISTORY", "wr_table"],
+      cw: [["withdrawl_request"], "WITHDRAWAL HISTORY", "wr_desc_table"],
       sw: [['smart_wallet', 'cash_wallet'], 'ACCOUNT TO ACCOUNT', "csw_table"],
       db: [['direct_bonus'], 'Direct Bonus', 'db_table'],
       ib: [['indirect_bonus'], 'Indirect Bonus', 'db_table'],

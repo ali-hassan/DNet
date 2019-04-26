@@ -6,46 +6,38 @@
       <div class="payment-option-holder">
         <form action="#">
           <ul>
-            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "btc"%>
-              <li>
-                <div class="image-holder">
-                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "btc") do %>
-                      <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
-                  <% end %>
-                </div>
-                <h3>Bitcoin</h3>
-              </li>
-            <%end%>
-            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "skrill"%>
-              <li>
-                <div class="image-holder">
-                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "skrill") do %>
-                      <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
-                  <% end %>
-                </div>
-                <h3>Skrill</h3>
-              </li>
-            <%end%>
-            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "perfect_money"%>
-              <li>
-                <div class="image-holder">
-                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "perfect_money") do %>
-                      <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
-                  <% end %>
-                </div>
-                <h3>Perfect Money</h3>
-              </li>
-            <%end%>
-            <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "payoneer"%>
-              <li>
-                <div class="image-holder">
-                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "payoneer") do %>
-                      <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
-                  <% end %>
-                </div>
-                <h3>Payoneer</h3>
-              </li>
-            <%end%>
+            <li>
+              <div class="image-holder">
+                <%= link_to (current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "btc") && withdrawl_requests_url(subdomain: "office", withdraw_gateway: "btc") || "#" do %>
+                    <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
+                <% end %>
+              </div>
+              <h3>Bitcoin</h3>
+            </li>
+            <li>
+              <div class="image-holder">
+                <%= link_to ( current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "skrill" ) && withdrawl_requests_url(subdomain: "office", withdraw_gateway: "skrill") || "#" do %>
+                    <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
+                <% end %>
+              </div>
+              <h3>Skrill</h3>
+            </li>
+            <li>
+              <div class="image-holder">
+                <%= link_to (current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "perfect_money") && withdrawl_requests_url(subdomain: "office", withdraw_gateway: "perfect_money") || "#" do %>
+                    <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
+                <% end %>
+              </div>
+              <h3>Perfect Money</h3>
+            </li>
+            <li>
+              <div class="image-holder">
+                <%= link_to (current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "payoneer") && withdrawl_requests_url(subdomain: "office", withdraw_gateway: "payoneer")  || "#"  do %>
+                    <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
+                <% end %>
+              </div>
+              <h3>Payoneer</h3>
+            </li>
           </ul>
         </form>
       </div>

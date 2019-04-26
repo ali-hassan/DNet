@@ -22,7 +22,8 @@ class PerformWeeklyUser
     update(params); log_weekly_roi; decrement!(:current_package_iteration); check_for_next_week
   end
   def check_for_next_week
-      (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(1.week.from_now,{ user_id: @user.id })
+    # On Every Week
+    (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(10.minutes.from_now,{ user_id: @user.id })
   end
   def log_weekly_roi
     @user.log_histories.create(message: "Weekly ROI $#{current_week_roi_amount_sum} Current X factor income #{current_x_factor_income}", log_type: "weekly_roi")
@@ -36,19 +37,22 @@ class PerformWeeklyUser
       total_income: total_income_sum,
     }
   end
+  def calculate_week_roi_amount_sum_or_zero
+    calculate_condition( current_week_roi_amount_sum ) && current_week_roi_amount_sum || 0
+  end
   def total_income_sum
-    @user.total_income.try(:to_f) + current_week_roi_amount_sum
+    @user.total_income.try(:to_f) + calculate_week_roi_amount_sum_or_zero
   end
   def calculate_x_factor_sum
-    current_x_factor_income.try(:to_f) + current_week_roi_amount_sum
+    current_x_factor_income.try(:to_f) + calculate_week_roi_amount_sum_or_zero
   end
   def current_week_roi_amount_sum
     package_price / 100 * current_weekly_percentage
   end
   def total_weekly_percentage_amount_sum
-    current_week_roi_amount_sum + total_weekly_percentage_amount.to_f
+    current_week_roi_amount_sum_or_zero + total_weekly_percentage_amount.to_f
   end
   def cwras
-    current_week_roi_amount_sum + current_total_weekly_roi_amount.to_f
+    current_week_roi_amount_sum_or_zero + current_total_weekly_roi_amount.to_f
   end
 end
