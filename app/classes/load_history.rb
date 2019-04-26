@@ -10,7 +10,7 @@ class LoadHistory
     {
       cw: [["withdrawl_request"], "WITHDRAWAL HISTORY", "wr_desc_table"],
       sw: [['smart_wallet', 'cash_wallet'], 'ACCOUNT TO ACCOUNT', "csw_table"],
-      st: [['system_transaction'], 'User Histroy', "wr_table"],
+      st: [['system_transaction'], 'Monthly Maintenance', "wr_table"],
       db: [['direct_bonus'], 'Direct Bonus', 'db_table'],
       ib: [['indirect_bonus'], 'Indirect Bonus', 'db_table'],
       bb: [['binary_bonus'], 'Binary Bonus', 'db_table'],
