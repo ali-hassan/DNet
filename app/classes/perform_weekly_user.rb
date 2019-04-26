@@ -50,9 +50,9 @@ class PerformWeeklyUser
     package_price / 100 * current_weekly_percentage
   end
   def total_weekly_percentage_amount_sum
-    current_week_roi_amount_sum_or_zero + total_weekly_percentage_amount.to_f
+    calculate_week_roi_amount_sum_or_zero + total_weekly_percentage_amount.to_f
   end
   def cwras
-    current_week_roi_amount_sum_or_zero + current_total_weekly_roi_amount.to_f
+    calculate_week_roi_amount_sum_or_zero + current_total_weekly_roi_amount.to_f
   end
 end
