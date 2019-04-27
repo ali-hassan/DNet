@@ -23,27 +23,27 @@ class FindPackages
       "500": {
         price: 500,
         binary: 120,
-        category: "Basic",
+        category: "basic",
       },
       "1000": {
         price: 1000,
         binary: 240,
-        category: "Basic"
+        category: "basic"
       },
       "2000": {
         price: 2000,
         binary: 480,
-        category: 'Advance'
+        category: 'advance'
       },
       "5000": {
         price: 5000,
         binary: 1200,
-        category: 'Advance'
+        category: 'advance'
       },
       "10000": {
         price: 10000,
         binary: 2400,
-        category: 'Advance',
+        category: 'advance',
       }
     }.with_indifferent_access
   end

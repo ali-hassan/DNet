@@ -47,7 +47,7 @@ class PerformWeeklyUser
     current_x_factor_income.try(:to_f) + calculate_week_roi_amount_sum_or_zero
   end
   def current_week_roi_amount_sum
-    package_price / 100 * current_weekly_percentage
+    @user.try(:package_id).try(:to_i) / 100 * current_weekly_percentage
   end
   def total_weekly_percentage_amount_sum
     calculate_week_roi_amount_sum_or_zero + total_weekly_percentage_amount.to_f
