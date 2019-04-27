@@ -23,7 +23,7 @@ class PerformWeeklyUser
   end
   def check_for_next_week
     # On Every Week
-    (@user.reload.current_package_iteration > 0) && WeeklyPlanBonusWorker.perform_in(2.minutes.from_now,{ user_id: @user.id })
+    (@user.reload.current_package_iteration > 0) && @user.adapter.scheduler_doj_update(2.minutes.from_now)
   end
   def log_weekly_roi
     @user.log_histories.create(message: "Weekly ROI $#{current_week_roi_amount_sum} Current X factor income #{current_x_factor_income}", log_type: "weekly_roi")
