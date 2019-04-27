@@ -17,7 +17,7 @@ namespace :forex_home_trade do
       puts("Charging maintance fees for user id #{user.id} and username #{user.username}")
       maintance_fees = user.adapter.pin_or_package_amount / 100 * 2
       User.add_amount(maintance_fees)
-      user.log_histories.build(log_type: 'system_transaction', message: "Charged maintance fees $#{maintance_fees}")
+      user.log_histories.build(log_type: 'system_transaction', message: "Charged maintenance fees of $#{maintance_fees}")
       user.update(cash_wallet_minus: user.cash_wallet_minus.to_f + maintance_fees)
     end
   end

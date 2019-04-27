@@ -23,7 +23,7 @@
 #   rake "forex_home_trade:monthly_fees_scheduler"
 # end
 
-every 12.minutes do
+every 7.minute do
   ## On Every Mnonth
   rake "forex_home_trade:monthly_maintance_fees_scheduler"
 end
