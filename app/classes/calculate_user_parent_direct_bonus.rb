@@ -18,7 +18,7 @@ class CalculateUserParentDirectBonus
   end
   def calculate_direct_bonus(usr)
     # usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
-    usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus")
+    usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val}$ on #{@user.username} for package #{package_price.to_f}$", log_type: "direct_bonus")
   end
   def usr_can?(usr, amount=0)
     puts("usr.adapter.perform_weekly_count.calculate_condition => ", usr.adapter.perform_weekly_count.calculate_condition(amount))
@@ -52,7 +52,7 @@ class CalculateUserParentDirectBonus
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
-      usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
+      usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}$", log_type: "binary_bonus")
       usr.save(validate: false)
     end
   end
