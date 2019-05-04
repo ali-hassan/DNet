@@ -15,7 +15,8 @@
   <tbody>
     <% @transactions.all.each.with_index do |transaction, i| %>
       <tr>
-        <td><%= i+1 %></td>
+        <% index = i + 1%>
+        <td><%= ((params[:page] || 1).to_i - 1).times.map {5}.sum + index %></td>
         <td><%= transaction.created_at.strftime("%b. %e %Y") %></td>
         <td><%= transaction.user.try(:username) %></td>
         <td><%= transaction.user.try(:email) %></td>
@@ -25,5 +26,6 @@
         <td><%= transaction.message %></td>
       </tr>
     <% end %>
+    <%= will_paginate @transactions.all %>
   </tbody>
 </table>

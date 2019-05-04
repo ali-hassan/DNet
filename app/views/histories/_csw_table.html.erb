@@ -20,5 +20,6 @@
         <td><%=transaction.logable.try(:status).nil? ? "Approved" : "Declined"%></td>
       </tr>
     <%end%>
+    <%= will_paginate @transactions.all %>
   </tbody>
 </table>
