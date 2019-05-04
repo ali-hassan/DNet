@@ -1,5 +1,10 @@
 ActiveAdmin.register User, as: "RoiReport" do
+  preserve_default_filters!
+  filter :username, as: :string
+  filter :email, as: :string
+
   actions :index
+
   index do
     id_column
     column :full_name
