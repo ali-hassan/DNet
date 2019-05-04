@@ -1,25 +1,27 @@
 <table>
   <thead>
     <tr>
+      <th>Sr. No</th>
+      <th>Date</th>
       <th>Username</th>
       <th>Email</th>
       <th>Amount</th>
       <th>Gateway</th>
       <th>Status</th>
       <th>URL</th>
-      <th>Date</th>
       <th>Detail</th>
     </tr>
   </thead>
   <tbody>
-    <% @transactions.all.each do |transaction| %>
+    <% @transactions.all.each.with_index do |transaction, i| %>
       <tr>
+        <td><%= i+1 %></td>
+        <td><%= transaction.created_at.strftime("%b. %e %Y") %></td>
         <td><%= transaction.user.try(:username) %></td>
         <td><%= transaction.user.try(:email) %></td>
         <td><%= transaction.logable.try(:pts) rescue nil %></td>
         <td><%= transaction.user.try(:withdraw_gateway) %></td>
         <td><%= transaction.logable.try(:status) rescue nil %></td>
-        <td><%= transaction.created_at.strftime("%b. %e %Y") %></td>
         <td><%= transaction.message %></td>
       </tr>
     <% end %>
