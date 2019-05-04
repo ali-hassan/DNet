@@ -73,6 +73,9 @@ class User < ApplicationRecord
   def adapter
     @adapter ||= CurrentUserAdapter.new(self)
   end
+  def reload_adapters
+    @adapter = false; self
+  end
   def self.admin_user
     find_by is_admin: true
   end
