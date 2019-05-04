@@ -122,7 +122,7 @@ class CalculateUserParentDirectBonus
   end
   def log_reward_history(reward)
     @user.current_reward = reward
-    @user.log_histories.build(logable: @user, message: "You earn #{reward} ", log_type: 'user_reward')
+    @user.log_histories.build(logable: @user, message: "Congratulations, you have earned #{reward}  as a reward", log_type: 'user_reward')
     !["", "pin"].include?(reward) && @user.update(smart_wallet_balance: @user.smart_wallet_balance.to_f + reward.to_f) || 0
   end
   def ca(reward)

@@ -11,6 +11,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
+    column :package_activation_date
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -29,6 +30,7 @@ ActiveAdmin.register User do
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
+  filter :package_activation_date
 
   form do |f|
     f.inputs do
