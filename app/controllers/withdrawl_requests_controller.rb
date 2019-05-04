@@ -1,6 +1,6 @@
 class WithdrawlRequestsController < ApplicationController
   before_action :authenticate_user!
-  before_action :update_gateway, only: [:index]
+  before_action :update_gateway, only: [:create]
   skip_before_action :verify_authenticity_token
   layout "dashboard"
   before_action only: [:create] do
@@ -25,6 +25,6 @@ class WithdrawlRequestsController < ApplicationController
     params.require(:withdrawl_request).permit(:pts, :bitcoin_url, :cash_wallet, :amount, :service)
   end
   def update_gateway
-    params[:withdraw_gateway] && current_user.update(withdraw_gateway: params[:withdraw_gateway])
+    params[:withdrawl_request][:withdraw_gateway] && current_user.update(withdraw_gateway: params[:withdrawl_request][:withdraw_gateway])
   end
 end

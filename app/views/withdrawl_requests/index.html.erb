@@ -13,6 +13,7 @@
             <div class="custom-dashboard-column">
               <label>Add your wallet information </label>
               <%= f.text_field :bitcoin_url, value: current_user.bitcoin_url %>
+              <%= f.hidden_field :withdraw_gateway, value: params[:withdraw_gateway] %>
             </div>
           </div>
 
@@ -34,8 +35,7 @@
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
               <label>Service Fee </label>
-                <%#= f.number_field :amount, min: 60, id: "amount" %>
-                <%= f.number_field :service, min: 6, id: "service", readonly: true %>
+                <%= f.number_field :service, min: 6, id: "service",  readonly: true%>
             </div>
           </div>
 
