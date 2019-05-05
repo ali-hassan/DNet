@@ -1,5 +1,5 @@
 ActiveAdmin.register WithdrawlRequest do 
-
+  permit_params :pts, :status
   index do
     id_column
     column :username do |withdrawl_request|
@@ -63,5 +63,12 @@ ActiveAdmin.register WithdrawlRequest do
       f.input :status, collection: ["pending", "approved", "rejected"]
     end
     actions
+  end
+  controller do
+    def update
+      update! do |success, failure|
+        success.html { (resource.status == "approved" && DeducateWithdrawlAmount.new(resource).save); redirect_to([:admin, :withdrawl_requests]) }
+      end
+    end
   end
 end
