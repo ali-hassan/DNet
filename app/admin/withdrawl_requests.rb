@@ -64,11 +64,5 @@ ActiveAdmin.register WithdrawlRequest do
     end
     actions
   end
-  controller do
-    def update
-      update! do |success, failure|
-        success.html { (resource.status == "approved" && DeducateWithdrawlAmount.new(resource).save); redirect_to([:admin, :withdrawl_requests]) }
-      end
-    end
-  end
+
 end
