@@ -47,7 +47,8 @@ class CalculateUserParentDirectBonus
   end
   def calcu_ulb(usr, position, binary)
     usr.attributes = calculate_leg_bonus(usr, position, binary)
-    if usr_can?(usr.reload, bonus_amount=usr.reload_adapters.adapter.binary_bonus)
+    bonus_amount = usr.reload_adapters.adapter.binary_bonus
+    if usr_can?(usr)
       usr.binary_bonus, usr.is_binary_bonus_active = bonus_amount, cal_bb_condition?(usr)
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
