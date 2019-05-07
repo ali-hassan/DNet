@@ -1,8 +1,9 @@
 ActiveAdmin.register User, as: "KycApproval" do
   actions :index, :edit, :update
-  permit_params :is_valid_kyc
+  permit_params :is_valid_kyc, :reject_kyc
   index do
     column :is_valid_kyc
+    column :reject_kyc
     column "Email", :email
     column "User Name", :username
     column "Verify Identity" do |user|
@@ -16,6 +17,7 @@ ActiveAdmin.register User, as: "KycApproval" do
   form do |f|
     f.inputs do
       f.input :is_valid_kyc, label: "Approve Identity"
+      f.input :reject_kyc, label: "Reject Identity"
     end
     actions
   end

@@ -7,6 +7,7 @@ ActiveAdmin.register User, as: 'Report' do
     column :is_pin
     column :pin_capacity
     column :package_id
+    column :package_activation_date
     column "Total Income" do |usr|
       usr.adapter.total_income
     end
@@ -35,6 +36,7 @@ ActiveAdmin.register User, as: 'Report' do
     column :email
     column :is_pin
     column :package_id
+    column :package_activation_date
     column "Total Income" do |usr|
       usr.adapter.total_income
     end
