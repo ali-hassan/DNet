@@ -20,7 +20,7 @@ ActiveAdmin.register User, as: "RoiReport" do
     column :total_roi do |user|
       user.total_weekly_percentage_amount.try(:to_f)
     end
-    column :roi_balance do |user|
+    column "Current ROI Balance" do |user|
       user.current_total_weekly_roi_amount.try(:to_f)
     end
     column :total_income
