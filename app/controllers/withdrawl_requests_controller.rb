@@ -8,7 +8,12 @@ class WithdrawlRequestsController < ApplicationController
       redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You don't have enough money to make this request.")
     else
       current_hongkong_time = Time.current.in_time_zone('Hong Kong')
-      (current_hongkong_time.between?(Time.parse("10:00am"), Time.parse("7:00pm")) && current_hongkong_time.sunday? && (current_user.withdrawl_date.blank? || current_user.withdrawl_date.in_time_zone('Hong Kong').to_date.to_s(:db) != current_hongkong_time.to_date.to_s(:db))) || redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Withdrawl is only allowed on Sunday from 10:00 AM to 7:00 PM time (GMT+8)')
+      Time.zone = "Hong Kong"
+      if (current_user.withdrawl_date.present? && current_user.withdrawl_date.to_date.to_s(:db) == Date.today.to_s(:db))
+        redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Only one withdrawl allowed per day')
+      else
+        (current_hongkong_time.between?(Time.zone.parse("10:00am"), Time.zone.parse("7:00pm")) && current_hongkong_time.sunday?)  || redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Withdrawl is only allowed on Sunday from 10:00 AM to 7:00 PM time (GMT+8)')
+      end
     end
   end
   after_action only: [:create] do
@@ -22,9 +27,9 @@ class WithdrawlRequestsController < ApplicationController
   end
   private
   def permitted_params
-    params.require(:withdrawl_request).permit(:pts, :bitcoin_url, :cash_wallet, :amount, :service)
+    params.require(:withdrawl_request).permit(:pts, :bitcoin_url, :cash_wallet, :amount, :service, :wallet_address)
   end
   def update_gateway
-    params[:withdrawl_request][:withdraw_gateway] && current_user.update(withdraw_gateway: params[:withdrawl_request][:withdraw_gateway])
+    params[:withdrawl_request][:withdraw_gateway].present? && current_user.update(withdraw_gateway: params[:withdrawl_request][:withdraw_gateway])
   end
 end

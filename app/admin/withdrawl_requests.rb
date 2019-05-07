@@ -1,5 +1,5 @@
 ActiveAdmin.register WithdrawlRequest do 
-
+  permit_params :pts, :status
   index do
     id_column
     column :username do |withdrawl_request|
@@ -64,4 +64,5 @@ ActiveAdmin.register WithdrawlRequest do
     end
     actions
   end
+
 end

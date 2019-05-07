@@ -249,6 +249,7 @@ ActiveRecord::Schema.define(version: 20190507105035) do
     t.datetime "updated_at", null: false
     t.string "status", default: "pending"
     t.string "service"
+    t.string "wallet_address"
     t.index ["user_id"], name: "index_withdrawl_requests_on_user_id"
   end
 

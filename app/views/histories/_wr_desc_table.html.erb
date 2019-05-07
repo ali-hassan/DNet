@@ -1,15 +1,14 @@
 <table>
   <thead>
     <tr>
-      <th>Sr. No</th>
+      <th>S. No</th>
       <th>Date</th>
       <th>Username</th>
-      <th>Email</th>
+      <th>Wallet Address</th>
       <th>Amount</th>
+      <th>Service</th>
       <th>Gateway</th>
       <th>Status</th>
-      <th>URL</th>
-      <th>Detail</th>
     </tr>
   </thead>
   <tbody>
@@ -19,11 +18,11 @@
         <td><%= ((params[:page] || 1).to_i - 1).times.map {5}.sum + index %></td>
         <td><%= transaction.created_at.strftime("%b. %e %Y") %></td>
         <td><%= transaction.user.try(:username) %></td>
-        <td><%= transaction.user.try(:email) %></td>
-        <td><%= transaction.logable.try(:pts) rescue nil %></td>
+        <td><%= transaction.logable.try(:wallet_address) rescue nil%></td>
+        <td><%= transaction.logable.try(:pts).to_f - transaction.logable.try(:service).try(:to_f).round(2) rescue nil %></td>
+        <td><%= transaction.logable.try(:service).try(:to_f).round(2) rescue nil %></td>
         <td><%= transaction.user.try(:withdraw_gateway) %></td>
         <td><%= transaction.logable.try(:status) rescue nil %></td>
-        <td><%= transaction.message %></td>
       </tr>
     <% end %>
     <%= will_paginate @transactions.all %>
