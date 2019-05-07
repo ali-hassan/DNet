@@ -13,8 +13,9 @@
             <span>KYC</span>
             <%- if current_user.reject_kyc%>
               <span style="color: red;"> (Rejected) Please, contact to support team.</span>
+            <%else%>
+                <span style="color: red;"> (Not Verified)</span>
             <%end%>
-            <span style="color: red;"> (Not Verified)</span>
           </h1>
         <%end%>
       </div>
