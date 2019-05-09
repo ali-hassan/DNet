@@ -113,3 +113,5 @@ gem 'whenever', require: false
 gem 'rails_autolink'
 gem 'will_paginate'
 gem "kaminari"
+gem "recaptcha"
+gem 'activeadmin-xls', '~>2.0.0'

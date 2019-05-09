@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190324170816) do
+ActiveRecord::Schema.define(version: 20190507105035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activate_user_packages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "package_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activate_user_packages_on_user_id"
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -65,6 +73,11 @@ ActiveRecord::Schema.define(version: 20190324170816) do
     t.string "log_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "package_id"
+    t.string "weekly_roi"
+    t.string "total_roi"
+    t.string "roi_balance"
+    t.string "total_income"
     t.index ["logable_type", "logable_id"], name: "index_log_histories_on_logable_type_and_logable_id"
     t.index ["user_id"], name: "index_log_histories_on_user_id"
   end
@@ -213,6 +226,15 @@ ActiveRecord::Schema.define(version: 20190324170816) do
     t.boolean "is_valid_kyc", default: false
     t.string "withdraw_gateway"
     t.string "bitcoin_url"
+    t.integer "weekly_roi_to_cash_amount_cents", default: 0, null: false
+    t.string "weekly_roi_to_cash_amount_currency", default: "USD", null: false
+    t.boolean "is_bitcoin_request", default: false
+    t.date "package_activation_date"
+    t.date "next_package_maintance_date"
+    t.string "sidekiq_job_id"
+    t.date "package_activation"
+    t.date "package_updated_at"
+    t.boolean "reject_kyc", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -225,9 +247,13 @@ ActiveRecord::Schema.define(version: 20190324170816) do
     t.boolean "is_clear"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
+    t.string "service"
+    t.string "wallet_address"
     t.index ["user_id"], name: "index_withdrawl_requests_on_user_id"
   end
 
+  add_foreign_key "activate_user_packages", "users"
   add_foreign_key "bit_pay_transactions", "users"
   add_foreign_key "log_histories", "users"
   add_foreign_key "user_pair_keys", "users"

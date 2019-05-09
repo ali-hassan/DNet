@@ -1,0 +1,51 @@
+<main class="main">
+  <div class="main-content">
+    <!-- Content Block 1 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2>Make a Transfer</h2>
+      </div>
+      <div class="main-content-body">
+        <div class="acount-holder">
+          <%= form_for @transaction, url: weekly_roi_to_cash_wallets_url(subdomain: "office"), html: {method: 'post'} do |f| %>
+              <input type="hidden" value="weekly_roi" name="user_transaction[wallet_type]" />
+              <div class="custom-dashboard-row">
+                <div class="custom-dashboard-column">
+                  <label>Username</label>
+                  <input type="text" value="<%= current_user.full_name %>" readonly="true">
+                </div>
+              </div>
+
+              <!-- Signup Row Start -->
+              <div class="custom-dashboard-row">
+                <div class="custom-dashboard-column">
+                  <%= f.label :wallet_type, "Choose Wallet" %>
+                  <%= f.select :wallet_type, [["Current Weekly ROI", "weekly_roi_to_cash"]], { include_blank: false } %>
+                </div>
+                <div class="custom-dashboard-column">
+                  <label>Balance in (in your current weekly ROI)</label>
+                  <input type="text" value="<%= number_to_currency current_user.current_total_weekly_roi_amount.try(:to_f) %>" readonly>
+                </div>
+              </div>
+              <!-- Signup Row End -->
+
+              <!-- Signup Row Start -->
+              <div class="custom-dashboard-row">
+                <div class="custom-dashboard-column">
+                  <%= f.label :amount, "Amount (To transfer)" %>
+                  <%= f.text_field :amount %>
+                </div>
+              </div>
+              <!-- Signup Row End -->
+
+              <div class="button-holder">
+                <input class="custom-btn" type="submit" value="Transfer">
+              </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <!-- Content Block 1 End -->
+  </div>
+</main>

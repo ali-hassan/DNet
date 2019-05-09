@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Sr. No</th>
+      <th>Date</th>
+      <th>Wallet</th>
+      <th>Detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.all.each.with_index do |transaction, i| %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= transaction.created_at.strftime("%b. %e %Y") %></td>
+        <td>Cash Wallet</td>
+        <td><%= transaction.message %></td>
+      </tr>
+    <% end %>
+    <%= will_paginate @transactions.all %>
+  </tbody>
+</table>

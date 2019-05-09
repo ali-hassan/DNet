@@ -11,6 +11,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
+    column :package_activation_date
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -29,21 +30,22 @@ ActiveAdmin.register User do
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
+  filter :package_activation_date
 
   form do |f|
     f.inputs do
       f.input :is_binary_bonus_active, label: "Binary Check"
       f.input :smart_wallet_balance, label: "Smart Wizard Balance"
       f.input :total_bonus_points
-      f.input :indirect_bonus_amount
-      f.input :indirect_total_bonus_amount
+      # f.input :indirect_bonus_amount
+      # f.input :indirect_total_bonus_amount
       f.input :binary_bonus
       f.input :total_income
       f.input :left_bonus
       f.input :right_bonus
       # f.input :current_week_roi_amount
       # f.input :total_weekly_percentage_amount
-      f.input :indirect_bonus_amount
+      # f.input :indirect_bonus_amount
       f.input :current_week_roi_amount
       f.input :current_total_weekly_roi_amount
     end

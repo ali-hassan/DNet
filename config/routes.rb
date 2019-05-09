@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     subdomain_constraint.resource :kyc, only: [:edit, :update]
     subdomain_constraint.resources :supports, only: [:index, :create]
     subdomain_constraint.resources :gateways, only: [:show]
+    subdomain_constraint.resources :weekly_roi_to_cash_wallets, only: [:index, :create]
     subdomain_constraint.resources :transactions, only: [:index, :create] do
       collection do
         get :cash_to_smart

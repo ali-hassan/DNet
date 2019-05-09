@@ -17,10 +17,15 @@ class CalculateUserParentDirectBonus
     (_ = created_by).present? && (calculate_direct_bonus(_); apply_parents_bonus) || false
   end
   def calculate_direct_bonus(usr)
-    usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
+    # usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
+    usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val}$ on #{@user.username} for package #{package_price.to_f}$", log_type: "direct_bonus")
+  end
+  def usr_can?(usr, amount=0)
+    puts("usr.adapter.perform_weekly_count.calculate_condition => ", usr.adapter.perform_weekly_count.calculate_condition(amount))
+    usr.adapter.perform_weekly_count.calculate_condition(amount)
   end
   def apply_parents_bonus
-    alpl { |usr, index| usr && usr.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
+    alpl { |usr, index| usr && usr_can?(usr) && usr.reload.adapter.apply_indirect_bonus_at(index, package_price, @user) }; calculate_binary_bonus
   end
   def calculate_binary_bonus
     cal_bb(adapter.parent_lists, parent_position, current_binary)
@@ -32,7 +37,7 @@ class CalculateUserParentDirectBonus
     (usr=pl[index]).present? && (calcu_ulb(usr, position, binary); cal_bb(pl, usr.parent_position, binary, index+1)) || true
   end
   def cal_bb_condition?(usr)
-    child_condition?(usr, "left") && child_condition?(usr, "right")
+    [child_condition?(usr, "left"), child_condition?(usr, "right")].select { |cond| cond }.to_a.count == 2
   end
   def child_condition?(usr, position)
     (ch = usr.children.where(parent_position: position).first) && (ch.adapter.find_child_list_by_parent_id.map { |umt| umt.package_id.present? && umt.created_by_id == usr.id }.include?(true) || (ch.package_id.present? && ch.created_by_id == usr.id))
@@ -40,14 +45,14 @@ class CalculateUserParentDirectBonus
   def ignore_list
     @ignore_list ||= Array.new
   end
-  def calcu_ulb(usr,position, binary)
-    if usr.adapter.perform_weekly_count
+  def calcu_ulb(usr, position, binary)
+    if usr_can?(usr, bonus_amount=usr.adapter.calculate_binary_bonus)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
-      usr.binary_bonus, usr.is_binary_bonus_active = usr.adapter.calculate_binary_bonus, cal_bb_condition?(usr)
+      usr.binary_bonus, usr.is_binary_bonus_active = bonus_amount, cal_bb_condition?(usr)
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
-      usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}", log_type: "binary_bonus")
+      usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}$", log_type: "binary_bonus")
       usr.save(validate: false)
     end
   end
@@ -72,16 +77,17 @@ class CalculateUserParentDirectBonus
     (package_price / 100 * 8.0)
   end
   def total_income_sum
-    created_by.total_income.try(:to_f) + current_bonus_val
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.total_income.try(:to_f) + current_bonus_val) : created_by.total_income.try(:to_f)
   end
+
   def total_cash_wallet_amount
-    created_by.cash_wallet_amount.try(:to_f) + current_bonus_val # + adapter.calculate_binary_bonus
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.cash_wallet_amount.try(:to_f) + current_bonus_val) : created_by.cash_wallet_amount.try(:to_f) # + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
-    created_by.binary_bonus.try(:to_f) + current_binary 
+    created_by.binary_bonus.try(:to_f) + current_binary
   end
   def current_bonus_points_sum
-    created_by.current_bonus_points.try(:to_f) + current_bonus_val
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.current_bonus_points.try(:to_f) + current_bonus_val) : created_by.current_bonus_points.try(:to_f)
   end
   def total_bonus_points_sum
     created_by.total_bonus_points.try(:to_f) + current_bonus_val.try(:to_f)
@@ -103,7 +109,7 @@ class CalculateUserParentDirectBonus
     rank_list.select { |rnk| rnk === calculate_rank.to_i }.values.first
   end
   def calculate_rank
-    (@user.right_bonus.to_f > @user.left_bonus.to_f) && @user.right_bonus || @user.left_bonus
+    (@user.right_bonus.to_f < @user.left_bonus.to_f) && @user.right_bonus || @user.left_bonus
   end
   def rank_obj
     @rank_obj ||= Struct.new(:name, :reward, :cap)
@@ -116,7 +122,8 @@ class CalculateUserParentDirectBonus
   end
   def log_reward_history(reward)
     @user.current_reward = reward
-    @user.log_histories.build(logable: @user, message: "You earn #{reward} ", log_type: 'user_reward')
+    reward_val = ["", "pin"].include?(reward) && reward || "#{reward}$"
+    @user.log_histories.build(logable: @user, message: "Congratulations, you have earned #{reward_val}  as a reward", log_type: 'user_reward')
     !["", "pin"].include?(reward) && @user.update(smart_wallet_balance: @user.smart_wallet_balance.to_f + reward.to_f) || 0
   end
   def ca(reward)

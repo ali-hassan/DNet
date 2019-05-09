@@ -24,6 +24,7 @@ class User < ApplicationRecord
   belongs_to :referred_by, class_name: "User", optional: true
   has_many :log_histories, dependent: :destroy
   has_many :withdrawl_requests, dependent: :destroy
+  has_many :activate_user_packages, dependent: :destroy
   accepts_nested_attributes_for :user_transactions, reject_if: :all_blank, allow_destroy: true
   attr_accessor :current_pin
   validate :current_pin_verify, if: :current_pin?
@@ -44,6 +45,11 @@ class User < ApplicationRecord
   monetize :cash_wallet_minus_cents
   monetize :cash_wallet_amount_cents
   monetize :charge_package_price_cents
+  monetize :weekly_roi_to_cash_amount_cents
+  after_create { |usr| UserMailer.welcome(usr).deliver_now }
+  after_create do |usr|
+    usr.created_by.present? && usr.created_by.log_histories.create(logable: self, log_type: :direct_refarral, message: "Direct Referral username #{ usr.username } at position #{ usr.parent_position }")
+  end
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   def current_pin_verify
@@ -66,6 +72,9 @@ class User < ApplicationRecord
   end
   def adapter
     @adapter ||= CurrentUserAdapter.new(self)
+  end
+  def reload_adapters
+    @adapter = false; self
   end
   def self.admin_user
     find_by is_admin: true

@@ -17,7 +17,7 @@ function initNode() {
       $.getScript("/my_networks/<%= child.id %>.js");
     }
   <% end %>
-  <% if current_user.adapter.last_node_parent_id.include?(params[:id].to_i) %>
+  <% if current_user.adapter.last_node_parent_id.include?(params[:id].to_i) && current_user.id == params[:id].to_i %>
     var newHTML = new Array();
     if (!$("[data-parent-position='left']").length) {
       $childrenContainer.prepend("<li class='left-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='left'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=left' data-remote='true' class='new-child-href'>Add Child</a></li>");
@@ -25,7 +25,14 @@ function initNode() {
     if (!$("[data-parent-position='right']").length) {
       $childrenContainer.append("<li class='right-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='right'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=right' data-remote='true' class='new-child-href'>Add Child</a></li>");
     }
-
+  <% elsif current_user.adapter.last_node_parent_id.include?(params[:id].to_i) %>
+    var nodePosition = "<%= User.find_by(id: params[:id]).try(:parent_position) %>";
+    if (!$("[data-parent-position='left']").length && nodePosition == "left") {
+      $childrenContainer.prepend("<li class='left-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='left'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=left' data-remote='true' class='new-child-href'>Add Child</a></li>");
+    }
+    if (!$("[data-parent-position='right']").length && nodePosition == "right") {
+      $childrenContainer.append("<li class='right-child add-new-li-show' data-parent-id='<%= params[:id] %>' data-position='right'><a href='/my_networks/new.js?my_network[parent_id]=<%= params[:id] %>&my_network[referred_by_id]=<%= params[:id] %>&my_network[parent_position]=right' data-remote='true' class='new-child-href'>Add Child</a></li>");
+    }
   <% end %>
 }
 initNode()

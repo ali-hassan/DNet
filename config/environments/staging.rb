@@ -73,16 +73,18 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.delivery_method = :smtp
+
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
+      address:              'smtp.office365.com',
       port:                 587,
-      domain:               'gmail.com',
-      user_name:            'iammlmadvisor@gmail.com',
-      password:             'Pakistan.1234',
-      authentication:       :login,
-      # enable_starttls_auto: true
+      domain:               'forexhometrade.com',
+      user_name:            'support@forexhometrade.com',
+      password:             'Rubyonrails1*',
+      authentication: :login,
+      enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { :host => 'forexhometrade.com' }
+  config.action_mailer.default_url_options = { :host => 'myanalyzer.co' }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
