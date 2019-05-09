@@ -44,3 +44,8 @@ $(document).on "turbolinks:load", ->
   $referTriggerSearch  = $(".trigger-refer-search")
   if $referTriggerSearch.length
     $referTriggerSearch.trigger('keyup')
+
+  $(document).on "click", "#live_trading", (eventObject) ->
+    eventObject.preventDefault();
+    alert("Forex live trading will be available very soon");
+    $("#live_trading").off("click");
