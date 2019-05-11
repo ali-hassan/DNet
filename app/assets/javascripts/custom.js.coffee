@@ -49,3 +49,7 @@ $(document).on "turbolinks:load", ->
     eventObject.preventDefault();
     alert("Forex live trading will be available very soon");
     $("#live_trading").off("click");
+  $(document).on "click", "#promotion_trading", (eventObject) ->
+    eventObject.preventDefault();
+    alert("Something big is coming, Stay tuned.");
+    $("#live_trading").off("click");
