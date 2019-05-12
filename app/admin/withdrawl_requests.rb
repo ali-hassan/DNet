@@ -16,7 +16,10 @@ ActiveAdmin.register WithdrawlRequest do
       withdrawl_request.user.withdraw_gateway
     end
 
-    column "URL", :bitcoin_url
+    column "URL" do |withdrawl_request|
+      withdrawl_request.wallet_address
+    end
+
     column "Transferable Amount", :amount_before_tax
     column "Tax", :service
     column :status
