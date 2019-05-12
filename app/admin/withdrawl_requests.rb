@@ -42,7 +42,7 @@ ActiveAdmin.register WithdrawlRequest do
     end
 
     column "URL" do |withdrawl_request|
-      withdrawl_request.bitcoin_url
+      withdrawl_request.wallet_address
     end
     column "Transferable Amount" do |withdrawl_request|
       withdrawl_request.amount_before_tax
