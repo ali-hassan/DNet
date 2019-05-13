@@ -66,6 +66,29 @@
       <% end %>
     </div>
     <!-- Sidebar Block 3 End -->
+
+    <!-- Sidebar Block 3 Start -->
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#" do %>
+            <%= image_tag("live_trading.gif", id: "live_trading")%>
+          <%end%>
+          <strong class="common-class">Live Trading</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#" do %>
+            <%= image_tag("promotion_img.jpg", id: "promotion_trading")%>
+          <%end%>
+          <strong class="common-class">New Promotions</strong>
+        </div>
+      </div>
+    </div>
   </aside>
 
   <div class="main-content">
@@ -203,7 +226,7 @@
 
     <% if current_user.adapter.max_package_total_earning.present? %>
       <!-- Content Block 3 Start -->
-      <div class="main-content-block">
+      <div class="main-content-block" style="padding-bottom: 34px">
         <div class="heading">
           <h2>X-Factor</h2>
         </div>

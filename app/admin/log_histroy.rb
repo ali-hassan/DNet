@@ -13,7 +13,7 @@ ActiveAdmin.register LogHistory do
       log.user.id
     end
     column "User Name" do |log|
-      log.user.id
+      log.user.username
     end
     column "Email" do |log|
       log.user.email

@@ -222,8 +222,8 @@ ActiveRecord::Schema.define(version: 20190507105035) do
     t.string "charge_package_binary"
     t.string "current_reward"
     t.string "avatar"
-    t.datetime "withdrawl_date"
     t.boolean "is_valid_kyc", default: false
+    t.datetime "withdrawl_date"
     t.string "withdraw_gateway"
     t.string "bitcoin_url"
     t.integer "weekly_roi_to_cash_amount_cents", default: 0, null: false
