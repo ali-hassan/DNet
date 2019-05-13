@@ -29,6 +29,7 @@ ActiveAdmin.register User, as: 'Report' do
     column "Smart Wallet" do |usr|
       usr.smart_wallet_balance.try(:to_f)
     end
+    column :created_at
   end
   csv do
     column :id
@@ -58,5 +59,6 @@ ActiveAdmin.register User, as: 'Report' do
     column "Smart Wallet" do |usr|
       usr.smart_wallet_balance.try(:to_f)
     end
+    column :created_at
   end
 end

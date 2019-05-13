@@ -27,5 +27,6 @@ ActiveAdmin.register LogHistory do
     column :logable_type
     column :logable_id
     column :log_type
+    column :created_at
   end
 end
