@@ -270,9 +270,49 @@ a:hover{
     overflow: hidden;
     padding: 0 0 0 20px;
 }
-.dashboard-page .main-content{
+@media all and (min-width:321px) and (max-width: 480px) {
+  .dashboard-page .main-content{
     overflow: hidden;
+    margin-left: 45px;
+  }
 }
+
+@media all and (min-width:0px) and (max-width: 320px) {
+  .dashboard-page .main-content{
+    overflow: hidden;
+    margin-left: 45px;
+  }
+}
+@media all and (min-width:960px) and (max-width: 1024px) {
+  .dashboard-page .main-content{
+    overflow: hidden;
+  }
+}
+
+@media all and (min-width:801px) and (max-width: 959px) {
+  .dashboard-page .main-content{
+    overflow: hidden;
+  }
+}
+
+@media all and (min-width:769px) and (max-width: 800px) {
+  .dashboard-page .main-content{
+    overflow: hidden;
+  }
+}
+
+@media all and (min-width:569px) and (max-width: 768px) {
+  .dashboard-page .main-content{
+    overflow: hidden;
+  }
+}
+
+@media all and (min-width:481px) and (max-width: 568px) {
+  .dashboard-page .main-content{
+    overflow: hidden;
+  }
+}
+
 .dashboard-page .main-content .main-content-block{
     background-color: #fff;
     margin: 0 0 20px;
