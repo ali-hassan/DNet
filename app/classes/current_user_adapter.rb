@@ -109,6 +109,7 @@ class CurrentUserAdapter
     if perform_weekly_count.calculate_condition(pp)
       user.log_histories.create(logable: usr, message: "Indirect bonus #{pp} on #{usr.username} for package #{package_price.to_f}", log_type: 'indirect_bonus')
       user.update(
+        current_x_factor_income: user.current_x_factor_income + pp,
         total_income: user.total_income.try(:to_f) + pp,
         indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,
         indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp,
@@ -140,8 +141,12 @@ class CurrentUserAdapter
   def can_upgrade_url?(id)
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
   end
-  def graph_total_percent
+  # TODO: NOT USING MUST BE REMOVED
+  def graph_total_percent_old
     (user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)) / max_package_total_earning * 100
+  end
+  def graph_total_percent
+    (user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f) / max_package_total_earning * 100 
   end
   delegate :active_job, :active_job?, :doj_update, to: :scheduler_update, prefix: :scheduler, allow_nil: true
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true

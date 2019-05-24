@@ -49,6 +49,7 @@ class CalculateUserParentDirectBonus
     if usr_can?(usr, bonus_amount=usr.adapter.calculate_binary_bonus)
       usr.attributes = calculate_leg_bonus(usr, position, binary)
       usr.binary_bonus, usr.is_binary_bonus_active = bonus_amount, cal_bb_condition?(usr)
+      usr.binary_bonus_for_xfactor = bonus_amount
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
@@ -66,6 +67,7 @@ class CalculateUserParentDirectBonus
       smart_wallet_balance: smart_wallet_balance_sum,
       binary_bonus: bonus_wallet_sum,
       total_income: total_income_sum,
+      current_x_factor_income: current_x_factor_income_sum,
       cash_wallet_amount: total_cash_wallet_amount,
     }
   end
@@ -78,6 +80,9 @@ class CalculateUserParentDirectBonus
   end
   def total_income_sum
     created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.total_income.try(:to_f) + current_bonus_val) : created_by.total_income.try(:to_f)
+  end
+  def current_x_factor_income_sum
+    created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.current_x_factor_income.try(:to_f) + current_bonus_val) : created_by.current_x_factor_income.try(:to_f)
   end
 
   def total_cash_wallet_amount

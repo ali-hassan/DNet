@@ -46,12 +46,18 @@ class User < ApplicationRecord
   monetize :cash_wallet_amount_cents
   monetize :charge_package_price_cents
   monetize :weekly_roi_to_cash_amount_cents
+  monetize :binary_bonus_for_xfactor_cents
   after_create { |usr| UserMailer.welcome(usr).deliver_now }
   after_create do |usr|
     usr.created_by.present? && usr.created_by.log_histories.create(logable: self, log_type: :direct_refarral, message: "Direct Referral username #{ usr.username } at position #{ usr.parent_position }")
   end
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
+  attr_accessor :select_package_id
+  def select_package_id=(pckg_id)
+    @select_package_id, self.is_pin = pckg_id, false
+    self.package_id = pckg_id
+  end
   def current_pin_verify
     (current_pin.to_s != pin_was.to_s) && errors.add(:current_pin, "invalid pin") || true
   end
