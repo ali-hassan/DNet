@@ -4,7 +4,7 @@
     <div class="sidebar-block">
       <div class="sidebar-content-body">
         <div class="video-holder">
-          <iframe src="https://www.youtube.com/embed/nqaOxwQBMwQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/m8KHono1YHw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -66,6 +66,29 @@
       <% end %>
     </div>
     <!-- Sidebar Block 3 End -->
+
+    <!-- Sidebar Block 3 Start -->
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#" do %>
+            <%= image_tag("live_trading.gif", id: "live_trading")%>
+          <%end%>
+          <strong class="common-class">Live Trading</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#" do %>
+            <%= image_tag("promotion_img.jpg", id: "promotion_trading")%>
+          <%end%>
+          <strong class="common-class">New Promotions</strong>
+        </div>
+      </div>
+    </div>
   </aside>
 
   <div class="main-content">
@@ -120,7 +143,7 @@
           <div class="columns">
             <div class="columns-top current-roi">
               <h3><%= number_to_currency current_user.current_total_weekly_roi_amount.try(:to_f) %></h3>
-              <span>Current ROI Balance</span>
+              <span>Current ROI</span>
               <span class="currency-symbol">$</span>
             </div>
             <div class="columns-middle">
@@ -203,7 +226,7 @@
 
     <% if current_user.adapter.max_package_total_earning.present? %>
       <!-- Content Block 3 Start -->
-      <div class="main-content-block">
+      <div class="main-content-block" style="padding-bottom: 34px">
         <div class="heading">
           <h2>X-Factor</h2>
         </div>

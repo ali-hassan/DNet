@@ -107,7 +107,7 @@ class CurrentUserAdapter
   def apply_indirect_bonus_at(index, package_price, usr)
     pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
     if perform_weekly_count.calculate_condition(pp)
-      user.log_histories.create(logable: usr, message: "Indirect bonus #{pp} on #{usr.username} for package #{package_price.to_f}", log_type: 'indirect_bonus')
+      user.log_histories.create(logable: usr, message: "Indirect bonus #{pp}$ on #{usr.username} for package #{package_price.to_f}$", log_type: 'indirect_bonus')
       user.update(
         current_x_factor_income: user.current_x_factor_income + pp,
         total_income: user.total_income.try(:to_f) + pp,

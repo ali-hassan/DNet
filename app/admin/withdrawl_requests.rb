@@ -1,5 +1,5 @@
 ActiveAdmin.register WithdrawlRequest do 
-
+  permit_params :pts, :status
   index do
     id_column
     column :username do |withdrawl_request|
@@ -16,7 +16,10 @@ ActiveAdmin.register WithdrawlRequest do
       withdrawl_request.user.withdraw_gateway
     end
 
-    column "URL", :bitcoin_url
+    column "URL" do |withdrawl_request|
+      withdrawl_request.wallet_address
+    end
+
     column "Transferable Amount", :amount_before_tax
     column "Tax", :service
     column :status
@@ -42,7 +45,7 @@ ActiveAdmin.register WithdrawlRequest do
     end
 
     column "URL" do |withdrawl_request|
-      withdrawl_request.bitcoin_url
+      withdrawl_request.wallet_address
     end
     column "Transferable Amount" do |withdrawl_request|
       withdrawl_request.amount_before_tax
@@ -64,4 +67,5 @@ ActiveAdmin.register WithdrawlRequest do
     end
     actions
   end
+
 end

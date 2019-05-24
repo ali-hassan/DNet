@@ -7,6 +7,7 @@ ActiveAdmin.register User, as: 'Report' do
     column :is_pin
     column :pin_capacity
     column :package_id
+    column :package_activation_date
     column "Total Income" do |usr|
       usr.adapter.total_income
     end
@@ -19,8 +20,8 @@ ActiveAdmin.register User, as: 'Report' do
     column "Indirect Bonus" do |usr|
       usr.indirect_bonus_users_count
     end
-    column "ROI Balance" do |usr|
-      usr.total_weekly_percentage_amount.try(:to_f)
+    column "Current ROI Balance" do |user|
+      user.current_total_weekly_roi_amount.try(:to_f)
     end
     column "Cash Wallet" do |usr|
       usr.cash_wallet_total
@@ -28,6 +29,7 @@ ActiveAdmin.register User, as: 'Report' do
     column "Smart Wallet" do |usr|
       usr.smart_wallet_balance.try(:to_f)
     end
+    column :created_at
   end
   csv do
     column :id
@@ -35,6 +37,7 @@ ActiveAdmin.register User, as: 'Report' do
     column :email
     column :is_pin
     column :package_id
+    column :package_activation_date
     column "Total Income" do |usr|
       usr.adapter.total_income
     end
@@ -47,8 +50,8 @@ ActiveAdmin.register User, as: 'Report' do
     column "Indirect Bonus" do |usr|
       usr.indirect_bonus_users_count
     end
-    column "ROI Balance" do |usr|
-      usr.total_weekly_percentage_amount.try(:to_f)
+    column "Current ROI Balance" do |user|
+      user.current_total_weekly_roi_amount.try(:to_f)
     end
     column "Cash Wallet" do |usr|
       usr.cash_wallet_total
@@ -56,5 +59,6 @@ ActiveAdmin.register User, as: 'Report' do
     column "Smart Wallet" do |usr|
       usr.smart_wallet_balance.try(:to_f)
     end
+    column :created_at
   end
 end

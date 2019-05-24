@@ -29,7 +29,9 @@ class ChargeAmountAtA
       current_package_iteration: 50,
       charge_package_price: package_price,
       charge_package_binary: current_binary,
-    }.merge(self.allow_deducation ? {smart_wallet_balance: smart_wallet_balance.try(:to_f) - deducation_amount} : {})
+    }.merge(self.allow_deducation ? {smart_wallet_balance: smart_wallet_balance.try(:to_f) - deducation_amount} : {}).merge(
+      self.upgrade ? { package_updated_at: DateTime.now } : {}
+     )
   end
   def current_x_factor_income_count
     upgrade && user.current_x_factor_income.to_f || 0

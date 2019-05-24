@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190426121547) do
+ActiveRecord::Schema.define(version: 20190507105035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -231,8 +231,10 @@ ActiveRecord::Schema.define(version: 20190426121547) do
     t.boolean "is_bitcoin_request", default: false
     t.date "package_activation_date"
     t.date "next_package_maintance_date"
-    t.date "package_activation"
     t.string "sidekiq_job_id"
+    t.date "package_activation"
+    t.date "package_updated_at"
+    t.boolean "reject_kyc", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -247,6 +249,7 @@ ActiveRecord::Schema.define(version: 20190426121547) do
     t.datetime "updated_at", null: false
     t.string "status", default: "pending"
     t.string "service"
+    t.string "wallet_address"
     t.index ["user_id"], name: "index_withdrawl_requests_on_user_id"
   end
 

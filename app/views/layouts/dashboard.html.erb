@@ -185,36 +185,48 @@
         </aside>
         <div class="contents">
           <header class="dashboard-header">
-            <div class="header-left">
-              <ul>
-                <li class="status verified">
-                  <dl>
-                    <dt>Account status: </dt>
-                    <%- if current_user.package_id.present? || current_user.is_pin%>
-                      <dd>Verified</dd>
-                    <%else%>
-                      <dd>UnVerified</dd>
-                    <%end%>
-                  </dl>
-                </li>
-                <li class="status <%= current_user.is_binary_bonus_active && "verified" || "not-verified" %>">
-                  <dl>
-                    <dt>Binary status: </dt>
-                    <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
-                  </dl>
-                </li>
-              </ul>
-            </div>
-            <div class="header-right">
-              <a href="#">
-                <div class="current-image-holder">
-                  <%= image_tag "ic_user.png", alt: "Profile Image"%>
+            <div class="dashboard-header-holder">
+                <div class="header-left">
+                  <ul>
+                    <li class="status verified">
+                      <dl>
+                        <dt>Account status: </dt>
+                        <%- if current_user.package_id.present? || current_user.is_pin%>
+                          <dd>Verified</dd>
+                        <%else%>
+                          <dd>UnVerified</dd>
+                        <%end%>
+                      </dl>
+                    </li>
+                    <li class="status <%= current_user.is_binary_bonus_active && "verified" || "not-verified" %>">
+                      <dl>
+                        <dt>Binary status: </dt>
+                        <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
+                      </dl>
+                    </li>
+                  </ul>
                 </div>
-                <span class="current-user-name">
-                  <%=current_user.full_name%>
-                </span>
+                <div class="header-right">
+                  <a href="#">
+                    <div class="current-image-holder">
+                      <%= image_tag "ic_user.png", alt: "Profile Image"%>
+                    </div>
+                    <span class="current-user-name">
+                      <%=current_user.full_name%>
+                    </span>
+                  </a>
+                </div>
+            </div>
+
+
+            <div class="mobile-logo">
+              <a href="#">
+                <%= image_tag "logo.png" %>
               </a>
             </div>
+
+
+
             <!-- Mobile Menu Button Start -->
             <a class="mobile-menu-btn" href="javascript:;" title="Menu">
               <span class="line line-1"></span>
@@ -233,7 +245,10 @@
 
   </body>
 </html>
+
 <script>
+
+$( document ).ready(function() {
     var status=1;
     jQuery('.sidebar-menu-btn').click(function(){
         if(status){
@@ -251,7 +266,6 @@
     });
 
 
-
     var status2=1;
     jQuery('.mobile-menu-btn').click(function(){
         if(status2){
@@ -265,4 +279,24 @@
             status2=1;
         }
     });
+
+
+    $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("body").addClass("sticky-sidebar");
+        }
+        else{
+            $("body").removeClass("sticky-sidebar");          
+        }
+    });
+});
+
+
+
+
+
+
+
 </script>
