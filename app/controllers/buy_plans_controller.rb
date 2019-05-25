@@ -1,6 +1,7 @@
 class BuyPlansController < ApplicationController
   before_action :authenticate_user!
   layout "dashboard"
+  before_action :shift_to_pkg, only: [:create], if: -> { current_user.is_pin }
   before_action :find_package, only: [:show]
   skip_before_action :verify_authenticity_token
 
@@ -17,5 +18,8 @@ class BuyPlansController < ApplicationController
   end
   def upgrade_plan
     false
+  end
+  def shift_to_pkg
+    current_user.update is_pin: false#, pin_capacity: nil
   end
 end
