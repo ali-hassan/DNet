@@ -48,8 +48,9 @@ class CalculateUserParentDirectBonus
   def calcu_ulb(usr, position, binary)
     usr.attributes = calculate_leg_bonus(usr, position, binary)
     bonus_amount = usr.reload_adapters.adapter.binary_bonus
-    if usr_can?(usr)
-      usr.binary_bonus, usr.is_binary_bonus_active = bonus_amount, cal_bb_condition?(usr)
+    # usr.binary_bonus = bonus_amount; usr.reload_adapters
+    if usr_can?(usr, bonus_amount)
+      usr.is_binary_bonus_active = cal_bb_condition?(usr)
       usr.binary_bonus_for_xfactor = bonus_amount
       usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
@@ -130,7 +131,7 @@ class CalculateUserParentDirectBonus
     @user.current_reward = reward
     reward_val = ["", "pin"].include?(reward) && reward || "#{reward}$"
     @user.log_histories.build(logable: @user, message: "Congratulations, you have earned #{reward_val}  as a reward", log_type: 'user_reward')
-    !["", "pin"].include?(reward) && @user.update(smart_wallet_balance: @user.smart_wallet_balance.to_f + reward.to_f) || 0
+    !["", "pin"].include?(reward) && usr_can?(@user, reward.to_f) && @user.update(smart_wallet_balance: @user.smart_wallet_balance.to_f + reward.to_f, total_income: @user.total_income.try(:to_f) + reward.to_f, current_x_factor_income: @user.current_x_factor_income.try(:to_f) + reward.to_f) || 0
   end
   def ca(reward)
     log_reward_history(reward)
