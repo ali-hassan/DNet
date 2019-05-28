@@ -20,6 +20,6 @@ class BuyPlansController < ApplicationController
     false
   end
   def shift_to_pkg
-    current_user.update is_pin: false, binary_bonus: 0.0,  current_x_factor_income: 0  #, pin_capacity: nil
+    current_user.update is_pin: false, binary_bonus: 0.0, binary_bonus_for_xfactor: 0.0,  current_x_factor_income: 0  #, pin_capacity: nil
   end
 end
