@@ -16,7 +16,10 @@ class PerformWeeklyUser
     calculate_condition && calculate || true
   end
   def calculate_condition(amount_sum=0)
-    ((current_package_iteration > 0) || is_pin?) && (adapter.max_package_total_earning >= (adapter.total_income.try(:to_f) + amount_sum))
+    ((current_package_iteration > 0) || is_pin?) && total_sum(amount_sum)
+  end
+  def total_sum(amount_sum)
+    adapter.max_package_total_earning >= (adapter.total_income.try(:to_f) + amount_sum)
   end
   def calculate
     update(params); log_weekly_roi; decrement!(:current_package_iteration); check_for_next_week

@@ -40,7 +40,11 @@ class ChargeAmountAtA
     package_price + package_activation_fees
   end
   def current_binary
-    package[:binary] - (upgrade && user.current_package[:binary] || 0)
+    if user.cash_wallet_amount.try(:to_f) + (package[:binary] / 2) < user.created_by.adapter.max_package_total_earning.to_f
+      package[:binary] - (upgrade && user.current_package[:binary] || 0)
+    else
+      0
+    end
   end
   def package_price
     package[:price] - (upgrade && user.current_package[:price] || 0)

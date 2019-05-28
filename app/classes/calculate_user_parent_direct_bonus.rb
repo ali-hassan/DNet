@@ -52,11 +52,7 @@ class CalculateUserParentDirectBonus
     if usr_can?(usr, bonus_amount)
       usr.is_binary_bonus_active = cal_bb_condition?(usr)
       usr.binary_bonus_for_xfactor = bonus_amount
-      unless usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus > usr.adapter.max_package_total_earning.to_f
-        usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
-      else
-        usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f)
-      end
+      usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
       usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}$", log_type: "binary_bonus")
@@ -95,7 +91,7 @@ class CalculateUserParentDirectBonus
     created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.cash_wallet_amount.try(:to_f) + current_bonus_val) : created_by.cash_wallet_amount.try(:to_f) # + adapter.calculate_binary_bonus
   end
   def bonus_wallet_sum
-    created_by.binary_bonus.try(:to_f) + current_binary
+    (created_by.binary_bonus.try(:to_f) || 0.0) + (current_binary || 0.0)
   end
   def current_bonus_points_sum
     created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.current_bonus_points.try(:to_f) + current_bonus_val) : created_by.current_bonus_points.try(:to_f)
