@@ -284,7 +284,7 @@
               indexLabelPlacement: "inside",
               dataPoints: [
                 { y: weeklyTotal, name: "Max Earning Allowed <%= number_to_currency current_user.adapter.max_package_total_earning %>" },
-                { y: weeklyCurrent, name: "Current Earning <%= number_to_currency(current_user.current_x_factor_income.to_f + current_user.binary_bonus) %>" }
+                { y: weeklyCurrent, name: "Current Earning <%= number_to_currency(current_user.current_x_factor_income.to_f + current_user.binary_bonus_for_xfactor.to_f) %>" }
               ]
           }]
       };
