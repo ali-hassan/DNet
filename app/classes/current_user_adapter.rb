@@ -146,7 +146,7 @@ class CurrentUserAdapter
     (user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)) / max_package_total_earning * 100
   end
   def graph_total_percent
-    user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f) / (max_package_total_earning * 100)
+    ((user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f)) / max_package_total_earning) * 100
   end
   delegate :active_job, :active_job?, :doj_update, to: :scheduler_update, prefix: :scheduler, allow_nil: true
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
