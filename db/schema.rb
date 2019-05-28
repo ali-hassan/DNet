@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190507105035) do
+ActiveRecord::Schema.define(version: 20190528202124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,6 +235,10 @@ ActiveRecord::Schema.define(version: 20190507105035) do
     t.date "package_activation"
     t.date "package_updated_at"
     t.boolean "reject_kyc", default: false
+    t.integer "binary_bonus_for_xfactor_cents", default: 0, null: false
+    t.string "binary_bonus_for_xfactor_currency", default: "USD", null: false
+    t.integer "minus_x_factor_binary_cents", default: 0, null: false
+    t.string "minus_x_factor_binary_currency", default: "USD", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
