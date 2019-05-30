@@ -21,6 +21,6 @@ class BuyPlansController < ApplicationController
   end
   def shift_to_pkg
     binary_bonus_minus = current_user.minus_x_factor_binary.to_f + current_user.binary_bonus_for_xfactor.to_f
-    current_user.update is_pin: false, minus_x_factor_binary: binary_bonus_minus, binary_bonus: 0.0, binary_bonus_for_xfactor: 0.0,  current_x_factor_income: 0  #, pin_capacity: nil
+    current_user.update is_pin: false, is_package_converted: true, minus_x_factor_binary: binary_bonus_minus, binary_bonus: 0.0, binary_bonus_for_xfactor: 0.0,  current_x_factor_income: 0  #, pin_capacity: nil
   end
 end

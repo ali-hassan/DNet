@@ -19,7 +19,7 @@ class PerformWeeklyUser
     ((current_package_iteration > 0) || is_pin?) && total_sum(amount_sum)
   end
   def total_sum(amount_sum)
-    adapter.max_package_total_earning >= (adapter.total_income.try(:to_f) + amount_sum)
+    adapter.max_package_total_earning >= ((adapter.user.is_package_converted ? (adapter.user.current_x_factor_income.to_f + adapter.user.binary_bonus_for_xfactor.to_f) : adapter.total_income.try(:to_f)) + amount_sum)
   end
   def calculate
     update(params); log_weekly_roi; decrement!(:current_package_iteration); check_for_next_week
