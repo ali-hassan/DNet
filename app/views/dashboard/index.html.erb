@@ -147,7 +147,7 @@
               <span class="currency-symbol">$</span>
             </div>
             <div class="columns-middle">
-              <h3><%= number_to_currency (current_user.binary_bonus_for_xfactor.to_f != 0.0 ? current_user.binary_bonus_for_xfactor.to_f - current_user.minus_x_factor_binary.to_f : current_user.binary_bonus_for_xfactor.to_f) %></h3>
+              <h3><%= number_to_currency (current_user.binary_bonus_for_xfactor.to_f != 0.0 ? current_user.binary_bonus_for_xfactor.to_f : current_user.binary_bonus_for_xfactor.to_f + current_user.minus_x_factor_binary.to_f) %></h3>
               <span>Binary Bonus</span>
               <%=image_tag "ic_binarybonus.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
