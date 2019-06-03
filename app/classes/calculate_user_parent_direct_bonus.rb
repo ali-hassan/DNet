@@ -18,7 +18,9 @@ class CalculateUserParentDirectBonus
   end
   def calculate_direct_bonus(usr)
     # usr.adapter.perform_weekly_count.calculate_condition && (usr.update(params) && created_by.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val} on #{@user.username} for package #{package_price.to_f}", log_type: "direct_bonus"))
-    usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val}$ on #{@user.username} for package #{package_price.to_f}$", log_type: "direct_bonus"); usr.reload_adapters
+    ## todo: Binary Fix patch is below commentedline.
+    # usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val}$ on #{@user.username} for package #{package_price.to_f}$", log_type: "direct_bonus"); usr.reload_adapters
+    usr_can?(usr) && usr.update(params) && usr.log_histories.create(logable: @user, message: "Direct bonus #{current_bonus_val}$ on #{@user.username} for package #{package_price.to_f}$", log_type: "direct_bonus")
   end
   def usr_can?(usr, amount=0)
     puts("usr.adapter.perform_weekly_count.calculate_condition => ", usr.adapter.perform_weekly_count.calculate_condition(amount))
@@ -46,7 +48,6 @@ class CalculateUserParentDirectBonus
     @ignore_list ||= Array.new
   end
   def calcu_ulb(usr, position, binary)
-    debugger
     usr.attributes = calculate_leg_bonus(usr, position, binary)
     usr.is_binary_bonus_active = cal_bb_condition?(usr)
     bonus_amount = usr.adapter.binary_bonus
