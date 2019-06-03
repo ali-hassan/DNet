@@ -1,4 +1,7 @@
 $(document).on "turbolinks:load", ->
+  $("body").on "click",  ".promotion-href", (e) ->
+    e.preventDefault()
+    $("#alert_welcome_popup").modal()
   if getParameterByName('open_welcome_modal')
     $("#alert_welcome_popup").modal()
   readFileURL = (input) ->
@@ -53,5 +56,5 @@ $(document).on "turbolinks:load", ->
     $("#live_trading").off("click");
   $(document).on "click", "#promotion_trading", (eventObject) ->
     eventObject.preventDefault();
-    alert("Something big is coming, Stay tuned.");
+    #alert("Something big is coming, Stay tuned.");
     $("#live_trading").off("click");
