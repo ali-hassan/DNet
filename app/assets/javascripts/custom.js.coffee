@@ -1,4 +1,6 @@
 $(document).on "turbolinks:load", ->
+  if getParameterByName('open_welcome_modal')
+    $("#alert_welcome_popup").modal()
   readFileURL = (input) ->
     if input.files && input.files[0]
       reader = new FileReader()
