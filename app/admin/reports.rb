@@ -23,6 +23,9 @@ ActiveAdmin.register User, as: 'Report' do
     column "Current ROI Balance" do |user|
       user.current_total_weekly_roi_amount.try(:to_f)
     end
+    column "Total ROI Balance" do |user|
+      user.total_weekly_percentage_amount.try(:to_f)
+    end
     column "Cash Wallet" do |usr|
       usr.cash_wallet_total
     end
@@ -52,6 +55,9 @@ ActiveAdmin.register User, as: 'Report' do
     end
     column "Current ROI Balance" do |user|
       user.current_total_weekly_roi_amount.try(:to_f)
+    end
+    column "Total ROI Balance" do |user|
+      user.total_weekly_percentage_amount.try(:to_f)
     end
     column "Cash Wallet" do |usr|
       usr.cash_wallet_total
