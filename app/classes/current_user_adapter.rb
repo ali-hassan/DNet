@@ -138,6 +138,13 @@ class CurrentUserAdapter
   def total_income
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
   end
+  def total_income_calculate
+    if user.package_updated_at.present?
+      total_income
+    else
+      user.binary_bonus_for_xfactor.to_f != 0.0 ? (user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f) : user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f
+    end
+  end
   def can_upgrade_url?(id)
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
   end
@@ -149,7 +156,11 @@ class CurrentUserAdapter
     (x_factor_graph / max_package_total_earning) * 100
   end
   def x_factor_graph
-    user.binary_bonus_for_xfactor.to_f != 0.0 ? user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f) - user.minus_x_factor_binary.try(:to_f) : user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f)
+    if user.package_updated_at.present?
+      total_income
+    else
+      user.binary_bonus_for_xfactor.to_f != 0.0 ? user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f) - user.minus_x_factor_binary.try(:to_f) : user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f)
+    end
   end
   delegate :active_job, :active_job?, :doj_update, to: :scheduler_update, prefix: :scheduler, allow_nil: true
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
