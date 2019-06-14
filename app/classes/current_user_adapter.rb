@@ -142,7 +142,7 @@ class CurrentUserAdapter
     if user.package_updated_at.present?
       total_income
     else
-      current_user.binary_bonus_for_xfactor.to_f != 0.0 ? (current_user.current_x_factor_income.to_f + current_user.binary_bonus_for_xfactor.to_f - current_user.minus_x_factor_binary.to_f) : current_user.current_x_factor_income.to_f + current_user.binary_bonus_for_xfactor.to_f
+      current_user.binary_bonus_for_xfactor.to_f != 0.0 ? (current_user.current_x_factor_income.to_f + current_user.binary_bonus_for_xfactor.to_f - current_user.minus_x_factor_binary.to_f) : total_income
     end
   end
   def can_upgrade_url?(id)
