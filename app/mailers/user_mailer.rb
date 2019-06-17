@@ -18,4 +18,14 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: user.email, subject: "Welcome to ForexHomeTrade")
   end
+  def buy_package(user)
+    @user = user
+    @package_name = FindPackages.new(user.package_id).current_package["category"]
+    mail(to: user.email, subject: "Welcome to ForexHomeTrade")
+  end
+  def upgrade_package(user)
+    @user = user
+    @package_name = FindPackages.new(user.package_id).current_package["category"]
+    mail(to: user.email, subject: "Welcome to ForexHomeTrade")
+  end
 end

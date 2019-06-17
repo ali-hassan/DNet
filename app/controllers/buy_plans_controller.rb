@@ -7,6 +7,7 @@ class BuyPlansController < ApplicationController
 
   def create
     ChargeAmountAtA.new(current_user, params[:plan_id], upgrade_plan).charge!
+    current_user.package_id.present? ? UserMailer.upgrade_package(current_user).deliver_now : UserMailer.buy_package(current_user).deliver_now
     redirect_to(dashboard_index_url(subdomain: 'office'), notice: 'Package Successfully Activated')
   end
   def edit
