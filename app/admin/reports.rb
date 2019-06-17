@@ -14,6 +14,9 @@ ActiveAdmin.register User, as: 'Report' do
     column "Binary Bonus" do |usr|
       usr.binary_bonus.try(:to_f)
     end
+    column "Xfactor Amount" do |usr|
+      usr.adapter.total_income_calculate
+    end
     column "Direct Bonus" do |usr|
       usr.direct_bonus_users_count
     end
@@ -46,6 +49,9 @@ ActiveAdmin.register User, as: 'Report' do
     end
     column "Binary Bonus" do |usr|
       usr.binary_bonus.try(:to_f)
+    end
+    column "Xfactor Amount" do |usr|
+      usr.adapter.total_income_calculate
     end
     column "Direct Bonus" do |usr|
       usr.direct_bonus_users_count
