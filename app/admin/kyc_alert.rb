@@ -15,11 +15,11 @@ ActiveAdmin.register KycAlert, as: "KycAlert" do
       kyc.user.username
     end
     column "KYC Date", :created_at
-    column "Verify Identity" do |kyc|
-      if kyc.user.document.url
-        image_tag(kyc.user.document.url, width: "200px")
-      end
-    end
+    # column "Verify Identity" do |kyc|
+    #   if kyc.user.document.url
+    #     image_tag(kyc.user.document.url, width: "200px")
+    #   end
+    # end
     actions
   end
 
