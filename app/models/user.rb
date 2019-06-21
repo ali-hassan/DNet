@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :log_histories, dependent: :destroy
   has_many :withdrawl_requests, dependent: :destroy
   has_many :activate_user_packages, dependent: :destroy
+  has_one :kyc_alert
   accepts_nested_attributes_for :user_transactions, reject_if: :all_blank, allow_destroy: true
   attr_accessor :current_pin
   validate :current_pin_verify, if: :current_pin?
