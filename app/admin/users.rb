@@ -5,7 +5,8 @@ ActiveAdmin.register User do
                 :total_weekly_percentage_amount,
                 :indirect_bonus_amount,
                 :current_total_weekly_roi_amount,
-                :current_week_roi_amount
+                :current_week_roi_amount,
+                :binary_bonus_for_xfactor
 
   index do
     selectable_column
@@ -39,7 +40,7 @@ ActiveAdmin.register User do
       f.input :total_bonus_points
       # f.input :indirect_bonus_amount
       # f.input :indirect_total_bonus_amount
-      f.input :binary_bonus
+      f.input :binary_bonus_for_xfactor
       f.input :total_income
       f.input :left_bonus
       f.input :right_bonus
