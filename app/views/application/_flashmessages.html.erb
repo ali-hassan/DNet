@@ -1,0 +1,21 @@
+<% flash.each do |key, value| %>
+  <% if value == 'Invalid Email or password.' %>
+    <%= content_for :body_js do %>
+      <script type='text/javascript'>
+        $(document).on("turbolinks:load", function() {
+          $("#email-invalid-message").html("<%= value %>");
+          setTimeout(function() {
+            $("#email-invalid-message").html("");
+          }, 6000);
+        })
+      </script>
+    <% end %>
+  <% else %>
+    <div class="flash-message">
+      <p>
+        <%= value %>
+      </p>
+      <a class="close-btn" href="javascript:;"></a>
+    </div>
+  <% end %>
+<% end %>

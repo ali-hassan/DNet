@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div id="content">
+    <div class="bg-login">
+      <div class="row">
+        <div class="col-lg-3 offset-lg-1">
+          <div class="d-flex justify-content-center h-100">
+            <div class="form_container">
+              <div class="logo-style">
+                <%= image_tag "logo-login.png", class: "img-responsive" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+              <div class="user_card">
+                <div class="d-flex justify-content-center form_container text-center">
+
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <h4>Login to your account</h4>
+                    <h5>Enter Your credentials below</h5>
+                    <br>
+                    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Your Email" %>
+                    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Enter Your Password", style: "margin: 10px 0px;" %>
+                    <div id="email-invalid-message"></div>
+                    <input type="checkbox" class="custom-control-input" id="customControlInline">
+                    <label class="custom-control-label" for="customControlInline">Remember me</label>
+                    <br>
+                    <div class="justify-content-center mt-3 login_container">
+                      <%= recaptcha_tags %>
+                      <br>
+                      <button type="submit" name="button" class="btn singin_btn">Sign In</button>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="mt-4">
+                  <div class="d-flex justify-content-center links">
+                    <a href="<%=new_user_password_url(subdomain: 'office')%>">Forgot your password?</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function checkRecaptcha() {
+        res = $('#g-recaptcha-response').val();
+
+        if (res == "" || res == undefined || res.length == 0)
+            return false;
+        else
+            return true;
+    }
+
+    //...
+
+    $('#new_user').submit(function(e) {
+
+        if(!checkRecaptcha()) {
+            $("#email-invalid-message" ).text("Please validate your reCAPTCHA.");
+            return false;
+        }
+        //...
+    });
+</script>

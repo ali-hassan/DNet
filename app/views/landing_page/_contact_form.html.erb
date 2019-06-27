@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div id="content">
+    <div class="bg-login">
+      <div class="row">
+        <div class="col-lg-3 offset-lg-1">
+          <div class="d-flex justify-content-center h-100">
+            <div class="form_container">
+              <%= image_tag "logo-login.png", class: "img-responsive" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+              <div class="user_card">
+                <div class="d-flex justify-content-center form_container text-center">
+                  <%= form_for :contact, url:contact_us_path  do |f| %>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-6">
+                            <%= f.text_field :name, placeholder: "Name", class: "form-control", required: true %>:
+                          </div>
+                          <div class="col-6">
+                            <%= f.text_field :phone, placeholder: "Phone", class: "form-control", required: true %>:
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-12">
+                            <%= f.text_field :email, placeholder: "Email", class: "form-control" %>:
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-12">
+                            <%= f.text_field :subject, placeholder: "Subject", class: "form-control", required: true %>:
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.text_area :body,class:"form-control", size: "20x15", placeholder: "Message Body", required: true%>
+                      </div>
+
+                      <div class="justify-content-center mt-3 login_container">
+                        <button type="submit" name="button" class="btn yellow_btn">Send</button>
+                      </div>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

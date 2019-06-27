@@ -1,0 +1,30 @@
+<div class="modal fade" id="ata_prompt_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Account To Transfer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if current_user.smart_wallet_balance.try(:to_f) > @package.package_price %>
+          <p> Package price: <%= number_to_currency @package.package_price %></p>
+          <% if @package.package_activation_fees > 0 %>
+            <p> Activation price: <%= number_to_currency @package.package_activation_fees %></p>
+          <% end %>
+        <% else %>
+          <p>You don't have enough balance in smart wallet</p>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <% if current_user.smart_wallet_balance.try(:to_f) >= @package.deducation_amount %>
+          <form action="<%= send("#{controller.controller_name}_url", {plan_id: params[:id], subdomain: 'office'}) %>" style="display: inline-block;" method="post">
+            <button type="submit" class="btn btn-primary" onClick="this.form.submit(); this.disabled=true; this.value='Processing...'; ">Activate</button>
+          </form>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

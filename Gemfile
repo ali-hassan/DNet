@@ -52,3 +52,66 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :development, :test do
+  gem 'pry-byebug'
+end
+
+
+gem 'therubyracer', '~> 0.12.3', platforms: :ruby
+gem 'js-routes', '~> 1.3.3'
+
+# Color utilities needed for landing page
+gem 'color', '~> 1.8'
+
+gem 'uuidtools', '~> 2.1.5'
+gem 'transit-ruby', '~> 0.8.1'
+
+# Markdown parser
+gem 'redcarpet', '~> 3.4.0'
+
+gem 'intercom'
+
+gem 'twitter_cldr'
+gem 'memoist'
+gem 'biz'
+gem 'omniauth-google-oauth2'
+gem 'delayed_job', '~> 4.1.3'
+gem 'delayed_job_active_record', '~> 4.1.2'
+
+gem 'web_translate_it', '~> 2.4.1'
+gem 'rails-i18n'
+gem 'devise', '~> 4.3.0'
+gem 'devise-encryptable', '~> 0.2.0'
+gem "omniauth-facebook", '~> 4.0.0'
+
+# Dynamic form adds helpers that are needed, e.g. error_messages
+gem 'dynamic_form'
+gem "truncate_html"
+gem 'money-rails'
+
+gem "capistrano", '=3.11.0'
+gem 'capistrano3-delayed-job', '~> 1.0'
+gem 'capistrano-ssh-doctor', '~> 1.0'
+gem 'capistrano-rvm'
+gem 'capistrano-rails',   require: false
+gem 'capistrano-bundler', require: false
+gem 'capistrano-passenger'
+gem 'capistrano-npm'
+gem 'client_side_validations'
+gem 'activeadmin', '=1.4.3'
+# ActiveAdmin-Select2: Drop down menus
+gem 'activeadmin-select2'#, '0.1.8'
+gem "blockchain"
+gem 'bitpay-sdk', require: 'bitpay_sdk', github: 'bitpay/ruby-client'
+gem 'carrierwave', '~> 1.0'
+gem 'sidekiq'
+gem "attr_encrypted", "~> 3.1.0"
+gem 'capistrano-sidekiq' , group: :development
+gem 'coinpayments'
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'whenever', require: false
+gem 'rails_autolink'
+gem 'will_paginate'
+gem "kaminari"
+gem "recaptcha"
+gem 'activeadmin-xls', '~>2.0.0'

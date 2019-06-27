@@ -1,0 +1,65 @@
+<main class="main">
+  <div class="main-content">
+    <!-- Content Block 1 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2>Income</h2>
+        <h4 class="alert alert-danger">Note: 10% transaction fee will be applied.</h4>
+      </div>
+      <div class="main-content-body">
+        <%= form_for @withdrawl_request do |f| %>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <label>Add your wallet information </label>
+              <%= f.text_field :wallet_address, value: current_user.bitcoin_url %>
+              <%= f.hidden_field :withdraw_gateway, value: params[:withdraw_gateway] %>
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <label>Cash Wallet </label>
+              <%= f.number_field :cash_wallet, value: current_user.adapter.cash_wallet_total, readonly: true, disabled: true, min: "60" %>
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <label>Withdraw Amount </label>
+                <%#= f.number_field :amount, min: 60, id: "amount" %>
+                <input type="number" name="withdrawl_request[amount]" min="60" id="amount" />
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <label>Service Fee </label>
+                <%= f.number_field :service, min: 6, id: "service",  readonly: true%>
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row">
+            <div class="custom-dashboard-column">
+              <label>Total withdrawl amount</label>
+              <%= f.number_field :pts, min: 60, id: "pts", readonly: true %>
+            </div>
+          </div>
+          <div class="button-holder" disabled="true">
+            <button class="custom-btn" type="submit">Request Withdrawal</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!-- Content Block 1 End -->
+  </div>
+</main>
+<script>
+  $("#amount").on("change", function (event) {
+     var amount = parseFloat(this.value);
+     var service = amount / 100 * 10;
+     var caluclated_amount = amount + service;
+     document.getElementById("service").value = service;
+     document.getElementById("pts").value = caluclated_amount;
+  });
+</script>

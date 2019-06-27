@@ -71,3 +71,5 @@ test-results.xml
 .vimrc
 client/.vimrc
 
+pem/*
+public/uploads

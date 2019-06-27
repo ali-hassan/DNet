@@ -1,0 +1,31 @@
+<div class="profile-listing">
+  <ul>
+    <li>
+      <div class="image-holder rank-image">
+        <%= image_tag 'ic_rank.png' %>
+      </div>
+      <div class="profile-listing-content">
+        <h2>Rank</h2>
+        <h3><%=current_user.adapter.cupda_current_rank.try(:name)%></h3>
+      </div>
+    </li>
+    <li>
+      <div class="image-holder referrals-image">
+        <%=image_tag "ic_referral.png", alt: "image descriptions"%>
+      </div>
+      <div class="profile-listing-content">
+        <h2>Referrals</h2>
+        <h3><%= current_user.created_users.count %></h3>
+      </div>
+    </li>
+    <li>
+      <div class="image-holder">
+        <%=image_tag "ic_plan.png", alt: "image descriptions"%>
+      </div>
+      <div class="profile-listing-content">
+        <h2>Current Plan</h2>
+        <h3><%=current_user.package_id%></h3>
+      </div>
+    </li>
+  </ul>
+</div>

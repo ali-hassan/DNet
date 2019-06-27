@@ -24,11 +24,11 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  # config.assets.compile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -49,7 +49,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  # config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -59,9 +59,31 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "forex_home_trade_#{Rails.env}"
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
+  # Print deprecation notices to the Rails logger.
+  config.active_support.deprecation = :log
+  # config.logger = Logger.new(STDOUT)
 
+  # Raise an error on page load if there are pending migrations.
+  config.active_record.migration_error = :page_load
+
+  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.office365.com',
+    port:                 587,
+    domain:               'forexhometrade.com',
+    user_name:            'support@forexhometrade.com',
+    password:             'Rubyonrails1*',
+    authentication: :login,
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { :host => 'forexhometrade.com' }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

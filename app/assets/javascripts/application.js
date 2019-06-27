@@ -12,4 +12,15 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery.min
+//= require ./common-js/bootstrap.min
+//= require rails.validations
+//= require_tree ./libs
+//= require_tree ./tree
+//= require scripts
+//= require ./custom
+//= require canvasjs
+//= require countries
+//= require override
+//= require ckeditor/init
+//= require ckeditor/config

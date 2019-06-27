@@ -1,0 +1,8 @@
+:verbos: true
+:queues:
+  - default
+  - low_priority
+  - queue:mailers
+  - queue
+  - mailers
+  - max_retries: 1

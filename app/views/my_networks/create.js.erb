@@ -1,0 +1,9 @@
+<% if @user.save %>
+    window.location = "<%= my_binary_my_networks_url(subdomain: 'office') %>"
+<% else %>
+    $("#new_network_modal").remove();
+    $(".modal-backdrop.in").remove();
+    $("body").append("<%= j render "form" %>");
+    $("#new_network_modal").modal();
+    populateCountries("country", "state", "city");
+ <% end %>

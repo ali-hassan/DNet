@@ -1,0 +1,14 @@
+var html = "",
+  $sponsorInfoCard = $("#sponsor_info_card");
+  name = "user[referred_by_id]";
+  if ($sponsorInfoCard.data("field-name")){
+    name = $sponsorInfoCard.data("field-name");
+  }
+
+<% if @user.present? %>
+  html = "<label>Sponsor Name: <%= @user.full_name %> </label>";
+  html += "<input name='"+name+"' type='hidden' value='<%= @user.id %>'>"
+<% else %>
+  html = "<label style='color: red;'>No sponsor found against this ID</label>"
+<% end %>
+$("#sponsor_info_card").html(html);

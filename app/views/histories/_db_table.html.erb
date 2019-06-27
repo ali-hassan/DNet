@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Package User</th>
+      <th>Detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.all.each do |transaction| %>
+      <tr>
+        <td><%= transaction.created_at.strftime("%b. %e %Y") %></td>
+        <td><%= transaction.logable.try(:username) %></td>
+        <td><%= transaction.try(:message) %></td>
+      </tr>
+    <% end %>
+    <%= will_paginate @transactions.all %>
+  </tbody>
+</table>

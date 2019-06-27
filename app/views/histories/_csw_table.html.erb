@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Transaction Type</th>
+      <th>Transaction Amount</th>
+      <th>Transaction Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.all.each do |transaction|%>
+      <tr>
+        <td><%=transaction.logable.created_at.strftime("%b. %e %Y") if transaction.logable.present?%></td>
+        <td><%=transaction.logable.try(:user).try(:username)%></td>
+        <td><%=transaction.logable.try(:receiver).try(:username)%></td>
+        <td><%=transaction.logable.try(:wallet_type).gsub("_", " ").capitalize if transaction.logable.present?%></td>
+        <td><%="#{transaction.logable.try(:amount).try(:to_f)}$"%></td>
+        <td><%=transaction.logable.try(:status).nil? ? "Approved" : "Declined"%></td>
+      </tr>
+    <%end%>
+    <%= will_paginate @transactions.all %>
+  </tbody>
+</table>

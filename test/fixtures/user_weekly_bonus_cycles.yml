@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  current_cycle: MyString
+  plan_id: MyString
+  amount: 
+
+two:
+  user: two
+  current_cycle: MyString
+  plan_id: MyString
+  amount: 

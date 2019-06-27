@@ -1,0 +1,318 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Font -->
+    <script type="text/javascript">
+      var currentUserId = <%= raw current_user.try(:id) %>
+      var currentUserName = "<%= current_user.try(:username) %>"
+
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+    <%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+
+  </head>
+  <body>
+    <%= render "flashmessages" %>
+    <div id="wrapper">
+      <div class="dashboard-page">
+        <aside id="dashboard-sidebar">
+
+          <!-- Sidebar Menu Button Start -->
+          <a class="sidebar-menu-btn" href="javascript:;" title="Menu">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+          </a>
+          <!-- Sidebar Menu Button End -->
+
+          <!-- Sidebar Top Start -->
+          <div class="dashboard-logo">
+            <a href="<%=dashboard_index_path%>">
+              <%= image_tag "logo.png" %>
+            </a>
+            
+          </div>
+          <!-- Sidebar Top End -->
+
+          <!-- Sidebar middle Start -->
+          <div class="dashboard-menu" id="accordion">
+            <div class="card panel">
+              <div class="custom-card-header" id="heading1">
+                <a href="<%=dashboard_index_path%>">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                    <%= image_tag "ic_dashboard.png" %><span>Dashboard</span>
+                  </button>
+                </a>
+              </div>
+            </div>
+
+            <div class="card panel">
+              <div class="custom-card-header" id="heading2">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                  <%= image_tag "ic_profile.png" %><span>Profile</span>
+                </button>
+              </div>
+              <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="<%=me_users_url(subdomain: 'office')%>">My Profile</a></li>
+                    <li><a href="<%=edit_kyc_url(subdomain: 'office')%>">KYC</a></li>
+                    <li><a href="<%=system_credentials_url(subdomain: 'office')%>">System Password</a></li>
+                    <li><a href="<%=new_financial_pin_url(subdomain: 'office')%>">Financial Pin</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card panel">
+              <div class="custom-card-header" id="heading3">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                  <%= image_tag "ic_packages.png" %>
+                  <span>Packages</span>
+                </button>
+              </div>
+              <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a  href="<%=buy_plans_url(subdomain: "office")%>">Buy</a>
+                    </li>
+                    <li><a href="<%=upgrade_plans_url(subdomain: "office")%>">Upgrade</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card panel">
+              <div class="custom-card-header" id="heading4">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                  <%= image_tag "ic_mynetwork.png" %>
+                  <span>My Network</span>
+                </button>
+              </div>
+              <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="<%=my_binary_my_networks_path%>">Binary</a></li>
+                    <li><a href="<%=direct_referrals_my_networks_url(subdomain: "office")%>">Direct Referrals</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card panel">
+              <div class="custom-card-header" id="heading5">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                  <%= image_tag "Group 2.png" %><span>Wallets</span>
+                </button>
+              </div>
+              <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="<%=gateway_url(subdomain: "office", id: current_user.id)%>">Withdrawal Request</a></li>
+                    <li><a href="<%=transactions_url(subdomain: "office")%>">Fund Transfer</a></li>
+                    <li><a href="<%=cash_to_smart_transactions_url(subdomain: "office")%>">Cash Wallet to Smart Wallet</a></li>
+                    <!--<li><a href="<%#=new_current_weekly_roi_to_cash_transfer_url(subdomain: "office")%>">ROI Wallet to Smart Wallet</a></li>-->
+                    <li><%= link_to "ROI Wallet to Cash Wallet", weekly_roi_to_cash_wallets_url(subdomain: 'office') %></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card panel">
+              <div class="custom-card-header" id="heading6">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                  <%= image_tag "ic_history.png" %><span>History</span>
+                </button>
+              </div>
+              <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="<%= history_url('cw', subdomain: 'office') %>">Widthdrawal</a></li>
+                    <li><a href="<%= history_url('sw', subdomain: 'office') %>">Fund Transfer</a></li>
+                    <li><a href="<%= history_url('st', subdomain: 'office') %>">System Transactions</a></li>
+                    <li><a data-toggle="collapse" href="#custom-parent">Bonus</a>
+                      <ul id="custom-parent" class="collapse">
+                        <li><a href="<%= history_url('wr', subdomain: 'office') %>">Weekly ROI</a></li>
+                        <li><a href="<%= history_url('db', subdomain: 'office') %>">Direct</a></li>
+                        <li><a href="<%= history_url('ib', subdomain: 'office') %>">Indirect</a></li>
+                        <li><a href="<%= history_url('bb', subdomain: 'office') %>">Binary</a></li>
+                        <li><a href="<%= history_url('ur', subdomain: 'office') %>">Rewards</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card panel">
+              <div class="custom-card-header" id="heading7">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                  <%= image_tag "ic_media.png" %><span>Media</span>
+                </button>
+              </div>
+              <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="<%=news_index_path%>">News</a></li>
+                    <li><a href="<%=trainings_path%>">Training Material</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Sidebar Middle End -->
+
+          <!-- Sidebar Bottom Start -->
+          <div class="dashboard-sidebar-bottom">
+            <ul>
+              <li>
+                <a href="<%= supports_url(subdomain: 'office') %>">
+                  <%= image_tag "ic_support.png" %>Support
+                </a>
+              </li>
+              <li>
+                <%= link_to :delete_user_session do%>
+                  <%= image_tag "ic_logout.png" %>Log Out
+                <%end%>
+              </li>
+            </ul>
+          </div>
+          <!-- Sidebar Bottom End -->
+        </aside>
+        <div class="contents">
+          <header class="dashboard-header">
+            <div class="dashboard-header-holder">
+                <div class="header-left">
+                  <ul>
+                    <li class="status verified">
+                      <dl>
+                        <dt>Account status: </dt>
+                        <%- if current_user.package_id.present? || current_user.is_pin%>
+                          <dd>Verified</dd>
+                        <%else%>
+                          <dd>UnVerified</dd>
+                        <%end%>
+                      </dl>
+                    </li>
+                    <li class="status <%= current_user.is_binary_bonus_active && "verified" || "not-verified" %>">
+                      <dl>
+                        <dt>Binary status: </dt>
+                        <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
+                      </dl>
+                    </li>
+                  </ul>
+                </div>
+                <div class="header-right">
+                  <a href="#">
+                    <div class="current-image-holder">
+                      <%= image_tag "ic_user.png", alt: "Profile Image"%>
+                    </div>
+                    <span class="current-user-name">
+                      <%=current_user.full_name%>
+                    </span>
+                  </a>
+                </div>
+            </div>
+
+
+            <div class="mobile-logo">
+              <a href="#">
+                <%= image_tag "logo.png" %>
+              </a>
+            </div>
+
+
+
+            <!-- Mobile Menu Button Start -->
+            <a class="mobile-menu-btn" href="javascript:;" title="Menu">
+              <span class="line line-1"></span>
+              <span class="line line-2"></span>
+              <span class="line line-3"></span>
+            </a>
+            <!-- Mobile Menu Button End -->
+          </header>
+          <main>
+            <%= yield %>
+          </main>
+
+        </div>
+      </div>
+    </div>
+    <div class="modal" tabindex="-1" id="alert_welcome_popup" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 530px">
+          <div class="modal-header">
+            <!--<h5 class="modal-title">Awesome Promotions!</h5>-->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -12px !important;  ">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" style="padding-top: 3px;">
+            <%= link_to image_url('md_102.jpg'), target: :_blank do %>
+              <%= image_tag 'md_102.jpeg', width: 500, height: 600 %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+
+$( document ).ready(function() {
+    var status=1;
+    jQuery('.sidebar-menu-btn').click(function(){
+        if(status){
+            jQuery(this).addClass("active");
+            jQuery("#dashboard-sidebar").addClass("open-sidebar");
+            jQuery("body").addClass("screen-change");
+            status=0;
+        }
+        else{
+            jQuery(this).removeClass("active");
+            jQuery("#dashboard-sidebar").removeClass("open-sidebar");
+            jQuery("body").removeClass("screen-change");
+            status=1;
+        }
+    });
+
+
+    var status2=1;
+    jQuery('.mobile-menu-btn').click(function(){
+        if(status2){
+            jQuery(this).addClass("active");
+            jQuery(".dashboard-header-holder").addClass("open-menu");
+            status2=0;
+        }
+        else{
+            jQuery(this).removeClass("active");
+            jQuery(".dashboard-header-holder").removeClass("open-menu");
+            status2=1;
+        }
+    });
+
+
+    $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("body").addClass("sticky-sidebar");
+        }
+        else{
+            $("body").removeClass("sticky-sidebar");          
+        }
+    });
+});
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,126 @@
+<main class="main">
+  <div class="main-content">
+    <!-- Content Block 1 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2>Network</h2>
+      </div>
+      <div class="main-content-body">
+        <div class="two-columns">
+          <!-- Columns Start -->
+          <div class="columns">
+            <div class="columns-top">
+              <dl>
+                <dt>Left Points</dt>
+                <dd><%= current_user.is_binary_bonus_active? && current_user.left_bonus.to_f || 0 %></dd>
+              </dl>
+              <dl>
+                <dt>Left Team</dt>
+                <dd><%= current_user.left_team_members_count %> Members</dd>
+              </dl>
+            </div>
+            <div class="columns-bottom">
+              <h4>Left Referrel Link</h4>
+              <div class="link-block">
+                <%= link_to build_refer_link(:left), build_refer_link(:left) %>
+                <label for="copy-link-1" class="copy-link-label">
+                  <input id="copy-link-1" readonly type="text" value="<%= build_refer_link(:left) %>" class="copy-link">
+                  Copy
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Columns End -->
+
+          <!-- Columns Start -->
+          <div class="columns">
+            <div class="columns-top">
+              <dl>
+                <dt>Right Points</dt>
+                <dd><%= current_user.is_binary_bonus_active? && current_user.right_bonus.to_f || 0 %></dd>
+              </dl>
+              <dl>
+                <dt>Right Team</dt>
+                <dd><%= current_user.right_team_members_count %> Members</dd>
+              </dl>
+            </div>
+            <div class="columns-bottom">
+              <h4>Right Referrel Link</h4>
+              <div class="link-block">
+                <%= link_to build_refer_link(:right), build_refer_link(:right) %>
+                <label for="copy-link-2" class="copy-link-label">
+                  <input id="copy-link-2" readonly type="text" value="<%= build_refer_link(:right) %>" class="copy-link">
+                  Copy
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Columns End -->
+        </div>
+      </div>
+    </div>
+    <!-- Content Block 1 End -->
+    <!-- Content Block 2 Start -->
+    <div class="main-content-block">
+      <%-if current_user.package_id.present? || current_user.is_pin %>
+        <div class="heading">
+          <h2>Binary Genealogy</h2>
+        </div>
+        <div id="back_genealogy_btn"></div>
+        <div class="main-content-body tree">
+          <ul>
+            <li id="<%= dom_id current_user, :tree %>" data-node-name="<%= current_user.username %>" data-node-id="<%= current_user.id %>"  data-load-default-tree>
+              <a href="#"><%= current_user.username %></a>
+            </li>
+        </div>
+      <%end%>
+    </div>
+    <!-- Content Block 2 End -->
+  </div>
+</main>
+
+<style>
+  .main-content-body > ul{
+    display: inline-block;
+  }
+  .main-content-body{
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .main-content-body.tree li a{
+    position: relative;
+    z-index: 0;
+    height: 100px;
+    width: 100px;
+    padding: 75px 10px 10px;
+    color: #000;
+  }
+  .main-content-body.tree li a:before{
+    content: '';
+    display: block;
+    background-image: url('../assets/ic_user.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50px;
+    width: 50px;
+    -webkit-transform: translate(-50%,-70%);
+    -moz-transform: translate(-50%,-70%);
+    -ms-transform: translate(-50%,-70%);
+    transform: translate(-50%,-70%);
+  }
+  .main-content-body.tree li a:after{
+    content: '';
+    display: block;
+    background-color: #f2dc69;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+</style>
