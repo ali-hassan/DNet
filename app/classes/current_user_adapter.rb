@@ -139,11 +139,14 @@ class CurrentUserAdapter
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
   end
   def total_income_calculate
-    if user.package_updated_at.present?
-      total_income
+    if user.is_package_converted || user.re_buy
+      amount_calculation_for_xfactor
     else
-      user.is_package_converted ? (user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f) : total_income
+      total_income
     end
+  end
+  def amount_calculation_for_xfactor
+    user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
   end
   def can_upgrade_url?(id)
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false

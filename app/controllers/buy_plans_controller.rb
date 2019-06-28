@@ -2,6 +2,7 @@ class BuyPlansController < ApplicationController
   before_action :authenticate_user!
   layout "dashboard"
   before_action :shift_to_pkg, only: [:create], if: -> { current_user.is_pin }
+  before_action :rebuy_package, only: [:create], if: -> { current_user.package_id.present? }
   before_action :find_package, only: [:show]
   skip_before_action :verify_authenticity_token
 
@@ -23,5 +24,8 @@ class BuyPlansController < ApplicationController
   def shift_to_pkg
     binary_bonus_minus = current_user.minus_x_factor_binary.to_f + current_user.binary_bonus_for_xfactor.to_f
     current_user.update is_pin: false, is_package_converted: true, minus_x_factor_binary: binary_bonus_minus, binary_bonus: 0.0, binary_bonus_for_xfactor: 0.0,  current_x_factor_income: 0  #, pin_capacity: nil
+  end
+  def rebuy_package
+    current_user.update re_buy: true
   end
 end
