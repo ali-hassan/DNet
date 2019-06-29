@@ -139,7 +139,9 @@ class CurrentUserAdapter
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
   end
   def total_income_calculate
-    if user.is_package_converted || user.re_buy
+    if user.re_buy
+      user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
+    elsif user.is_package_converted
       amount_calculation_for_xfactor
     else
       total_income
@@ -159,7 +161,9 @@ class CurrentUserAdapter
     (x_factor_graph / max_package_total_earning) * 100
   end
   def x_factor_graph
-    if user.package_updated_at.present?
+    if user.re_buy
+      user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
+    elsif user.package_updated_at.present?
       total_income
     else
       user.binary_bonus_for_xfactor.to_f != 0.0 ? user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f) - user.minus_x_factor_binary.try(:to_f) : user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f)
