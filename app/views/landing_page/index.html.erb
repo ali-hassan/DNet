@@ -8,40 +8,38 @@
         <div class=""> 
           <ul class="list-unstyled list-inline ct-topbar__list">
 
-            <li class="ct-language"><a> <i class="fa fa-user"></i> Login</a></li>
+            <li class="ct-language"><a href="<%= new_user_session_url(subdomain: 'office')%>"> <i class="fa fa-user"></i> Login</a></li>
 
           </ul>
         </div>
         <div class=""> 
           <ul class="list-unstyled list-inline ct-topbar__list">
 
-            <li class="ct-language"><a href="/register.html">  <i class="fa fa-user"></i> Register</a></li>
+            <li class="ct-language"><a href="<%= Setting.find_by_key("register_button_link").try(:value) || users_sign_up_url(subdomain: 'office')%>">  <i class="fa fa-user"></i> Register</a></li>
 
           </ul>
         </div>
-        <div class=""> 
+        <div class="">
 
           <ul class="list-unstyled list-inline ct-topbar__list ">
 
             <li class="ct-language"> <i class="fa fa-arrow-down"> Language</i>
 
-          </ul>
-          <ul class="list-unstyled ct-language__dropdown">
-            <li><a href="#googtrans(en|en)" class="lang-es lang-select" data-lang="en">English</li></a>
-              <li><a href="#googtrans(en|zh-CN)" class="lang-es lang-select" data-lang="zh-CN">Chaines</a></li>
-              <li><a href="#googtrans(en|ru)" class="lang-es lang-select" data-lang="ru">Russian</a></li>
-              <li><a href="#googtrans(en|ar)" class="lang-es lang-select" data-lang="ar">Arabic</a></li>
-              <li><a href="#googtrans(en|hi)" class="lang-es lang-select" data-lang="hi">Hindi</a></li>
-              <li><a href="#googtrans(en|ko)" class="lang-es lang-select" data-lang="ko">Korean</a></li>
-              <li><a href="#googtrans(en|ms)" class="lang-es lang-select" data-lang="ms">Malay</a></li>
-              <li><a href="#googtrans(en|es)" class="lang-es lang-select" data-lang="es"> Spanish</a></li>
-              <li><a href="#googtrans(en|pt-BR)" class="lang-es lang-select" data-lang="pt-BR">Portuguese</a></li>
-              <li><a href="#googtrans(en|ja)" class="lang-es lang-select" data-lang="ja">Japanies</a></li>
-          </ul>
+              <ul class="list-unstyled ct-language__dropdown">
+                <li><a href="#googtrans(en|en)" class="lang-es lang-select" data-lang="en">English</li></a>
+                <li><a href="#googtrans(en|zh-CN)" class="lang-es lang-select" data-lang="zh-CN">Chaines</a></li>
+                <li><a href="#googtrans(en|ru)" class="lang-es lang-select" data-lang="ru">Russian</a></li>
+                <li><a href="#googtrans(en|ar)" class="lang-es lang-select" data-lang="ar">Arabic</a></li>
+                <li><a href="#googtrans(en|hi)" class="lang-es lang-select" data-lang="hi">Hindi</a></li>
+                <li><a href="#googtrans(en|ko)" class="lang-es lang-select" data-lang="ko">Korean</a></li>
+                <li><a href="#googtrans(en|ms)" class="lang-es lang-select" data-lang="ms">Malay</a></li>
+                <li><a href="#googtrans(en|es)" class="lang-es lang-select" data-lang="es"> Spanish</a></li>
+                <li><a href="#googtrans(en|pt-BR)" class="lang-es lang-select" data-lang="pt-BR">Portuguese</a></li>
+                <li><a href="#googtrans(en|ja)" class="lang-es lang-select" data-lang="ja">Japanies</a></li>
+              </ul>
             </li>
-            </ul>
+          </ul>
         </div>
-      </div>
     </div>
   </div>
 
@@ -102,7 +100,7 @@
                     <a href="#pricing">Plans</a></li>
                   <li id="menu-item-341"
                       class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-341&quot;">
-                    <a href="affliate.html">Affiliate program</a></li>
+                    <a href="<%=affiliate_program_path%>">Affiliate program</a></li>
                   <li id="menu-item-342"
                       class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-342&quot;">
                     <a href="#testimonial"><i class="fa fa-envelope-o"></i>Testimonial</a></li>
@@ -924,7 +922,7 @@
                   <div class="over_layer">
                     <ul class="social_links">
 
-                      <li><a href="doc/presentation.pdf" target="_blank" type="application/octet-stream" download class="fa fa-download"></a></li>
+                      <li><a href="<%=download_path%>" target="_blank" type="application/octet-stream" download class="fa fa-download"></a></li>
 
                     </ul>
                   </div>
