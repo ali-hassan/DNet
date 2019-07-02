@@ -12,9 +12,8 @@
 //
 //= require rails-ujs
 //= require jquery.min
-//= require ./common-js/bootstrap.min
+//= require_tree ./layout
 //= require rails.validations
-//= require_tree ./tree
 //= require scripts
 //= require ./custom
 //= require canvasjs
@@ -22,5 +21,4 @@
 //= require override
 //= require ckeditor/init
 //= require ckeditor/config
-//= require_tree ./layout
 //= require_tree ./layout_local
