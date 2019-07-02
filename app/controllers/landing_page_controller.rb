@@ -1,4 +1,5 @@
 class LandingPageController < ApplicationController
+  layout "layout", only: [:index]
 
   def index
 
