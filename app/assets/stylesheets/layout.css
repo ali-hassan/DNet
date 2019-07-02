@@ -3,6 +3,5 @@
  *= require_self
  *= require bootstrap
  *= require ionicons
- *= require ./layout/responsive
- *= require ./layout//style
+ *= require_tree ./layout
  */
