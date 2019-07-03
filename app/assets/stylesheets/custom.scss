@@ -13,3 +13,13 @@
   letter-spacing: .133em;
   color: #000;
 }
+.contact-form .btn:hover {
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.contact-form .btn-dark:hover {
+  color: #fff;
+  background-color: #23272b;
+  border-color: #1d2124;
+}
