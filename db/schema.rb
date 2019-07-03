@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190416154634) do
+ActiveRecord::Schema.define(version: 20190703104638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,11 @@ ActiveRecord::Schema.define(version: 20190416154634) do
     t.string "log_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "package_id"
+    t.string "weekly_roi"
+    t.string "total_roi"
+    t.string "roi_balance"
+    t.string "total_income"
     t.index ["logable_type", "logable_id"], name: "index_log_histories_on_logable_type_and_logable_id"
     t.index ["user_id"], name: "index_log_histories_on_user_id"
   end
@@ -224,6 +229,18 @@ ActiveRecord::Schema.define(version: 20190416154634) do
     t.integer "weekly_roi_to_cash_amount_cents", default: 0, null: false
     t.string "weekly_roi_to_cash_amount_currency", default: "USD", null: false
     t.boolean "is_bitcoin_request", default: false
+    t.date "package_activation_date"
+    t.date "next_package_maintance_date"
+    t.string "sidekiq_job_id"
+    t.date "package_activation"
+    t.date "package_updated_at"
+    t.boolean "reject_kyc", default: false
+    t.integer "binary_bonus_for_xfactor_cents", default: 0, null: false
+    t.string "binary_bonus_for_xfactor_currency", default: "USD", null: false
+    t.integer "minus_x_factor_binary_cents", default: 0, null: false
+    t.string "minus_x_factor_binary_currency", default: "USD", null: false
+    t.boolean "is_package_converted", default: false
+    t.boolean "is_sponsor"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -238,6 +255,7 @@ ActiveRecord::Schema.define(version: 20190416154634) do
     t.datetime "updated_at", null: false
     t.string "status", default: "pending"
     t.string "service"
+    t.string "wallet_address"
     t.index ["user_id"], name: "index_withdrawl_requests_on_user_id"
   end
 

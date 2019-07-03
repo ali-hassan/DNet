@@ -1090,40 +1090,37 @@
             </div>
             <div class="contact-form col-md-7 col-md-offset-1 clearfix wow fadeInDown"
                  data-wow-delay=".5s" >
-                 <form id="contact-form" class="contact-form clearfix">
+                 <%= form_for :contact, url: contact_us_path, class: "contact-form clearfix", id: "contact-form" do |f| %>
                    <div class="contact-form-process"><i class="fa fa-spinner fa-pulse"></i></div>
                    <div id="contact-form-result"><span></span></div>
                    <fieldset class="col-sm-4"><input type="text" id="contact-form-name" name="name"
                                                                                         placeholder="Name" value="" class="cf-form-control required"
                                                                                                                     data-msg-required="This field is required." /></fieldset>
-                   <fieldset class="col-sm-4"><input type="email" id="contact-form-email"
-                                                                  name="email" placeholder="Email" value=""
-                                                                                                   class="required email cf-form-control"
-                                                                                                   data-msg-required="This field is required."
-                                                                                                   data-msg-email="Invalid email address." /></fieldset>
-                   <fieldset class="col-sm-4"><input type="text" id="contact-form-phone"
-                                                                 name="phone" placeholder="Phone" value="" class="cf-form-control" />
+                   <fieldset class="col-sm-4">
+                     <%= f.email_field :email, placeholder: "Email", class: "required email cf-form-control", id: "contact-form-email", data: {msg: { required: "This field is required.", email: "Invalid email address." }} %>
                    </fieldset>
-                   <fieldset class="col-sm-12"><input type="text" id="contact-form-subject"
-                                                                  name="subject" placeholder="Subject" value=""
-                                                                                                       class="required cf-form-control"
-                                                                                                       data-msg-required="This field is required." /></fieldset>
-                   <fieldset class="col-sm-12"><textarea rows="3" id="contact-form-message"
-                                                                  name="message" placeholder="Message" class="required cf-form-control"
-                                                                                                       data-msg-required="This field is required."></textarea></fieldset>
+                   <fieldset class="col-sm-4">
+                     <%= f.text_field :phone, placeholder: "Phone", id: "contact-form-phone", class: "cf-form-control" %>
+                   </fieldset>
+                   <fieldset class="col-sm-12">
+                     <%= f.text_field :subject, placeholder: "Subject", class: "required cf-form-control", data: { msg: { required: "This field is required." }} %>
+                   </fieldset>
+                   <fieldset class="col-sm-12">
+                     <%= f.text_area :body, class: "required cf-form-control", placeholder: "Message", data: { msg: { required: "This field is required" }}, id: "This field is required." %>
+                   </fieldset>
                    <fieldset class="captcha col-sm-6"><input type="text" id="contact-form-captcha"
                                                                          name="captcha" placeholder="9 + 8 = ?" class="required cf-form-control"
                                                                                                                 data-msg-required="This field is required."
                                                                                                                 data-rule-equalto="#captcha-value"
                                                                                                                 data-msg-equalto="Please check your math." /><input type="hidden"
                                                                                                                                                                     id="captcha-value" value="17"></fieldset>
-                   <fieldset class="submit col-sm-6"><input type="hidden" name="action"
-                                                                          value="contact_form"><input type="hidden" id="ajax_contact_form_nonce"
-                                                                                                                    name="ajax_contact_form_nonce" value="9a3b8e0e29" /><input type="hidden"
-                                                                                                                                                                               name="_wp_http_referer" value="/" /><button class="btn btn-dark"
-                                                                                                                                                                                                                           type="submit" id="contact-form-submit" name="submit"
-                                                                                                                                                                                                                                                                  value="submit">Send</button></fieldset>
-                 </form>
+                   <fieldset class="submit col-sm-6">
+                     <input type="hidden" name="action"  value="contact_form">
+                     <input type="hidden" id="ajax_contact_form_nonce" name="ajax_contact_form_nonce" value="9a3b8e0e29" />
+                     <input type="hidden" name="_wp_http_referer" value="/" />
+                     <button class="btn btn-dark" type="submit" id="contact-form-submit" name="submit" value="submit">Send</button>
+                   </fieldset>
+                 <% end %>
             </div>
           </div>
         </div>
