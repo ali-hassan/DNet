@@ -8,7 +8,8 @@
         <%=image_tag "logo.png", style: "margin-left: 35%; width:150px"%>
         <h2>Register Now</h2>
         <div class="book-form agileits-login">
-          <form action="#" method="post">
+          <%= form_for( resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
+            <%= hidden_field_tag :position, params[:position] if params[:position] %>
             <div class="form-text">
               <h5 class="text-white">Do you have Sponsorship ?
                 <label class="radio-inline">
@@ -36,94 +37,96 @@
               <div class="phone_email">
                 <div class="form-text">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <input type="text" name="Name" placeholder="Sponsor Username" required="">
+                  <input type="text"
+                         id="sponsor_id_txt"
+                         disabled="disabled"
+                         class="<%= 'trigger-refer-search' if params[:referred_name] %>"
+                         value="<%= params[:referred_name] || resource.referred_by.try(:username) %>"
+                         name="Name"
+                         placeholder="Sponsor Username"
+                         >
                 </div>
               </div>
               <div class="phone_email phone_email1">
                 <div class="form-text">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <input type="text" name="Name" placeholder="Sponsor name" required="">
+                  <input type="text" name="Name" placeholder="Sponsor name" value='<%= resource.referred_by.try(:full_name) %>' required="">
+                  <%= f.hidden_field :referred_by_id, disabled: resource.referred_by_id.blank? %>
                 </div>
               </div>
 
               <div class="phone_email">
                 <div class="form-text">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <input type="text" name="fname" placeholder="First name" required="">
+                  <%= f.text_field :first_name, validate: true, placeholder: "First Name" %>
                 </div>
               </div>
               <div class="phone_email phone_email1">
                 <div class="form-text">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <input type="text" name="Lname" placeholder="Last name" required="">
+                  <%= f.text_field :last_name, validate: true, placeholder: "Last Name" %>
                 </div>
               </div>
 
               <div class="phone_email">
                 <div class="form-text">
                   <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                  <input type="email" name="email" placeholder="Email" required="">
-                </div>
-              </div>
-              <div class="phone_email phone_email1">
-                <div class="form-text">
-                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                  <input type="email" name="cnfemail" placeholder="Confirm Email" required="">
+                  <%= f.text_field :email, placeholder: "Email", validate: true %>
                 </div>
               </div>
               <div class="phone_email">
                 <div class="form-text">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <input type="text" name="uname" placeholder="Username" required="">
+                  <%= f.text_field :username, validate: true, placeholder: "Username" %>
                 </div>
               </div>
               <div class="phone_email phone_email1">
                 <div class="form-text">
                   <i class="fa fa-mobile" aria-hidden="true"></i>
-                  <input type="text" name="Phone no" placeholder="Contact number" required="">
+                  <%= f.text_field :contact_number, placeholder: "Contact number", validate: true %> 
                 </div>
               </div>
               <div class="phone_email">
                 <div class="form-text">
                   <i class="fa fa-file" aria-hidden="true"></i>
-                  <input type="text" name="doc" placeholder="Document #" required="">
+                  <%= f.text_field :document_number, placeholder: "Document #", validate: true %>
                 </div>
               </div>
               <div class="phone_email phone_email1">
                 <div class="form-text">
                   <i class="fa fa-globe" aria-hidden="true"></i>
-                  <input type="text" name="country" placeholder="Country" required="">
+                  <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
                 </div>
               </div>
-              <div class="phone_email">
+              <div class="phone_email phone_email1 ">
                 <div class="form-text">
                   <i class="fa fa-map" aria-hidden="true"></i>
-                  <input type="text" name="state" placeholder="State" required="">
+                  <%= f.select :state, [], {}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
                 </div>
               </div>
               <div class="phone_email phone_email1">
                 <div class="form-text">
                   <i class="fa fa-street-view" aria-hidden="true"></i>
-                  <input type="text" name="city" placeholder="City" required="">
+                  <%= f.text_field :city, class: "custom-select", placeholder: "City" %>
                 </div>
               </div>
 
               <div class="phone_email">
                 <div class="form-text">
                   <i class="fa fa-key" aria-hidden="true"></i>
-                  <input type="password" name="password" placeholder="Password" required="">
+                  <%= f.password_field :password, placeholder: "Password" %>
                 </div>
               </div>
               <div class="phone_email phone_email1">
                 <div class="form-text">
                   <i class="fa fa-key" aria-hidden="true"></i>
-                  <input type="password" name="cnfpass" placeholder="Confirm Password" required="">
+                  <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
                 </div>
               </div>
               <div class="phone_email">
                 <div class="form-text">
                   <i class="fa fa-key" aria-hidden="true"></i>
-                  <input type="password" name="pin" placeholder="User Pin" required="">
+                  <%= f.password_field :pin, maxlength: 4, placeholder: "User Pin" %>
                 </div>
               </div>
             <div class="clear"></div>
@@ -133,7 +136,7 @@
             </div>
             <input type="submit" value="Sign up">
             <div class="clear"></div>
-          </form>
+          <% end %>
         </div>
 
       </div>
@@ -148,4 +151,7 @@
   href="https://forexhometrade.com">Forex Home Trade</a> .</div>
 
 </footer>
+<script>
+    populateCountries("country", "state", "city")
+</script>
 </body>
