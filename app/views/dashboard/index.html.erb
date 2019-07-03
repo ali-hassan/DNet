@@ -4,7 +4,7 @@
     <div class="sidebar-block">
       <div class="sidebar-content-body">
         <div class="video-holder">
-          <iframe src="https://www.youtube.com/embed/nqaOxwQBMwQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/m8KHono1YHw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -66,6 +66,29 @@
       <% end %>
     </div>
     <!-- Sidebar Block 3 End -->
+
+    <!-- Sidebar Block 3 Start -->
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#" do %>
+            <%= image_tag("live_trading.gif", id: "live_trading")%>
+          <%end%>
+          <strong class="common-class">Live Trading</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#", class: 'promotion-href' do %>
+            <%= image_tag("promotion_img.jpg", id: "promotion_trading")%>
+          <%end%>
+          <strong class="common-class">New Promotions</strong>
+        </div>
+      </div>
+    </div>
   </aside>
 
   <div class="main-content">
@@ -120,16 +143,16 @@
           <div class="columns">
             <div class="columns-top current-roi">
               <h3><%= number_to_currency current_user.current_total_weekly_roi_amount.try(:to_f) %></h3>
-              <span>Current ROI Balance</span>
+              <span>Current ROI</span>
               <span class="currency-symbol">$</span>
             </div>
             <div class="columns-middle">
-              <h3><%= number_to_currency current_user.binary_bonus %></h3>
+              <h3><%= number_to_currency (current_user.binary_bonus_for_xfactor.to_f != 0.0 ? current_user.binary_bonus_for_xfactor.to_f : (current_user.package_updated_at.present? ? (current_user.binary_bonus_cents / 100).try(:to_f) : current_user.binary_bonus_for_xfactor.to_f + current_user.minus_x_factor_binary.to_f)) %></h3>
               <span>Binary Bonus</span>
               <%=image_tag "ic_binarybonus.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
             <div class="columns-bottom">
-              <h3>$<%= current_user.smart_wallet_balance.to_f%></h3>
+              <h3>$<%= current_user.smart_wallet_balance.to_f %></h3>
               <span>Smart Wallet</span>
               <%=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
@@ -203,7 +226,7 @@
 
     <% if current_user.adapter.max_package_total_earning.present? %>
       <!-- Content Block 3 Start -->
-      <div class="main-content-block">
+      <div class="main-content-block" style="padding-bottom: 34px">
         <div class="heading">
           <h2>X-Factor</h2>
         </div>
@@ -255,13 +278,13 @@
           data: [{
               type: "pie",
               showInLegend: true,
-              toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+              toolTipContent: "<b>{name}</b>: (#percent%)",
               indexLabel: "{name}",
               legendText: "{name} (#percent%)",
               indexLabelPlacement: "inside",
               dataPoints: [
                 { y: weeklyTotal, name: "Max Earning Allowed <%= number_to_currency current_user.adapter.max_package_total_earning %>" },
-                { y: weeklyCurrent, name: "Current Earning <%= number_to_currency current_user.adapter.total_income %>" }
+                { y: weeklyCurrent, name: "Current Earning <%= number_to_currency(current_user.adapter.total_income_calculate) %>" }
               ]
           }]
       };

@@ -1,6 +1,6 @@
 ActiveAdmin.register User, as: "CurrentWeekPayment" do
   actions :index, :edit, :update
-  permit_params :current_total_weekly_roi_amount, :total_weekly_percentage_amount, :current_week_roi_amount
+  permit_params :current_total_weekly_roi_amount, :total_weekly_percentage_amount, :current_week_roi_amount, :total_income, :current_x_factor_income
   index do
     column :username
     column "Email", :email
@@ -13,9 +13,11 @@ ActiveAdmin.register User, as: "CurrentWeekPayment" do
 
   form do |f|
     f.inputs do
-      f.input :current_total_weekly_roi_amount
-      f.input :total_weekly_percentage_amount
-      f.input :current_week_roi_amount
+      f.input :current_total_weekly_roi_amount, label:  "Current ROI Balance"
+      f.input :total_weekly_percentage_amount, label: "Total ROI"
+      f.input :current_week_roi_amount, label: "Weekly ROI"
+      f.input :total_income
+      f.input :current_x_factor_income
     end
     actions
   end

@@ -14,5 +14,6 @@
         <td><%= transaction.try(:message) %></td>
       </tr>
     <% end %>
+    <%= will_paginate @transactions.all %>
   </tbody>
 </table>

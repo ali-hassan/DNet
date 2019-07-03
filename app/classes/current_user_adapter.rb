@@ -101,11 +101,15 @@ class CurrentUserAdapter
   def cupda
     @cupda ||= CalculateUserParentDirectBonus.new(user)
   end
+  def scheduler_update
+    @scheduler_update ||= SchedulerUpdate.new(user)
+  end
   def apply_indirect_bonus_at(index, package_price, usr)
     pp = package_price / 100 * (Setting.find_value("default_indirect_bonus_%_at_lvl_#{index+1}").value.try(:to_f))
     if perform_weekly_count.calculate_condition(pp)
-      user.log_histories.create(logable: usr, message: "Indirect bonus #{pp} on #{usr.username} for package #{package_price.to_f}", log_type: 'indirect_bonus')
+      user.log_histories.create(logable: usr, message: "Indirect bonus #{pp}$ on #{usr.username} for package #{package_price.to_f}$", log_type: 'indirect_bonus')
       user.update(
+        current_x_factor_income: user.current_x_factor_income.try(:to_f) + pp,
         total_income: user.total_income.try(:to_f) + pp,
         indirect_bonus_amount: indirect_bonus_amount.try(:to_f) + pp,
         indirect_total_bonus_amount: indirect_total_bonus_amount.try(:to_f) + pp,
@@ -122,18 +126,43 @@ class CurrentUserAdapter
       package: find_packages.try(:xfactor_amount).try(:to_f)
     }[ user.is_pin? && :pin || :package ]
   end
+  def pin_or_package_amount
+    {
+      pin: user.pin_capacity.try(:to_f),
+      package:  current_package[:price],
+    }[ user.is_pin? && :pin || :package ]
+  end
   def binary_bonus
     user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end
   def total_income
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
   end
+  def total_income_calculate
+    if user.package_updated_at.present?
+      total_income
+    else
+      user.is_package_converted ? (user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f) : total_income
+    end
+  end
   def can_upgrade_url?(id)
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
   end
-  def graph_total_percent
+  # TODO: NOT USING MUST BE REMOVED
+  def graph_total_percent_old
     (user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)) / max_package_total_earning * 100
   end
+  def graph_total_percent
+    (x_factor_graph / max_package_total_earning) * 100
+  end
+  def x_factor_graph
+    if user.package_updated_at.present?
+      total_income
+    else
+      user.binary_bonus_for_xfactor.to_f != 0.0 ? user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f) - user.minus_x_factor_binary.try(:to_f) : user.current_x_factor_income.try(:to_f) + user.binary_bonus_for_xfactor.try(:to_f)
+    end
+  end
+  delegate :active_job, :active_job?, :doj_update, to: :scheduler_update, prefix: :scheduler, allow_nil: true
   delegate :calculate, :current_rank, to: :cupda, allow_nil: true, prefix: true
   delegate :current_package, to: :find_packages, allow_nil: true
   delegate :package_id, :created_users, :indirect_total_bonus_amount, :indirect_bonus_amount, :left_bonus, :right_bonus, :weekly_roi_to_cash_amount, to: :user, allow_nil: true

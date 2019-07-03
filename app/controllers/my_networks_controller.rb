@@ -18,7 +18,7 @@ class MyNetworksController < ApplicationController
   end
 
   def direct_referrals
-
+    @direct_rf = current_user.adapter.all_users.paginate(page: params[:page], per_page: 10).order(created_at: :desc)
   end
 
   private

@@ -1,4 +1,9 @@
 $(document).on "turbolinks:load", ->
+  $("body").on "click",  ".promotion-href", (e) ->
+    e.preventDefault()
+    $("#alert_welcome_popup").modal()
+  if getParameterByName('open_welcome_modal')
+    $("#alert_welcome_popup").modal()
   readFileURL = (input) ->
     if input.files && input.files[0]
       reader = new FileReader()
@@ -44,3 +49,12 @@ $(document).on "turbolinks:load", ->
   $referTriggerSearch  = $(".trigger-refer-search")
   if $referTriggerSearch.length
     $referTriggerSearch.trigger('keyup')
+
+  $(document).on "click", "#live_trading", (eventObject) ->
+    eventObject.preventDefault();
+    alert("Forex live trading will be available very soon");
+    $("#live_trading").off("click");
+  $(document).on "click", "#promotion_trading", (eventObject) ->
+    eventObject.preventDefault();
+    #alert("Something big is coming, Stay tuned.");
+    $("#live_trading").off("click");

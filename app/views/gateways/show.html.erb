@@ -2,7 +2,7 @@
   <div class="main-content">
     <div class="payment-option-listing">
       <h2>Choose your Payment Option</h2>
-      <h4 class="alert alert-info"> (Withdrawal Minimum Limit is 60$, Withdrawal Gates will open on every sunday from 10 am to 7 pm according to Hong Kong Time. One Account can apply one withdrawal in one Week with one Gate way only, Servies Fee is 10% .</h4>
+      <h4 class="alert alert-info" style="font-size: 13px;"> Note: Withdrawal Minimum Limit is 60$, Withdrawal Gates will open on every sunday from 10:00 AM to 7:00 PM according to time (GMT +8). One Account can apply one withdrawal in one Week with one Gate way only, select your withdrawal payment gateway carefully, because any selected gateway will be automatically adopted by system for further transactions. For changing/help, contact with us at support@forexhometrade.com</h4>
       <div class="payment-option-holder">
         <form action="#">
           <ul>
@@ -11,6 +11,15 @@
                 <div class="image-holder">
                   <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "btc") do %>
                       <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Bitcoin</h3>
+              </li>
+            <%else %>
+              <li style="pointer-events: none;">
+                <div class="image-holder" disabled="true">
+                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "btc") do %>
+                    <%=image_tag "ic_bitcoin.png", alt: "image descriptions"%>
                   <% end %>
                 </div>
                 <h3>Bitcoin</h3>
@@ -25,6 +34,15 @@
                 </div>
                 <h3>Skrill</h3>
               </li>
+            <%else %>
+              <li style="pointer-events: none;">
+                <div class="image-holder" disabled="true">
+                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "skrill") do %>
+                    <%=image_tag "ic_skrill.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Skrill</h3>
+              </li>
             <%end%>
             <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "perfect_money"%>
               <li>
@@ -35,12 +53,30 @@
                 </div>
                 <h3>Perfect Money</h3>
               </li>
+            <%else %>
+              <li style="pointer-events: none;">
+                <div class="image-holder" disabled="true">
+                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "perfect_money") do %>
+                    <%=image_tag "ic_perfectmoney.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Perfect Money</h3>
+              </li>
             <%end%>
             <%- if current_user.withdraw_gateway.nil? || current_user.withdraw_gateway == "payoneer"%>
               <li>
                 <div class="image-holder">
                   <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "payoneer") do %>
                       <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
+                  <% end %>
+                </div>
+                <h3>Payoneer</h3>
+              </li>
+            <%else %>
+              <li style="pointer-events: none;">
+                <div class="image-holder" disabled="true">
+                  <%= link_to withdrawl_requests_url(subdomain: "office", withdraw_gateway: "payoneer") do %>
+                    <%=image_tag "ic_payoneer.png", alt: "image descriptions"%>
                   <% end %>
                 </div>
                 <h3>Payoneer</h3>
