@@ -1,10 +1,6 @@
 class LandingPageController < ApplicationController
   layout "layout", only: [:index]
 
-  def index
-
-  end
-
   def contact_us
     if params[:contact][:subject] && params[:contact][:body]
       UserMailer.contact_us(params[:contact]).deliver_now
