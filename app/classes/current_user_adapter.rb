@@ -148,6 +148,7 @@ class CurrentUserAdapter
     end
   end
   def amount_calculation_for_xfactor
+    debugger
     if user.binary_bonus_for_xfactor != 0
       user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
     else

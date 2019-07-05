@@ -28,7 +28,7 @@ class BuyPlansController < ApplicationController
     current_user.update is_pin: false, is_package_converted: true, minus_x_factor_binary: binary_bonus_minus, binary_bonus: 0.0, binary_bonus_for_xfactor: 0.0,  current_x_factor_income: 0  #, pin_capacity: nil
   end
   def rebuy_package
-    binary_bonus_minus = current_user.minus_x_factor_binary.to_f + current_user.binary_bonus_for_xfactor.to_f
+    binary_bonus_minus = current_user.binary_bonus_for_xfactor.to_f
     current_user.update re_buy: true, current_x_factor_income: binary_bonus_minus, minus_x_factor_binary: binary_bonus_minus
   end
 end
