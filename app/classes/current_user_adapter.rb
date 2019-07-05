@@ -139,16 +139,18 @@ class CurrentUserAdapter
     user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
   end
   def total_income_calculate
-    if user.re_buy
-      user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
-    elsif user.is_package_converted
+    if user.re_buy || user.is_package_updated || user.is_package_converted
       amount_calculation_for_xfactor
     else
       total_income
     end
   end
   def amount_calculation_for_xfactor
-    user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
+    if user.binary_bonus_for_xfactor != 0
+      user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
+    else
+      user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f
+    end
   end
   def can_upgrade_url?(id)
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
@@ -161,8 +163,8 @@ class CurrentUserAdapter
     (x_factor_graph / max_package_total_earning) * 100
   end
   def x_factor_graph
-    if user.re_buy
-      user.current_x_factor_income.to_f + user.binary_bonus_for_xfactor.to_f - user.minus_x_factor_binary.to_f
+    if user.re_buy || user.is_package_updated
+      amount_calculation_for_xfactor
     elsif user.package_updated_at.present?
       total_income
     else
