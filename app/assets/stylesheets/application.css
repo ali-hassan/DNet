@@ -14,6 +14,7 @@
  *= require bootstrap
  *= require ionicons
  *= require responsive
+ *= require regform.min.css
  *= require styles
  *= require venobox
  *= require landing_page

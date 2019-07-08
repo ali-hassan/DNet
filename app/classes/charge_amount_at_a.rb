@@ -12,7 +12,7 @@ class ChargeAmountAtA
     User.add_amount(deducation_amount)
     calculate_weekly_bonus_cycle!
     User.find(user.id).adapter.cupda_calculate
-    update(reset_params)
+    # update(reset_params)
   end
   def reset_params
     {
