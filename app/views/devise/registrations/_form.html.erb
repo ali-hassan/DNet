@@ -21,7 +21,6 @@
               <div class="signup-column">
                 <label>Sponsor ID</label>
                 <input id="sponsor_id_txt"
-                       disabled="disabled"
                        class="<%= 'trigger-refer-search' if params[:refered_name] %>"
                        type="text"
                        value="<%= params[:refered_name] || resource.referred_by.try(:username) %>" />
