@@ -6,7 +6,7 @@ var html = "",
   }
 
 <% if @user.present? %>
-  html = "<label>Sponsor Name: <%= @user.full_name %> </label>";
+  $("#sponsor-txt-view").val("<%= @user.full_name %>");
   html += "<input name='"+name+"' type='hidden' value='<%= @user.id %>'>"
 <% else %>
   html = "<label style='color: red;'>No sponsor found against this ID</label>"

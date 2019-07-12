@@ -49,8 +49,10 @@
               <div class="phone_email phone_email1">
                 <div class="form-text">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <input type="text" name="Name" placeholder="Sponsor name" value='<%= resource.referred_by.try(:full_name) %>' required="">
-                  <%= f.hidden_field :referred_by_id, disabled: resource.referred_by_id.blank? %>
+                  <input type="text" name="Name" placeholder="Sponsor name" value='<%= resource.referred_by.try(:full_name) %>' readonly id="sponsor-txt-view" >
+                  <div id="sponsor_info_card">
+                    <%= f.hidden_field :referred_by_id, disabled: resource.referred_by_id.blank? %>
+                  </div>
                 </div>
               </div>
 
