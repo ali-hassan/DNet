@@ -125,7 +125,10 @@
                   <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
                 </div>
               </div>
-              <div class="phone_email phone_email1">
+              <div class="phone_email phone_email1" style="width: 275px;
+                  float: left;
+                  margin-left: 62px;"
+              >
                 <div class="form-text">
                   <i class="fa fa-map" aria-hidden="true"></i>
                   <%= f.select :state, [], {include_blank: "Select State"}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
