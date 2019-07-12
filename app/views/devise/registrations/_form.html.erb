@@ -39,7 +39,6 @@
                   <i class="fa fa-user" aria-hidden="true"></i>
                   <input type="text"
                          id="sponsor_id_txt"
-                         disabled="disabled"
                          class="<%= 'trigger-refer-search' if params[:referred_name] %>"
                          value="<%= params[:referred_name] || resource.referred_by.try(:username) %>"
                          name="Name"
