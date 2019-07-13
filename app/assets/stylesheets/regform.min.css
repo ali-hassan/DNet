@@ -107,15 +107,22 @@ select#state {
 
 .phone_email,
 .span1_of_1 {
-	margin-bottom: 1.5em;
-	width: 49%;
-	float: left
+    width: 49%;
+    float: left;
+    min-height: 80px !important;
 }
 
 .phone_email1 {
 	float: right
 }
-
+.custom-state {
+    width: 275px;
+    float: left;
+    margin-left: 62px;
+}
+.custom-width {
+    width: 275px;
+}
 select#country,
 select#country1, select#state {
 	width: 100%!important

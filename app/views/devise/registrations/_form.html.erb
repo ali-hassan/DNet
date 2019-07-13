@@ -1,4 +1,3 @@
-<body    class="page-template-default page page-id-68 woocommerce-js elementor-default device-lg">
 <div id="page" class="hfeed site"><a class="skip-link sr-only" href="#content">Skip to content</a>
 
   <div class="" style="background-image: url(<%=image_url("reg_bg.jpeg")%>);background-size: cover;padding: 20px;">
@@ -119,16 +118,13 @@
                   <%= f.password_field :pin, maxlength: 4, placeholder: "User Pin" %>
                 </div>
               </div>
-              <div class="phone_email" style="width: 275px;">
+              <div class="phone_email custom-width">
                 <div class="form-text">
                   <i class="fa fa-globe" aria-hidden="true"></i>
                   <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
                 </div>
               </div>
-              <div class="phone_email phone_email1" style="width: 275px;
-                  float: left;
-                  margin-left: 62px;"
-              >
+              <div class="phone_email phone_email1 custom-state">
                 <div class="form-text">
                   <i class="fa fa-map" aria-hidden="true"></i>
                   <%= f.select :state, [], {include_blank: "Select State"}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
@@ -153,7 +149,6 @@
       </div>
     </div>
   </div>
-  </div>
 </div>
 <div class="clear-fix"></div>
 
@@ -165,4 +160,3 @@
 <script>
     populateCountries("country", "state", "city")
 </script>
-</body>

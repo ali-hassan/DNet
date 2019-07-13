@@ -107,9 +107,10 @@ select#state {
 
 .phone_email,
 .span1_of_1 {
-	margin-bottom: 1.5em;
-	width: 49%;
-	float: left
+	/*margin-bottom: 1.5em;*/
+	width: 275px;
+	float: left;
+    min-height: 80px !important;
 }
 
 .phone_email1 {
