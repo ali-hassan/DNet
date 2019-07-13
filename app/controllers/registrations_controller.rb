@@ -13,6 +13,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
   def find_node(parent_user)
     hash = { left: :find_last_left_node, right: :find_last_right_node }.with_indifferent_access
-    parent_user.try(hash[params[:position] || Setting.find_value('tree_node').try(:value)])
+    parent_user.try(hash[params[:position] || Setting.find_value('tree_node').try(:value).try(:downcase) || "left"])
   end
 end
