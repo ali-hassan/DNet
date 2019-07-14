@@ -9,6 +9,6 @@ var html = "",
   $("#sponsor-txt-view").val("<%= @user.full_name %>");
   html += "<input name='"+name+"' type='hidden' value='<%= @user.id %>'>"
 <% else %>
-  html = "<label style='color: red;'>No sponsor found against this ID</label>"
+  html = "<label style='color: white;'>No sponsor found against this ID</label>"
 <% end %>
 $("#sponsor_info_card").html(html);

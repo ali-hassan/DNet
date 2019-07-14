@@ -1,5 +1,5 @@
 class FhtController < ApplicationController
-  layout "layout", only: [:index]
+  layout "pages", only: [:index]
   def index
 
   end
