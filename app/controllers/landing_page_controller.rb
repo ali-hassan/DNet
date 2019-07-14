@@ -1,5 +1,6 @@
 class LandingPageController < ApplicationController
   layout "layout", only: [:index]
+  layout "pages", only: [:terms]
 
   def contact_us
     if params[:contact][:subject] && params[:contact][:body]
@@ -10,6 +11,9 @@ class LandingPageController < ApplicationController
     end
   end
   def contact
+
+  end
+  def terms
 
   end
 end

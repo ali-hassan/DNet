@@ -66,5 +66,6 @@ Rails.application.routes.draw do
   get 'fht_app' => "fht_app#index"
   get 'fht_coin' => "fht_coin#index"
   get 'education' => "educations#index"
+  get 'terms' => "landing_page#terms"
   root to: "landing_page#index"
 end
