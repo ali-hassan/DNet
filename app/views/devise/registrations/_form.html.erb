@@ -141,6 +141,10 @@
             <div class="checkbox text-white">
               <label><input type="checkbox" required value=""> I Agree the <a>Terms & Conditions</a></label>
             </div>
+            <%= recaptcha_tags %>
+            <br>
+            <div id="email-invalid-message"></div>
+            <br>
             <input type="submit" value="Sign up">
             <div class="clear"></div>
           <% end %>
@@ -159,4 +163,22 @@
 </footer>
 <script>
     populateCountries("country", "state", "city")
+    function checkRecaptcha() {
+      res = $('#g-recaptcha-response').val();
+
+      if (res == "" || res == undefined || res.length == 0)
+        return false;
+      else
+        return true;
+    }
+
+    //...
+
+    $('.new_user').submit(function(e) {
+      if(!checkRecaptcha()) {
+        $("#email-invalid-message" ).text("Please validate your reCAPTCHA.");
+        return false;
+      }
+        //...
+    });
 </script>
