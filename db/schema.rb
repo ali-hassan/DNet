@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(version: 20190703104638) do
     t.string "minus_x_factor_binary_currency", default: "USD", null: false
     t.boolean "is_package_converted", default: false
     t.boolean "is_sponsor"
+    t.boolean "re_buy", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

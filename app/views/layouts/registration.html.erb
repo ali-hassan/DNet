@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ForexHomeTrade</title>
-    <%= csrf_meta_tags %>
-    <script type="text/javascript">
+<head>
+  <title>ForexHomeTrade</title>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
       window.currentUserId = <%= raw current_user.try(:id) || {} %>
-      window.currentUserName = ''
-    </script>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+          window.currentUserName = ''
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= render "flashmessages" %>
-    <%= yield %>
-  </body>
+<body>
+<%= render "flashmessages" %>
+<%= yield %>
+</body>
 </html>
-

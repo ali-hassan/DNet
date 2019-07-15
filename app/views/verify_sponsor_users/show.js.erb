@@ -4,11 +4,12 @@ var html = "",
   if ($sponsorInfoCard.data("field-name")){
     name = $sponsorInfoCard.data("field-name");
   }
-
+$("#new_user").find(".submit").prop("disabled", false)
 <% if @user.present? %>
   $("#sponsor-txt-view").val("<%= @user.full_name %>");
   html += "<input name='"+name+"' type='hidden' value='<%= @user.id %>'>"
 <% else %>
   html = "<label style='color: white;'>No sponsor found against this ID</label>"
+//  $("#new_user").find(".submit").prop("disabled", true)
 <% end %>
 $("#sponsor_info_card").html(html);
