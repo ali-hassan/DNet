@@ -167,6 +167,8 @@ class CurrentUserAdapter
   def x_factor_graph
     if user.re_buy
       amount_calculation_for_xfactor
+    elsif user.is_package_converted.present?
+      amount_calculation_for_xfactor
     elsif user.package_updated_at.present?
       total_income
     else
