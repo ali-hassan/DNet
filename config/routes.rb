@@ -61,5 +61,11 @@ Rails.application.routes.draw do
   get '/' => 'landing_page#index', as: :home
   get 'contact' => "landing_page#contact"
   post 'contact_us' => "landing_page#contact_us"
+  get 'broker' => "broker#index"
+  get 'fht' => "fht#index"
+  get 'fht_app' => "fht_app#index"
+  get 'fht_coin' => "fht_coin#index"
+  get 'education' => "educations#index"
+  get 'terms' => "landing_page#terms"
   root to: "landing_page#index"
 end

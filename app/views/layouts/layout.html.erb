@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ForexHomeTrade</title>
+    <%= csrf_meta_tags %>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Font -->
+    <script type="text/javascript">
+      window.currentUserId = <%= raw current_user.try(:id) || {} %>
+      window.currentUserName = ''
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+  </head>
+  <body class=" home page-template  page page-id-2  front-page elementor-default <%= controller.controller_path.gsub("/", "--") %>">
+    <%= render "flashmessages" %>
+    <%= yield %>
+
+    <%= javascript_include_tag 'layout', 'data-turbolinks-track': 'reload' %>
+    <%= yield :body_js %>
+  </body>
+</html>

@@ -1,327 +1,201 @@
-<div id="wrapper">
-  <div class="signup-page">
+<div id="page" class="hfeed site"><a class="skip-link sr-only" href="#content">Skip to content</a>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
-      <%= hidden_field_tag :position, params[:position] if params[:position] %>
+  <div class="" style="background-image: url(<%=image_url("reg_bg.jpeg")%>);background-size: cover;padding: 20px;">
+    <h1></h1>
+    <div class="bg-agile">
+      <div class="book-appointment ">
+        <%=image_tag "logo.png", style: "margin-left: 35%; width:150px"%>
+        <h2>Register Now</h2>
+        <div class="book-form agileits-login">
+          <%= form_for( resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
+              <%= hidden_field_tag :position, params[:position] if params[:position] %>
+              <div class="form-text">
+                <h5 class="text-white">Do you have Sponsorship ?
+                  <label class="radio-inline">
+                    <input type="radio" name="spon" checked>  Yes
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="spon">  No
+                  </label>
+                  <h5>
+              </div>
+              <div class="form-text">
+                <h5 class="text-white">Choose Position
+                  <label class="radio-inline">
+                    <input type="radio" name="position" class="position" value="left" <%= 'checked' if params[:position] == 'left' %>>  left
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="position" class="position" value='right' <%= 'checked' if params[:position] == 'right' %>> right
+                  </label>
+                  <h5>
+              </div>
+              <div id="position-invalid-message"></div>
 
-      <div class="signup-top">
-        <div class="signup-holder">
-          <div class="logo">
-            <%= link_to "/" do %>
-              <%= image_tag "registration/logo.png" %>
-            <% end %>
-          </div>
+              <div class="agileits_reservation_grid">
+
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text"
+                           id="sponsor_id_txt"
+                           class="<%= 'trigger-refer-search' if params[:referred_name] %>"
+                           value="<%= params[:referred_name] || resource.referred_by.try(:username) %>"
+                           name="Name"
+                           placeholder="Sponsor Username"
+                    >
+                  </div>
+                </div>
+                <div class="phone_email phone_email1">
+                  <div class="form-text">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" name="Name" placeholder="Sponsor name" value='<%= resource.referred_by.try(:full_name) %>' readonly id="sponsor-txt-view" >
+                    <div id="sponsor_info_card">
+                      <%= f.hidden_field :referred_by_id, disabled: resource.referred_by_id.blank? %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <%= f.text_field :first_name, validate: true, placeholder: "First Name" %>
+                  </div>
+                </div>
+                <div class="phone_email phone_email1">
+                  <div class="form-text">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <%= f.text_field :last_name, validate: true, placeholder: "Last Name" %>
+                  </div>
+                </div>
+
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    <%= f.text_field :email, placeholder: "Email", validate: true, id: "email1" %>
+                  </div>
+                </div>
+
+                <div class="phone_email phone_email1">
+                  <div class="form-text">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    <%= f.text_field :email, placeholder: "Confirm Email", validate: true, id: "email2" %>
+                    <div id="email-same-message"></div>
+                  </div>
+                </div>
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <%= f.text_field :username, validate: true, placeholder: "Username" %>
+                  </div>
+                </div>
+                <div class="phone_email phone_email1">
+                  <div class="form-text">
+                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                    <%= f.text_field :contact_number, placeholder: "Contact number", validate: true %>
+                  </div>
+                </div>
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                    <%= f.text_field :document_number, placeholder: "Document #", validate: true %>
+                  </div>
+                </div>
+
+                <div class="phone_email phone_email1">
+                  <div class="form-text">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                    <%= f.password_field :password, placeholder: "Password" %>
+                  </div>
+                </div>
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+                  </div>
+                </div>
+                <div class="phone_email phone_email1">
+                  <div class="form-text">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                    <%= f.password_field :pin, maxlength: 4, placeholder: "User Pin" %>
+                  </div>
+                </div>
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                    <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
+                  </div>
+                </div>
+                <div class="phone_email phone_email1">
+                  <div class="form-text">
+                    <i class="fa fa-map" aria-hidden="true"></i>
+                    <%= f.select :state, [], {include_blank: "Select State"}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
+                  </div>
+                </div>
+                <div class="phone_email">
+                  <div class="form-text">
+                    <i class="fa fa-street-view" aria-hidden="true"></i>
+                    <%= f.text_field :city, class: "custom-select", placeholder: "City" %>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="checkbox text-white">
+                <label><input type="checkbox" required value=""> I Agree the
+                  <a href="<%=terms_path%>" target="_blank" style="text-decoration: underline;">Terms & Conditions</a></label>
+              </div>
+              <%= recaptcha_tags %>
+              <br>
+              <div id="email-invalid-message"></div>
+              <br>
+              <input type="submit" value="Sign up">
+              <div class="clear"></div>
+          <% end %>
         </div>
+
       </div>
-
-      <div class="signup-bottom">
-        <div class="signup-holder">
-          <!-- Signup Row Start -->
-          <div class="signup-row add">
-            <div class="signup-column">
-              <label>Sponsor ID</label>
-              <input id="sponsor_id_txt"
-                     disabled="disabled"
-                     class="<%= 'trigger-refer-search' if params[:refered_name] %>"
-                     type="text"
-                     value="<%= params[:refered_name] || resource.referred_by.try(:username) %>" />
-            </div>
-          </div>
-          <div class="signup-row add">
-            <div id="sponsor_info_card" class="signup-column">
-              <% if resource.referred_by_id %>
-                <label>Sponsor Name: <%= resource.referred_by.try(:full_name) %></label>
-                <input type='hidden' name='user[referred_by_id]' value='<%= resource.referred_by_id %>'>
-              <% end %>
-            </div>
-          </div>
-          <!-- Signup Row End -->
-          <!-- Signup Row Start -->
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :first_name %>
-              <%= f.text_field :first_name, validate: true %>
-            </div>
-            <div class="signup-column">
-              <%= f.label :last_name %>
-              <%= f.text_field :last_name %>
-            </div>
-          </div>
-          <!-- Signup Row End -->
-          <!-- Signup Row Start -->
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :email %>
-              <%= f.email_field :email %>
-            </div>
-            <div class="signup-column">
-              <%= f.label :username %>
-              <%= f.text_field :username %>
-            </div>
-          </div>
-
-          <!-- Signup Row End -->
-          <!-- Signup Row Start -->
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-            </div>
-            <div class="signup-column">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
-            </div>
-          </div>
-          <!-- Signup Row End -->
-          <!-- Signup Row End -->
-          <!-- Signup Row Start -->
-          <!-- Signup Row Start -->
-
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :country %>
-              <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
-            </div>
-            <div class="signup-column">
-              <%= f.label :state %>
-              <%= f.select :state, [], {}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
-            </div>
-          </div>
-          <!-- Signup Row Start -->
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :city %>
-              <%= f.text_field :city, class: "custom-select" %>
-            </div>
-            <div class="signup-column">
-              <%= f.label :document_number, "Document ID Number" %>
-              <%= f.text_field :document_number %>
-            </div>
-          </div>
-
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :contact_number %>
-              <%= f.text_field :contact_number %>
-            </div>
-            <div class="signup-column">
-              <%= f.label :dob, as: "Date of Birth" %>
-              <%= f.date_field :dob %>
-            </div>
-          </div>
-          <div class="signup-row">
-            <div class="signup-column">
-              <%= f.label :pin %>
-              <%= f.password_field :pin, maxlength: 4 %>
-            </div>
-          </div>
-          <!-- Signup Row End -->
-          <!-- Signup Row Start -->
-          <div class="signup-row">
-            <input class="submit" type="submit" value="Sign up">
-          </div>
-          <!-- Signup Row End -->
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
+<div class="clear-fix"></div>
+
+<footer id="colophon" class="site-footer clearfix" role="contentinfo" >
+  <div class="site-info col-md-12">Copyrights © 2016. All Rights Reserved. Powered by <a
+  href="https://forexhometrade.com">Forex Home Trade</a> .</div>
+
+</footer>
 <script>
     populateCountries("country", "state", "city")
+    function checkRecaptcha() {
+        res = $('#g-recaptcha-response').val();
+
+        if (res == "" || res == undefined || res.length == 0)
+            return false;
+        else
+            return true;
+    }
+
+    //...
+
+    $('.new_user').submit(function(e) {
+        var position = $(".position")
+        var email1 = $("#email1")[0]
+        var email2 = $("#email2")[0]
+        if(email1.value != email2.value){
+            $("#email-same-message" ).text("Email isn't the same.");
+            $("#email-invalid-message" ).text("Email isn't the same.");
+            return false;
+        }
+        if(!checkRecaptcha()) {
+            $("#email-invalid-message" ).text("Please validate your reCAPTCHA.");
+            return false;
+        }
+        if ((position[0].checked) || (position[1].checked)){
+            return true;
+        }else {
+            $("#position-invalid-message").text("Please set position.");
+            $("#email-invalid-message" ).text("Please set position.");
+            return false;
+
+        }
+    });
 </script>
-<style>
-  body{
-    font-size: 14px;
-    line-height: 17px;
-    font-family: 'Lato', sans-serif;
-    min-width: 320px;
-    margin: 0;
-  }
-  ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  label{
-    margin: 0;
-  }
-
-  #wrapper{
-    overflow: hidden;
-    position: relative;
-    z-index: 0;
-  }
-  .signup-page{
-    padding: 50px 20px;
-  }
-  .signup-page .signup-holder{
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  .signup-page .logo{
-    max-width: 200px;
-    margin: 0 auto 10px;
-  }
-  .signup-page .logo a{
-    display: block;
-  }
-  .signup-page .logo a img{
-    display: block;
-    height: auto;
-    width: 100%;
-  }
-  .signup-page .top-block{
-    padding: 0 20px 50px;
-  }
-  .signup-page .top-block h1{
-    font-size: 14px;
-    line-height: 17px;
-    margin: 0 0 5px;
-  }
-  .signup-page .top-block li{
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 30px 0 0;
-  }
-  .signup-page .top-block li input,
-  .signup-page .top-block li label{
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .signup-page .top-block li label{
-    margin: 0 0 0 5px;
-  }
-  .signup-page .signup-bottom .signup-row{
-    margin: 0 0 20px;
-  }
-  .signup-page .signup-bottom .signup-row:after{
-    content: '';
-    display: block;
-    clear: both;
-  }
-  .signup-page .signup-bottom .signup-row.add{
-    position: relative;
-    padding: 0 0 50px;
-    margin: 0 0 50px;
-  }
-  .signup-page .signup-bottom .signup-row.add:before{
-    content: '';
-    display: block;
-    background-color: #dfdfdf;
-    height: 1px;
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    right: 20px;
-  }
-  .signup-page .signup-bottom .signup-row .signup-column{
-    float: left;
-    width: 46%;
-    margin: 0 2%;
-  }
-  .signup-page .signup-bottom .signup-row .signup-column label{
-    display: block;
-    color: #989898;
-    font-size: 14px;
-    line-height: 17px;
-    margin: 0 0 5px;
-  }
-  .signup-page .signup-bottom .signup-row .signup-column input{
-    display: block;
-    font-size: 12px;
-    line-height: 15px;
-    height: 40px;
-    width: 100%;
-    border: 1px solid #dfdfdf;
-    border-radius: 3px;
-  }
-  .signup-page .signup-bottom .signup-row .signup-column select{
-    display: block;
-    font-size: 12px;
-    line-height: 28px;
-    height: 40px;
-    width: 100%;
-    color: #989898;
-    border: 1px solid #dfdfdf;
-    padding: 6px 20px;
-    border-radius: 3px;
-  }
-  .signup-page .signup-bottom .signup-row .submit{
-    display: block;
-    color: #fff;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: bold;
-    border-radius: 3px;
-    border: none;
-    height: 50px;
-    width: 200px;
-    cursor: pointer;
-    margin: 50px auto 0;
-    background: #b17f2c;
-    background: -moz-linear-gradient(left, #b17f2c 0%, #f2db69 100%);
-    background: -webkit-linear-gradient(left, #b17f2c 0%,#f2db69 100%);
-    background: linear-gradient(to right, #b17f2c 0%,#f2db69 100%);
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    transition: all 1s;
-  }
-  .signup-page .signup-bottom .signup-row .submit:hover{
-    background: #f2db69;
-    background: -moz-linear-gradient(left, #f2db69 0%, #b17f2c 100%);
-    background: -webkit-linear-gradient(left, #f2db69 0%,#b17f2c 100%);
-    background: linear-gradient(to right, #f2db69 0%,#b17f2c 100%);
-  }
-
-
-  .payment-option-listing{
-    background-color: #fff;
-  }
-  .payment-option-listing h2{
-    font-size: 18px;
-    line-height: 22px;
-    padding: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
-    border-bottom: 1px solid #dfdfdf;
-  }
-  .payment-option-listing .payment-option-holder{
-    padding: 30px;
-  }
-  .payment-option-listing .payment-option-holder ul:after{
-    content: '';
-    display: block;
-    clear: both;
-  }
-  .payment-option-listing .payment-option-holder ul li{
-    float: left;
-    border-radius: 15px;
-    background-color: #282828;
-    padding: 30px;
-    text-align: center;
-    width: 30%;
-    margin: 0 3% 3% 0;
-  }
-  .payment-option-listing .payment-option-holder ul li .image-holder{
-    width: 100px;
-    margin: 0 auto 15px;
-  }
-  .payment-option-listing .payment-option-holder ul li .image-holder img{
-    display: block;
-    height: auto;
-    width: 100%;
-  }
-  .payment-option-listing .payment-option-holder ul li h3{
-    font-size: 18px;
-    line-height: 20px;
-    font-weight: bold;
-    color: #fff;
-    margin: 0;
-  }
-  #dashboard-sidebar .dashboard-menu .card-body ul ul{
-    padding: 0 0 0 20px;
-  }
-
-</style>
