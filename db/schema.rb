@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190703104638) do
+ActiveRecord::Schema.define(version: 20190808201731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,10 +235,10 @@ ActiveRecord::Schema.define(version: 20190703104638) do
     t.integer "weekly_roi_to_cash_amount_cents", default: 0, null: false
     t.string "weekly_roi_to_cash_amount_currency", default: "USD", null: false
     t.boolean "is_bitcoin_request", default: false
+    t.date "package_activation"
     t.date "package_activation_date"
     t.date "next_package_maintance_date"
     t.string "sidekiq_job_id"
-    t.date "package_activation"
     t.date "package_updated_at"
     t.boolean "reject_kyc", default: false
     t.integer "binary_bonus_for_xfactor_cents", default: 0, null: false
@@ -248,6 +248,8 @@ ActiveRecord::Schema.define(version: 20190703104638) do
     t.boolean "is_package_converted", default: false
     t.boolean "is_sponsor"
     t.boolean "re_buy", default: false
+    t.integer "old_binary_bonus_cents", default: 0, null: false
+    t.string "old_binary_bonus_currency", default: "USD", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

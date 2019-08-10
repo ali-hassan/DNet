@@ -50,7 +50,7 @@ class CalculateUserParentDirectBonus
   def calcu_ulb(usr, position, binary)
     usr.attributes = calculate_leg_bonus(usr, position, binary)
     usr.is_binary_bonus_active = cal_bb_condition?(usr)
-    bonus_amount = usr.adapter.binary_bonus
+    bonus_amount = usr.adapter.calculate_total_binary
     usr.binary_bonus = bonus_amount
     usr.binary_bonus_for_xfactor = bonus_amount
     usr.reload_adapters
@@ -81,7 +81,7 @@ class CalculateUserParentDirectBonus
     { (_ = "#{position}_bonus") => usr.send(_).try(:to_f) + binary }
   end
   def current_bonus_val
-    (package_price / 100 * 8.0)
+    (package_price / 100 * 10.0)
   end
   def total_income_sum
     created_by.adapter.perform_weekly_count.calculate_condition(current_bonus_val) ? (created_by.total_income.try(:to_f) + current_bonus_val) : created_by.total_income.try(:to_f)
