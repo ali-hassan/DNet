@@ -63,6 +63,11 @@ class User < ApplicationRecord
   def current_pin_verify
     (current_pin.to_s != pin_was.to_s) && errors.add(:current_pin, "invalid pin") || true
   end
+  def get_reffered_by(username)
+    user = User.find_by(username: username)
+    self.referred_by = user
+    self
+  end
   def current_pin?
     !current_pin.nil?
   end
