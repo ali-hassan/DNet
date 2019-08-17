@@ -139,7 +139,7 @@ class CurrentUserAdapter
     user.old_binary_bonus_cents + ((binary_bonus - user.old_binary_bonus_cents) * 0.83334)
   end
   def total_income
-    user.total_income.try(:to_f) + user.calculate_total_binary.try(:to_f)
+    user.total_income.try(:to_f) + calculate_total_binary.try(:to_f)
   end
   def total_income_calculate
     if user.re_buy
