@@ -90,7 +90,7 @@ class CurrentUserAdapter
     user.charge_package_price.try(:to_f)
   end
   def cash_wallet_total
-    (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f) + weekly_roi_to_cash_amount.try(:to_f)) - user.cash_wallet_minus.to_f
+    (direct_bonus_users_count + indirect_bonus_users_count + calculate_total_binary.try(:to_f) + weekly_roi_to_cash_amount.try(:to_f)) - user.cash_wallet_minus.to_f
   end
   def earn_weekly_point
     perform_weekly_count.perform
@@ -139,7 +139,7 @@ class CurrentUserAdapter
     user.old_binary_bonus_cents + ((binary_bonus - user.old_binary_bonus_cents) * 0.83334)
   end
   def total_income
-    user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
+    user.total_income.try(:to_f) + user.calculate_total_binary.try(:to_f)
   end
   def total_income_calculate
     if user.re_buy
