@@ -27,7 +27,7 @@
           <div class="custom-dashboard-row hide" id="roi_wallet">
             <div class="custom-dashboard-column">
               <label>ROI Wallet Balance </label>
-              <%= f.number_field :cash_wallet, value: current_user.total_weekly_percentage_amount.try(:to_f), readonly: true, disabled: true, min: "60" %>
+              <%= f.number_field :cash_wallet, value: current_user.current_total_weekly_roi_amount.try(:to_f), readonly: true, disabled: true, min: "60" %>
             </div>
           </div>
 

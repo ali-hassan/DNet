@@ -23,6 +23,7 @@ ActiveAdmin.register WithdrawlRequest do
     column "Transferable Amount", :amount_before_tax
     column "Tax", :service
     column :status
+    column :wallet
 
     column 'Date', :created_at
     actions
@@ -54,6 +55,7 @@ ActiveAdmin.register WithdrawlRequest do
       withdrawl_request.service
     end
     column :status
+    column :wallet
 
     column 'Date' do |withdrawl_request|
       withdrawl_request.created_at
