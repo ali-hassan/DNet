@@ -19,7 +19,21 @@
 
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
-              <label>Cash Wallet </label>
+              <label>Choose Wallet </label>
+              <%= f.select :wallet, @wallets, {include_blank: "Select Wallet"}, {id: "wallet"} %>
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row hide" id="roi_wallet">
+            <div class="custom-dashboard-column">
+              <label>ROI Wallet Balance </label>
+              <%= f.number_field :cash_wallet, value: current_user.total_weekly_percentage_amount.try(:to_f), readonly: true, disabled: true, min: "60" %>
+            </div>
+          </div>
+
+          <div class="custom-dashboard-row hide" id="cash_wallet">
+            <div class="custom-dashboard-column">
+              <label>Cash Wallet Balance </label>
               <%= f.number_field :cash_wallet, value: current_user.adapter.cash_wallet_total, readonly: true, disabled: true, min: "60" %>
             </div>
           </div>
@@ -62,4 +76,15 @@
      document.getElementById("service").value = service;
      document.getElementById("pts").value = caluclated_amount;
   });
+  $("#wallet").on("change", function (event) {
+    var wallet = $("wallet");
+    if(document.getElementById("wallet").value == "ROI Wallet"){
+      document.getElementById("roi_wallet").classList.remove("hide");
+      document.getElementById("cash_wallet").classList.add("hide");
+    }
+    if(document.getElementById("wallet").value == "Cash Wallet"){
+      document.getElementById("cash_wallet").classList.remove("hide");
+      document.getElementById("roi_wallet").classList.add("hide");
+    }
+  })
 </script>
