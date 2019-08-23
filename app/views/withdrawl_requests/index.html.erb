@@ -20,7 +20,7 @@
           <div class="custom-dashboard-row">
             <div class="custom-dashboard-column">
               <label>Choose Wallet </label>
-              <%= f.select :wallet, @wallets, {include_blank: "Select Wallet"}, {id: "wallet"} %>
+              <%= f.select :wallet, @wallets, {include_blank: "Select Wallet"}, {id: "wallet", :required => true} %>
             </div>
           </div>
 
