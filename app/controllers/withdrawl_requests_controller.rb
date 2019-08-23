@@ -17,7 +17,7 @@ class WithdrawlRequestsController < ApplicationController
     #   else
     #     (current_hongkong_time.between?(Time.zone.parse("10:00am"), Time.zone.parse("7:00pm")) && current_hongkong_time.sunday?)  || redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Withdrawl is only allowed on Sunday from 10:00 AM to 7:00 PM time (GMT+8)')
     #   end
-    # end
+    end
   end
   after_action only: [:create] do
     current_user.update bitcoin_url: permitted_params[:permitted_params]
