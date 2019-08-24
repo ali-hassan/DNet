@@ -5,8 +5,11 @@ class WithdrawlRequestsController < ApplicationController
   layout "dashboard"
   before_action only: [:create] do
     @cash_wallet_message = Setting.find_by(key: "cash_wallet_message").value
+
     if @cash_wallet_message.present?
       redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: @cash_wallet_message)
+    elsif (current_user.adapter.total_income_calculate >= current_user.adapter.package_id.try(:to_f))
+      redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You are unable to perform this action.")
     # elsif (current_user.adapter.cash_wallet_total < permitted_params[:pts].try(:to_f))
     #   redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You don't have enough money to make this request.")
     # else
