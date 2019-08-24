@@ -10,16 +10,16 @@ class WithdrawlRequestsController < ApplicationController
       redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: @cash_wallet_message)
     elsif (current_user.adapter.total_income_calculate >= current_user.adapter.package_id.try(:to_f))
       redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You are unable to perform this action.")
-    # elsif (current_user.adapter.cash_wallet_total < permitted_params[:pts].try(:to_f))
-    #   redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You don't have enough money to make this request.")
-    # else
-    #   current_hongkong_time = Time.current.in_time_zone('Hong Kong')
-    #   Time.zone = "Hong Kong"
-    #   if (current_user.withdrawl_date.present? && current_user.withdrawl_date.to_date.to_s(:db) == Date.today.to_s(:db))
-    #     redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Only one withdrawl allowed per day')
-    #   else
-    #     (current_hongkong_time.between?(Time.zone.parse("10:00am"), Time.zone.parse("7:00pm")) && current_hongkong_time.sunday?)  || redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Withdrawl is only allowed on Sunday from 10:00 AM to 7:00 PM time (GMT+8)')
-    #   end
+    elsif (current_user.adapter.cash_wallet_total < permitted_params[:pts].try(:to_f))
+      redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You don't have enough money to make this request.")
+    else
+      current_hongkong_time = Time.current.in_time_zone('Hong Kong')
+      Time.zone = "Hong Kong"
+      if (current_user.withdrawl_date.present? && current_user.withdrawl_date.to_date.to_s(:db) == Date.today.to_s(:db))
+        redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Only one withdrawl allowed per day')
+      else
+        (current_hongkong_time.between?(Time.zone.parse("10:00am"), Time.zone.parse("7:00pm")) && current_hongkong_time.sunday?)  || redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'Withdrawl is only allowed on Sunday from 10:00 AM to 7:00 PM time (GMT+8)')
+      end
     end
   end
   after_action only: [:create] do
