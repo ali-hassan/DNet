@@ -51,11 +51,13 @@ class CalculateUserParentDirectBonus
     usr.attributes = calculate_leg_bonus(usr, position, binary)
     usr.is_binary_bonus_active = cal_bb_condition?(usr)
     bonus_amount = usr.adapter.calculate_total_binary
-    usr.binary_bonus = bonus_amount
-    usr.binary_bonus_for_xfactor = bonus_amount
+    unless usr.is_binary_disable
+      usr.binary_bonus = bonus_amount
+      usr.binary_bonus_for_xfactor = bonus_amount
+    end
     usr.reload_adapters
     if usr_can?(usr)
-      usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus
+      usr.cash_wallet_amount = usr.cash_wallet_amount.try(:to_f) + usr.adapter.calculate_binary_bonus unless usr.is_binary_disable
       ignore_list.include?(usr.id) && usr.is_binary_bonus_active = false
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
       usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}$", log_type: "binary_bonus")
