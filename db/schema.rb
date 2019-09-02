@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190822111127) do
+ActiveRecord::Schema.define(version: 20190827092100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -250,6 +250,7 @@ ActiveRecord::Schema.define(version: 20190822111127) do
     t.boolean "re_buy", default: false
     t.integer "old_binary_bonus_cents", default: 0, null: false
     t.string "old_binary_bonus_currency", default: "USD", null: false
+    t.boolean "is_binary_disable", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

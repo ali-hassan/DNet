@@ -6,7 +6,8 @@ ActiveAdmin.register User do
                 :indirect_bonus_amount,
                 :current_total_weekly_roi_amount,
                 :current_week_roi_amount,
-                :binary_bonus_for_xfactor
+                :binary_bonus_for_xfactor,
+                :is_binary_disable
 
   index do
     selectable_column
@@ -18,6 +19,7 @@ ActiveAdmin.register User do
     column :created_at
     column "Smart Wizard Balance",  :smart_wallet_balance
     column :is_binary_bonus_active
+    column :is_binary_disable
     # column :current_week_roi_amount
     # column :total_weekly_percentage_amount
     column :indirect_bonus_amount
@@ -36,6 +38,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :is_binary_bonus_active, label: "Binary Check"
+      f.input :is_binary_disable, label: "Stop Binary Bonus"
       f.input :smart_wallet_balance, label: "Smart Wizard Balance"
       f.input :total_bonus_points
       # f.input :indirect_bonus_amount
