@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   mount_uploader :document, DocumentUploader
+  mount_uploader :document_front, DocumentUploader
+  mount_uploader :document_back, DocumentUploader
   mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:
