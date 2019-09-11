@@ -57,18 +57,18 @@ class User < ApplicationRecord
   end
   # Picture Validations
   # todo: to make it robust and precise
-  validate :picture_size_validation, :if => "document?"
-  validate :document_back_size_validation, :if => "document_back?"
-  validate :document_front_size_validation, :if => "document_front?"
-  def picture_size_validation
-    errors[:document] << "should be less than 1MB" if document.size > 1.megabytes
-  end
-  def document_back_size_validation
-    errors[:document_back] << "should be less than 1MB" if document_back.size > 1.megabytes
-  end
-  def document_front_size_validation
-    errors[:document_front] << "should be less than 1MB" if document_front.size > 1.megabytes
-  end
+  # validate :picture_size_validation, :if => "document?"
+  # validate :document_back_size_validation, :if => "document_back?"
+  # validate :document_front_size_validation, :if => "document_front?"
+  # def picture_size_validation
+  #   errors[:document] << "should be less than 1MB" if document.size > 1.megabytes
+  # end
+  # def document_back_size_validation
+  #   errors[:document_back] << "should be less than 1MB" if document_back.size > 1.megabytes
+  # end
+  # def document_front_size_validation
+  #   errors[:document_front] << "should be less than 1MB" if document_front.size > 1.megabytes
+  # end
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   attr_accessor :select_package_id
