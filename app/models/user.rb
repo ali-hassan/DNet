@@ -55,6 +55,20 @@ class User < ApplicationRecord
   after_create do |usr|
     usr.created_by.present? && usr.created_by.log_histories.create(logable: self, log_type: :direct_refarral, message: "Direct Referral username #{ usr.username } at position #{ usr.parent_position }")
   end
+  # Picture Validations
+  # todo: to make it robust and precise
+  validate :picture_size_validation, :if => "document?"
+  validate :document_back_size_validation, :if => "document_back?"
+  validate :document_front_size_validation, :if => "document_front?"
+  def picture_size_validation
+    errors[:document] << "should be less than 1MB" if document.size > 1.megabytes
+  end
+  def document_back_size_validation
+    errors[:document_back] << "should be less than 1MB" if document_back.size > 1.megabytes
+  end
+  def document_front_size_validation
+    errors[:document_front] << "should be less than 1MB" if document_front.size > 1.megabytes
+  end
   attr_encrypted :pin, key: Rails.application.secrets.secret_key,
     allow_empty_value: true, salt: Rails.application.secrets.secret_salt
   attr_accessor :select_package_id
