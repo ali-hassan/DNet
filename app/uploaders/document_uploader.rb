@@ -39,7 +39,7 @@ class DocumentUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
   def size_range
-    0.1..1.megabytes
+    0.1..2.megabytes
   end
 
   # Override the filename of the uploaded files:
