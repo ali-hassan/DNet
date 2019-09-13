@@ -62,6 +62,7 @@ class CalculateUserParentDirectBonus
       usr.is_binary_bonus_active? && usr.adapter.cupda.check_for_rank_upgrade
       usr.log_histories.create(logable: @user, message: "Binary Points #{binary} of user #{@user.username} for package #{@user.package_price.to_f}$", log_type: "binary_bonus")
       usr.save(validate: false)
+      usr.update "#{position}_bonus".to_sym => usr.send("#{position}_bonus").to_f - binary
     end
   end
   def alpl(&block)
