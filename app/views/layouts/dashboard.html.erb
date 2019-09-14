@@ -207,7 +207,7 @@
                     <li class="status <%= current_user.is_valid_kyc && "verified" || "not-verified" %>">
                       <dl>
                         <dt>KYC status: </dt>
-                        <dd><%= current_user.is_valid_kyc ? "Accepted" : "Rejected"%></dd>
+                        <dd><%= current_user.is_valid_kyc ? "Approved" : "Rejected"%></dd>
                       </dl>
                     </li>
                   </ul>
