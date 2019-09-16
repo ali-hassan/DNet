@@ -77,9 +77,20 @@ class CurrentUserAdapter
   def find_child_list_by_parent_id
     child_list_by_parent_id(user, [])
   end
+  # def child_list_by_parent_id(usr, result=[])
+  #   (chld = User.find_by_parent_id(parent_id: usr.id)).present? && (chld.each { |u| result.push(u); child_list_by_parent_id(u, result) }; result) || result
+  # end
   def child_list_by_parent_id(usr, result=[])
-    (chld = User.where(parent_id: usr.id)).present? && (chld.each { |u| result.push(u); child_list_by_parent_id(u, result) }; result) || result
+    chld = User.find_by_parent_id(parent_id: usr.id)
+    if chld.present?
+      result.push(u)
+      child_list_by_parent_id(u, result)
+      result
+    else
+      result
+    end
   end
+
   def indirect_bonus_users_count
     indirect_total_bonus_amount.try(:to_f)
   end
