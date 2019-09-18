@@ -204,6 +204,12 @@
                         <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
                       </dl>
                     </li>
+                    <li class="status <%= current_user.is_valid_kyc && "verified" || "not-verified" %>">
+                      <dl>
+                        <dt>KYC status: </dt>
+                        <dd><%= current_user.is_valid_kyc ? "Approved" : "Rejected"%></dd>
+                      </dl>
+                    </li>
                   </ul>
                 </div>
                 <div class="header-right">
