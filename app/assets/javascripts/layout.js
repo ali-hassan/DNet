@@ -19,6 +19,4 @@
 //= require canvasjs
 //= require countries
 //= require override
-//= require ckeditor/init
-//= require ckeditor/config
 //= require_tree ./layout_local

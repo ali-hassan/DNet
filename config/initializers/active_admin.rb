@@ -199,7 +199,10 @@ ActiveAdmin.setup do |config|
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   # To load a javascript file:
-  config.register_javascript 'ckeditor/init.js'
+
+  # todo: Rails not supported
+  ## commented its not supported in Rails 5.x
+  # config.register_javascript 'ckeditor/init.js'
 
   # == CSV options
   #
