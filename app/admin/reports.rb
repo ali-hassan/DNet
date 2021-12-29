@@ -12,7 +12,7 @@ ActiveAdmin.register User, as: 'Report' do
       usr.adapter.total_income
     end
     column "Binary Bonus" do |usr|
-      usr.binary_bonus.try(:to_f)
+      usr.adapter.calculate_total_binary.try(:to_f)
     end
     column "Xfactor Amount" do |usr|
       usr.adapter.total_income_calculate

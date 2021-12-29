@@ -48,7 +48,7 @@
                 <div class="phone_email phone_email1">
                   <div class="form-text">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" name="Name" placeholder="Sponsor name" value='<%= resource.referred_by.try(:full_name) %>' readonly id="sponsor-txt-view" >
+                    <input type="text" name="Name" placeholder="Sponsor name" value='<%= params[:referred_name].present? && resource.get_reffered_by(params[:referred_name]) &&  resource.referred_by.try(:full_name) || resource.referred_by.try(:full_name) %>' readonly id="sponsor-txt-view" >
                     <div id="sponsor_info_card">
                       <%= f.hidden_field :referred_by_id, disabled: resource.referred_by_id.blank? %>
                     </div>
@@ -160,7 +160,7 @@
 
 <footer id="colophon" class="site-footer clearfix" role="contentinfo" >
   <div class="site-info col-md-12">Copyrights © 2016. All Rights Reserved. Powered by <a
-  href="https://forexhometrade.com">Forex Home Trade</a> .</div>
+  href="https://DNet.com">DNet</a> .</div>
 
 </footer>
 <script>

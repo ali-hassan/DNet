@@ -43,8 +43,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.office365.com',
     port:                 587,
-    domain:               'forexhometrade.com',
-    user_name:            'support@forexhometrade.com',
+    domain:               'DNet.com',
+    user_name:            'support@DNet.com',
     password:             'Rubyonrails1*',
     authentication: :login,
     enable_starttls_auto: true

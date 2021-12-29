@@ -2,7 +2,8 @@ ActiveAdmin.register LogHistory do
   preserve_default_filters!
   filter :user_username, as: :string
   filter :user_email, as: :string
-  actions :index, :show
+  # actions :index, :show, :edit
+  permit_params :message, :log_type
 
   index  do
     id_column
@@ -28,5 +29,14 @@ ActiveAdmin.register LogHistory do
     column :logable_id
     column :log_type
     column :created_at
+    actions
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :message
+      f.input :log_type
+    end
+    actions
   end
 end

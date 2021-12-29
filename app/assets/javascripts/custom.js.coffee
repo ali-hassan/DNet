@@ -37,7 +37,7 @@ $(document).on "turbolinks:load", ->
     alert("link coppied")
     $(".copy-link-label").off("click")
 
-  $(document).on "keyup", "#sponsor_id_txt", (eventObject) ->
+  $(document).on "change", "#sponsor_id_txt", (eventObject) ->
     userName = currentUserName
     if @value.length > 1
       if currentUserName == @value

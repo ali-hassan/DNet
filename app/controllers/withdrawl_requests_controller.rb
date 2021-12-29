@@ -4,7 +4,13 @@ class WithdrawlRequestsController < ApplicationController
   skip_before_action :verify_authenticity_token
   layout "dashboard"
   before_action only: [:create] do
-    if (current_user.adapter.cash_wallet_total < permitted_params[:pts].try(:to_f))
+    @cash_wallet_message = Setting.find_by(key: "cash_wallet_message").value
+
+    if @cash_wallet_message.present?
+      redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: @cash_wallet_message)
+    elsif (current_user.adapter.total_income_calculate >= current_user.adapter.package_id.try(:to_f))
+      redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You are unable to perform this action.")
+    elsif (current_user.adapter.cash_wallet_total < permitted_params[:pts].try(:to_f))
       redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: "You don't have enough money to make this request.")
     else
       current_hongkong_time = Time.current.in_time_zone('Hong Kong')
@@ -21,13 +27,16 @@ class WithdrawlRequestsController < ApplicationController
   end
   def index
     @withdrawl_request = current_user.withdrawl_requests.build
+    @is_cash_wallet = Setting.find_by(key: "is_cash_wallet_enable").try(:value)
+    @wallets = ["ROI Wallet"]
+    @is_cash_wallet == "true" && @wallets.push("Cash Wallet") || @wallets
   end
   def create
     (@withdrawl_request = current_user.withdrawl_requests.build(permitted_params)).save && redirect_to(withdrawl_requests_url(subdomain: 'office'), notice: 'successfully request submitted') || render(:index)
   end
   private
   def permitted_params
-    params.require(:withdrawl_request).permit(:pts, :bitcoin_url, :cash_wallet, :amount, :service, :wallet_address)
+    params.require(:withdrawl_request).permit(:pts, :bitcoin_url, :cash_wallet, :amount, :service, :wallet_address, :wallet)
   end
   def update_gateway
     params[:withdrawl_request][:withdraw_gateway].present? && current_user.update(withdraw_gateway: params[:withdrawl_request][:withdraw_gateway])
