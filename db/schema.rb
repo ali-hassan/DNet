@@ -235,9 +235,9 @@ ActiveRecord::Schema.define(version: 20190904115815) do
     t.integer "weekly_roi_to_cash_amount_cents", default: 0, null: false
     t.string "weekly_roi_to_cash_amount_currency", default: "USD", null: false
     t.boolean "is_bitcoin_request", default: false
-    t.date "package_activation"
     t.date "package_activation_date"
     t.date "next_package_maintance_date"
+    t.date "package_activation"
     t.string "sidekiq_job_id"
     t.date "package_updated_at"
     t.boolean "reject_kyc", default: false
@@ -246,11 +246,10 @@ ActiveRecord::Schema.define(version: 20190904115815) do
     t.integer "minus_x_factor_binary_cents", default: 0, null: false
     t.string "minus_x_factor_binary_currency", default: "USD", null: false
     t.boolean "is_package_converted", default: false
-    t.boolean "is_sponsor"
     t.boolean "re_buy", default: false
+    t.boolean "is_sponsor"
     t.integer "old_binary_bonus_cents", default: 0, null: false
     t.string "old_binary_bonus_currency", default: "USD", null: false
-    t.boolean "is_binary_active"
     t.boolean "is_binary_disable", default: false
     t.string "zip_code"
     t.string "document_front"

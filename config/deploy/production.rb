@@ -1,6 +1,6 @@
-server 'ubuntu@forexhometrade.com', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
+server 'ubuntu@DNet.com', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
-server 'forexhometrade.com',
+server 'DNet.com',
        user: 'ubuntu',
        roles: %w{web app db},
        ssh_options: {

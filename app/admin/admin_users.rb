@@ -1,4 +1,4 @@
-ActiveAdmin.register AdminUser, as: "Forexhometrade Admins" do
+ActiveAdmin.register AdminUser, as: "DNet Admins" do
   permit_params :balance
   permit_params :email, :password, :password_confirmation
 
