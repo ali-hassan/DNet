@@ -204,6 +204,12 @@
                         <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
                       </dl>
                     </li>
+                    <li class="status <%= current_user.is_valid_kyc && "verified" || "not-verified" %>">
+                      <dl>
+                        <dt>KYC status: </dt>
+                        <dd><%= current_user.is_valid_kyc ? "Approved" : "Rejected"%></dd>
+                      </dl>
+                    </li>
                   </ul>
                 </div>
                 <div class="header-right">
@@ -244,17 +250,56 @@
     </div>
     <div class="modal" tabindex="-1" id="alert_welcome_popup" role="dialog">
       <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width: 530px">
+        <div class="modal-content" style="width: 680px">
           <div class="modal-header">
+            <h4 style="color: #00A0D1; font-weight: bold">
+              Greetings from DNet!
+            </h4>
             <!--<h5 class="modal-title">Awesome Promotions!</h5>-->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -12px !important;  ">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -42px !important;  ">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" style="padding-top: 3px;">
-            <%= link_to image_url('md_102.jpg'), target: :_blank do %>
-              <%= image_tag 'md_102.jpeg', width: 500, height: 600 %>
-            <% end %>
+          <p class="modal-body" style="text-align: center; padding: 2px !important;">
+            <h5 class="popup-txt">
+              The world is changing rapidly. Now it’s about optimizing visuals for the right platforms. Because people use different devices to remain updated.
+            </h5>
+            <br>
+            <h5 class="popup-txt">
+              DNet is close to the destination to launch New projects. We are trying our best to complete this phase soon. We have some major plans that will expand our offering again, among them is direct sponsorship with a higher bonus. Affiliate partners have been directed to do more work on direct sponsorship to make these projects successful, that’s why DNet has decided to make an increment in bonuses. Now direct sponsorship bonus will be 10% and the binary bonus will be 10% as well, it is an amazing opportunity. Ultimately, there will be an increment in all bonuses. Before when a person sponsored either from the right or left 1000$ in direct sponsorship, then according to 8% direct sponsorship and 12% binary his total earning was just 28% , But now, when a person will sponsor either from the right or left 1000$ in Direct Sponsorship, then according to new incremental bonus plan, 10% direct sponsorship and 10% binary will make his total earning 30%. This is a golden opportunity for affiliate partners.
+            </h5>
+            <br>
+            <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
+              Earning wheel promotion:
+            </li>
+            <br>
+            <h5 class="popup-txt">
+              FHT is bringing new promotion with this increment, next whenever you will direct sponsor a package of 1000$ or more, you will get one free package as a reward. Buy one get one free package as reward offer ‘schedule: •
+            </h5>
+            <br>
+              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
+                1000$ direct sponsor     ----------- 100$ package free as a reward
+              </li>
+              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
+                2000$ direct sponsor     ----------- 200$ package free as a reward
+              </li>
+              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
+                5000$ direct sponsor     ----------- 500$ package free as a reward
+              </li>
+              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
+                10000$ direct sponsor  --------- 1000$ package free as a reward
+              </li>
+            <br>
+            <h5 class="popup-txt">
+              To claim your free package, whenever you will sponsor a package then immediately contact with support and provide necessary Details. We hope you enjoy this opportunity.               <br>
+              <br>
+              Note: The free Account will be just an ROI package; it will not include bonuses and points. This Promotion is for Limited Time Period Only.
+            </h5>
+            <br>
+            <h5 class="popup-txt" style="font-weight: bold">
+              All rights are reserved 2019.
+            </h5>
+            </p>
           </div>
         </div>
       </div>

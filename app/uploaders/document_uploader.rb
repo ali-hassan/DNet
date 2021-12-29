@@ -38,10 +38,10 @@ class DocumentUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w(jpg jpeg gif png)
   end
+  def size_range
+    0.1..2.megabytes
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    "document.jpg" if original_filename
-  end
 end

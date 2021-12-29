@@ -77,9 +77,20 @@ class CurrentUserAdapter
   def find_child_list_by_parent_id
     child_list_by_parent_id(user, [])
   end
+  # def child_list_by_parent_id(usr, result=[])
+  #   (chld = User.find_by_parent_id(parent_id: usr.id)).present? && (chld.each { |u| result.push(u); child_list_by_parent_id(u, result) }; result) || result
+  # end
   def child_list_by_parent_id(usr, result=[])
-    (chld = User.where(parent_id: usr.id)).present? && (chld.each { |u| result.push(u); child_list_by_parent_id(u, result) }; result) || result
+    chld = User.find_by_parent_id(parent_id: usr.id)
+    if chld.present?
+      result.push(u)
+      child_list_by_parent_id(u, result)
+      result
+    else
+      result
+    end
   end
+
   def indirect_bonus_users_count
     indirect_total_bonus_amount.try(:to_f)
   end
@@ -90,7 +101,7 @@ class CurrentUserAdapter
     user.charge_package_price.try(:to_f)
   end
   def cash_wallet_total
-    (direct_bonus_users_count + indirect_bonus_users_count + binary_bonus.try(:to_f) + weekly_roi_to_cash_amount.try(:to_f)) - user.cash_wallet_minus.to_f
+    (direct_bonus_users_count + indirect_bonus_users_count + calculate_total_binary.try(:to_f) + weekly_roi_to_cash_amount.try(:to_f)) - user.cash_wallet_minus.to_f
   end
   def earn_weekly_point
     perform_weekly_count.perform
@@ -135,8 +146,11 @@ class CurrentUserAdapter
   def binary_bonus
     user.is_binary_bonus_active? && ((user.right_bonus.to_f > user.left_bonus.to_f) && (user.left_bonus.try(:to_f) / 2) || (user.right_bonus.try(:to_f) / 2)) || 0
   end
+  def calculate_total_binary
+    user.old_binary_bonus_cents + ((binary_bonus - user.old_binary_bonus_cents) * 0.83334)
+  end
   def total_income
-    user.total_income.try(:to_f) + user.binary_bonus.try(:to_f)
+    user.total_income.try(:to_f) + calculate_total_binary.try(:to_f)
   end
   def total_income_calculate
     if user.re_buy

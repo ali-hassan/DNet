@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'support@forexhometrade.com'
+  default from: 'support@DNet.com'
   layout 'mailer'
 
 end
