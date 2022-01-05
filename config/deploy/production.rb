@@ -1,6 +1,6 @@
-server 'ubuntu@DNet.com', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
+server 'ubuntu@18.132.126.83', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
-server 'DNet.com',
+server '18.132.126.83',
        user: 'ubuntu',
        roles: %w{web app db},
        ssh_options: {

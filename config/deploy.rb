@@ -1,12 +1,12 @@
 # config valid only for current version of Capistrano
 lock "3.11.0"
 
-set :application, 'forex_home_trade'
-set :repo_url, 'git@bitbucket.org:ali-hassan-mirza/forex_home_trade.git'
+set :application, 'DNet'
+set :repo_url, 'git@github.com:ali-hassan/DNet.git'
 
-set :deploy_to, '/home/ubuntu/www/forex_home_trade'
+set :deploy_to, '/home/ubuntu/www/DNet'
 
-set :rvm_ruby_version, '2.4.2'
+set :rvm_ruby_version, '2.7.2'
 
 set :linked_files, %w{config/secrets.yml config/database.yml config/newrelic.yml config/application.yml}
 
