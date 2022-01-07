@@ -13,7 +13,8 @@ set :linked_files, %w{config/secrets.yml config/database.yml config/newrelic.yml
 set :linked_dirs, %w{pem bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 # puma configuration
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :ssh_options,     { forward_agent: true}
+set :deploy_via, :copy
 
 set :pty, false
 
