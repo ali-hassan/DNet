@@ -1,10 +1,10 @@
 # config valid only for current version of Capistrano
 lock "3.11.0"
 
-set :application, 'DNet'
+set :application, 'd_net'
 set :repo_url, 'git@github.com:ali-hassan/DNet.git'
 
-set :deploy_to, '/home/ubuntu/www/DNet'
+set :deploy_to, '/home/ubuntu/var/www/d_net'
 
 set :rvm_ruby_version, '2.7.2'
 
