@@ -8,7 +8,7 @@ set :deploy_to, '/home/ubuntu/var/www/d_net'
 
 set :rvm_ruby_version, '2.7.2'
 
-set :linked_files, %w{config/secrets.yml config/database.yml config/newrelic.yml config/application.yml}
+set :linked_files, %w{config/secrets.yml config/database.yml }
 
 set :linked_dirs, %w{pem bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
