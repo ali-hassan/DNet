@@ -20,5 +20,5 @@ namespace :paths do
   end
 end
 
-ask :branch, 'd_net_changes'
+ask :branch, 'staging'
 # set :npm_flags, '--staging' # default
