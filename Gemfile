@@ -85,14 +85,7 @@ gem 'dynamic_form'
 gem "truncate_html"
 gem 'money-rails'
 
-gem "capistrano", '=3.11.0'
-gem 'capistrano3-delayed-job', '~> 1.0'
-gem 'capistrano-ssh-doctor', '~> 1.0'
-gem 'capistrano-rvm'
-gem 'capistrano-rails',   require: false
-gem 'capistrano-bundler', require: false
-gem 'capistrano-passenger'
-gem 'capistrano-npm'
+
 gem 'client_side_validations'
 gem 'activeadmin', '=1.4.3'
 # ActiveAdmin-Select2: Drop down menus
@@ -111,3 +104,14 @@ gem 'will_paginate'
 gem "kaminari"
 gem "recaptcha"
 gem 'activeadmin-xls', '~>2.0.0'
+
+group :deployment do
+  gem "capistrano", "=3.11"
+  gem 'capistrano3-delayed-job', '~> 1.0'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-npm'
+end
