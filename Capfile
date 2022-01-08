@@ -11,7 +11,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 # require 'capistrano/npm'
 # require 'thinking_sphinx/capistrano'
-require "capistrano/rails/migrations"
+# require "capistrano/rails/migrations"
 require "capistrano/passenger"
 require 'capistrano/sidekiq'
 require "whenever/capistrano"

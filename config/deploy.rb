@@ -15,6 +15,6 @@ set :linked_dirs, %w{pem bin log tmp/pids tmp/cache tmp/sockets vendor/bundle pu
 # puma configuration
 set :ssh_options,     { forward_agent: true}
 set :deploy_via, :copy
-
+set :bundle_flags,    ""
 set :pty, false
 
