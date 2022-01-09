@@ -35,7 +35,7 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :puma_preload_app, true
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
-set :linked_files, %w{config/database.yml config/secrets.yml config/config.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/reports}
 
 append :asdf_map_ruby_bins, 'puma', 'pumactl'
