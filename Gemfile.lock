@@ -502,6 +502,7 @@ DEPENDENCIES
   rails (~> 5.1.1)
   rails-i18n
   rails_autolink
+  rake
   recaptcha
   redcarpet (~> 3.4.0)
   sass-rails (~> 5.0)
