@@ -22,7 +22,7 @@ namespace :paths do
 end
 set :rails_env, "production"
 set :puma_env, "production"
-set :puma_config_file, "#{shared_path}/config/puma.rb"
-set :puma_conf, "#{shared_path}/config/puma.rb"
+# set :puma_config_file, "#{shared_path}/config/puma.rb"
+# set :puma_conf, "#{shared_path}/config/puma.rb"
 ask :branch, 'd_net_changes'
 # set :npm_flags, '--staging' # default
