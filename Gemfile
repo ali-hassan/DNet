@@ -107,6 +107,7 @@ gem 'activeadmin-xls', '~>2.0.0'
 
 group :deployment do
   gem "capistrano", "=3.11"
+  gem 'puma', '< 5'
   gem 'capistrano3-delayed-job', '~> 1.0'
   gem 'capistrano-ssh-doctor', '~> 1.0'
   gem 'capistrano-rvm'
