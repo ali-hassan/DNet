@@ -104,7 +104,7 @@ gem 'will_paginate'
 gem "kaminari"
 gem "recaptcha"
 gem 'activeadmin-xls', '~>2.0.0'
-gem "rake"
+
 group :deployment do
   gem "capistrano", "=3.11"
   gem 'puma', '< 5'
