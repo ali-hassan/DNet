@@ -52,7 +52,7 @@ $(document).on "turbolinks:load", ->
 
   $(document).on "click", "#live_trading", (eventObject) ->
     eventObject.preventDefault();
-    alert("Forex live trading will be available very soon");
+    alert("DNet live trading will be available very soon");
     $("#live_trading").off("click");
   $(document).on "click", "#promotion_trading", (eventObject) ->
     eventObject.preventDefault();
