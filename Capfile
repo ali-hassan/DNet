@@ -10,10 +10,12 @@ require 'capistrano/bundler'
 
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
+
+## Needs to check above two for deployment if crash at certain points.
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 require 'capistrano/sidekiq'
-require "whenever/capistrano"
+# require "whenever/capistrano"
 
 
 install_plugin Capistrano::Puma::Daemon

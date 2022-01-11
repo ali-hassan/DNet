@@ -31,14 +31,14 @@ set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.access.log"
 set :puma_error_log,  "#{release_path}/log/puma.error.log"
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-# set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 set :puma_preload_app, true
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/reports}
 
-append :asdf_map_ruby_bins, 'puma', 'pumactl'
+# append :asdf_map_ruby_bins, 'puma', 'pumactl'
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
