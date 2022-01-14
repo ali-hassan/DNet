@@ -1,0 +1,296 @@
+<main class="main">
+  <aside id="right-sidebar">
+    <!-- Sidebar Block 1 Start -->
+    <div class="sidebar-block">
+<!--      <div class="sidebar-content-body">-->
+<!--        <div class="video-holder">-->
+<!--          <iframe src="https://www.youtube.com/embed/m8KHono1YHw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+    <!-- Sidebar Block 1 End -->
+
+    <!-- Sidebar Block 2 Start -->
+    <div class="sidebar-block">
+      <div class="heading">
+        <h2><%= current_user.full_name %></h2>
+        <a href="javascript:;"><%= current_user.email %></a>
+      </div>
+      <div class="sidebar-content-body">
+        <ul>
+          <li class="rank-up">
+            <span class="title">Current Rank</span>
+            <h3><%= current_user.adapter.cupda_current_rank.try(:name) %></h3>
+          </li>
+          <li class="rank-up">
+            <span class="title">User Name</span>
+            <h3><%= current_user.try(:username) %></h3>
+          </li>
+          <%- if current_user.is_pin%>
+            <li>
+              <span class="title">Pin Capacity</span>
+              <h3>$<%= current_user.pin_capacity%></h3>
+              <span><%= current_user.created_at.strftime("%b. %e %Y") %></span>
+            </li>
+          <%else%>
+            <li>
+              <span class="title">Purchased Package</span>
+              <h3><%= current_user.package_id ? "$#{current_user.package_id}" : ""%></h3>
+              <span><%= current_user.created_at.strftime("%b. %e %Y") %></span>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+    <!-- Sidebar Block 2 End -->
+
+    <!-- Sidebar Block 3 Start -->
+    <div class="sidebar-block">
+      <% if current_user.sponsor_id.present? || current_user.is_pin || current_user.parent_id.present? %>
+        <div class="heading">
+          <h2>Sponsor Information</h2>
+        </div>
+        <% @sponser = (current_user.created_by || current_user.parent) %>
+        <div class="sidebar-content-body">
+          <ul>
+            <li>
+              <span class="title">Sponsor Name</span>
+              <h4><%=@sponser.full_name%></h4>
+            </li>
+            <li>
+              <span class="title">Sponsor Username</span>
+              <h4><%= @sponser.username %></h4>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+    <!-- Sidebar Block 3 End -->
+
+    <!-- Sidebar Block 3 Start -->
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#" do %>
+            <%= image_tag("live_trading.gif", id: "live_trading")%>
+          <%end%>
+          <strong class="common-class">Live Trading</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-content-body">
+        <div class="video-holder">
+          <%= link_to "#", class: 'promotion-href' do %>
+            <%= image_tag("promotion_img.jpg", id: "promotion_trading")%>
+          <%end%>
+          <strong class="common-class">New Promotions</strong>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <!-- Content Block 1 Start -->
+    <div class="main-content-block">
+<!--      <h4 class="alert alert-danger">Notice: The users will create their account again who created their account after September 16, 2019. Due to maintenance, their accounts could not activate. All those users kindly send us the username, Email ID, and Password so that company will reactivate their accounts. After package activation, the company will resend accounts to these users.</h4>-->
+      <div class="heading">
+        <h2>Income</h2>
+      </div>
+      <div class="main-content-body">
+        <div class="three-columns">
+          <!-- Columns Start -->
+          <div class="columns">
+            <div class="columns-top weekly-roi">
+              <h3><%= number_to_currency current_user.current_week_roi_amount.try(:to_f) %></h3>
+              <span>Weekly ROI</span>
+              <span class="currency-symbol">$</span>
+            </div>
+            <div class="columns-middle">
+              <h3><%= number_to_currency current_user.direct_bonus_users_count %></h3>
+              <span>Direct Bonus</span>
+              <%=image_tag "ic_bonus.png", class:"currency-symbol-img", alt: "Symbol"%>
+            </div>
+            <div class="columns-bottom">
+              <h3><%= number_to_currency current_user.total_income.try(:to_f) + current_user.adapter.calculate_total_binary.try(:to_f) %></h3>
+              <span>Total Income</span>
+              <%=image_tag "dollar-symbol.png", class: "currency-symbol-img dollar-symbol", alt: "Symbol"%>
+            </div>
+          </div>
+          <!-- Columns End -->
+
+          <!-- Columns Start -->
+          <div class="columns">
+            <div class="columns-top total-roi">
+              <h3><%= number_to_currency current_user.total_weekly_percentage_amount.try(:to_f) %></h3>
+              <span>Total ROI</span>
+              <span class="currency-symbol">$</span>
+            </div>
+            <div class="columns-middle">
+              <h3><%= number_to_currency current_user.indirect_bonus_users_count %></h3>
+              <span>Indirect Income</span>
+              <%=image_tag "ic_indirectincome.png", class: "currency-symbol-img", alt: "Symbol"%>
+            </div>
+<!--            <div class="columns-bottom">-->
+<!--              <h3><%#= number_to_currency current_user.adapter.cash_wallet_total %></h3>-->
+<!--              <span>Cash Wallet</span>-->
+              <%#=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
+<!--            </div>-->
+          </div>
+          <!-- Columns End -->
+
+          <!-- Columns Start -->
+          <div class="columns">
+            <div class="columns-top current-roi">
+              <h3><%= number_to_currency current_user.current_total_weekly_roi_amount.try(:to_f) %></h3>
+              <span>Current ROI</span>
+              <span class="currency-symbol">$</span>
+            </div>
+<!--            <div class="columns-middle">-->
+<!--              <h3><%#= number_to_currency (current_user.binary_bonus_for_xfactor.to_f != 0.0 ? current_user.binary_bonus_for_xfactor.to_f : (current_user.package_updated_at.present? ? (current_user.binary_bonus_cents / 100).try(:to_f) : current_user.binary_bonus_for_xfactor.to_f + current_user.minus_x_factor_binary.to_f)) %></h3>-->
+<!--              <span>Binary Bonus</span>-->
+              <%#=image_tag "ic_binarybonus.png", class: "currency-symbol-img", alt: "Symbol"%>
+<!--            </div>-->
+            <div class="columns-bottom">
+              <h3>$<%= current_user.smart_wallet_balance.to_f %></h3>
+              <span>Smart Wallet</span>
+              <%=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
+            </div>
+          </div>
+          <!-- Columns End -->
+        </div>
+      </div>
+    </div>
+    <!-- Content Block 1 End -->
+
+    <!-- Content Block 2 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2>Network</h2>
+      </div>
+      <div class="main-content-body">
+        <div class="two-columns">
+          <!-- Columns Start -->
+          <div class="columns">
+            <div class="columns-top">
+              <dl>
+                <dt>Left Points</dt>
+                <dd><%= current_user.left_bonus.to_f || 0  %></dd>
+              </dl>
+              <dl>
+                <dt>Left Team</dt>
+                <dd><%= current_user.left_team_members_count %> Members</dd>
+              </dl>
+            </div>
+            <div class="columns-bottom">
+              <h4>Left Referrel Link</h4>
+              <div class="link-block">
+                <%= link_to build_refer_link(:left), build_refer_link(:left) %>
+                <label for="copy-link-1" class="copy-link-label">
+                  <input id="copy-link-1" readonly type="text" value="<%= build_refer_link(:left) %>" class="copy-link">
+                  Copy
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Columns End -->
+
+          <!-- Columns Start -->
+          <div class="columns">
+            <div class="columns-top">
+              <dl>
+                <dt>Right Points</dt>
+                <dd><%= current_user.right_bonus.to_f || 0 %></dd>
+              </dl>
+              <dl>
+                <dt>Right Team</dt>
+                <dd><%= current_user.right_team_members_count %> Members</dd>
+              </dl>
+            </div>
+            <div class="columns-bottom">
+              <h4>Right Referrel Link</h4>
+              <div class="link-block">
+                <%= link_to build_refer_link(:right), build_refer_link(:right) %>
+                <label for="copy-link-2" class="copy-link-label">
+                  <input id="copy-link-2" readonly type="text" value="<%= build_refer_link(:right) %>" class="copy-link">
+                  Copy
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Columns End -->
+        </div>
+      </div>
+    </div>
+    <!-- Content Block 2 End -->
+
+    <% if current_user.adapter.max_package_total_earning.present? %>
+      <!-- Content Block 3 Start -->
+      <div class="main-content-block" style="padding-bottom: 34px">
+        <div class="heading">
+          <h2>X-Factor</h2>
+        </div>
+        <div class="main-content-body">
+            <div id="chartContainer"
+                 data-weekly-total="<%= 100 - current_user.adapter.graph_total_percent %>"
+                 data-weekly-current="<%= current_user.adapter.graph_total_percent %>"
+              style="height: 300px; width: 100%;"></div>
+        </div>
+      </div>
+      <!-- Content Block 3 End -->
+    <% end %>
+  </div>
+</main>
+
+<script>
+  $(".dashboard-menu .card-body").each(function(){
+      if($(this).length){
+          $(this).parent().parent().addClass("have-dropdown");
+      }
+      else{
+          console.log("not");
+      }
+  });
+
+
+  $(function() {
+      $('.copy-link').click(function() {
+          $(this).focus();
+          $(this).select();
+          document.execCommand('copy');
+          console.log(2);
+      });
+  });
+
+
+  window.onload = function() {
+      var weeklyTotal = parseFloat($("#chartContainer").data("weekly-total")),
+      weeklyCurrent = parseFloat($("#chartContainer").data("weekly-current")),
+      $chartContainer = $("#chartContainer");
+
+      var options = {
+          exportEnabled: true,
+          animationEnabled: true,
+          legend:{
+              horizontalAlign: "right",
+              verticalAlign: "center"
+          },
+          data: [{
+              type: "pie",
+              showInLegend: true,
+              toolTipContent: "<b>{name}</b>: (#percent%)",
+              indexLabel: "{name}",
+              legendText: "{name} (#percent%)",
+              indexLabelPlacement: "inside",
+              dataPoints: [
+                { y: weeklyTotal, name: "Max Earning Allowed <%= number_to_currency current_user.adapter.max_package_total_earning %>" },
+                { y: weeklyCurrent, name: "Current Earning <%= number_to_currency(current_user.adapter.total_income_calculate) %>" }
+              ]
+          }]
+      };
+      if($chartContainer.length) {
+        $("#chartContainer").CanvasJSChart(options);
+      }
+  }
+</script>
