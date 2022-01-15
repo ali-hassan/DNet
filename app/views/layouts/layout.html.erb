@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DNet</title>
+<!--    <title>DNet</title>-->
     <%= csrf_meta_tags %>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -10,16 +10,28 @@
       window.currentUserId = <%= raw current_user.try(:id) || {} %>
       window.currentUserName = ''
     </script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="enterprise blockchain technology development company, enterprise blockchain technology, enterprise blockchain development company, enterprise blockchain company, blockchain as services, enterprise blockchain solutions, enterprise blockchain services, enterprise blockchain solutions company, enterprise blockchain services company, enterprise blockchain service provider, blockchain as services provider, " />
+
+    <!--====== Title ======-->
+    <title>DNET  ICO PLATFORM </title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="/assets/dlogo.png" type="image/png">
+
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'layout.css', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
   </head>
   <body class=" home page-template  page page-id-2  front-page elementor-default <%= controller.controller_path.gsub("/", "--") %>">
     <%= render "flashmessages" %>
     <%= yield %>
 
-    <%= javascript_include_tag 'layout', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'layout.js', 'data-turbolinks-track': 'reload' %>
     <%= yield :body_js %>
   </body>
 </html>

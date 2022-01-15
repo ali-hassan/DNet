@@ -2,6 +2,10 @@
  *= require_tree ./fonts
  *= require_self
  *= require bootstrap
- *= require ionicons
- *= require_tree ./layout
+ *= require all
+ *= require nice-select
+ *= require slick
+ *= require swiper.min
+ *= require default
+ *= require new_style
  */
