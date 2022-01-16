@@ -18,13 +18,13 @@
 		left: 50px;
 		top: 50%;
 		transform: translateY(-50%);
-		//@media #{$xs} {
-		//	display: none;
-		//	left: 20px;
-		//}
-		//@media #{$sm} {
-		//	display: block;
-		//}
+		@media #{$xs} {
+			display: none;
+			left: 20px;
+		}
+		@media #{$sm} {
+			display: block;
+		}
 		& ul{
 			& li{
 				& a{
