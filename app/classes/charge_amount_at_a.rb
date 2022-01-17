@@ -6,7 +6,11 @@ class ChargeAmountAtA
   def package
     @package ||= FindPackages.new(package_id).current_package
   end
+  def token
+    @token ||= package[:token]
+  end
   def charge!
+    user.update token_count: token
     update(params)
     update(current_weekly_percentage: weekly_percentage)
     User.add_amount(deducation_amount)
