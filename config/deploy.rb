@@ -83,7 +83,7 @@ namespace :deploy do
   before :starting,  :check_revision
   before 'check:linked_files', 'puma:config'
   after  :finishing, :compile_assets
-  after  :finishing, :cleanup
+  # after  :finishing, :cleanup
 end
 
 desc "Run rake db:seed on a remote server."

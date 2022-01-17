@@ -7,7 +7,7 @@
         <div class="col-lg-12">
           <div class="navigation">
             <nav class="navbar navbar-expand-lg navbar-light ">
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand" href="<%= root_path %>">
                 <%= image_tag "logo.png" %>
               </a>
               <!-- logo -->
@@ -15,7 +15,7 @@
               <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="<%= root_path %>">Home</a>
                     <!-- Clase para resaltar los apartados: active -->
                   </li>
                   <li class="nav-item navbar-nav">
@@ -46,12 +46,12 @@
                     <a class="nav-link" href="#contacto">Contacto</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="<%= root_path %>">
                       <%= image_tag "espana.png",alt: "SPA", width: "40", height: "40", class: "idioma" %>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="indexen.html">
+                    <a class="nav-link" href="<%= root_path %>">
                       <%= image_tag "reino-unido.png", alt: "EN", width: "40", height: "40", class: "idioma" %>
                     </a>
                   </li>
