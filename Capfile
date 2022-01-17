@@ -8,8 +8,8 @@ require 'capistrano/rvm'
 require 'capistrano/ssh_doctor'
 require 'capistrano/bundler'
 
-# require 'capistrano/rails/assets'
-# require 'capistrano/rails/migrations'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
 
 ## Needs to check above two for deployment if crash at certain points.
 require 'capistrano/puma'
