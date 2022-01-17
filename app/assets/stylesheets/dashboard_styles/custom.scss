@@ -25,7 +25,7 @@
 }
 #dashboard-sidebar .dashboard-menu ul a{
   display: block;
-  color: #989898;
+  color: #fff !important;
   text-decoration: none;
   font-size: 14px;
   line-height: 18px;
@@ -62,7 +62,7 @@
   display: block;
   font-size: 20px;
   line-height: 20px;
-  color: #989898;
+  color: #fff;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -525,7 +525,7 @@
 }
 .custom-dashboard-row label{
   display: block;
-  color: #989898;
+  color: #fff;
   font-size: 14px;
   line-height: 17px;
   margin: 0 0 5px;
@@ -546,7 +546,7 @@
   line-height: 28px;
   height: 40px;
   width: 100%;
-  color: #989898;
+  color: #fff;
   background-color: transparent;
   border: 1px solid #dfdfdf;
   padding: 7px 10px 5px;
