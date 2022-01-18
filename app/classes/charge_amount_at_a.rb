@@ -6,12 +6,18 @@ class ChargeAmountAtA
   def package
     @package ||= FindPackages.new(package_id).current_package
   end
+  def token
+    @token ||= package[:token]
+  end
   def charge!
-    update(params)
-    update(current_weekly_percentage: weekly_percentage)
-    User.add_amount(deducation_amount)
-    calculate_weekly_bonus_cycle!
-    User.find(user.id).adapter.cupda_calculate
+    user.update token_count: token
+    ### Below are commented as not maintained or supported anymore
+    # update(params)
+    # update(current_weekly_percentage: weekly_percentage)
+    # User.add_amount(deducation_amount)
+    # calculate_weekly_bonus_cycle!
+    # User.find(user.id).adapter.cupda_calculate
+    ### Above are commented as not maintained or supported anymore
     # update(reset_params)
   end
   def reset_params
