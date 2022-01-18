@@ -165,6 +165,39 @@
     <!-- Content Block 1 End -->
 
     <!-- Content Block 2 Start -->
+    <div class="main-content-block">
+      <div class="heading">
+        <h2>Network</h2>
+      </div>
+      <div class="main-content-body">
+        <div class="two-columns">
+          <!-- Columns Start -->
+          <div class="columns">
+<!--            <div class="columns-top">-->
+<!--              <dl>-->
+<!--                <dt>Re Points</dt>-->
+<!--                <dd><%#= current_user.left_bonus.to_f || 0  %></dd>-->
+<!--              </dl>-->
+<!--              <dl>-->
+<!--                <dt>Left Team</dt>-->
+<!--                <dd><%#= current_user.left_team_members_count %> Members</dd>-->
+<!--              </dl>-->
+<!--            </div>-->
+            <div class="columns-bottom">
+              <h4>Invite Link</h4>
+              <div class="link-block">
+                <%= link_to build_refer_link(:left), build_refer_link(:left) %>
+                <label for="copy-link-1" class="copy-link-label">
+                  <input id="copy-link-1" readonly type="text" value="<%= build_refer_link(:left) %>" class="copy-link">
+                  Copy
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Columns End -->
+        </div>
+      </div>
+    </div>
     <!-- Content Block 2 End -->
 
     <% if current_user.adapter.max_package_total_earning.present? %>
