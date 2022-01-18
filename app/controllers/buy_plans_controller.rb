@@ -9,7 +9,7 @@ class BuyPlansController < ApplicationController
   def create
     ChargeAmountAtA.new(current_user, params[:plan_id], upgrade_plan).charge!
     if Rails.env == "production"
-      params["controller"] == "upgrade_plans" ? UserMailer.upgrade_package(current_user).deliver_now : UserMailer.buy_package(current_user).deliver_now
+      UserMailer.buy_package(current_user).deliver_now
     end
     redirect_to(dashboard_index_url(subdomain: 'office'), notice: 'Package Successfully Activated')
   end
