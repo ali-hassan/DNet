@@ -102,39 +102,44 @@
         <div class="three-columns">
           <!-- Columns Start -->
           <div class="columns">
-            <div class="columns-top weekly-roi">
-              <h3><%= number_to_currency current_user.current_week_roi_amount.try(:to_f) %></h3>
-              <span>Weekly ROI</span>
-              <span class="currency-symbol">$</span>
-            </div>
+<!--            <div class="columns-top weekly-roi">-->
+<!--              <h3><%#= number_to_currency current_user.current_week_roi_amount.try(:to_f) %></h3>-->
+<!--              <span>Weekly ROI</span>-->
+<!--              <span class="currency-symbol">$</span>-->
+<!--            </div>-->
+<!--            <div class="columns-middle">-->
+<!--              <h3><%#= number_to_currency current_user.direct_bonus_users_count %></h3>-->
+<!--              <span>Direct Bonus</span>-->
+              <%#=image_tag "ic_bonus.png", class:"currency-symbol-img", alt: "Symbol"%>
+<!--            </div>-->
+<!--            <div class="columns-bottom">-->
+<!--              <h3><%#= number_to_currency current_user.total_income.try(:to_f) + current_user.adapter.calculate_total_binary.try(:to_f) %></h3>-->
+<!--              <span>Total Income</span>-->
+              <%#=image_tag "dollar-symbol.png", class: "currency-symbol-img dollar-symbol", alt: "Symbol"%>
+<!--            </div>-->
             <div class="columns-middle">
-              <h3><%= number_to_currency current_user.direct_bonus_users_count %></h3>
-              <span>Direct Bonus</span>
-              <%=image_tag "ic_bonus.png", class:"currency-symbol-img", alt: "Symbol"%>
-            </div>
-            <div class="columns-bottom">
-              <h3><%= number_to_currency current_user.total_income.try(:to_f) + current_user.adapter.calculate_total_binary.try(:to_f) %></h3>
-              <span>Total Income</span>
-              <%=image_tag "dollar-symbol.png", class: "currency-symbol-img dollar-symbol", alt: "Symbol"%>
+              <h3><%= "#{current_user.token_count} DNET" %></h3>
+              <span>Token Count</span>
+              <%=image_tag "ic_bonus.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
           </div>
           <!-- Columns End -->
 
           <!-- Columns Start -->
           <div class="columns">
-            <div class="columns-top total-roi">
-              <h3><%= number_to_currency current_user.total_weekly_percentage_amount.try(:to_f) %></h3>
-              <span>Total ROI</span>
-              <span class="currency-symbol">$</span>
-            </div>
-            <div class="columns-middle">
-              <h3><%= number_to_currency current_user.indirect_bonus_users_count %></h3>
-              <span>Indirect Income</span>
-              <%=image_tag "ic_indirectincome.png", class: "currency-symbol-img", alt: "Symbol"%>
-            </div>
-            <div class="columns-bottom">
-              <h3><%= number_to_currency current_user.adapter.cash_wallet_total %></h3>
-              <span>Cash Wallet</span>
+<!--            <div class="columns-top total-roi">-->
+<!--              <h3><%#= number_to_currency current_user.total_weekly_percentage_amount.try(:to_f) %></h3>-->
+<!--              <span>Total ROI</span>-->
+<!--              <span class="currency-symbol">$</span>-->
+<!--            </div>-->
+<!--            <div class="columns-middle">-->
+<!--              <h3><%#= number_to_currency current_user.indirect_bonus_users_count %></h3>-->
+<!--              <span>Indirect Income</span>-->
+              <%#=image_tag "ic_indirectincome.png", class: "currency-symbol-img", alt: "Symbol"%>
+<!--            </div>-->
+            <div class="columns-middle weekly-roi">
+              <h3>$<%= current_user.smart_wallet_balance.to_f %></h3>
+              <span>Smart Wallet</span>
               <%=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
           </div>
@@ -142,19 +147,14 @@
 
           <!-- Columns Start -->
           <div class="columns">
-            <div class="columns-top current-roi">
-              <h3><%= 0.0 %></h3>
-              <span>Current ROI</span>
-              <span class="currency-symbol">$</span>
-            </div>
+<!--            <div class="columns-top current-roi">-->
+<!--              <h3><%#= 0.0 %></h3>-->
+<!--              <span>Current ROI</span>-->
+<!--              <span class="currency-symbol">$</span>-->
+<!--            </div>-->
             <div class="columns-middle">
-              <h3><%= "#{current_user.token_count} DNET" %></h3>
-              <span>Token Count</span>
-              <%=image_tag "ic_bonus.png", class: "currency-symbol-img", alt: "Symbol"%>
-            </div>
-            <div class="columns-bottom">
-              <h3>$<%= current_user.smart_wallet_balance.to_f %></h3>
-              <span>Smart Wallet</span>
+              <h3><%= number_to_currency current_user.adapter.cash_wallet_total %></h3>
+              <span>Cash Wallet</span>
               <%=image_tag "Group 4.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
           </div>
