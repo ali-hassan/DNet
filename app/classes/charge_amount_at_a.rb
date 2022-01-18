@@ -11,11 +11,13 @@ class ChargeAmountAtA
   end
   def charge!
     user.update token_count: token
-    update(params)
-    update(current_weekly_percentage: weekly_percentage)
-    User.add_amount(deducation_amount)
-    calculate_weekly_bonus_cycle!
-    User.find(user.id).adapter.cupda_calculate
+    ### Below are commented as not maintained or supported anymore
+    # update(params)
+    # update(current_weekly_percentage: weekly_percentage)
+    # User.add_amount(deducation_amount)
+    # calculate_weekly_bonus_cycle!
+    # User.find(user.id).adapter.cupda_calculate
+    ### Above are commented as not maintained or supported anymore
     # update(reset_params)
   end
   def reset_params
