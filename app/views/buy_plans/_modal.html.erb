@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Account To Transfer</h5>
+        <h3 class="modal-title" id="exampleModalLabel">Account To Transfer</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,9 +10,15 @@
       <div class="modal-body">
         <% if current_user.smart_wallet_balance.try(:to_f) > @package.package_price %>
           <p> Package price: <%= number_to_currency @package.package_price %></p>
-          <% if @package.package_activation_fees > 0 %>
-            <p> Activation price: <%= number_to_currency @package.package_activation_fees %></p>
-          <% end %>
+          <p> ACCOUNT TO TRANSFER: SELECT YOUR USDT (TETHER) NETWORK ADRESS </p>
+          <b><p> <li>ERC20: 0x1a2b7c8020ec1f2bdd4f8bd91dae05b126870ce6</li>
+            <li>TRC20: TTjW81L4TeetvisV6KUDEQJaVbPFJ6hPYQ</li>
+            <li>BEP20: 0x1a2b7c8020ec1f2bdd4f8bd91dae05b126870ce6 </li></p></b>
+          <p>*ALERT:</p>
+          <p>STEP1: MAKE YOUR TRANSACTION AND SHARE SCREENSHOT IN OUR TELEGRAM GROUP CLICKING THE LINK FOR VERIFICATION <%= link_to(image_tag("icon/telegram.jpeg", style: "width: 50px; margin-left: 16px;"), "+34611616861", target: "_blank") %> </p>
+          <p> STEP2: ONCE CONFIRMED YOUR DNET TOKENS WILL BE SENT AUTOMATICLY TO YOUR WALLET </p>
+          <p> STEP3: YOU CAN CLOSE POP UP </p>
+          <p> THANKS FOR JOINING DNET </p>
         <% else %>
           <p>You don't have enough balance in smart wallet</p>
         <% end %>
