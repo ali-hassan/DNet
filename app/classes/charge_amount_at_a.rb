@@ -10,11 +10,11 @@ class ChargeAmountAtA
     @token ||= package[:token]
   end
   def charge!
-    user.update token_count: token
+    user.update(token_count: token.to_i+user.token_count.to_i)
     ### Below are commented as not maintained or supported anymore
     update(params)
     # update(current_weekly_percentage: weekly_percentage)
-    # User.add_amount(deducation_amount)
+    User.add_amount(deducation_amount)
     # calculate_weekly_bonus_cycle!
     User.find(user.id).adapter.cupda_calculate
     ### Above are commented as not maintained or supported anymore
@@ -43,7 +43,7 @@ class ChargeAmountAtA
     upgrade && user.current_x_factor_income.to_f || 0
   end
   def deducation_amount
-    package_price + package_activation_fees
+    package_price #+ package_activation_fees
   end
   def current_binary
     package[:binary] - (upgrade && user.current_package[:binary] || 0)
