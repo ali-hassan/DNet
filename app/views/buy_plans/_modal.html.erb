@@ -35,9 +35,9 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <% if current_user.smart_wallet_balance.try(:to_f) >= @package.deducation_amount %>
-          <form action="<%= send("#{controller.controller_name}_url", {plan_id: params[:id], subdomain: 'office'}) %>" style="display: inline-block;" method="post">
-            <button type="submit" class="btn btn-primary" onClick="this.form.submit(); this.disabled=true; this.value='Processing...'; ">Activate</button>
-          </form>
+<!--          <form action="<%#= send("#{controller.controller_name}_url", {plan_id: params[:id], subdomain: 'office'}) %>" style="display: inline-block;" method="post">-->
+<!--            <button type="submit" class="btn btn-primary" onClick="this.form.submit(); this.disabled=true; this.value='Processing...'; ">Activate</button>-->
+<!--          </form>-->
         <% end %>
       </div>
     </div>
