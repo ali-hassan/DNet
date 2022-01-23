@@ -171,7 +171,7 @@ class CurrentUserAdapter
   def can_upgrade_url?(id)
     token_count = FindPackages.new(id).current_package[:token]
     (_=current_package && _=current_package[:price]) && _ <= FindPackages.new(id).current_package[:price] || false
-    user.update token_count: token_count
+    user.update token_count: token_count.to_i+user.token_count.to_i
   end
   # TODO: NOT USING MUST BE REMOVED
   def graph_total_percent_old

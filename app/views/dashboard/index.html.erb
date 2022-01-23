@@ -118,7 +118,7 @@
               <%#=image_tag "dollar-symbol.png", class: "currency-symbol-img dollar-symbol", alt: "Symbol"%>
 <!--            </div>-->
             <div class="columns-middle">
-              <h3><%= "#{current_user.token_count} DNET" %></h3>
+              <h3><%= "#{current_user.token_count.try(:to_i)} DNET" %></h3>
               <span>Token Count</span>
               <%=image_tag "ic_bonus.png", class: "currency-symbol-img", alt: "Symbol"%>
             </div>
