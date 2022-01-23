@@ -14,7 +14,7 @@
               <th>Date</th>
               <th>Username</th>
               <th>Name</th>
-              <th>Position</th>
+<!--              <th>Position</th>-->
               <th>Package Status</th>
             </tr>
             </thead>
@@ -25,7 +25,7 @@
                   <td><%=user.try(:created_at).strftime("%b. %e %Y")%></td>
                   <td><%=user.try(:username)%></td>
                   <td><%=user.full_name%></td>
-                  <td><%=user.parent_position%></td>
+<!--                  <td><%#=user.parent_position%></td>-->
                   <td>
                     <%- if user.package_id.present? || user.is_pin %>
                         $<%= user.package_id || user.pin_capacity%>
