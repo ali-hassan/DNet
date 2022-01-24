@@ -21,6 +21,15 @@ class MyNetworksController < ApplicationController
     @direct_rf = current_user.adapter.all_users.paginate(page: params[:page], per_page: 10).order(created_at: :desc)
   end
 
+  def second_referrals
+    debugger
+    @direct_rf = current_user.children.collect{|child| child.children.paginate(page: params[:page], per_page: 10).order(created_at: :desc)}[0] rescue []
+  end
+
+  def third_referrals
+    @direct_rf = current_user.children.collect{|child| child.children.collect{|ch| ch.children.sum(:charge_package_price_cents)}.sum}.sum / 100
+  end
+
   private
   def permitted_params
     params.require(:my_network).permit!
