@@ -22,7 +22,6 @@ class MyNetworksController < ApplicationController
   end
 
   def second_referrals
-    debugger
     @direct_rf = current_user.children.collect{|child| child.children.paginate(page: params[:page], per_page: 10).order(created_at: :desc)}[0] rescue []
   end
 
