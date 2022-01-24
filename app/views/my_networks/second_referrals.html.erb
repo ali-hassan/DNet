@@ -25,7 +25,7 @@
 <!--                <td><%#=user.try(:created_at).strftime("%b. %e %Y")%></td>-->
                 <td><%=user.try(:username)%></td>
                 <td><%=user.full_name%></td>
-                <td>First</td>
+                <td>Second</td>
                 <td>
                   <%- if user.package_id.present? || user.is_pin %>
                     $<%= user.package_id || user.pin_capacity%>
