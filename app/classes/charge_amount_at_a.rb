@@ -33,7 +33,7 @@ class ChargeAmountAtA
     # update(reset_params)
   end
   def level_bonus(percentage)
-    package[:price] * percentage
+    package[:token] * percentage
   end
   def update_tokens(user, percentage)
     p_user = user

@@ -3,7 +3,7 @@
     <!-- Content Block 1 Start -->
     <div class="main-content-block">
       <div class="heading">
-        <h2>Direct Referrals</h2>
+        <h2>Second Level Referrals</h2>
       </div>
       <div class="main-content-body">
         <div class="history-widthdrawal-holder">
@@ -11,7 +11,7 @@
             <thead>
             <tr>
               <th>Sr. No.</th>
-              <th>Date</th>
+<!--              <th>Date</th>-->
               <th>Username</th>
               <th>Name</th>
               <th>Level</th>
@@ -20,22 +20,22 @@
             </thead>
             <tbody>
             <%- @direct_rf.each.with_index do |user, index| %>
-                <tr>
-                  <td><%= index + 1 %></td>
-                  <td><%=user.try(:created_at).strftime("%b. %e %Y")%></td>
-                  <td><%=user.try(:username)%></td>
-                  <td><%=user.full_name%></td>
-                  <td>First</td>
-                  <td>
-                    <%- if user.package_id.present? || user.is_pin %>
-                        $<%= user.package_id || user.pin_capacity%>
-                    <% else %>
-                      Not Active
-                    <% end %>
-                  </td>
-                </tr>
+              <tr>
+                <td><%= index + 1 %></td>
+<!--                <td><%#=user.try(:created_at).strftime("%b. %e %Y")%></td>-->
+                <td><%=user.try(:username)%></td>
+                <td><%=user.full_name%></td>
+                <td>First</td>
+                <td>
+                  <%- if user.package_id.present? || user.is_pin %>
+                    $<%= user.package_id || user.pin_capacity%>
+                  <% else %>
+                    Not Active
+                  <% end %>
+                </td>
+              </tr>
             <%end%>
-            <%= will_paginate @direct_rf %>
+            <%= will_paginate @direct_rf if @direct_rf.present?%>
             </tbody>
           </table>
         </div>
