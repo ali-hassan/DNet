@@ -55,8 +55,10 @@ $(document).on "turbolinks:load", ->
 
   $(document).on "click", "#live_trading", (eventObject) ->
     eventObject.preventDefault();
-    alert("DNet live trading will be available very soon");
+#    alert("DNet live trading will be available very soon");
+    $("#alert_referal_popup").modal();
     $("#live_trading").off("click");
+
   $(document).on "click", "#promotion_trading", (eventObject) ->
     eventObject.preventDefault();
     #alert("Something big is coming, Stay tuned.");
