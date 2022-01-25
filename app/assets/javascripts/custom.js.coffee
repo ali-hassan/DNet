@@ -1,7 +1,10 @@
 $(document).on "turbolinks:load", ->
   $("body").on "click",  ".promotion-href", (e) ->
     e.preventDefault()
-    $("#alert_welcome_popup").modal()
+    a= document.createElement('a');
+    a.target= '_blank';
+    a.href= 'https://www.youtube.com/watch?v=GcvPeRTZMJk';
+    a.click();
   if getParameterByName('open_welcome_modal')
     $("#alert_welcome_popup").modal()
   readFileURL = (input) ->
