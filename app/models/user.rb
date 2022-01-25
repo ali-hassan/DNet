@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   validates :first_name, :last_name, :username, presence: true
   validates :username, uniqueness: true
-  validates :pin, presence: true, if: :pin?
+  # validates :pin, presence: true, if: :pin?
   has_many :children, foreign_key: :parent_id, class_name: "User"
   has_many :created_users, foreign_key: :created_by_id, class_name: "User"
   has_many :user_transactions, dependent: :destroy

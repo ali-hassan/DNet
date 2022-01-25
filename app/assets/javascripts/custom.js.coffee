@@ -1,7 +1,10 @@
 $(document).on "turbolinks:load", ->
   $("body").on "click",  ".promotion-href", (e) ->
     e.preventDefault()
-    $("#alert_welcome_popup").modal()
+    a= document.createElement('a');
+    a.target= '_blank';
+    a.href= 'https://www.youtube.com/watch?v=GcvPeRTZMJk';
+    a.click();
   if getParameterByName('open_welcome_modal')
     $("#alert_welcome_popup").modal()
   readFileURL = (input) ->
@@ -52,8 +55,10 @@ $(document).on "turbolinks:load", ->
 
   $(document).on "click", "#live_trading", (eventObject) ->
     eventObject.preventDefault();
-    alert("DNet live trading will be available very soon");
+#    alert("DNet live trading will be available very soon");
+    $("#alert_referal_popup").modal();
     $("#live_trading").off("click");
+
   $(document).on "click", "#promotion_trading", (eventObject) ->
     eventObject.preventDefault();
     #alert("Something big is coming, Stay tuned.");
