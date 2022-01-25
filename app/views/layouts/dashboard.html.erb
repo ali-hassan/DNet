@@ -264,8 +264,8 @@
             </button>
           </div>
           <p class="modal-body" style="text-align: center; padding: 2px !important;">
-            <h5 class="popup-txt">
-              The world is changing rapidly. Now it’s about optimizing visuals for the right platforms. Because people use different devices to remain updated.
+            <h5 class="popup-txt" style="color: #00A0D1 !important;">
+              You are one step away from belonging to the DNET community, just for your registration, you will receive 10 USDT in your smart wallet. You will also get a 20% extra in USDT value purchasing a package of 250 USDT or more.
             </h5>
             <br>
 <!--            <h5 class="popup-txt">-->
@@ -302,9 +302,16 @@
 <!--            <h5 class="popup-txt" style="font-weight: bold">-->
 <!--              All rights are reserved 2019.-->
 <!--            </h5>-->
-            </p>
+          <div class="button-holder" style="text-align: center; margin-top: -50px;">
+            <a class="custom-btn" type="submit" value="Buy Tokens" onclick="<%=buy_plans_path %>" href="<%=buy_plans_path %>">Buy Tokens</a>
           </div>
-        </div>
+            </p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+            <div style="width: 592px; padding-right: 42px; margin-top: -34px; text-align: justify; color: #00A0D1 !important;">YOU WILL GET YOUR 20% EXTRA VALUE USDT IN YOUR SMART WALLET IF YOUR PACKAGE IS ABOVE 250 USDT</div></div>
+          </div>
+
+      </div>
       </div>
     </div>
   </body>
@@ -358,9 +365,25 @@ $( document ).ready(function() {
 });
 
 
-
-
-
-
-
 </script>
+<style>
+    .custom-btn {
+        display: inline-block;
+        vertical-align: top;
+        color: #fff;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: bold;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        padding: 10px 30px;
+        margin: 30px 0 0;
+        background: #009EE9;
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+        -ms-transition: all 1s;
+        transition: all 1s;
+    }
+</style>

@@ -1,6 +1,6 @@
 <div class="modal fade" id="ata_prompt_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 650px;">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">Account To Transfer</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -34,6 +34,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div style="width: 592px; padding-right: 42px; margin-top: -34px; text-align: justify; color: darkblue;">YOU WILL GET YOUR 20% EXTRA VALUE USDT IN YOUR SMART WALLET IF YOUR PACKAGE IS ABOVE 250 USDT</div>
         <% if current_user.smart_wallet_balance.try(:to_f) >= @package.deducation_amount %>
 <!--          <form action="<%#= send("#{controller.controller_name}_url", {plan_id: params[:id], subdomain: 'office'}) %>" style="display: inline-block;" method="post">-->
 <!--            <button type="submit" class="btn btn-primary" onClick="this.form.submit(); this.disabled=true; this.value='Processing...'; ">Activate</button>-->
