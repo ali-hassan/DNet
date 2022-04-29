@@ -79,7 +79,7 @@
                   <ul>
                     <li><a  href="<%=buy_plans_url(subdomain: "office")%>">Buy</a>
                     </li>
-                    <li><a href="<%=upgrade_plans_url(subdomain: "office")%>">Upgrade</a>
+                    <li><a href="<%=buy_plans_url(subdomain: "office")%>">Upgrade</a>
                     </li>
                   </ul>
                 </div>
@@ -96,31 +96,33 @@
               <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
                 <div class="card-body">
                   <ul>
-                    <li><a href="<%=my_binary_my_networks_path%>">Binary</a></li>
+<!--                    <li><a href="<%#=my_binary_my_networks_path%>">Binary</a></li>-->
                     <li><a href="<%=direct_referrals_my_networks_url(subdomain: "office")%>">Direct Referrals</a></li>
+                    <li><a href="<%=second_referrals_my_networks_url(subdomain: "office")%>">Second Level Referrals</a></li>
+                    <li><a href="<%=third_referrals_my_networks_url(subdomain: "office")%>">Third Level Referrals</a></li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            <div class="card panel">
-              <div class="custom-card-header" id="heading5">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                  <%= image_tag "Group 2.png" %><span>Wallets</span>
-                </button>
-              </div>
-              <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
-                <div class="card-body">
-                  <ul>
-                    <li><a href="<%=gateway_url(subdomain: "office", id: current_user.id)%>">Withdrawal Request</a></li>
-                    <li><a href="<%=transactions_url(subdomain: "office")%>">Fund Transfer</a></li>
-                    <li><a href="<%=cash_to_smart_transactions_url(subdomain: "office")%>">Cash Wallet to Smart Wallet</a></li>
+<!--            <div class="card panel">-->
+<!--              <div class="custom-card-header" id="heading5">-->
+<!--                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">-->
+<!--                  <%#= image_tag "Group 2.png" %><span>Wallets</span>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">-->
+<!--                <div class="card-body">-->
+<!--                  <ul>-->
+<!--                    <li><a href="<%#=gateway_url(subdomain: "office", id: current_user.id)%>">Withdrawal Request</a></li>-->
+<!--                    <li><a href="<%#=transactions_url(subdomain: "office")%>">Fund Transfer</a></li>-->
+<!--                    <li><a href="<%#=cash_to_smart_transactions_url(subdomain: "office")%>">Cash Wallet to Smart Wallet</a></li>-->
                     <!--<li><a href="<%#=new_current_weekly_roi_to_cash_transfer_url(subdomain: "office")%>">ROI Wallet to Smart Wallet</a></li>-->
-                    <li><%= link_to "ROI Wallet to Cash Wallet", weekly_roi_to_cash_wallets_url(subdomain: 'office') %></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+<!--                    <li><%#= link_to "ROI Wallet to Cash Wallet", weekly_roi_to_cash_wallets_url(subdomain: 'office') %></li>-->
+<!--                  </ul>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
 
             <div class="card panel">
               <div class="custom-card-header" id="heading6">
@@ -134,15 +136,15 @@
                     <li><a href="<%= history_url('cw', subdomain: 'office') %>">Widthdrawal</a></li>
                     <li><a href="<%= history_url('sw', subdomain: 'office') %>">Fund Transfer</a></li>
                     <li><a href="<%= history_url('st', subdomain: 'office') %>">System Transactions</a></li>
-                    <li><a data-toggle="collapse" href="#custom-parent">Bonus</a>
-                      <ul id="custom-parent" class="collapse">
-                        <li><a href="<%= history_url('wr', subdomain: 'office') %>">Weekly ROI</a></li>
-                        <li><a href="<%= history_url('db', subdomain: 'office') %>">Direct</a></li>
-                        <li><a href="<%= history_url('ib', subdomain: 'office') %>">Indirect</a></li>
-                        <li><a href="<%= history_url('bb', subdomain: 'office') %>">Binary</a></li>
-                        <li><a href="<%= history_url('ur', subdomain: 'office') %>">Rewards</a></li>
-                      </ul>
-                    </li>
+<!--                    <li><a data-toggle="collapse" href="#custom-parent">Bonus</a>-->
+<!--                      <ul id="custom-parent" class="collapse">-->
+<!--                        <li><a href="<%#= history_url('wr', subdomain: 'office') %>">Weekly ROI</a></li>-->
+<!--                        <li><a href="<%#= history_url('db', subdomain: 'office') %>">Direct</a></li>-->
+<!--                        <li><a href="<%#= history_url('ib', subdomain: 'office') %>">Indirect</a></li>-->
+<!--                        <li><a href="<%#= history_url('bb', subdomain: 'office') %>">Binary</a></li>-->
+<!--                        <li><a href="<%#= history_url('ur', subdomain: 'office') %>">Rewards</a></li>-->
+<!--                      </ul>-->
+<!--                    </li>-->
                   </ul>
                 </div>
               </div>
@@ -170,7 +172,7 @@
           <div class="dashboard-sidebar-bottom">
             <ul>
               <li>
-                <a href="<%= supports_url(subdomain: 'office') %>">
+                <a href="https://t.me/Dnetverificationsupport", target="_blank">
                   <%= image_tag "ic_support.png" %>Support
                 </a>
               </li>
@@ -198,12 +200,12 @@
                         <%end%>
                       </dl>
                     </li>
-                    <li class="status <%= current_user.is_binary_bonus_active && "verified" || "not-verified" %>">
-                      <dl>
-                        <dt>Binary status: </dt>
-                        <dd><%= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>
-                      </dl>
-                    </li>
+<!--                    <li class="status <%#= current_user.is_binary_bonus_active && "verified" || "not-verified" %>">-->
+<!--                      <dl>-->
+<!--                        <dt>Binary status: </dt>-->
+<!--                        <dd><%#= current_user.is_binary_bonus_active ? "Active" : "Not Active"%></dd>-->
+<!--                      </dl>-->
+<!--                    </li>-->
                     <li class="status <%= current_user.is_valid_kyc && "verified" || "not-verified" %>">
                       <dl>
                         <dt>KYC status: </dt>
@@ -252,6 +254,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 680px">
           <div class="modal-header">
+            <%= image_tag "logo-login.png", style: "display: block;margin-left: auto;margin-right: auto;width: 200px;" %>
             <h4 style="color: #00A0D1; font-weight: bold">
               Greetings from DNet!
             </h4>
@@ -261,48 +264,69 @@
             </button>
           </div>
           <p class="modal-body" style="text-align: center; padding: 2px !important;">
-            <h5 class="popup-txt">
-              The world is changing rapidly. Now it’s about optimizing visuals for the right platforms. Because people use different devices to remain updated.
+            <h5 class="popup-txt" style="color: #00A0D1 !important;">
+              You are one step away from belonging to the DNET community, just for your registration, you will receive 10 USDT in your smart wallet. You will also get a 20% extra in USDT value purchasing a package of 250 USDT or more.
             </h5>
             <br>
-            <h5 class="popup-txt">
-              DNet is close to the destination to launch New projects. We are trying our best to complete this phase soon. We have some major plans that will expand our offering again, among them is direct sponsorship with a higher bonus. Affiliate partners have been directed to do more work on direct sponsorship to make these projects successful, that’s why DNet has decided to make an increment in bonuses. Now direct sponsorship bonus will be 10% and the binary bonus will be 10% as well, it is an amazing opportunity. Ultimately, there will be an increment in all bonuses. Before when a person sponsored either from the right or left 1000$ in direct sponsorship, then according to 8% direct sponsorship and 12% binary his total earning was just 28% , But now, when a person will sponsor either from the right or left 1000$ in Direct Sponsorship, then according to new incremental bonus plan, 10% direct sponsorship and 10% binary will make his total earning 30%. This is a golden opportunity for affiliate partners.
-            </h5>
+<!--            <h5 class="popup-txt">-->
+<!--              DNet is close to the destination to launch New projects. We are trying our best to complete this phase soon. We have some major plans that will expand our offering again, among them is direct sponsorship with a higher bonus. Affiliate partners have been directed to do more work on direct sponsorship to make these projects successful, that’s why DNet has decided to make an increment in bonuses. Now direct sponsorship bonus will be 10% and the binary bonus will be 10% as well, it is an amazing opportunity. Ultimately, there will be an increment in all bonuses. Before when a person sponsored either from the right or left 1000$ in direct sponsorship, then according to 8% direct sponsorship and 12% binary his total earning was just 28% , But now, when a person will sponsor either from the right or left 1000$ in Direct Sponsorship, then according to new incremental bonus plan, 10% direct sponsorship and 10% binary will make his total earning 30%. This is a golden opportunity for affiliate partners.-->
+<!--            </h5>-->
             <br>
-            <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
-              Earning wheel promotion:
-            </li>
-            <br>
-            <h5 class="popup-txt">
-              FHT is bringing new promotion with this increment, next whenever you will direct sponsor a package of 1000$ or more, you will get one free package as a reward. Buy one get one free package as reward offer ‘schedule: •
-            </h5>
-            <br>
-              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
-                1000$ direct sponsor     ----------- 100$ package free as a reward
-              </li>
-              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
-                2000$ direct sponsor     ----------- 200$ package free as a reward
-              </li>
-              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
-                5000$ direct sponsor     ----------- 500$ package free as a reward
-              </li>
-              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">
-                10000$ direct sponsor  --------- 1000$ package free as a reward
-              </li>
-            <br>
-            <h5 class="popup-txt">
-              To claim your free package, whenever you will sponsor a package then immediately contact with support and provide necessary Details. We hope you enjoy this opportunity.               <br>
-              <br>
-              Note: The free Account will be just an ROI package; it will not include bonuses and points. This Promotion is for Limited Time Period Only.
-            </h5>
-            <br>
-            <h5 class="popup-txt" style="font-weight: bold">
-              All rights are reserved 2019.
-            </h5>
+<!--            <li class="popup-txt" style="color: #00A0D1; font-weight: bold">-->
+<!--              Earning wheel promotion:-->
+<!--            </li>-->
+<!--            <br>-->
+<!--            <h5 class="popup-txt">-->
+<!--              FHT is bringing new promotion with this increment, next whenever you will direct sponsor a package of 1000$ or more, you will get one free package as a reward. Buy one get one free package as reward offer ‘schedule: •-->
+<!--            </h5>-->
+<!--            <br>-->
+<!--              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">-->
+<!--                1000$ direct sponsor     ----------- 100$ package free as a reward-->
+<!--              </li>-->
+<!--              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">-->
+<!--                2000$ direct sponsor     ----------- 200$ package free as a reward-->
+<!--              </li>-->
+<!--              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">-->
+<!--                5000$ direct sponsor     ----------- 500$ package free as a reward-->
+<!--              </li>-->
+<!--              <li class="popup-txt" style="color: #00A0D1; font-weight: bold">-->
+<!--                10000$ direct sponsor  --------- 1000$ package free as a reward-->
+<!--              </li>-->
+<!--            <br>-->
+<!--            <h5 class="popup-txt">-->
+<!--              To claim your free package, whenever you will sponsor a package then immediately contact with support and provide necessary Details. We hope you enjoy this opportunity.               <br>-->
+<!--              <br>-->
+<!--              Note: The free Account will be just an ROI package; it will not include bonuses and points. This Promotion is for Limited Time Period Only.-->
+<!--            </h5>-->
+<!--            <br>-->
+<!--            <h5 class="popup-txt" style="font-weight: bold">-->
+<!--              All rights are reserved 2019.-->
+<!--            </h5>-->
+          <div class="button-holder" style="text-align: center; margin-top: -50px;">
+            <a class="custom-btn" type="submit" value="Buy Tokens" onclick="<%=buy_plans_path %>" href="<%=buy_plans_path %>">Buy Tokens</a>
+          </div>
             </p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+            <div style="width: 592px; padding-right: 42px; margin-top: -34px; text-align: justify; color: #00A0D1 !important;">YOU WILL GET YOUR 20% EXTRA VALUE USDT IN YOUR SMART WALLET IF YOUR PACKAGE IS ABOVE 250 USDT</div></div>
+          </div>
+
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="alert_referal_popup" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 680px">
+          <div class="modal-header">
+            <%= image_tag "live_trading.gif", style: "display: block;margin-left: auto;margin-right: auto;width: 650px;" %>
           </div>
         </div>
-      </div>
+        <div class="modal-footer">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -36px !important; margin-right: -90px !important;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    </div>
     </div>
   </body>
 </html>
@@ -355,9 +379,25 @@ $( document ).ready(function() {
 });
 
 
-
-
-
-
-
 </script>
+<style>
+    .custom-btn {
+        display: inline-block;
+        vertical-align: top;
+        color: #fff;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: bold;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        padding: 10px 30px;
+        margin: 30px 0 0;
+        background: #009EE9;
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+        -ms-transition: all 1s;
+        transition: all 1s;
+    }
+</style>

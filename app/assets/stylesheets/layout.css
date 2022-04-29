@@ -1,7 +1,18 @@
 /*
  *= require_tree ./fonts
  *= require_self
- *= require bootstrap
- *= require ionicons
- *= require_tree ./layout
+ *= require bootstrap.min
+ *= require all
+ *= require nice-select
+ *= require slick
+ *= require swiper.min
+ *= require default
+ *= require new_style
+ *= require scss/style
  */
+
+@media (min-width: 768px){
+    .navbar-toggler {
+        display: none !important;
+    }
+}

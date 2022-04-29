@@ -1,0 +1,1329 @@
+<div id="page" class="hfeed site"><a class="skip-link sr-only" href="#content">Skip to content</a>
+  <div class="ct-topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 "> 
+
+        </div>
+        <div class="" style="padding-right: 35px">
+          <ul class="list-unstyled list-inline ct-topbar__list">
+
+            <li class="ct-language"><a href="<%= new_user_session_url(subdomain: 'office')%>"> <i class="fa fa-user"></i> Login</a></li>
+
+          </ul>
+        </div>
+        <div class="" style="padding-right: 35px">
+          <ul class="list-unstyled list-inline ct-topbar__list">
+
+            <li class="ct-language"><a href="<%= users_sign_up_url(subdomain: 'office')%>">  <i class="fa fa-user"></i> Register</a></li>
+
+          </ul>
+        </div>
+        <div class="" style="padding-right: 35px">
+
+          <ul class="list-unstyled list-inline ct-topbar__list ">
+
+            <li class="ct-language"> <i class="fa fa-arrow-down"> Language</i>
+
+              <ul class="list-unstyled ct-language__dropdown">
+                <li><a href="#googtrans(en|en)" class="lang-es lang-select" data-lang="en">English</li></a>
+                <li><a href="#googtrans(en|zh-CN)" class="lang-es lang-select" data-lang="zh-CN">Chinese</a></li>
+                <li><a href="#googtrans(en|ru)" class="lang-es lang-select" data-lang="ru">Russian</a></li>
+                <li><a href="#googtrans(en|ar)" class="lang-es lang-select" data-lang="ar">Arabic</a></li>
+                <li><a href="#googtrans(en|hi)" class="lang-es lang-select" data-lang="hi">Hindi</a></li>
+                <li><a href="#googtrans(en|ko)" class="lang-es lang-select" data-lang="ko">Korean</a></li>
+                <li><a href="#googtrans(en|ms)" class="lang-es lang-select" data-lang="ms">Malay</a></li>
+                <li><a href="#googtrans(en|es)" class="lang-es lang-select" data-lang="es"> Spanish</a></li>
+                <li><a href="#googtrans(en|pt-BR)" class="lang-es lang-select" data-lang="pt-BR">Portuguese</a></li>
+                <li><a href="#googtrans(en|ja)" class="lang-es lang-select" data-lang="ja">Japanese</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  </div>
+
+
+  <header id="masthead" class="site-header sticky" role="banner" style="top: 0;">
+
+
+
+    <div id="scroll-progress-bar" class="scroll-progress-bar">
+      <div><span class="scroll-shadow"></span></div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 clearfix">
+          <div class="site-branding">
+            <div class="site-logo">
+              <a href="http://DNet.com" rel="home"><img  width="150px"
+                                                                   src="<%= image_url "new_layout/logo.png" %>"
+                                                                   alt="logo"></a> 
+            </div>
+
+          </div>
+
+          <span id="mobile-menu" class="mobile-menu"></span>
+          <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul id="primary-menu" class="menu clearfix">
+              <li id="menu-item-20"
+                  class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-20&quot;">
+                <a href="http://DNet.com"><i class="fa fa-home"></i>Home</a></li>
+              <li id="menu-item-28"
+                  class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-28&quot;">
+                <a href="#service"><i class="fa fa-video-camera"></i>Why FHT</a></li>
+              <li id="menu-item-29"
+                  class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-29&quot;">
+                <a href="#about">About</a>
+                <ul class="sub-menu clearfix">
+                  <li id="menu-item-334"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-334&quot;">
+                    <a href="#about">Company vision</a></li>
+                  <li id="menu-item-335"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-335&quot;">
+                    <a href="#timeline">Road map</a></li>
+                  <li id="menu-item-336"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-336&quot;">
+                    <a href="#team"><i class="fa fa-users"></i>Our Team</a></li>
+                </ul>
+              </li>
+              <li id="menu-item-338"
+                  class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-338&quot;">
+                <a href="#stories"><i class="fa fa-envelope-o"></i>Success Stories</a></li>
+              <li id="menu-item-339"
+                  class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-339&quot;">
+                <a href="#pricing">Income</a>
+                <ul class="sub-menu clearfix">
+                  <li id="menu-item-340"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-340&quot;">
+                    <a href="#pricing">Plans</a></li>
+                  <li id="menu-item-341"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-341&quot;">
+                    <a href="<%=affiliate_program_path%>">Affiliate program</a></li>
+                  <li id="menu-item-342"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-342&quot;">
+                    <a href="#testimonial"><i class="fa fa-envelope-o"></i>Testimonial</a></li>
+                </ul>
+              </li>
+              <li id="menu-item-343"
+                  class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-343&quot;">
+                <a href="#forex"><i class="fa fa-user"></i>DNet</a></li>
+
+              <li id="menu-item-346"
+                  class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-346&quot;">
+                <a href="#present">Media</a>
+                <ul class="sub-menu clearfix">
+                  <li id="menu-item-347"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-347&quot;">
+                    <a href="#present">Presentation </a></li>
+                  <li id="menu-item-348"
+                      class=" class=&quot;menu-item menu-item-type-post_type menu-item-object-page menu-item-348&quot;">
+                    <a href="#">videos</a></li>
+
+                </ul>
+              </li>
+
+              <li id="menu-item-400"
+                  class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-400&quot;">
+                <a href="#contact"><i class="fa fa-envelope-o"></i>Contact</a></li>
+
+
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="content" class="site-content">
+    <div id="primary" class="content-area">
+      <main id="main" class="site-main" role="main">
+      <section id="slider" class="slider  full-screen nopadding clearfix">
+
+        <div id="main-container">
+          <!--  full screen video  -->
+          <div class="video-container">
+            <video autoplay loop muted poster="">
+
+              <!--       <source src="foo.webm" type="video/webm"> other formats are encouraged -->
+              <source src="<%= image_url "new_layout/bg_video.mp4" %>" type="video/mp4"><!-- m4 format -->
+              <!--       <source src="foo.ogg" type="video/ogg"> other formats are encouraged -->
+
+            </video>
+            <div class="video-mask"></div>
+            <div class="inner">
+              <div class="row">
+                <div class="col-md-12 py-10">
+                  <div class="text-center" style="margin-top:15px">
+                    <h2 class="text-white">Welcome To</h1>
+                    <h2 class="text-white">DNet</h1>
+                    <div class="title">
+                      <div class="dynamic-title cd-headline clip is-full-width">
+                        <!--<span>Where I have been as&nbsp;</span>-->
+                        <span class="cd-words-wrapper">
+
+                          <b class="is-visible"><span class="gold-title">INCREASE YOUR WEALTH AND BECOME RICHER.</span></b>
+                          <b> <span class="gold-title">THE LARGEST AND MOST LIQUID MARKET IN THE WORLD.</span></b>
+                          <b><span class="gold-title">TEAM OF EXPERIENCED AND TALENTED PROFESSIONALS.</span></b>
+                          <b><span class="gold-title">SECURE Investment WITH HIGH RETURNS.</span></b>
+                          <b><span class="gold-title">GROW WITH US IN AFFILIATE PROGRAM.</span></b>
+
+                          <!--<b>a&nbsp;<span class="gold-title">Humanitarian.</span></b>-->
+
+                        </span>
+                      </div>
+
+
+                    </div>
+
+
+                    <p>DNet is a reliable Company with an eminent reputation that works in the sphere of DNet trading and involved in the financial activity on the Hong kong Stock Exchange. We have built our services to every Investor, Trader and Promoter.</p>
+                    <!--<a href="#about" class="button js-scroll home-btn">Read More</a>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="scroll-down wow bounce" data-wow-delay="2s"></div>
+      </section>
+      <!-- chart  --> 
+      <section id="chart" class="module">
+
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-2 col-sm-6 highlight ">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container ">
+                <div class="tradingview-widget-container__widget"></div>
+
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+{
+  "symbol": "FX:EURUSD",
+  "width": "100%",
+  "height": "100%",
+  "locale": "en",
+  "dateRange": "1d",
+  "colorTheme": "light",
+  "trendLineColor": "#8378e2",
+  "underLineColor": "#e3f2fd",
+  "isTransparent": false,
+  "autosize": true,
+  "largeChartUrl": ""
+}
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+
+            </div>
+            <div class="col-md-2 col-sm-6 highlight">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+{
+  "symbol": "FX:USDJPY",
+  "width": "100%",
+  "height": "100%",
+  "locale": "en",
+  "dateRange": "1d",
+  "colorTheme": "light",
+  "trendLineColor": "#8378e2",
+  "underLineColor": "#e3f2fd",
+  "isTransparent": false,
+  "autosize": true,
+  "largeChartUrl": ""
+}
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+            <div class="col-md-2 col-sm-6 highlight">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+{
+  "symbol": "FX:GBPUSD",
+  "width": "100%",
+  "height": "100%",
+  "locale": "en",
+  "dateRange": "1d",
+  "colorTheme": "light",
+  "trendLineColor": "#8378e2",
+  "underLineColor": "#e3f2fd",
+  "isTransparent": false,
+  "autosize": true,
+  "largeChartUrl": ""
+}
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+            <div class="col-md-2 col-sm-6 highlight">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+{
+  "symbol": "FX:AUDUSD",
+  "width": "100%",
+  "height": "100%",
+  "locale": "en",
+  "dateRange": "1d",
+  "colorTheme": "light",
+  "trendLineColor": "#8378e2",
+  "underLineColor": "#e3f2fd",
+  "isTransparent": false,
+  "autosize": true,
+  "largeChartUrl": ""
+}
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+            <div class="col-md-2 col-sm-6 highlight">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+{
+  "symbol": "FX:USDCHF",
+  "width": "100%",
+  "height": "100%",
+  "locale": "en",
+  "dateRange": "1d",
+  "colorTheme": "light",
+  "trendLineColor": "#8378e2",
+  "underLineColor": "#e3f2fd",
+  "isTransparent": false,
+  "autosize": true,
+  "largeChartUrl": ""
+}
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+            <div class="col-md-2 col-sm-6 highlight">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+{
+  "symbol": "FX:USDCAD",
+  "width": "100%",
+  "height": "100%",
+  "locale": "en",
+  "dateRange": "1d",
+  "colorTheme": "light",
+  "trendLineColor": "#8378e2",
+  "underLineColor": "#e3f2fd",
+  "isTransparent": false,
+  "autosize": true,
+  "largeChartUrl": ""
+}
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+          </div>
+          <!-- /row  --> 
+
+        </div>
+      </section>              
+
+      <section id="service" class="module icon-service-module img-background parallax clearfix"
+                            data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow zoomIn" data-wow-delay=".2s">
+              <h2>Our <span>Services</span></h2>
+              <p>Why DNet is best</p>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInDown" data-wow-delay=".5s">
+              <a href="http://DNet.com">
+                <div class="service-icon"> <i class="fa fa-book"></i> </div>
+                <h3 class="service-title"><span>Legit</span> </h3>
+                <p class="service-content">DNet is a legal investment company incorporated and headquartered in Hong Kong.</p>
+              </a>
+
+            </div>
+
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInLeft" data-wow-delay=".5s">
+              <div class="service-icon"> <i class="fa fa-shield"></i> </div>
+              <h3 class="service-title"><span>Secure</span> </h3>
+              <p class="service-content">DNet has DDos protection. Our web application is protected with strong firewall and SSL certificate. The safety of your funds is the biggest priority for us.</p>
+
+            </div>
+
+
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInRight" data-wow-delay=".5s">
+              <div class="service-icon"> <i class="fa fa-briefcase"></i> </div>
+              <h3 class="service-title"><span>Experienced    </span>Team</h3>
+              <p class="service-content">We have a team of experienced, hardworking. Most of our traders haveg more than 20 years’ experience in DNet.</p>
+
+            </div>
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInLeft" data-wow-delay=".5s">
+              <div class="service-icon"> <i class="fa fa-recycle"></i> </div>
+              <h3 class="service-title"><span>Weekly  </span>ROI</h3>
+              <p class="service-content">DNet gives 4 % to 8% weekly and 16% to 32% monthly ROI based on package.</p>
+
+            </div>
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInRight" data-wow-delay=".5s">
+              <div class="service-icon"> <i class="fa fa-building"></i> </div>
+              <h3 class="service-title"><span>Easy </span> withdrawal</h3>
+              <p class="service-content">Our withdrawal system is very easy. You can withdraw your funds anywhere in the world, there are best payment gateways. You can receive your funds through banks ATM in most of the countries</p>
+
+            </div>
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInLeft" data-wow-delay=".5s">
+              <div class="service-icon"> <i class="fa fa-users"></i> </div>
+              <h3 class="service-title"><span>Best affiliate </span> program</h3>
+              <p class="service-content">Our affiliate program is based on Duplication
+              It has strong power and capability to make Networks richer than ever. We have best affiliate program which includes direct, indirect, binary,
+              reward and international tours.
+              </p>
+
+            </div>
+
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInLeft" data-wow-delay=".5s">
+              <div class="service-icon"> <i class="fa fa-globe"></i> </div>
+              <h3 class="service-title"><span>Global   </span>Access</h3>
+              <p class="service-content">Dashboard can be logged in from anywhere in the world, even from your smart phone. Soon we are going to launch our app.</p>
+
+            </div>
+            <div class="icon-service-box col-md-3 py-5 text-center shadow rounded-lg wow fadeInUp" data-wow-delay=".5s"><a
+                                                                                                   href="http://DNet.com">
+                <div class="service-icon"> <i class="fa fa-headphones"></i> </div>
+                <h3 class="service-title"><span>Happy    </span>to help</h3>
+                <p class="service-content">DNet spirit is to ease our clients. We are here to help you if you have any query or technical issue contact us.</p>
+              </a>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </section>
+      <section id="about" class="module skill-bar-module no-background clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow fadeInDown" data-wow-delay=".2s">
+              <h2>About <span>DNet</span></h2>
+
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6 about-text">
+              <div class="about-dec">
+                <h2>We are Creative</h2>
+                <p style="line-height: 2;">DNet is a reliable Company with an eminent reputation that works in the sphere of DNet trading and involved in the financial activity on the Hong kong Stock Exchange. We have built our services to every Investor, Trader and Promoter .Our Services are exceptionally fast, familiar, stable, and transparent. Our goal is to provide people Financial and Time Freedom.  Our online platform allows investors to make deposits and receive dividends from trading currencies on the DNet market and selling appreciated stocks. DNet trading is one of the best investment option which can ensure a good income.DNet is a committed group of hardworking, Talented and inspiring professionals with right combination of the best world experience with a deep understanding of the realities of DNet market, politics, and financial environment that is a key factor to success. DNet is a Company You can Trust. It's best opportunity that can generate immediate and long term income for its members.  Our business model is customer focused, Our marketing and Rewards Program is structured in order to maintain a compliant company long-term.</p>
+
+              </div>
+            </div>
+            <div class="col-lg-6 wow tada" data-wow-delay=".3s">
+              <br>
+              <br>
+              <br>
+              <br>
+              <a data-target="#modalAbtYT" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+                <div class="ba-0 ds-1">
+                  <img alt="Card image cap" class="card-img-top" src="<%= image_url "new_layout/visio_thumbnail.jpg" %>" >
+                  <div class="card-body">
+                    <h4 class="card-title color-gray-darker">Watch Now !
+                    </h4>
+
+                  </div>
+                </div>	
+              </a>
+
+
+
+            </div>
+          </div>
+        </div>
+        <!--about video modal-->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalAbtYT" role="dialog" tabindex="-1" style="top: 20px;">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-body mb-0 p-0">
+                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 100%;">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/YTVcJwEkMFI" class="embed-responsive-item" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div><b>View:</b> <a href="#">Transcript</a> | <a href="#">Low-res Video</a></div>
+                <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="vision" class="module vision-module no-background ">
+        <div class="container text-white">
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow fadeInDown" data-wow-delay=".2s">
+              <h2 class="text-white"text-white>Our <span>Vision</span></h2>
+
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>
+
+          </div>
+          <div class="row py-3">
+            <div class="col-lg-6 py-5">
+
+
+              <div class="ba-0 ds-1 wow fadeInLeft" data-wow-delay=".5s">
+                <img alt="Card image cap" class="card-img-top" src="<%= image_url "new_layout/vision_thumb.jpg" %>" >
+
+              </div>	
+
+
+
+
+            </div>
+            <div class="col-lg-6 about-text wow fadeInRight" data-wow-delay=".5s">
+              <div class="vision-dec">
+                <li>To have honesty, integrity and professionalism as our guiding light.</li>
+                <li>To facilitate you with a positive, stable and long-term capital gains experience and an advisor relationship build on personal trust and company-wide integrity.</li>
+                <li>To have a substantial positive impact on the quality of our business partners (Investors, Traders, Promoters)</li>
+                <li>To be a giant, fastest growing, most rewarding company in Network marketing, DNet Trading and Services</li>
+                <li>To Give Financial and Time Freedom and  improve the quality of life of our partners (Members) through our ROI and  Affiliate program,   FHT APP refer and earn program, DNet Education courses, FHT  Coin and FHT Broker.</li>
+                <li>To Provide better services to our clients and fulfill our commitments.</li>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+
+
+
+
+
+      <section id="timeline">
+        <!-- Vertical Timeline -->
+        <div class="row">
+          <div class="module-caption col-md-12 text-center wow zoomIn" data-wow-delay=".2s">
+            <h2>Our <span>Projects</span></h2>
+            <p>Road Map</p>
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+            <div class="spacer"></div>
+          </div>
+        </div>
+
+
+      </section>
+      <div class="nk-block">
+        <div class="row justify-content-center">
+          <div class="roadmap-main" >
+            <div class="roadmap-wrap mb-0">
+              <div class="roadmap-line"></div>
+
+              <!--<div class="roadmap">-->
+              <!--    <div class="roadmap-year">2019</div>-->
+              <!--</div>-->
+              <div class="roadmap roadmap-right wow fadeInRight" data-wow-delay=".3s">
+                <div class="roadmap-step">
+                  <div class="roadmap-head">
+
+                    <span class="roadmap-title">Mobile Application</span>
+                  </div>
+                  <p>FHT APP is bringing a new revolution in the business world. Company is launching its own business APP; whose purpose is to provide new interface to back office users. It is a best earning opportunity for networkers, investors and new users. Any person can earn thousands of dollars on daily basis without any investment through FHT APP Program.. </p>
+                  <a href="<%=fht_app_path%>" style="text-decoration: underline; color: #8378e2">Read More</a>
+                </div>
+              </div>
+              <div class="roadmap roadmap-left wow fadeInLeft" data-wow-delay=".3s">
+                <div class="roadmap-step">
+                  <div class="roadmap-head">
+
+                    <span class="roadmap-title">DNet Education</span>
+                  </div>
+                  <p>Understanding DNet can be a tricky business, however it is necessary given that there is so much money involved in the process. In simple terms DNet trading is a trading option for currency, where you buy one currency for a given price and sell it for more money when the exchange rate is in your favor.</p>
+                  <a href="<%=education_path%>" style="text-decoration: underline; color: #8378e2">Read More</a>
+                </div>
+              </div>
+
+              <div class="roadmap roadmap-right wow fadeInRight" data-wow-delay=".3s">
+                <div class="roadmap-step">
+                  <div class="roadmap-head">
+
+                    <span class="roadmap-title">FHT Coin</span>
+                  </div>
+                  <p>The global economy is moving toward a digital eco-system. From investment to money transfer, everything is going paperless. A cryptocurrency is a medium of exchange like normal currencies such as USD, but designed for the purpose of exchanging digital information.</p>
+                  <a href="<%=fht_coin_path%>" style="text-decoration: underline; color: #8378e2">Read More</a>
+                </div>
+              </div>
+              <div class="roadmap roadmap-left wow fadeInLeft" data-wow-delay=".3s">
+                <div class="roadmap-step">
+                  <div class="roadmap-head">
+
+                    <span class="roadmap-title">FHT Broker</span>
+                  </div>
+                  <p>DNet trading platforms are the modern gateways to investing in international currency markets. Trading DNet requires a degree of commitment from the trader, but before that stage, you need to find a reliable broker. </p>
+                  <a href="<%=broker_path%>" style="text-decoration: underline; color: #8378e2">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div><!-- .col -->
+        </div><!-- .row -->
+      </div>   
+      <!-- // Vertical Timeline -->
+
+
+
+
+
+
+      <section id="stories" class="module contact-module img-background clearfix">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow bounce" data-wow-delay=".2s">
+              <h2 class="text-white">Success <span>Stories</span></h2>
+              <p class="text-white">Investors and Networkers reviews</p>
+              <div class="separator text-white"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>   
+            <div class="col-md-3">
+            </div>
+          </div>
+          <div id="carousel" class="owl-carousel">
+            <div class="item">
+              <a data-target="#story1" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+                <div class="ba-0 ds-1">
+                  <img alt="Card image cap" class="card-img-top owl-lazy"  data-src="<%= image_url "new_layout/story1.jpg" %>" src="<%= image_url "new_layout/story1.jpg" %>" >
+                  <div class="card-body">
+                    <h4 class="card-title color-gray-darker text-white">Click to Watch !</h4>
+
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a data-target="#story2" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+                <div class="ba-0 ds-1">
+                  <img alt="Card image cap" class="card-img-top owl-lazy"  data-src="<%= image_url "new_layout/story2.jpg" %>">
+                  <div class="card-body">
+                    <h4 class="card-title color-gray-darker text-white">Click to Watch !</h4>
+
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a data-target="#story3" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+                <div class="ba-0 ds-1">
+                  <img alt="Card image cap" class="card-img-top owl-lazy"  data-src="<%= image_url "new_layout/story3.jpg" %>">
+                  <div class="card-body">
+                    <h4 class="card-title color-gray-darker text-white">Click to Watch !</h4>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a data-target="#story4" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+                <div class="ba-0 ds-1">
+                  <img alt="Card image cap" class="card-img-top owl-lazy"  data-src="<%= image_url "new_layout/story4.jpg" %>">
+                  <div class="card-body">
+                    <h4 class="card-title color-gray-darker text-white">Click to Watch !</h4>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+
+
+
+
+
+          <!--story4 video modal-->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="story4" role="dialog" tabindex="-1" style="top: 20px;" >
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body mb-0 p-0">
+                  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 100%;" >
+                    <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/VgwrfcpcTuk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div><b>View:</b> <a href="#">Transcript</a> | <a href="#">Low-res Video</a></div>
+                  <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--story3 video modal-->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="story3" role="dialog" tabindex="-1" style="top: 20px;" >
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body mb-0 p-0">
+                  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 100%;" >
+                    <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/BG9KnAkGmJQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div><b>View:</b> <a href="#">Transcript</a> | <a href="#">Low-res Video</a></div>
+                  <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--story2 video modal-->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="story2" role="dialog" tabindex="-1" style="top: 20px;" >
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body mb-0 p-0">
+                  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 100%;" >
+                    <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/aKqq_Xqj6qQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div><b>View:</b> <a href="#">Transcript</a> | <a href="#">Low-res Video</a></div>
+                  <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--story1 video modal-->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="story1" role="dialog" tabindex="-1" style="top: 20px;">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-body mb-0 p-0">
+                  <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 100%;">
+                    <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/lV5_gdOApx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div><b>View:</b> <a href="#">Transcript</a> | <a href="#">Low-res Video</a></div>
+                  <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>   
+      </section>
+
+
+
+
+
+      <section id="forex" class="module no-background clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow fadeInDown" data-wow-delay=".2s">
+              <h2>What is <span>DNet</span></h2>
+
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6 about-text">
+              <div class="about-dec py-5">
+                <h2>DNet</h2>
+                <p style="line-height:2.5">DNet, also known as foreign exchange, FX or currency trading, is a decentralized global market where all the world's currencies trade. The DNet market is the largest, most liquid market in the world with an average daily trading volume exceeding $5 trillion. All the world's combined stock markets don't even come close to this.
+
+                DNet markets are located all over the world, the largest centers are in London (UK), New York (USA), Tokyo (Japan), Hong Kong, Singapore and Frankfurt (Germany).</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+
+
+              <div class="ba-0 ds-1">
+                <img alt="Card image cap" class="card-img-top" src="<%= image_url "new_layout/what_forex.png" %>">
+
+              </div>	
+
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trading" class="module trading-module img-background parallax clearfix"
+                            data-stellar-background-ratio="0.5">
+
+        <div class="container-fluid">
+
+          <div class="container text-white">
+            <div class="row">
+              <div class="module-caption col-md-12 text-center wow fadeInDown" data-wow-delay=".2s">
+                <h2 class="text-white">Trading <span>Instruments</span></h2>
+
+                <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+                <div class="spacer"></div>
+              </div>
+
+            </div>
+            <div class="row ">
+
+              <div class="col-md-3 col-sm-6 highlight">
+                <div class="h-caption">
+                  <h4 class="text-white"><i class="fa fa-dollar fa-2x circle"></i> Currency</h4>
+                </div>
+                <div class="h-body">
+                  <p>Currencies allow you to make money on almost all the events in the world. Currency quotes change every minute, 24 hours a day, 5 days a week. Each fluctuation is — a potential profit. Instead of just changing currencies, trade them! Join and acheive/avail beneifts from currencies such as the euro, pound or dollar.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 highlight">
+                <div class="h-caption">
+                  <h4 class="text-white"><i class="fa fa-bar-chart-o fa-2x circle"></i> Stocks</h4>
+                </div>
+                <div class="h-body">
+                  <p>Invest into real business! Shares allow you to make money on long-term investments into securities of the world’s largest companies (for example, Apple, Google,Tesla etc.), as well as make income on short-term trend changes of these shares prices. Enjoy leveraged trading on world famous shares in a user-friendly, professional trading environment.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 highlight">
+                <div class="h-caption">
+                  <h4 class="text-white"><i class="fa fa-tint fa-2x circle"></i> Oil & Gas</h4>
+                </div>
+                <div class="h-body">
+                  <p>Different benchmarks of oil, natural gas and heating oil. Trading instruments with a high volatility and a good potential for making money on investing both in the short term and the long term. Trading commodities like Oil, Gold and Silver that are constantly in the news is always a good place to start.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 highlight">
+                <div class="h-caption">
+                  <h4 class="text-white"><i class="fa fa-bars fa-2x circle"></i> Metals</h4>
+                </div>
+                <div class="h-body">
+                  <p>Gold and silver are traditional investor assets which help to stabilize trading portfolio. Metals have a higher earning potential than other currency pairs. Trading commodities like Oil, Gold and Silver that are constantly in the news is always a good place to start.</p>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="clearfix"><div>
+                <!-- /row  --> 
+
+              </div>
+            </div>
+
+      </section>
+      <section id="pricing" class="module pricing-table-module no-background clearfix">
+        <div class="container">
+
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow bounceInDown" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: bounceInDown;"><h2>See Our <span>Plans</span></h2><p>Find the plan that fits your needs</p><div class="separator"><span><i class="fa fa-circle" aria-hidden="true"></i></span></div><div class="spacer"></div></div>
+            <div class="col-sm-4 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan1.png" %>" alt="Plan1">
+            </div>
+            <div class="col-sm-4 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan2.png" %>" alt="Plan2">
+            </div>
+            <div class="col-sm-4 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan3.png" %>" alt="Plan3">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 offset-md-2 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan4.png" %>" alt="Plan4">
+            </div>
+            <div class="col-sm-4 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan5.png" %>" alt="Plan5">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan6.png" %>" alt="Plan6">
+            </div>
+            <div class="col-sm-4 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan7.png" %>" alt="Plan7">
+            </div>
+            <div class="col-sm-4 text-center">
+              <img align="middle" class="img-responsive img-center" src="<%= image_url "new_layout/plan8.png" %>" alt="Plan8">
+            </div>
+          </div>
+
+
+        </div>  
+      </section>
+
+      <section id="testimonial" class="testimonial text-center " >
+        <div class="container">
+
+          <div class="module-caption text-white col-md-12 text-center wow zoomIn" data-wow-delay=".2s">
+            <h2 class="text-white">Testimonials</h2>
+
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+            <div class="spacer"></div>
+          </div>
+          <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <div class="testimonial4_slide">
+                  <img src="<%= image_url "new_layout/testimonials/RobertLuke.jpg" %>" class="img-circle img-responsive" />
+                  <p>OMG....wait of 14 days is over. Now i am gaining withdrawal.. i've bought 2 packages of 8000$. Really DNet is great platform. </p>
+                  <h4>Robert Luke</h4>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial4_slide">
+                  <img src="<%= image_url "new_layout/testimonials/WilfredTuley.jpg" %>" class="img-circle img-responsive" />
+                  <p>Finally, i am attached with DNet. I am bound with DNet.  Me and my team expect that DNet is a kind of genuinity. We feel that future of DNet's investors is very bright because of excellent investment services of DNet.  </p>
+                  <h4>Wilfred Tuley</h4>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial4_slide">
+                  <img src="<%= image_url "new_layout/testimonials/AlphonseBizzell.jpg" %>" class="img-circle img-responsive" />
+                  <p>  I am very glad with DNet and personal trading. It makes me enough wealthy. My life standard has gone luxurious. I enjoy everything. i am enjoying the benefits of only one project, till 4 projects are under-process that will have surprising benefits. I guarantee DNet is our future. </p>
+                  <h4>Alphonse Bizzell</h4>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial4_slide">
+                  <img src="<%= image_url "new_layout/testimonials/NavjotSingh.jpg" %>" class="img-circle img-responsive" />
+                  <p>My friend remained all time connected with DNet web. He shared with me how does the company generate money. But i did not believe in. I was wonder, when my friend received first withdrawal after 14 days. And then every week i was surprising. Now i am the part of DNet and enjoying the dollars in every week. </p>
+                  <h4>Navjot Singh</h4>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial4_slide">
+                  <img src="<%= image_url "new_layout/testimonials/BradlyGriffis.jpg" %>" class="img-circle img-responsive" />
+                  <p> Oh man......DNet is going to launch its new projects. Its amazing, really good to hear. In such platform, more and more investment is not enough. </p>
+                  <h4>Bradly Griffis</h4>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial4_slide">
+                  <img src="<%= image_url "new_layout/testimonials/ShanelMaddox.jpg" %>" class="img-circle img-responsive" />
+                  <p>I  was a housewife and running a house keep me too much busy so that i could not do any job but i'd a dream from starting to earn money. Someone shared with me about DNet. And then i bought a package of 5000$, and from last two months i am earning dollars in every week. After me, my husband also attached with DNet through affiliate program. We both are extremely happy. Thank you DNet. </p>
+                  <h4>Shanel Maddox</h4>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial4_slide">
+                  <img src="<%= image_url "new_layout/testimonials/MaxLorence.jpg" %>" class="img-circle img-responsive" />
+                  <p>I have joined the DNet and earning money in best manners. It is really a best platform. In this we can earn too much as comparatively other online investment companies. </p>
+                  <h4>Max Lorence</h4>
+                </div>
+              </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#testimonial4" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#testimonial4" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="present" class="module promo-box-hor-module no-background clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow fadeInDown" data-wow-delay=".2s">
+              <h2>Download <span>Presentations</span></h2>
+
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-sm-6">
+
+            </div>
+            <div class="col-md-2 col-sm-6">
+
+            </div>
+            <div class="col-md-3 col-sm-6" style="margin-left: 5%;">
+              <div class="profile_card">
+                <div class="profile_inner">
+                  <div class="profile_img">
+                    <img src="<%= image_url "new_layout/present_thumb.png" %>" alt="file"/>
+                  </div>
+                  <div class="over_layer">
+                    <ul class="social_links">
+
+                      <li><a href="<%=download_path%>" target="_blank" type="application/octet-stream" download class="fa fa-download"></a></li>
+
+                    </ul>
+                  </div>
+                </div>
+                <div class="profile_contact">
+                  <h3>Download in
+                    <span>English</span>
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+      </section>
+      <section id="team" class="module team-module no-background clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="module-caption col-md-12 text-center wow bounce" data-wow-delay=".2s">
+              <h2><span>Team</span> Members</h2>
+              <p>We&#039;re the best professionals in this field</p>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>
+            <div class="row">
+
+
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <div class="team-member text-center">
+                  <figure>
+                    <img src="<%= image_url "new_layout/team/CEO.jpg" %>" alt="" class="img-responsive">
+                    <figcaption>
+                    <p>
+                    </p>
+
+                    <ul>
+                      <li><a href="#contact"><i class="fa fa-envelope fa-2x" style="margin-top: 80px;"></i></a></li>
+
+                    </ul>
+                    </figcaption>
+                  </figure>
+                  <h4>Christopher Lim</h4>
+                  <p>CEO</p>
+                </div><!-- /.team-member-->
+              </div><!-- /.col-md-4 -->
+
+              <div class="col-md-4"></div>
+
+
+              <div class="col-md-4">
+                <div class="team-member text-center">
+                  <figure>
+                    <img src="<%= image_url "new_layout/team/FinancialAdvisor.jpg" %>" alt="" class="img-responsive">
+                    <figcaption>
+                    <p></p>
+                    <ul>
+                      <li><a href="#contact"><i class="fa fa-envelope fa-2x" style="margin-top: 50px;"></i></a></li>
+                    </ul>
+                    </figcaption>
+                  </figure>
+                  <h4>Martha James</h4>
+                  <p>Financial Advisor</p>
+                </div><!-- /.team-member-->
+              </div><!-- /.col-md-4 -->
+
+              <div class="col-md-4">
+                <div class="team-member text-center">
+                  <figure>
+                    <img src="<%= image_url "new_layout/team/MarketingManager.jpg" %>"  alt="" class="img-responsive">
+                    <figcaption>
+                    <p></p>
+                    <ul>
+                      <li><a href="#contact"><i class="fa fa-envelope fa-2x" style="margin-top: 50px;"></i></a></li>
+                    </ul>
+                    </figcaption>
+                  </figure>
+                  <h4>William Foster</h4>
+                  <p>Marketing Manager</p>
+                </div><!-- /.team-member-->
+              </div><!-- /.col-md-4 -->
+
+              <div class="col-md-4">
+                <div class="team-member text-center">
+                  <figure>
+                    <img src="<%= image_url "new_layout/team/OperationsManager.jpg" %>" alt="" class="img-responsive">
+                    <figcaption>
+                    <p></p>
+                    <ul>
+                      <li><a href="#contact"><i class="fa fa-envelope fa-2x" style="margin-top: 50px;"></i></a></li>
+                    </ul>
+                    </figcaption>
+                  </figure>
+                  <h4>Steve Collins</h4>
+                  <p>Operations Manager</p>
+                </div><!-- /.team-member-->
+              </div><!-- /.col-md-4 -->
+
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="subscribe-module" class="module subscribe-module img-background parallax clearfix"
+                                     data-stellar-background-ratio="0.5">
+        <div class="container">
+
+          <div class="row py-2 shadow rounded-lg" style="margin-left: -15px; margin-right: -15px;">
+            <div class="col-sm-2 flex-column"><img src="<%= image_url "new_layout/client1.png" %>" alt="Client1"></div>
+            <div class="col-sm-2 flex-column"><img src="<%= image_url "new_layout/client2.png" %>" alt="Client2"></div>
+            <div class="col-sm-2 flex-column"><img src="<%= image_url "new_layout/client3.png" %>" alt="Client3"></div>
+            <div class="col-sm-3 flex-column"><img src="<%= image_url "new_layout/client4.png" %>" alt="Client4"></div>
+            <div class="col-sm-3 flex-column"><img src="<%= image_url "new_layout/client5.png" %>" alt="Client5"></div>
+
+          </div>
+
+          <div class="row py-5">
+            <div class="col-md-7">
+              <h2 class="wow pulse" data-wow-delay=".2s"><span>Subscribe</span> to Our
+                <span>Newsletter</span></h2>
+              <p class="wow fadeIn" data-wow-delay=".2s">We make sure you do not miss any news.
+              </p>
+            </div>
+            <div class="col-md-5 wow tada" data-wow-delay=".2s">
+              <form id="subscribe-form" class="subscribe-form input-group"><input type="email"
+                                                                                  id="subscribe-email" name="email" placeholder="Enter your email address..."
+                                                                                                                    class="required email form-control"
+                                                                                                                    data-msg-required="Please fill out this field."
+                                                                                                                    data-msg-email="Please enter a valid email address." /><span
+                                                                                                                    class="input-group-btn"><button class="btn subscribe-btn" type="submit"
+                                                                                                                                                                              id="subscribe-form-submit" name="submit" value="submit"><span>Notify
+                                                                                                                                                                                Me</span></button></span>
+                                                                                                                    <div id="subscribe-form-result"></div><input type="hidden" name="action"
+                                                                                                                                                                               value="subscribe_form"><input type="hidden" id="ajax_subscribe_form_nonce"
+                                                                                                                                                                                                                           name="ajax_subscribe_form_nonce" value="9e080e8910" /><input type="hidden"
+                                                                                                                                                                                                                                                                                        name="_wp_http_referer" value="/" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="module  img-background parallax clearfix"
+                            data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row" >
+            <div class="module-caption col-md-12 text-center wow fadeInDown" data-wow-delay=".2s"  >
+              <h2><span>Contact</span> Us</h2>
+              <p>We&#039;d love to hear your feedback.</p>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer"></div>
+            </div>
+            <div class="contact-info col-md-4 clearfix">
+
+              <div class="contact-item wow bounceInLeft" data-wow-delay=".5s">
+                <div class="ci-icon"><i class="fa fa-map-marker"></i></div>
+                <div class="ci-title">Address</div>
+                <div class="ci-content">7, 2/F, SILVER FORTUNE PLAZA,1 WELLINGTON STREET,CENTRAL, HONG KONG</div>
+              </div>
+              <div class="contact-item wow bounceInLeft" data-wow-delay=".5s">
+                <div class="ci-icon"><i class="fa fa-envelope"></i></div>
+                <div class="ci-title">Say hello</div>
+                <div class="ci-content"><a href="mailto:hi@DNet.com">support@DNet.com</a></div>
+              </div>
+            </div>
+            <div class="contact-form col-md-7 col-md-offset-1 clearfix wow fadeInDown"
+                 data-wow-delay=".5s" >
+                 <%= form_for :contact, url: contact_us_path, class: "contact-form clearfix", id: "contact-form" do |f| %>
+                   <div class="contact-form-process"><i class="fa fa-spinner fa-pulse"></i></div>
+                   <div id="contact-form-result"><span></span></div>
+                   <fieldset class="col-sm-4"><input type="text" id="contact-form-name" name="name" required="required"
+                                                                                        placeholder="Name" value="" class="cf-form-control required"
+                                                                                                                    data-msg-required="This field is required." /></fieldset>
+                   <fieldset class="col-sm-4">
+                     <%= f.email_field :email, placeholder: "Email", class: "required email cf-form-control", id: "contact-form-email", required: "required", data: {msg: { required: "This field is required.", email: "Invalid email address." }} %>
+                   </fieldset>
+                   <fieldset class="col-sm-4">
+                     <%= f.text_field :phone, placeholder: "Phone", id: "contact-form-phone", class: "cf-form-control", required: "required" %>
+                   </fieldset>
+                   <fieldset class="col-sm-12">
+                     <%= f.text_field :subject, placeholder: "Subject", class: "required cf-form-control", required: "required", data: { msg: { required: "This field is required." }} %>
+                   </fieldset>
+                   <fieldset class="col-sm-12">
+                     <%= f.text_area :body, class: "required cf-form-control", placeholder: "Message", required: "required", rows: "5", data: { msg: { required: "This field is required" }}, id: "This field is required." %>
+                   </fieldset>
+                   <!--<fieldset class="captcha col-sm-6"><input type="text" id="contact-form-captcha"-->
+                                                                         <!--name="captcha" placeholder="9 + 8 = ?" class="required cf-form-control"-->
+                                                                                                                <!--data-msg-required="This field is required."-->
+                                                                                                                <!--data-rule-equalto="#captcha-value"-->
+                                                                                                                <!--data-msg-equalto="Please check your math." /><input type="hidden"-->
+                                                                                                                                                                    <!--id="captcha-value" value="17"></fieldset>-->
+                   <fieldset class="submit col-sm-6">
+                     <input type="hidden" name="action"  value="contact_form">
+                     <input type="hidden" id="ajax_contact_form_nonce" name="ajax_contact_form_nonce" value="9a3b8e0e29" />
+                     <input type="hidden" name="_wp_http_referer" value="/" />
+                     <button class="btn btn-dark" type="submit" id="contact-form-submit" name="submit" value="submit">Send</button>
+                   </fieldset>
+                 <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      </main>
+        </div>
+          </div>
+
+          <footer id="colophon" class="site-footer clearfix" role="contentinfo" >
+
+            <div class="">
+              <div id="particles-js"></div>
+              <div class="site-branding">
+                <div class="site-logo" style="margin-left: 20%;">
+                  <a href="http://DNet.com" rel="home"><img  width="150px"
+                                                                       src="<%= image_url "new_layout/logo.png" %>"
+                                                                       alt="logo"></a> 
+                </div>
+
+
+                <h1 class="site-title wow none text-white" data-wow-delay=".2s">DNet</h1>
+
+              </div>
+
+              <div class="site-branding col-md-12 clearfix" >
+
+                <div class="row">
+                  <div class="site-info col-md-12"> <a href="<%=terms_path%>">Terms & Conditions</a></div>
+                  <div class="site-info col-md-12"> <a href="<%=faq_path%>">FAQs</a></div>
+                </div>
+              </div>
+              <div class="social-link col-md-12 wow zoomInUp" data-wow-delay=".2s">
+                <ul id="menu-social-menu" class="menu">
+                  <li id="menu-item-189"
+                      class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-189&quot;">
+                    <a href="http://DNet.com"><i class="fa fa-twitter-square"></i>
+                      <div>Twitter</div>
+                    </a></li>
+                    <li id="menu-item-190"
+                        class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-190&quot;">
+                      <a href="http://DNet.com"><i class="fa fa-facebook-square"></i>
+                        <div>Facebook</div>
+                      </a></li>
+                      <li id="menu-item-192"
+                          class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-192&quot;">
+                        <a href="http://DNet.com"><i class="fa fa-google-plus-square"></i>
+                          <div>Google+</div>
+                        </a></li>
+                        <li id="menu-item-193"
+                            class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-193&quot;">
+                          <a href="http://DNet.com"><i class="fa fa-youtube-square"></i>
+                            <div>YouTube</div>
+                          </a></li>
+                          <li id="menu-item-194"
+                              class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-194&quot;">
+                            <a href="http://DNet.com"><i class="fa fa-vimeo-square"></i>
+                              <div>Vimeo</div>
+                            </a></li>
+                            <li id="menu-item-195"
+                                class=" class=&quot;menu-item menu-item-type-custom menu-item-object-custom menu-item-195&quot;">
+                              <a href="http://DNet.com"><i class="fa fa-heart"></i>
+                                <div>Dribbble</div>
+                              </a></li>
+                </ul>
+              </div>
+
+              <div class="site-info col-md-12">Copyrights © 2019. All Rights Reserved. Powered by <a
+                   href="https://DNet.com">DNet</a>.</div>
+            </div>
+
+
+
+
+
+
+          </footer>
+
+          <div id="go-to-top" class="go-to-top btn btn-light"><i class="fa fa-angle-up"></i></div>
+        </div>
+
+        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js?ver=3.0.25'>
+        </script>
+        <%= content_for :body_js do %>
+        <script>
+new WOW().init();
+        </script>
+
+
+        <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT}, 'google_translate_element');
+}
+
+function triggerHtmlEvent(element, eventName) {
+  var event;
+  if (document.createEvent) {
+    event = document.createEvent('HTMLEvents');
+    event.initEvent(eventName, true, true);
+    element.dispatchEvent(event);
+  } else {
+    event = document.createEventObject();
+    event.eventType = eventName;
+    element.fireEvent('on' + event.eventType, event);
+  }
+}
+
+
+jQuery('.lang-select').click(function() {
+  var theLang = jQuery(this).attr('data-lang');
+  jQuery('.goog-te-combo').val(theLang);
+
+  //alert(jQuery(this).attr('href'));
+  window.location = jQuery(this).attr('href');
+  location.reload();
+
+});
+
+
+
+//for owl carosule
+$("#carousel").owlCarousel({
+  autoplay: true,
+  lazyLoad: true,
+  loop: true,
+  margin: 20,
+  /*
+     animateOut: 'fadeOut',
+     animateIn: 'fadeIn',
+   */
+  responsiveClass: true,
+  autoHeight: true,
+  autoplayTimeout: 7000,
+  smartSpeed: 800,
+  nav: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+
+    600: {
+      items: 3
+    },
+
+    1024: {
+      items: 4
+    },
+
+    1366: {
+      items: 4
+    }
+  }
+});
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+      <% end %>
+
+
+
+
+

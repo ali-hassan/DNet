@@ -1,6 +1,7 @@
-server 'ubuntu@myanalyzer.co', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
+set :stage, :production
+server 'ubuntu@18.132.126.83', user: 'ubuntu', roles: %w{web app db}, my_property: :my_value
 
-server 'myanalyzer.co',
+server '18.132.126.83',
        user: 'ubuntu',
        roles: %w{web app db},
        ssh_options: {
@@ -19,6 +20,9 @@ namespace :paths do
     run "ln -sf  #{shared_path}/config/config.yml #{current_path}/config/config.yml"
   end
 end
-
+set :rails_env, "production"
+set :puma_env, "production"
+# set :puma_config_file, "#{shared_path}/config/puma.rb"
+# set :puma_conf, "#{shared_path}/config/puma.rb"
 ask :branch, 'staging'
 # set :npm_flags, '--staging' # default

@@ -53,7 +53,7 @@ group :development, :test do
 end
 
 
-#gem 'therubyracer', '~> 0.12.3', platforms: :ruby
+# gem 'therubyracer', '~> 0.12.3', platforms: :ruby
 gem 'js-routes', '~> 1.3.3'
 
 # Color utilities needed for landing page
@@ -76,7 +76,7 @@ gem 'delayed_job_active_record', '~> 4.1.2'
 
 gem 'web_translate_it', '~> 2.4.1'
 gem 'rails-i18n'
-gem 'devise', '~> 4.3.0'
+gem 'devise'#, '~> 4.3.0'
 gem 'devise-encryptable', '~> 0.2.0'
 gem "omniauth-facebook", '~> 4.0.0'
 
@@ -85,14 +85,7 @@ gem 'dynamic_form'
 gem "truncate_html"
 gem 'money-rails'
 
-gem "capistrano", '=3.11.0'
-gem 'capistrano3-delayed-job', '~> 1.0'
-gem 'capistrano-ssh-doctor', '~> 1.0'
-gem 'capistrano-rvm'
-gem 'capistrano-rails',   require: false
-gem 'capistrano-bundler', require: false
-gem 'capistrano-passenger'
-gem 'capistrano-npm'
+
 gem 'client_side_validations'
 gem 'activeadmin', '=1.4.3'
 # ActiveAdmin-Select2: Drop down menus
@@ -111,3 +104,15 @@ gem 'will_paginate'
 gem "kaminari"
 gem "recaptcha"
 gem 'activeadmin-xls', '~>2.0.0'
+
+group :deployment do
+  gem "capistrano", "=3.11"
+  gem 'puma', '< 5'
+  gem 'capistrano3-delayed-job', '~> 1.0'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-npm'
+end
