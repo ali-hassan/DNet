@@ -27,7 +27,7 @@ Setting.find_or_create_by key: "register_button_link", value: "https://google.co
 puts "********************************* AdminUser *********************************************"
 begin
   admin_user = AdminUser.create!(email: 'admin@DNet.com', password: 'Password123', password_confirmation: 'Password123')
-  User.create(email: "admin1@DNet.com", password: "Password123", password_confirmation: 'Password123', username: "admin", is_admin: true, first_name: "forex", last_name: "admin",smart_wallet_balance: "300000")
+  User.create(email: "admin1@DNet.com", password: "Password123", password_confirmation: 'Password123', username: "admin", is_admin: true, first_name: "DNet", last_name: "admin",smart_wallet_balance: "300000")
 rescue
 end
 puts "********************************* AdminUser *********************************************=   <<<<--  #{admin_user}    ->>>>"

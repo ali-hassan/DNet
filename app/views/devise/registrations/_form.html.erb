@@ -19,16 +19,16 @@
                   </label>
                   <h5>
               </div>
-              <div class="form-text">
-                <h5 class="text-white">Choose Position
-                  <label class="radio-inline">
-                    <input type="radio" name="position" class="position" value="left" <%= 'checked' if params[:position] == 'left' %>>  left
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="position" class="position" value='right' <%= 'checked' if params[:position] == 'right' %>> right
-                  </label>
-                  <h5>
-              </div>
+<!--              <div class="form-text">-->
+<!--                <h5 class="text-white">Choose Position-->
+<!--                  <label class="radio-inline">-->
+<!--                    <input type="radio" name="position" class="position" value="left" <%#= 'checked' if params[:position] == 'left' %>>  left-->
+<!--                  </label>-->
+<!--                  <label class="radio-inline">-->
+<!--                    <input type="radio" name="position" class="position" value='right' <%#= 'checked' if params[:position] == 'right' %>> right-->
+<!--                  </label>-->
+<!--                  <h5>-->
+<!--              </div>-->
               <div id="position-invalid-message"></div>
 
               <div class="agileits_reservation_grid">
@@ -88,18 +88,18 @@
                     <%= f.text_field :username, validate: true, placeholder: "Username" %>
                   </div>
                 </div>
-                <div class="phone_email phone_email1">
-                  <div class="form-text">
-                    <i class="fa fa-mobile" aria-hidden="true"></i>
-                    <%= f.text_field :contact_number, placeholder: "Contact number", validate: true %>
-                  </div>
-                </div>
-                <div class="phone_email">
-                  <div class="form-text">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                    <%= f.text_field :document_number, placeholder: "Document #", validate: true %>
-                  </div>
-                </div>
+<!--                <div class="phone_email phone_email1">-->
+<!--                  <div class="form-text">-->
+<!--                    <i class="fa fa-mobile" aria-hidden="true"></i>-->
+                    <%#= f.text_field :contact_number, placeholder: "Contact number", validate: true %>
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="phone_email">-->
+<!--                  <div class="form-text">-->
+<!--                    <i class="fa fa-file" aria-hidden="true"></i>-->
+                    <%#= f.text_field :document_number, placeholder: "Document #", validate: true %>
+<!--                  </div>-->
+<!--                </div>-->
 
                 <div class="phone_email phone_email1">
                   <div class="form-text">
@@ -113,30 +113,30 @@
                     <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
                   </div>
                 </div>
-                <div class="phone_email phone_email1">
-                  <div class="form-text">
-                    <i class="fa fa-key" aria-hidden="true"></i>
-                    <%= f.password_field :pin, maxlength: 4, placeholder: "User Pin" %>
-                  </div>
-                </div>
-                <div class="phone_email">
-                  <div class="form-text">
-                    <i class="fa fa-globe" aria-hidden="true"></i>
-                    <%= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
-                  </div>
-                </div>
-                <div class="phone_email phone_email1">
-                  <div class="form-text">
-                    <i class="fa fa-map" aria-hidden="true"></i>
-                    <%= f.select :state, [], {include_blank: "Select State"}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
-                  </div>
-                </div>
-                <div class="phone_email">
-                  <div class="form-text">
-                    <i class="fa fa-street-view" aria-hidden="true"></i>
-                    <%= f.text_field :city, class: "custom-select", placeholder: "City" %>
-                  </div>
-                </div>
+<!--                <div class="phone_email phone_email1">-->
+<!--                  <div class="form-text">-->
+<!--                    <i class="fa fa-key" aria-hidden="true"></i>-->
+                    <%#= f.password_field :pin, maxlength: 4, placeholder: "User Pin" %>
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="phone_email">-->
+<!--                  <div class="form-text">-->
+<!--                    <i class="fa fa-globe" aria-hidden="true"></i>-->
+                    <%#= f.select :country, [], {}, {id: "country", class: "custom-select", name: "user[country]", data: {country: current_user.try(:country)}} %>
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="phone_email phone_email1">-->
+<!--                  <div class="form-text">-->
+<!--                    <i class="fa fa-map" aria-hidden="true"></i>-->
+                    <%#= f.select :state, [], {include_blank: "Select State"}, { id: "state", class: "custom-select", name: "user[state]", data: {state: current_user.try(:state)} } %>
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="phone_email">-->
+<!--                  <div class="form-text">-->
+<!--                    <i class="fa fa-street-view" aria-hidden="true"></i>-->
+                    <%#= f.text_field :city, class: "custom-select", placeholder: "City" %>
+<!--                  </div>-->
+<!--                </div>-->
                 <div class="clear"></div>
               </div>
               <div class="checkbox text-white">

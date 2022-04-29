@@ -7,42 +7,50 @@ class FindPackages
     {
       "100": {
         price: 100,
-        binary: 24,
+        binary: 1,
+        token: 40000,
         category: "starter",
       },
-      "200": {
-        price: 200,
-        binary: 48,
+      "250": {
+        price: 250,
+        binary: 2,
+        token: 100000,
         category: "starter"
-      },
-      "300": {
-        price: 300,
-        binary: 72,
-        category: "starter",
       },
       "500": {
         price: 500,
-        binary: 120,
-        category: "basic",
+        binary: 3,
+        token: 200000,
+        category: "starter",
+      },
+      "700": {
+        price: 700,
+        binary: 4,
+        token: 280000,
+        category: "starter",
       },
       "1000": {
         price: 1000,
-        binary: 240,
-        category: "basic"
+        binary: 5,
+        token: 400000,
+        category: "basic",
       },
-      "2000": {
-        price: 2000,
-        binary: 480,
-        category: 'advance'
+      "2500": {
+        price: 2500,
+        binary: 6,
+        token: 1000000,
+        category: "basic"
       },
       "5000": {
         price: 5000,
-        binary: 1200,
+        binary: 7,
+        token: 2000000,
         category: 'advance'
       },
       "10000": {
         price: 10000,
-        binary: 2400,
+        binary: 8,
+        token: 4000000,
         category: 'advance',
       }
     }.with_indifferent_access

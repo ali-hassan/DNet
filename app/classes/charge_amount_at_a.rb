@@ -6,13 +6,39 @@ class ChargeAmountAtA
   def package
     @package ||= FindPackages.new(package_id).current_package
   end
+  def token
+    @token ||= package[:token]
+  end
   def charge!
-    update(params)
-    update(current_weekly_percentage: weekly_percentage)
+    user.update(token_count: token.to_i+user.token_count.to_i)
+    if user.parent.present?
+      p_user = user.parent
+      update_tokens(p_user, 0.015)
+    end
+    if user.parent.try(:parent).present?
+      p_user = user.parent.parent
+      update_tokens(p_user, 0.01)
+    end
+    if user.parent.try(:parent).try(:parent).present?
+      p_user = user.parent.parent.parent
+      update_tokens(p_user, 0.005)
+    end
+    ### Below are commented as not maintained or supported anymore
+    #update(params)
+    # update(current_weekly_percentage: weekly_percentage)
     User.add_amount(deducation_amount)
-    calculate_weekly_bonus_cycle!
-    User.find(user.id).adapter.cupda_calculate
+    # calculate_weekly_bonus_cycle!
+    #User.find(user.id).adapter.cupda_calculate
+    ### Above are commented as not maintained or supported anymore
     # update(reset_params)
+  end
+  def level_bonus(percentage)
+    package[:token] * percentage
+  end
+  def update_tokens(user, percentage)
+    p_user = user
+    token_count = p_user.token_count.to_i + level_bonus(percentage)
+    p_user.update token_count: token_count
   end
   def reset_params
     {
@@ -37,7 +63,7 @@ class ChargeAmountAtA
     upgrade && user.current_x_factor_income.to_f || 0
   end
   def deducation_amount
-    package_price + package_activation_fees
+    package_price #+ package_activation_fees
   end
   def current_binary
     package[:binary] - (upgrade && user.current_package[:binary] || 0)

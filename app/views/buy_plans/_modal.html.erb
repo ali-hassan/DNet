@@ -1,8 +1,8 @@
 <div class="modal fade" id="ata_prompt_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 650px;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Account To Transfer</h5>
+        <h3 class="modal-title" id="exampleModalLabel">Account To Transfer</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,19 +10,35 @@
       <div class="modal-body">
         <% if current_user.smart_wallet_balance.try(:to_f) > @package.package_price %>
           <p> Package price: <%= number_to_currency @package.package_price %></p>
-          <% if @package.package_activation_fees > 0 %>
-            <p> Activation price: <%= number_to_currency @package.package_activation_fees %></p>
-          <% end %>
+          <p> ACCOUNT TO TRANSFER: SELECT YOUR USDT (TETHER) NETWORK ADRESS </p>
+          <b><p> <li>ERC20: 0x1a2b7c8020ec1f2bdd4f8bd91dae05b126870ce6</li>
+            <li>TRC20: TTjW81L4TeetvisV6KUDEQJaVbPFJ6hPYQ</li>
+            <li>BEP20: 0x1a2b7c8020ec1f2bdd4f8bd91dae05b126870ce6 </li></p></b>
+          <p>*ALERT:</p>
+          <p>STEP1: MAKE YOUR TRANSACTION AND SHARE SCREENSHOT IN OUR TELEGRAM GROUP CLICKING THE LINK FOR VERIFICATION <%= link_to(image_tag("icon/telegram.jpeg", style: "width: 50px; margin-left: 16px;"), "https://t.me/Dnetverificationsupport", target: "_blank") %> </p>
+          <p> STEP2: ONCE CONFIRMED YOUR DNET TOKENS WILL BE SENT AUTOMATICLY TO YOUR WALLET </p>
+          <p> STEP3: YOU CAN CLOSE POP UP </p>
+          <p> THANKS FOR JOINING DNET </p>
         <% else %>
-          <p>You don't have enough balance in smart wallet</p>
+          <p> Package price: <%= number_to_currency @package.package_price %></p>
+          <p> ACCOUNT TO TRANSFER: SELECT YOUR USDT (TETHER) NETWORK ADRESS </p>
+          <b><p> <li>ERC20: 0x1a2b7c8020ec1f2bdd4f8bd91dae05b126870ce6</li>
+            <li>TRC20: TTjW81L4TeetvisV6KUDEQJaVbPFJ6hPYQ</li>
+            <li>BEP20: 0x1a2b7c8020ec1f2bdd4f8bd91dae05b126870ce6 </li></p></b>
+          <p>*ALERT:</p>
+          <p>STEP1: MAKE YOUR TRANSACTION AND SHARE SCREENSHOT IN OUR TELEGRAM GROUP CLICKING THE LINK FOR VERIFICATION <%= link_to(image_tag("icon/telegram.jpeg", style: "width: 50px; margin-left: 16px;"), "https://t.me/Dnetverificationsupport", target: "_blank") %> </p>
+          <p> STEP2: ONCE CONFIRMED YOUR DNET TOKENS WILL BE SENT AUTOMATICLY TO YOUR WALLET </p>
+          <p> STEP3: YOU CAN CLOSE POP UP </p>
+          <p> THANKS FOR JOINING DNET </p>
         <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div style="width: 592px; padding-right: 42px; margin-top: -34px; text-align: justify; color: darkblue;">YOU WILL GET YOUR 20% EXTRA VALUE USDT IN YOUR SMART WALLET IF YOUR PACKAGE IS ABOVE 250 USDT</div>
         <% if current_user.smart_wallet_balance.try(:to_f) >= @package.deducation_amount %>
-          <form action="<%= send("#{controller.controller_name}_url", {plan_id: params[:id], subdomain: 'office'}) %>" style="display: inline-block;" method="post">
-            <button type="submit" class="btn btn-primary" onClick="this.form.submit(); this.disabled=true; this.value='Processing...'; ">Activate</button>
-          </form>
+<!--          <form action="<%#= send("#{controller.controller_name}_url", {plan_id: params[:id], subdomain: 'office'}) %>" style="display: inline-block;" method="post">-->
+<!--            <button type="submit" class="btn btn-primary" onClick="this.form.submit(); this.disabled=true; this.value='Processing...'; ">Activate</button>-->
+<!--          </form>-->
         <% end %>
       </div>
     </div>

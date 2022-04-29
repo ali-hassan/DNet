@@ -3,8 +3,9 @@
 /* Sidebar Start */
 #dashboard-sidebar{
   float: left;
-  background-color: #000;
+  background-color: #009EE9 !important;
   width: 300px;
+  linearGradient: #00C3BA !important;
 }
 #dashboard-sidebar .dashboard-logo{
   width: 150px;
@@ -24,7 +25,7 @@
 }
 #dashboard-sidebar .dashboard-menu ul a{
   display: block;
-  color: #989898;
+  color: #fff !important;
   text-decoration: none;
   font-size: 14px;
   line-height: 18px;
@@ -43,7 +44,7 @@
 #dashboard-sidebar .dashboard-menu .card button{
   display: block;
   width: 100%;
-  color: #989898;
+  color: #fff !important;
   text-align: left;
   text-decoration: none;
   cursor: pointer;
@@ -61,7 +62,7 @@
   display: block;
   font-size: 20px;
   line-height: 20px;
-  color: #989898;
+  color: #fff;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -100,7 +101,7 @@
 }
 #dashboard-sidebar .dashboard-sidebar-bottom ul a{
   display: block;
-  color: #989898;
+  color: #fff !important;
   font-size: 14px;
   line-height: 16px;
   text-align: left;
@@ -109,7 +110,7 @@
   padding: 10px 25px;
 }
 #dashboard-sidebar .dashboard-sidebar-bottom ul a:hover{
-  color: #fff;
+  color: #fff !important;
 }
 #dashboard-sidebar .dashboard-sidebar-bottom ul li img{
   display: inline-block;
@@ -488,20 +489,20 @@
   text-align: center;
   padding: 10px 30px;
   margin: 30px 0 0;
-  background: #b17f2c;
-  background: -moz-linear-gradient(left, #b17f2c 0%, #f2db69 100%);
-  background: -webkit-linear-gradient(left, #b17f2c 0%,#f2db69 100%);
-  background: linear-gradient(to right, #b17f2c 0%,#f2db69 100%);
+  background: #009EE9;
+  background: #009EE9;
+  background: #009EE9;
+  background: #009EE9;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -ms-transition: all 1s;
   transition: all 1s;
 }
 .dashboard-page .main-content .main-content-body .custom-btn:hover{
-  background: #f2db69;
-  background: -moz-linear-gradient(left, #f2db69 0%, #b17f2c 100%);
-  background: -webkit-linear-gradient(left, #f2db69 0%,#b17f2c 100%);
-  background: linear-gradient(to right, #f2db69 0%,#b17f2c 100%);
+  background: #009EE9;
+  //background: -moz-linear-gradient(left, #f2db69 0%, #b17f2c 100%);
+  //background: -webkit-linear-gradient(left, #f2db69 0%,#b17f2c 100%);
+  //background: linear-gradient(to right, #f2db69 0%,#b17f2c 100%);
 }
 .custom-dashboard-row{
   margin: 0 0 20px;
@@ -524,7 +525,7 @@
 }
 .custom-dashboard-row label{
   display: block;
-  color: #989898;
+  color: #fff;
   font-size: 14px;
   line-height: 17px;
   margin: 0 0 5px;
@@ -545,7 +546,7 @@
   line-height: 28px;
   height: 40px;
   width: 100%;
-  color: #989898;
+  color: #fff;
   background-color: transparent;
   border: 1px solid #dfdfdf;
   padding: 7px 10px 5px;

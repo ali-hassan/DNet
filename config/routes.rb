@@ -51,6 +51,8 @@ Rails.application.routes.draw do
       collection do
         get :my_binary
         get :direct_referrals
+        get :second_referrals
+        get :third_referrals
       end
     end
   end
