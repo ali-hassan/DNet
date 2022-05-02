@@ -1,4 +1,7 @@
 # README
+## DNET
+Ruby Application 
+Ruby version 2.6.5
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
