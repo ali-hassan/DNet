@@ -1,5 +1,5 @@
 # README
-## DNET
+## DNET Cyrptocurrency Based
 Ruby Application 
 Ruby version 2.7.2
 Rails version is 6.1
