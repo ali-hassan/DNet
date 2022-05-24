@@ -1,8 +1,8 @@
 # README
 ## DNET Cyrptocurrency Based
 Ruby Application 
-Ruby version 2.7.2
-Rails version is 6.1
+Ruby version 2.7.5
+Rails version is 6.0.1
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
